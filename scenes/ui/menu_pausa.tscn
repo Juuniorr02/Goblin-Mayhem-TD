@@ -1,0 +1,57 @@
+[gd_scene load_steps=2 format=3 uid="uid://cor65fcesxg0a"]
+
+[ext_resource type="Script" uid="uid://csvueeipcym1h" path="res://scripts/ui/menu_pausa.cs" id="1_57d5x"]
+
+[node name="menu_pausa" type="CanvasLayer"]
+layer = 5
+script = ExtResource("1_57d5x")
+
+[node name="volver" type="Button" parent="."]
+visible = false
+z_index = 10
+texture_filter = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -264.0
+offset_top = -96.0
+grow_horizontal = 0
+grow_vertical = 0
+action_mode = 0
+text = "Salir"
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="quitar_pausa" type="Button" parent="."]
+visible = false
+z_index = 10
+texture_filter = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -132.0
+offset_top = -96.0
+offset_right = 132.0
+grow_horizontal = 2
+grow_vertical = 0
+action_mode = 0
+text = "Volver"
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Overlay" type="ColorRect" parent="."]
+visible = false
+z_index = -1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.6)

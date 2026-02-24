@@ -1,12 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://cwwmmg6ol7mhp"]
+[gd_scene load_steps=11 format=3 uid="uid://cwwmmg6ol7mhp"]
 
 [ext_resource type="Texture2D" uid="uid://btry3joyccco3" path="res://assets/level/terrain/cesped.png" id="1_5hph3"]
 [ext_resource type="Script" uid="uid://gbukrbtbdqdg" path="res://scripts/level/GridManager.cs" id="2_j7kpp"]
 [ext_resource type="Script" uid="uid://b32jihh1tog30" path="res://scripts/level/PathManager.cs" id="3_bjebc"]
 [ext_resource type="Script" uid="uid://vkwq2w3n8y08" path="res://scripts/character/tower/TowerManager.cs" id="4_5rr72"]
 [ext_resource type="Script" uid="uid://dm3ekhwdp3e4f" path="res://scripts/character/enemy/EnemyManager.cs" id="5_gyffv"]
-[ext_resource type="PackedScene" path="res://scenes/character/enemy/enemy.tscn" id="6_5hph3"]
+[ext_resource type="PackedScene" uid="uid://dbeqdm5gepyap" path="res://scenes/character/enemy/enemy.tscn" id="6_5hph3"]
 [ext_resource type="Script" uid="uid://ccef7herjptu0" path="res://scripts/character/CameraRig.cs" id="7_j7kpp"]
+[ext_resource type="PackedScene" uid="uid://cor65fcesxg0a" path="res://scenes/ui/menu_pausa.tscn" id="8_so7sr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_27bay"]
 albedo_texture = ExtResource("1_5hph3")
@@ -39,3 +40,5 @@ script = ExtResource("7_j7kpp")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.8537598, 0.13552201, 0.50272053, -0.11732824, -0.89062226, 0.43934762, 0.5072753, -0.43408066, -0.744477, 0, 9.142044, 0)
+
+[node name="menu_pausa" parent="." instance=ExtResource("8_so7sr")]

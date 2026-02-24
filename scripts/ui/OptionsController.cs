@@ -36,6 +36,17 @@ public partial class OptionsController : Control
         LoadConfig();
     }
 
+    public override void _UnhandledInput(InputEvent @event)
+    {
+        if (@event is InputEventKey keyEvent && keyEvent.Pressed)
+        {
+            if (keyEvent.Keycode == Key.Escape)
+            {
+                GetTree().ChangeSceneToFile("res://scenes/ui/Menu.tscn");
+            }
+        }
+    }
+
     private void OnApply()
     {
         // Cambiar resolución
