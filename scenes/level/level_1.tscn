@@ -1,0 +1,41 @@
+[gd_scene load_steps=10 format=3 uid="uid://cwwmmg6ol7mhp"]
+
+[ext_resource type="Texture2D" uid="uid://btry3joyccco3" path="res://assets/level/terrain/cesped.png" id="1_5hph3"]
+[ext_resource type="Script" uid="uid://gbukrbtbdqdg" path="res://scripts/level/GridManager.cs" id="2_j7kpp"]
+[ext_resource type="Script" uid="uid://b32jihh1tog30" path="res://scripts/level/PathManager.cs" id="3_bjebc"]
+[ext_resource type="Script" uid="uid://vkwq2w3n8y08" path="res://scripts/character/tower/TowerManager.cs" id="4_5rr72"]
+[ext_resource type="Script" uid="uid://dm3ekhwdp3e4f" path="res://scripts/character/enemy/EnemyManager.cs" id="5_gyffv"]
+[ext_resource type="PackedScene" path="res://scenes/character/enemy/enemy.tscn" id="6_5hph3"]
+[ext_resource type="Script" uid="uid://ccef7herjptu0" path="res://scripts/character/CameraRig.cs" id="7_j7kpp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_27bay"]
+albedo_texture = ExtResource("1_5hph3")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_sof0w"]
+material = SubResource("StandardMaterial3D_27bay")
+size = Vector2(50, 50)
+
+[node name="World" type="Node3D"]
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_sof0w")
+
+[node name="GridManager" type="Node" parent="."]
+script = ExtResource("2_j7kpp")
+
+[node name="PathManager" type="Node" parent="."]
+script = ExtResource("3_bjebc")
+
+[node name="TowerManager" type="Node" parent="."]
+script = ExtResource("4_5rr72")
+
+[node name="EnemyManager" type="Node" parent="."]
+script = ExtResource("5_gyffv")
+EnemyScene = ExtResource("6_5hph3")
+
+[node name="CameraRig" type="Camera3D" parent="."]
+transform = Transform3D(0.70710677, -0.61237246, 0.35355335, 0, 0.49999997, 0.86602545, -0.70710677, -0.61237246, 0.35355335, 10, 20, 10)
+script = ExtResource("7_j7kpp")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.8537598, 0.13552201, 0.50272053, -0.11732824, -0.89062226, 0.43934762, 0.5072753, -0.43408066, -0.744477, 0, 9.142044, 0)
