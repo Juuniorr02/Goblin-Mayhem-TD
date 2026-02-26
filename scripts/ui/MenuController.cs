@@ -74,7 +74,7 @@ public partial class MenuController : Node
 
     public void OnOptions()
     {
-        ShowMessage("Opciones no implementado todavía.");
+        GetTree().ChangeSceneToFile("res://scenes/ui/options.tscn");
     }
 
     public void OnQuit()
