@@ -1,24 +1,38 @@
-[gd_scene load_steps=3 format=3 uid="uid://dk13nt482jqmb"]
+[gd_scene load_steps=9 format=3 uid="uid://dk13nt482jqmb"]
 
+[ext_resource type="PackedScene" uid="uid://cor65fcesxg0a" path="res://scenes/ui/menu_pausa.tscn" id="1_2g46k"]
 [ext_resource type="Script" uid="uid://ccef7herjptu0" path="res://scripts/character/CameraRig.cs" id="1_ao1bm"]
 [ext_resource type="MeshLibrary" uid="uid://dkipk2m2p5euj" path="res://scenes/pruebas/assets/terrain.tres" id="1_u7l0e"]
+[ext_resource type="Script" uid="uid://c1ian63wnjotn" path="res://scripts/level/GridManager.cs" id="3_dsovt"]
+[ext_resource type="Script" uid="uid://c2ym2kb62n0c5" path="res://scripts/AStarManager.cs" id="4_lvcdb"]
+[ext_resource type="Script" uid="uid://dm3ekhwdp3e4f" path="res://scripts/character/enemy/EnemyManager.cs" id="5_liyy4"]
+[ext_resource type="Script" uid="uid://vkwq2w3n8y08" path="res://scripts/character/tower/TowerManager.cs" id="6_io4i7"]
+[ext_resource type="Script" uid="uid://q7vi0h6xggtg" path="res://scripts/character/enemy/WaveManager.cs" id="7_rg4c2"]
 
 [node name="level2" type="Node3D"]
 
+[node name="menu_pausa" parent="." instance=ExtResource("1_2g46k")]
+
 [node name="Map" type="Node3D" parent="."]
 
-[node name="GridMap" type="GridMap" parent="Map"]
-mesh_library = ExtResource("1_u7l0e")
-
 [node name="GridManager" type="Node" parent="Map"]
+script = ExtResource("3_dsovt")
+
+[node name="GridMap" type="GridMap" parent="Map/GridManager"]
+mesh_library = ExtResource("1_u7l0e")
+metadata/_editor_floor_ = Vector3(0, -2, 0)
 
 [node name="AStarManager" type="Node" parent="."]
+script = ExtResource("4_lvcdb")
 
 [node name="EnemyManager" type="Node" parent="."]
+script = ExtResource("5_liyy4")
 
 [node name="TowerManager" type="Node" parent="."]
+script = ExtResource("6_io4i7")
 
 [node name="WaveManager" type="Node" parent="."]
+script = ExtResource("7_rg4c2")
 
 [node name="SpawnPoints" type="Node3D" parent="."]
 

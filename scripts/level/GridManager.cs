@@ -21,12 +21,14 @@ public partial class GridManager : Node
 {
     [Export] private GridMap gridMap;
     public const int WIDTH = 20;
-    public const int HEIGHT = 20;
+    public const int HEIGHT = 20;    
+    public int item;
 
     public TileData[,] Grid;
 
     public override void _Ready()
     {
+        gridMap = GetNode<GridMap>("GridMap");
         GenerateGridFromGridMap();
     }
 
@@ -37,7 +39,7 @@ public partial class GridManager : Node
         for (int x = 0; x < WIDTH; x++)
         for (int z = 0; z < HEIGHT; z++)
         {
-            int item = gridMap.GetCellItem(new Vector3I(x, 0, z));
+            item = gridMap.GetCellItem(new Vector3I(x, 0, z));
 
             TileType type = TileType.Buildable;
 
