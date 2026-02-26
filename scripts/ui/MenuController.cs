@@ -3,14 +3,21 @@ using System;
 
 public partial class MenuController : Node
 {
+    private PackedScene optionsScene;
+
     public override void _Ready()
     {
         // Connect UI buttons by searching the Menu children (handles exported tscn name variations)
         Node menuRoot = GetParent();
+
+        var settings = GetTree().Root.GetNode<GameSettings>("GameSettings");
+        settings.LoadConfig();
+        settings.ApplySettings(); 
+
         Button newBtn = FindButton(menuRoot, "Nueva partida", "NewGame");
         Button loadBtn = FindButton(menuRoot, "Cargar partida", "LoadGame");
         Button optionsBtn = FindButton(menuRoot, "Opciones", "Options");
-        Button quitBtn = FindButton(menuRoot, "Salir", "Quit");
+        Button quitBtn = FindButton(menuRoot, "Salir", "Quit");        
 
         if (newBtn != null)
             newBtn.Pressed += OnNewGame;
@@ -59,6 +66,17 @@ public partial class MenuController : Node
             }
         }
         return null;
+    }
+
+    public override void _UnhandledInput(InputEvent @event)
+    {
+        if (@event is InputEventKey keyEvent && keyEvent.Pressed)
+        {
+            if (keyEvent.Keycode == Key.Escape)
+            {
+                GetTree().Quit();
+            }
+        }
     }
 
     public void OnNewGame()

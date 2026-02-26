@@ -53,6 +53,7 @@ text = "Volumen"
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
+value = 100.0
 
 [node name="HBoxBotones" type="HBoxContainer" parent="CanvasLayer/CenterContainer/VBoxContainer"]
 layout_mode = 2
@@ -63,10 +64,14 @@ theme_override_constants/separation = 60
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
-text = "Aplicar"
+text = "Aplicar cambios"
+
+[node name="Salir" type="Button" parent="CanvasLayer/CenterContainer/VBoxContainer/HBoxBotones"]
+layout_mode = 2
+text = "Guardar y salir"
 
 [node name="Volver" type="Button" parent="CanvasLayer/CenterContainer/VBoxContainer/HBoxBotones"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
-text = "Volver"
+text = "Volver sin guardar"

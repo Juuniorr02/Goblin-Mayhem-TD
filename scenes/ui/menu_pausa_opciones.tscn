@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://c5v2dniimhiex"]
+
+[node name="menu_pausa_opciones" type="CanvasLayer"]
+visible = false
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="VBoxResolucion" type="VBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Resolucion" type="Label" parent="CenterContainer/VBoxContainer/VBoxResolucion"]
+layout_mode = 2
+text = "Resolución"
+
+[node name="ResolutionOption" type="OptionButton" parent="CenterContainer/VBoxContainer/VBoxResolucion"]
+layout_mode = 2
+
+[node name="VBoxModo" type="VBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Modo" type="Label" parent="CenterContainer/VBoxContainer/VBoxModo"]
+layout_mode = 2
+text = "Modo"
+
+[node name="ScreenModeOption" type="OptionButton" parent="CenterContainer/VBoxContainer/VBoxModo"]
+layout_mode = 2
+
+[node name="HBoxVolumen" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Volumen" type="Label" parent="CenterContainer/VBoxContainer/HBoxVolumen"]
+layout_mode = 2
+text = "Volumen"
+
+[node name="VolumeSlider" type="HSlider" parent="CenterContainer/VBoxContainer/HBoxVolumen"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="HBoxBotones" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 60
+
+[node name="Aplicar" type="Button" parent="CenterContainer/VBoxContainer/HBoxBotones"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+text = "Aplicar cambios"
+
+[node name="Volver" type="Button" parent="CenterContainer/VBoxContainer/HBoxBotones"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+text = "Volver"
+
+[node name="Overlay" type="ColorRect" parent="."]
+z_index = -1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.29803923, 0.29803923, 0.29803923, 0.5882353)

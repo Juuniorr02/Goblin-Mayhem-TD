@@ -1,91 +1,144 @@
 using Godot;
-using System.Collections.Generic;
 
 public partial class menu_pausa : CanvasLayer
 {
-	private ColorRect overlay;
-	private Button botonVolver;
-	private Button botonQuitarPausa;
-	private TextureRect textureRect;
-	private bool isPaused = false;
+    private ColorRect overlay;
+    private TextureRect textureRect;
 
-	public override void _Ready()
-	{
-    	ProcessMode = ProcessModeEnum.Always;
+    private Button btnGuardar;
+    private Button btnGuardarSalir;
+    private Button btnOpciones;
+    private Button btnQuitarPausa;
+    private Button btnVolver;
 
-    	overlay = GetNodeOrNull<ColorRect>("Overlay");
-    	if (overlay != null)
-        overlay.MouseFilter = Control.MouseFilterEnum.Ignore;
+	private CanvasLayer menuOpciones;
+	private PackedScene menuOpcionesScene = GD.Load<PackedScene>("res://scenes/ui/menu_pausa_opciones.tscn");
 
-    	botonVolver = GetNodeOrNull<Button>("volver");
-    	botonQuitarPausa = GetNodeOrNull<Button>("quitar_pausa");
-    	textureRect = GetNodeOrNull<TextureRect>("TextureRect");
+    private bool isPaused = false;
 
-		if (botonVolver != null)
-		{
-			botonVolver.ProcessMode = ProcessModeEnum.Always;
-			botonVolver.MouseFilter = Control.MouseFilterEnum.Stop;
-		}
+    public override void _Ready()
+    {
+        ProcessMode = ProcessModeEnum.Always;
 
-		if (botonQuitarPausa != null)
-		{
-			botonQuitarPausa.ProcessMode = ProcessModeEnum.Always;
-			botonQuitarPausa.MouseFilter = Control.MouseFilterEnum.Stop;
-		}
+        overlay = GetNodeOrNull<ColorRect>("Overlay");
+        textureRect = GetNodeOrNull<TextureRect>("TextureRect");
 
-    	// Conectar señales de botones
-    	if (botonVolver != null)
-			botonVolver.Pressed += () => QuitarPausa();
-        	botonVolver.Pressed += () => GetTree().ChangeSceneToFile("res://scenes/ui/Menu.tscn");
-			
+        btnGuardar = GetNodeOrNull<Button>("guardar");
+        btnGuardarSalir = GetNodeOrNull<Button>("guardarsalir");
+        btnOpciones = GetNodeOrNull<Button>("opciones");
+        btnQuitarPausa = GetNodeOrNull<Button>("quitar_pausa");
+        btnVolver = GetNodeOrNull<Button>("volver");
 
-    	if (botonQuitarPausa != null)
-        	botonQuitarPausa.Pressed += () => QuitarPausa();
-	}
+        ConfigurarBoton(btnGuardar);
+        ConfigurarBoton(btnGuardarSalir);
+        ConfigurarBoton(btnOpciones);
+        ConfigurarBoton(btnQuitarPausa);
+        ConfigurarBoton(btnVolver);
 
-	public override void _UnhandledInput(InputEvent @event)
-	{
-		if (@event is InputEventKey keyEvent && keyEvent.Pressed)
-		{
-			if (Input.IsActionJustPressed("pausa"))
-			{
-				if (!isPaused)
-					Pausar();
-				else
-					QuitarPausa();
-				
-				GetTree().Root.SetInputAsHandled();
-			}
-		}
-	}
+        if (btnGuardar != null)
+            btnGuardar.Pressed += OnGuardar;
 
-	private void Pausar()
-	{
-		isPaused = true;
-		GetTree().Paused = true;
+        if (btnGuardarSalir != null)
+            btnGuardarSalir.Pressed += OnGuardarSalir;
 
-		// Mostrar overlay
-		if (overlay != null)
-			overlay.Visible = true;
+        if (btnOpciones != null)
+            btnOpciones.Pressed += OnOpciones;
 
-		// Mostrar botones
-		if (botonVolver != null) botonVolver.Visible = true;
-		if (botonQuitarPausa != null) botonQuitarPausa.Visible = true;
-		if (textureRect != null) textureRect.Visible = true;
-	}
+        if (btnQuitarPausa != null)
+            btnQuitarPausa.Pressed += QuitarPausa;
 
-	public void QuitarPausa()
-	{
-		isPaused = false;
-		GetTree().Paused = false;
+        if (btnVolver != null)
+        {
+            btnVolver.Pressed += () =>
+            {
+                QuitarPausa();
+                GetTree().ChangeSceneToFile("res://scenes/ui/Menu.tscn");
+            };
+        }
 
-		// Ocultar overlay
-		if (overlay != null)
-			overlay.Visible = false;
+        OcultarMenu();
+    }
 
-		// Ocultar botones
-		if (botonVolver != null) botonVolver.Visible = false;
-		if (botonQuitarPausa != null) botonQuitarPausa.Visible = false;
-		if (textureRect != null) textureRect.Visible = false;
-	}
+    private void ConfigurarBoton(Button b)
+    {
+        if (b == null) return;
+
+        b.ProcessMode = ProcessModeEnum.Always;
+        b.MouseFilter = Control.MouseFilterEnum.Stop;
+    }
+
+    public override void _UnhandledInput(InputEvent e)
+    {
+        if (Input.IsActionJustPressed("pausa"))
+        {
+            if (isPaused) QuitarPausa();
+            else Pausar();
+
+            GetViewport().SetInputAsHandled();
+        }
+    }
+
+    private void Pausar()
+    {
+        isPaused = true;
+        GetTree().Paused = true;
+        MostrarMenu();
+    }
+
+    private void QuitarPausa()
+    {
+        isPaused = false;
+        GetTree().Paused = false;
+        OcultarMenu();
+    }
+
+    private void MostrarMenu()
+    {
+        if (overlay != null) overlay.Visible = true;
+        if (textureRect != null) textureRect.Visible = true;
+
+        if (btnGuardar != null) btnGuardar.Visible = true;
+        if (btnGuardarSalir != null) btnGuardarSalir.Visible = true;
+        if (btnOpciones != null) btnOpciones.Visible = true;
+        if (btnQuitarPausa != null) btnQuitarPausa.Visible = true;
+        if (btnVolver != null) btnVolver.Visible = true;
+    }
+
+    private void OcultarMenu()
+    {
+        if (overlay != null) overlay.Visible = false;
+        if (textureRect != null) textureRect.Visible = false;
+
+        if (btnGuardar != null) btnGuardar.Visible = false;
+        if (btnGuardarSalir != null) btnGuardarSalir.Visible = false;
+        if (btnOpciones != null) btnOpciones.Visible = false;
+        if (btnQuitarPausa != null) btnQuitarPausa.Visible = false;
+        if (btnVolver != null) btnVolver.Visible = false;
+    }
+
+    private void OnGuardar()
+    {
+        GD.Print("Guardar partida");
+        // aquí tu sistema de guardado
+    }
+
+    private void OnGuardarSalir()
+    {
+        GD.Print("Guardar y salir");
+        // guardar
+        QuitarPausa();
+        GetTree().ChangeSceneToFile("res://scenes/ui/Menu.tscn");
+    }
+
+    private void OnOpciones()
+    {
+        if (menuOpciones == null)
+    	{
+        	menuOpciones = menuOpcionesScene.Instantiate<CanvasLayer>();
+        	GetTree().Root.AddChild(menuOpciones);
+    	}
+
+    	OcultarMenu();
+    	menuOpciones.Visible = true;
+    }
 }

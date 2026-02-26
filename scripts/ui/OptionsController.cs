@@ -30,6 +30,7 @@ public partial class OptionsController : Control
 
         // Conectar botones
         GetNode<Button>("CanvasLayer/CenterContainer/VBoxContainer/HBoxBotones/Aplicar").Pressed += OnApply;
+        GetNode<Button>("CanvasLayer/CenterContainer/VBoxContainer/HBoxBotones/Salir").Pressed += OnExit;
         GetNode<Button>("CanvasLayer/CenterContainer/VBoxContainer/HBoxBotones/Volver").Pressed += OnBack;
 
         // Cargar configuración si existe
@@ -76,6 +77,35 @@ public partial class OptionsController : Control
         SaveConfig(width, height, mode, volume);
     }
 
+    private void OnExit()
+    {
+        string res = resolutionOption.GetItemText(resolutionOption.Selected);
+        string[] parts = res.Split('x');
+        int width = int.Parse(parts[0]);
+        int height = int.Parse(parts[1]);
+
+        // Cambiar modo de pantalla
+        string mode = screenModeOption.GetItemText(screenModeOption.Selected);
+        DisplayServer.WindowMode windowMode = DisplayServer.WindowMode.Windowed;
+
+        if (mode == "Pantalla completa")
+            windowMode = DisplayServer.WindowMode.Fullscreen;
+        else if (mode == "Sin bordes")
+            windowMode = DisplayServer.WindowMode.ExclusiveFullscreen;
+
+        DisplayServer.WindowSetMode(windowMode);
+        DisplayServer.WindowSetSize(new Vector2I(width, height));
+
+        // Cambiar volumen general
+        float volume = (float)volumeSlider.Value;
+        int masterBus = AudioServer.GetBusIndex("Master");
+        AudioServer.SetBusVolumeDb(masterBus, Linear2Db(volume));
+
+        // Guardar configuración
+        SaveConfig(width, height, mode, volume);
+        GetTree().ChangeSceneToFile("res://scenes/ui/Menu.tscn");
+    }
+
     private void OnBack()
     {
         GetTree().ChangeSceneToFile("res://scenes/ui/Menu.tscn");
@@ -112,7 +142,7 @@ public partial class OptionsController : Control
 	}
 
     // Carga la configuración desde el archivo si existe
-    private void LoadConfig()
+    public void LoadConfig()
     {
         var config = new ConfigFile();
         if (config.Load(ConfigPath) != Error.Ok)
