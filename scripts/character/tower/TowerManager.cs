@@ -1,23 +1,25 @@
 using Godot;
+using System;
 
 public partial class TowerManager : Node
 {
-    [Export] public PackedScene TowerScene;
+    [Export] private GridManager gridManager;
+    [Export] private PackedScene towerScene;
 
-    public void PlaceTower(int x, int z)
+    [Signal] public delegate void TowerPlacedEventHandler(Vector3 position);
+
+    public bool PlaceTower(int x, int z)
     {
-        var grid = GetParent().GetNode<GridManager>("GridManager");
+        if (!gridManager.IsBuildable(x, z)) return false;
 
-        if (grid.Grid[x, z].Type != TileType.Buildable)
-            return;
+        Vector3 worldPos = new Vector3(x, 0, z); // ajustar Y si quieres altura
+        var tower = towerScene.Instantiate<Node3D>();
+        tower.Position = worldPos;
+        AddChild(tower);
 
-        if (grid.Grid[x, z].HasTower)
-            return;
+        gridManager.Grid[x, z].HasTower = true;
 
-        Node3D tower = TowerScene.Instantiate<Node3D>();
-        tower.Position = new Vector3(x * GridManager.TILE_SIZE, 0, z * GridManager.TILE_SIZE);
-        GetParent().AddChild(tower);
-
-        grid.Grid[x, z].HasTower = true;
+    EmitSignal("TowerPlaced", worldPos);
+        return true;
     }
 }

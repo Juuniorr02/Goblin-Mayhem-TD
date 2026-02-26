@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://dk13nt482jqmb"]
+
+[ext_resource type="Script" uid="uid://ccef7herjptu0" path="res://scripts/character/CameraRig.cs" id="1_ao1bm"]
+[ext_resource type="MeshLibrary" uid="uid://dkipk2m2p5euj" path="res://scenes/pruebas/assets/terrain.tres" id="1_u7l0e"]
+
+[node name="level2" type="Node3D"]
+
+[node name="Map" type="Node3D" parent="."]
+
+[node name="GridMap" type="GridMap" parent="Map"]
+mesh_library = ExtResource("1_u7l0e")
+
+[node name="GridManager" type="Node" parent="Map"]
+
+[node name="AStarManager" type="Node" parent="."]
+
+[node name="EnemyManager" type="Node" parent="."]
+
+[node name="TowerManager" type="Node" parent="."]
+
+[node name="WaveManager" type="Node" parent="."]
+
+[node name="SpawnPoints" type="Node3D" parent="."]
+
+[node name="CameraRig" type="Node3D" parent="."]
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CameraRig"]
+transform = Transform3D(0.7071068, -0.61237246, 0.35355338, 0, 0.49999997, 0.86602545, -0.7071068, -0.61237246, 0.35355338, 10, 20, 10)
+
+[node name="Camera3D" type="Camera3D" parent="CameraRig/SpringArm3D"]
+transform = Transform3D(1, 0, 0, 0, 1, -5.9604645e-08, 0, 0, 1, 0, 0, 0)
+script = ExtResource("1_ao1bm")

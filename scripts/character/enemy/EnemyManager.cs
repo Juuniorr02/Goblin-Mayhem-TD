@@ -1,54 +1,27 @@
 using Godot;
+using System;
+using System.Collections.Generic;
 
 public partial class EnemyManager : Node
 {
-    [Export] public PackedScene EnemyScene;
-    [Export] public float SpawnInterval = 1f;
-    [Export] public int EnemiesPerWave = 10;
+    [Export] private PackedScene enemyScene;
+    private List<Node3D> enemies = new();
 
-    private float timer = 0f;
-    private int spawned = 0;
-
-    private PathManager pathManager;
-    private Node3D enemyContainer;
-
-    public override void _Ready()
+    public void SpawnEnemy(Vector3 startPos, List<Vector3> path)
     {
-        pathManager = GetParent().GetNode<PathManager>("PathManager");
-
-        enemyContainer = new Node3D();
-        enemyContainer.Name = "Enemies";
-        // parent may still be initializing; defer the child addition to avoid "busy setting up children" errors
-        GetParent().CallDeferred("add_child", enemyContainer);
-
-        GD.Print("EnemyManager: deferred adding enemy container to parent");
-    }
-
-    public override void _Process(double delta)
-    {
-        if (spawned >= EnemiesPerWave)
-            return;
-
-        timer += (float)delta;
-        if (timer >= SpawnInterval)
+        var inst = enemyScene.Instantiate();
+        if (inst is Node3D enemy)
         {
-            timer = 0;
-            SpawnEnemy();
+            enemy.Position = startPos;
+            AddChild(enemy);
+
+            // If the root node has an EnemyGoblin script attached, call its SetWaypoints
+            if (enemy is EnemyGoblin eg)
+            {
+                eg.SetWaypoints(path);
+            }
+
+            enemies.Add(enemy);
         }
-    }
-
-    void SpawnEnemy()
-    {
-        if (EnemyScene == null)
-        {
-            GD.PrintErr("EnemyScene NOT assigned!");
-            return;
-        }
-
-        Enemy enemy = EnemyScene.Instantiate<Enemy>();
-        enemy.PathPoints = pathManager.PathPoints;
-        enemyContainer.AddChild(enemy);
-
-        spawned++;
     }
 }

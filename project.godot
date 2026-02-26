@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Goblin Mayhem TD"
-run/main_scene="uid://cwwmmg6ol7mhp"
+run/main_scene="res://scenes/ui/Menu.tscn"
 config/features=PackedStringArray("4.5", "C#", "Mobile")
 
 [dotnet]
