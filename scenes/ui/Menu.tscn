@@ -4,7 +4,7 @@
 
 [node name="Menu" type="CanvasLayer"]
 
-[node name="Menu#MenuController" type="Node" parent="."]
+[node name="MenuController" type="Node" parent="."]
 script = ExtResource("1")
 
 [node name="MessageDialog" type="AcceptDialog" parent="."]
