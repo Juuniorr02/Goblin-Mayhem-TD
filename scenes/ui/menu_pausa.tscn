@@ -18,22 +18,14 @@ layout_mode = 2
 theme_override_constants/separation = 20
 
 [node name="guardar" type="Button" parent="CenterContainer/VBoxContainer"]
-visible = false
 layout_mode = 2
 text = "Guardar partida"
 
 [node name="guardarsalir" type="Button" parent="CenterContainer/VBoxContainer"]
-visible = false
 layout_mode = 2
 text = "Guardar y salir"
 
-[node name="opciones" type="Button" parent="CenterContainer/VBoxContainer"]
-visible = false
-layout_mode = 2
-text = "Opciones"
-
 [node name="quitar_pausa" type="Button" parent="CenterContainer/VBoxContainer"]
-visible = false
 z_index = 10
 texture_filter = 1
 layout_mode = 2
@@ -43,7 +35,6 @@ icon_alignment = 1
 expand_icon = true
 
 [node name="volver" type="Button" parent="CenterContainer/VBoxContainer"]
-visible = false
 z_index = 10
 texture_filter = 1
 layout_mode = 2
@@ -53,7 +44,6 @@ icon_alignment = 1
 expand_icon = true
 
 [node name="Overlay" type="ColorRect" parent="."]
-visible = false
 z_index = -1
 anchors_preset = 15
 anchor_right = 1.0
