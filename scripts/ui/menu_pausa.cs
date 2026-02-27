@@ -4,8 +4,8 @@ public partial class menu_pausa : CanvasLayer
 {
     private Button btnGuardar;
     private Button btnGuardarSalir;
-    private Button btnQuitarPausa;
     private Button btnVolver;
+	private Button btnCargar;
 
     private bool isPaused = false;
 
@@ -17,13 +17,13 @@ public partial class menu_pausa : CanvasLayer
         // Referencias (usa rutas relativas reales de tu escena)
         btnGuardar = GetNodeOrNull<Button>("CenterContainer/VBoxContainer/guardar");
         btnGuardarSalir = GetNodeOrNull<Button>("CenterContainer/VBoxContainer/guardarsalir");
-        btnQuitarPausa = GetNodeOrNull<Button>("CenterContainer/VBoxContainer/quitar_pausa");
         btnVolver = GetNodeOrNull<Button>("CenterContainer/VBoxContainer/volver");
+		btnCargar = GetNodeOrNull<Button>("CenterContainer/VBoxContainer/cargar");
 
         ConfigurarBoton(btnGuardar);
         ConfigurarBoton(btnGuardarSalir);
-        ConfigurarBoton(btnQuitarPausa);
         ConfigurarBoton(btnVolver);
+		ConfigurarBoton(btnCargar);
 
         if (btnGuardar != null)
             btnGuardar.Pressed += OnGuardar;
@@ -31,8 +31,8 @@ public partial class menu_pausa : CanvasLayer
         if (btnGuardarSalir != null)
             btnGuardarSalir.Pressed += OnGuardarSalir;
 
-        if (btnQuitarPausa != null)
-            btnQuitarPausa.Pressed += QuitarPausa;
+		if (btnCargar != null)
+            btnCargar.Pressed += OnCargar;
 
         if (btnVolver != null)
         {
@@ -97,4 +97,9 @@ public partial class menu_pausa : CanvasLayer
 		Input.MouseMode = Input.MouseModeEnum.Visible;
         GetTree().ChangeSceneToFile("res://scenes/ui/Menu.tscn");
     }
+
+	private void OnCargar()
+	{
+		GD.Print("Cargar partida");
+	}
 }
