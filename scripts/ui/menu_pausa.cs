@@ -5,25 +5,23 @@ public partial class menu_pausa : CanvasLayer
     private Button btnGuardar;
     private Button btnGuardarSalir;
     private Button btnVolver;
-	private Button btnCargar;
+    private Button btnCargar;
 
     private bool isPaused = false;
 
     public override void _Ready()
     {
-        // El menú debe procesar aunque el juego esté pausado
         ProcessMode = ProcessModeEnum.Always;
 
-        // Referencias (usa rutas relativas reales de tu escena)
         btnGuardar = GetNodeOrNull<Button>("CenterContainer/VBoxContainer/guardar");
         btnGuardarSalir = GetNodeOrNull<Button>("CenterContainer/VBoxContainer/guardarsalir");
         btnVolver = GetNodeOrNull<Button>("CenterContainer/VBoxContainer/volver");
-		btnCargar = GetNodeOrNull<Button>("CenterContainer/VBoxContainer/cargar");
+        btnCargar = GetNodeOrNull<Button>("CenterContainer/VBoxContainer/cargar");
 
         ConfigurarBoton(btnGuardar);
         ConfigurarBoton(btnGuardarSalir);
         ConfigurarBoton(btnVolver);
-		ConfigurarBoton(btnCargar);
+        ConfigurarBoton(btnCargar);
 
         if (btnGuardar != null)
             btnGuardar.Pressed += OnGuardar;
@@ -31,19 +29,12 @@ public partial class menu_pausa : CanvasLayer
         if (btnGuardarSalir != null)
             btnGuardarSalir.Pressed += OnGuardarSalir;
 
-		if (btnCargar != null)
+        if (btnCargar != null)
             btnCargar.Pressed += OnCargar;
 
         if (btnVolver != null)
-        {
-            btnVolver.Pressed += () =>
-            {
-                QuitarPausa();
-                GetTree().ChangeSceneToFile("res://scenes/ui/Menu.tscn");
-            };
-        }
+            btnVolver.Pressed += Salir;
 
-        // 🔥 MUY IMPORTANTE → empezar oculto
         Visible = false;
     }
 
@@ -55,7 +46,6 @@ public partial class menu_pausa : CanvasLayer
         b.MouseFilter = Control.MouseFilterEnum.Stop;
     }
 
-    // Usamos _Input porque es más fiable para pausa
     public override void _Input(InputEvent e)
     {
         if (e.IsActionPressed("pausa"))
@@ -70,36 +60,49 @@ public partial class menu_pausa : CanvasLayer
         isPaused = true;
         GetTree().Paused = true;
         Visible = true;
-
         Input.MouseMode = Input.MouseModeEnum.Visible;
+    }
+
+	private void Salir()
+    {
+        QuitarPausa();
+        Input.MouseMode = Input.MouseModeEnum.Visible;
+        GetTree().ChangeSceneToFile("res://scenes/ui/Menu.tscn");
     }
 
     private void QuitarPausa()
     {
-		Input.MouseMode = Input.MouseModeEnum.Visible;
         isPaused = false;
         GetTree().Paused = false;
         Visible = false;
-
         Input.MouseMode = Input.MouseModeEnum.Captured;
     }
 
     private void OnGuardar()
-    {
-        GD.Print("Guardar partida");
-    }
-
-    private void OnGuardarSalir()
-    {
-        GD.Print("Guardar y salir");
-
-        QuitarPausa();
-		Input.MouseMode = Input.MouseModeEnum.Visible;
-        GetTree().ChangeSceneToFile("res://scenes/ui/Menu.tscn");
-    }
-
-	private void OnCargar()
 	{
-		GD.Print("Cargar partida");
+    	GD.Print("Guardar partida");
+
+    	var save = GetNode<SaveSystem>("/root/SaveSystem");
+    	save.SaveGame();
+	}
+
+	private void OnGuardarSalir()
+	{
+    	GD.Print("Guardar y salir");
+
+		var save = GetNode<SaveSystem>("/root/SaveSystem");
+    	save.SaveGame();
+
+    	QuitarPausa();
+    	Input.MouseMode = Input.MouseModeEnum.Visible;
+    	GetTree().ChangeSceneToFile("res://scenes/ui/Menu.tscn");
+	}
+
+	private async void OnCargar()
+	{
+    	GD.Print("Cargar partida");
+
+    	var save = GetNode<SaveSystem>("/root/SaveSystem");
+    	await save.LoadGame();
 	}
 }
