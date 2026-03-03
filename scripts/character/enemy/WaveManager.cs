@@ -18,7 +18,9 @@ public partial class WaveManager : Node
         {
             Vector3 spawn = FindSpawnTile();
             Vector3 goal = FindGoalTile();
+            GD.Print($"WaveManager: spawn=({spawn.X},{spawn.Z}) goal=({goal.X},{goal.Z})");
             var path = aStarManager.GetPath(spawn, goal);
+            GD.Print($"WaveManager: received path length={path?.Count}");
             enemyManager.SpawnEnemy(spawn, path);
         }
     }

@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://dbeqdm5gepyap"]
 
-[ext_resource type="Texture2D" uid="uid://bo5r3xb6asa1a" path="res://sombra (1).png" id="1_7k104"]
-[ext_resource type="Script" uid="uid://djm0046nxvish" path="res://Enemy.cs" id="2_4gyqm"]
+[ext_resource type="Texture2D" uid="uid://bo5r3xb6asa1a" path="res://assets/character/enemy/sombra (1).png" id="1_7k104"]
+[ext_resource type="Script" uid="uid://djm0046nxvish" path="res://scripts/character/enemy/Enemy.cs" id="2_4gyqm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4gyqm"]
 atlas = ExtResource("1_7k104")
@@ -53,7 +53,7 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="Enemy" type="Node3D"]
+[node name="Enemy" type="Node3D" groups=["enemies"]]
 script = ExtResource("2_4gyqm")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]

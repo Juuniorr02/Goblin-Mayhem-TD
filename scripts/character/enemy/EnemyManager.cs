@@ -12,6 +12,7 @@ public partial class EnemyManager : Node
         var inst = enemyScene.Instantiate();
         if (inst is Node3D enemy)
         {
+            GD.Print($"EnemyManager: spawning enemy at ({startPos.X},{startPos.Z}) with path length={(path==null?0:path.Count)}");
             enemy.Position = startPos;
             AddChild(enemy);
 
@@ -19,6 +20,7 @@ public partial class EnemyManager : Node
             if (enemy is EnemyGoblin eg)
             {
                 eg.SetWaypoints(path);
+                GD.Print($"EnemyManager: SetWaypoints called on instance, waypoints={(eg==null?0:eg)}");
             }
 
             enemies.Add(enemy);

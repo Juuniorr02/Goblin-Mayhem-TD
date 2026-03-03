@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://ch0ny1iqsxnjq"]
 
-[ext_resource type="MeshLibrary" uid="uid://dkipk2m2p5euj" path="res://assets/terrain.tres" id="1_fnshd"]
-[ext_resource type="MeshLibrary" uid="uid://chrwkoe3f8m41" path="res://assets/mountains.tres" id="2_06n4r"]
-[ext_resource type="MeshLibrary" uid="uid://bo3cdunth7nav" path="res://assets/path.tres" id="2_yj5dr"]
-[ext_resource type="MeshLibrary" uid="uid://butitdck81p6l" path="res://assets/stones_trees.tres" id="3_d1nlp"]
+[ext_resource type="MeshLibrary" uid="uid://dkipk2m2p5euj" path="res://scenes/pruebas/assets/terrain.tres" id="1_fnshd"]
+[ext_resource type="MeshLibrary" uid="uid://chrwkoe3f8m41" path="res://scenes/pruebas/assets/mountains.tres" id="2_06n4r"]
+[ext_resource type="MeshLibrary" uid="uid://bo3cdunth7nav" path="res://scenes/pruebas/assets/path.tres" id="2_yj5dr"]
+[ext_resource type="MeshLibrary" uid="uid://butitdck81p6l" path="res://scenes/pruebas/assets/stones_trees.tres" id="3_d1nlp"]
 
 [sub_resource type="Environment" id="Environment_hrloj"]
 glow_enabled = true
@@ -101,7 +101,7 @@ data = {
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
 [node name="StonesTreesUpper" type="GridMap" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh_library = ExtResource("3_d1nlp")
 cell_size = Vector3(0.5, 3.2, 0.5)
 data = {

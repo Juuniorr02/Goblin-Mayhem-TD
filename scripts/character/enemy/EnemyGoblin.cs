@@ -14,12 +14,17 @@ public partial class EnemyGoblin : Sprite3D
     {
         health = MaxHealth;
         AddToGroup("enemies");
+        GD.Print($"EnemyGoblin: ready. MaxHealth={MaxHealth}");
     }
 
     public void SetWaypoints(List<Vector3> pts)
     {
         waypoints = pts ?? new List<Vector3>();
         current = 0;
+        GD.Print($"EnemyGoblin: SetWaypoints count={waypoints.Count}");
+        for (int i = 0; i < waypoints.Count; i++)
+            GD.Print($"EnemyGoblin: wp[{i}]={waypoints[i]}");
+
         if (waypoints.Count > 0)
             GlobalPosition = waypoints[0];
     }
@@ -39,6 +44,7 @@ public partial class EnemyGoblin : Sprite3D
 
         if (current >= waypoints.Count - 1)
         {
+            GD.Print("EnemyGoblin: reached final waypoint, freeing");
             QueueFree();
             return;
         }
@@ -48,7 +54,10 @@ public partial class EnemyGoblin : Sprite3D
         GlobalPosition += dir * (float)(Speed * delta);
 
         if (GlobalPosition.DistanceTo(target) < 0.1f)
+        {
             current++;
+            GD.Print($"EnemyGoblin: advanced to waypoint index={current}");
+        }
     }
 
     public void ApplyDamage(int dmg)
