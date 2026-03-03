@@ -25,6 +25,7 @@ adjustment_saturation = 3.28
 environment = SubResource("Environment_liyy4")
 
 [node name="menu_pausa" parent="." instance=ExtResource("1_2g46k")]
+visible = false
 
 [node name="Map" type="Node3D" parent="."]
 

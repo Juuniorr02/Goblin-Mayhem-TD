@@ -3,10 +3,25 @@ using System;
 
 public partial class MenuController : Node
 {
+    private PackedScene optionsScene;
+
+    private AcceptDialog messageDialog;
+    private Label dialogLabel;
+
+    private SaveSystem save; // ⭐ referencia al autoload
+
     public override void _Ready()
     {
-        // Connect UI buttons by searching the Menu children (handles exported tscn name variations)
         Node menuRoot = GetParent();
+
+        // ⭐ GameSettings
+        var settings = GetTree().Root.GetNode<GameSettings>("GameSettings");
+        settings.LoadConfig();
+        settings.ApplySettings();
+
+        // ⭐ SaveSystem autoload
+        save = GetNode<SaveSystem>("/root/SaveSystem");
+
         Button newBtn = FindButton(menuRoot, "Nueva partida", "NewGame");
         Button loadBtn = FindButton(menuRoot, "Cargar partida", "LoadGame");
         Button optionsBtn = FindButton(menuRoot, "Opciones", "Options");
@@ -14,18 +29,21 @@ public partial class MenuController : Node
 
         if (newBtn != null)
             newBtn.Pressed += OnNewGame;
+
         if (loadBtn != null)
             loadBtn.Pressed += OnLoadGame;
+
         if (optionsBtn != null)
             optionsBtn.Pressed += OnOptions;
+
         if (quitBtn != null)
             quitBtn.Pressed += OnQuit;
 
-        // find message dialog (AcceptDialog)
+        // Dialog
         messageDialog = menuRoot.GetNodeOrNull<AcceptDialog>("MessageDialog");
+
         if (messageDialog == null)
         {
-            // search recursively
             foreach (var c in menuRoot.GetChildren())
             {
                 if (c is AcceptDialog ad)
@@ -35,16 +53,18 @@ public partial class MenuController : Node
                 }
             }
         }
+
         if (messageDialog != null)
             dialogLabel = messageDialog.GetNodeOrNull<Label>("DialogLabel");
-    }
 
-    private AcceptDialog messageDialog;
-    private Label dialogLabel;
+        // ⭐ asegurar cursor visible en menú
+        Input.MouseMode = Input.MouseModeEnum.Visible;
+    }
 
     private Button FindButton(Node root, string textMatch, string nameContains)
     {
         if (root == null) return null;
+
         foreach (var c in root.GetChildren())
         {
             if (c is Button b)
@@ -52,24 +72,40 @@ public partial class MenuController : Node
                 if (b.Text == textMatch || b.Name.ToString().Contains(nameContains))
                     return b;
             }
+
             if (c is Node n)
             {
                 var found = FindButton(n, textMatch, nameContains);
                 if (found != null) return found;
             }
         }
+
         return null;
+    }
+
+    public override void _UnhandledInput(InputEvent @event)
+    {
+        if (@event is InputEventKey keyEvent && keyEvent.Pressed)
+        {
+            if (keyEvent.Keycode == Key.Escape)
+                GetTree().Quit();
+        }
     }
 
     public void OnNewGame()
     {
-        // Load the main level scene (Level 1)
         GetTree().ChangeSceneToFile("res://scenes/level/level_2.tscn");
     }
 
-    public void OnLoadGame()
+    public async void OnLoadGame()
     {
-        ShowMessage("Cargar partida no implementado todavía.");
+        if (!FileAccess.FileExists("user://save.json"))
+        {
+            ShowMessage("No hay partida guardada.");
+            return;
+        }
+
+        await save.LoadGame();
     }
 
     public void OnOptions()
@@ -86,6 +122,7 @@ public partial class MenuController : Node
     {
         if (dialogLabel != null)
             dialogLabel.Text = text;
+
         if (messageDialog != null)
             messageDialog.PopupCentered();
         else
