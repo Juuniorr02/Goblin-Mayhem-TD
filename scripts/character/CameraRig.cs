@@ -1,76 +1,50 @@
 using Godot;
 
-public partial class CameraRig : Camera3D
+public partial class CameraRig : Camera2D
 {
-    [Export] public float MoveSpeed = 10f;
-    [Export] public float ZoomSpeed = 2f;
-    [Export] public float MinHeight = 5f;
-    [Export] public float MaxHeight = 50f;
-    [Export] public float RotateSpeed = 0.3f;
+	[Export] public float MoveSpeed = 900f;
+	[Export] public float ZoomSpeed = 0.15f;
 
-    private bool rotating = false;
+	[Export] public float MinZoom = 0.2f;
+	[Export] public float MaxZoom = 4.0f;
 
-    public override void _Input(InputEvent @event)
-    {
-        // ZOOM con rueda
-        if (@event is InputEventMouseButton mouseEvent)
-        {
-            if (mouseEvent.Pressed)
-            {
-                if (mouseEvent.ButtonIndex == MouseButton.WheelDown)
-                    Zoom(1);
-                else if (mouseEvent.ButtonIndex == MouseButton.WheelUp)
-                    Zoom(-1);
+	public override void _Input(InputEvent @event)
+	{
+		if (@event is InputEventMouseButton mouseEvent && mouseEvent.Pressed)
+		{
+			if (mouseEvent.ButtonIndex == MouseButton.WheelUp)
+				UpdateZoom(-1);
 
-                // Rotación con botón derecho
-                if (mouseEvent.ButtonIndex == MouseButton.Right)
-                    rotating = true;
-            }
-            else if (mouseEvent.ButtonIndex == MouseButton.Right)
-                rotating = false;
-        }
+			if (mouseEvent.ButtonIndex == MouseButton.WheelDown)
+				UpdateZoom(1);
+		}
+	}
 
-        // ROTACIÓN con drag derecho
-        if (@event is InputEventMouseMotion motionEvent && rotating)
-        {
-            Vector2 delta = motionEvent.Relative;
-            RotateY(-delta.X * RotateSpeed * 0.01f);
+	public override void _Process(double delta)
+	{
+		Vector2 inputDir = Vector2.Zero;
 
-            float newPitch = RotationDegrees.X - delta.Y * RotateSpeed * 0.01f;
-            newPitch = Mathf.Clamp(newPitch, -80, -15);
-            RotationDegrees = new Vector3(newPitch, RotationDegrees.Y, RotationDegrees.Z);
-        }
-    }
+		if (Input.IsActionPressed("cam_up")) inputDir.Y -= 1;
+		if (Input.IsActionPressed("cam_down")) inputDir.Y += 1;
+		if (Input.IsActionPressed("cam_left")) inputDir.X -= 1;
+		if (Input.IsActionPressed("cam_right")) inputDir.X += 1;
 
-    public override void _Process(double delta)
-    {
-        Vector3 inputDir = Vector3.Zero;
+		if (inputDir != Vector2.Zero)
+		{
+			inputDir = inputDir.Normalized();
+			Position += inputDir * MoveSpeed * (float)delta;
+		}
+	}
 
-        if (Input.IsActionPressed("cam_up")) inputDir.Z -= 1;
-        if (Input.IsActionPressed("cam_down")) inputDir.Z += 1;
-        if (Input.IsActionPressed("cam_left")) inputDir.X -= 1;
-        if (Input.IsActionPressed("cam_right")) inputDir.X += 1;
+	private void UpdateZoom(float direction)
+	{
+		Vector2 zoom = Zoom;
 
-        if (inputDir != Vector3.Zero)
-        {
-            inputDir = inputDir.Normalized();
+		zoom -= new Vector2(direction, direction) * ZoomSpeed;
 
-            // Use the camera's orientation to steer movement, but ignore any vertical component
-            // so the rig stays at the same Y height.
-            // Transform the input vector by the camera's basis, then zero out Y.
-            Vector3 direction = Transform.Basis * new Vector3(inputDir.X, 0, inputDir.Z);
-            direction.Y = 0;
-            if (direction != Vector3.Zero)
-                direction = direction.Normalized();
+		zoom.X = Mathf.Clamp(zoom.X, MinZoom, MaxZoom);
+		zoom.Y = Mathf.Clamp(zoom.Y, MinZoom, MaxZoom);
 
-            GlobalPosition += direction * MoveSpeed * (float)delta;
-        }
-    }
-
-    private void Zoom(float direction)
-    {
-        Vector3 pos = GlobalPosition;
-        pos.Y = Mathf.Clamp(pos.Y + direction * ZoomSpeed, MinHeight, MaxHeight);
-        GlobalPosition = pos;
-    }
+		Zoom = zoom;
+	}
 }

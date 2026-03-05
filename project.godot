@@ -14,6 +14,11 @@ config/name="Goblin Mayhem TD"
 run/main_scene="res://scenes/ui/Menu.tscn"
 config/features=PackedStringArray("4.5", "C#", "Mobile")
 
+[autoload]
+
+GameSettings="*res://scripts/ui/GameSettings.cs"
+SaveSystem="*res://scripts/ui/SaveSystem.cs"
+
 [dotnet]
 
 project/assembly_name="Goblin Mayhem TD"

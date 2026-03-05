@@ -1,27 +1,35 @@
 using Godot;
-using System.Collections.Generic;
 
-public partial class Enemy : Node3D
+public partial class Enemy : PathFollow2D
 {
-    public List<Vector3> PathPoints;
-    public float Speed = 2f;
-    private int targetIndex = 0;
+    [Export] public float Speed = 100f; // píxeles por segundo
+    [Export] public int DamageToBase = 1;
+
+    // Nodo opcional del Sprite para rotar si quieres que mire hacia el camino
+    private Sprite2D sprite;
 
     public override void _Ready()
     {
-        if (PathPoints != null && PathPoints.Count > 0)
-            GlobalPosition = PathPoints[0];
+        
     }
 
     public override void _Process(double delta)
     {
-        if (PathPoints == null || targetIndex >= PathPoints.Count)
-            return;
+        // Avanza por el camino
+        Progress += Speed * (float)delta;
 
-        Vector3 target = PathPoints[targetIndex];
-        GlobalPosition = GlobalPosition.MoveToward(target, Speed * (float)delta);
+        // Detectar fin del camino
+        if (Progress >= GetParent<Path2D>().Curve.GetBakedLength())
+        {
+            ReachEnd();
+        }
+    }
 
-        if (GlobalPosition.DistanceTo(target) < 0.05f)
-            targetIndex++;
+    private void ReachEnd()
+    {
+        // Aquí puedes restar vida a la base, reproducir animación, etc.
+        GD.Print("Enemigo llegó a la base!");
+
+        QueueFree(); // destruir enemigo
     }
 }
