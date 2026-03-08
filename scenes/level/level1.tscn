@@ -1,37 +1,43 @@
-[gd_scene load_steps=5 format=3 uid="uid://da24bvxuerl1j"]
+[gd_scene load_steps=7 format=3 uid="uid://da24bvxuerl1j"]
 
 [ext_resource type="PackedScene" uid="uid://drtu3t2orl8sd" path="res://assets/level/Map/mapa1.tmx" id="1_nggc0"]
 [ext_resource type="Script" uid="uid://ccef7herjptu0" path="res://scripts/character/CameraRig.cs" id="2_gvmle"]
 [ext_resource type="PackedScene" uid="uid://dbeqdm5gepyap" path="res://scenes/character/enemy/enemy.tscn" id="2_pgq8h"]
-
-[sub_resource type="Curve2D" id="Curve2D_gvmle"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 126, 52, 0, 0, 0, 0, -133, -71, 0, 0, 0, 0, -326, -162)
-}
-point_count = 3
+[ext_resource type="Script" uid="uid://ddtj2hn2hhtfd" path="res://scripts/character/enemy/EnemySpawner.cs" id="3_mg8dc"]
+[ext_resource type="Script" uid="uid://cubvhlo0alqh1" path="res://scripts/level/terrain/Pathfinding.cs" id="4_5yh3o"]
+[ext_resource type="Script" uid="uid://bowdoqcpa107q" path="res://scripts/character/enemy/TestWave.cs" id="6_1ob00"]
 
 [node name="Level1" type="Node2D"]
 
 [node name="mapa1" parent="." instance=ExtResource("1_nggc0")]
-scale = Vector2(0.082, 0.082)
 
-[node name="Path2D" type="Path2D" parent="."]
-position = Vector2(741, 346)
-curve = SubResource("Curve2D_gvmle")
+[node name="Navigation" type="Node" parent="."]
+script = ExtResource("4_5yh3o")
+mapSize = Vector2i(60, 60)
 
-[node name="Enemy" parent="Path2D" instance=ExtResource("2_pgq8h")]
-position = Vector2(126, 52)
-scale = Vector2(0.3, 0.3)
-rotates = false
-Speed = 10.0
+[node name="EnemySpawner" type="Node" parent="." node_paths=PackedStringArray("PathfindingNode", "EnemiesContainer")]
+script = ExtResource("3_mg8dc")
+EnemyScene = ExtResource("2_pgq8h")
+PathfindingNode = NodePath("../Navigation")
+EnemiesContainer = NodePath("../Enemies")
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Towers" type="Node2D" parent="."]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(564, 256)
-zoom = Vector2(2, 2)
+position = Vector2(9677, 4314)
+zoom = Vector2(0.485, 0.485)
+limit_enabled = false
 limit_left = 0
 limit_top = 0
 limit_right = 1145
 limit_bottom = 555
 script = ExtResource("2_gvmle")
-MoveSpeed = 500.0
+MoveSpeed = 1400.0
+MinZoom = 0.01
 MaxZoom = 6.0
+
+[node name="TestWave" type="Node" parent="." node_paths=PackedStringArray("Spawner")]
+script = ExtResource("6_1ob00")
+Spawner = NodePath("../EnemySpawner")

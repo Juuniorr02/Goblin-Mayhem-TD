@@ -3,8 +3,10 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "",
+    "activeFile": "Map/mapa1.tmx",
     "expandedProjectPaths": [
+        "Map",
+        "."
     ],
     "file.lastUsedOpenFilter": "Todos los archivos (*)",
     "fileStates": {
@@ -40,6 +42,9 @@
         "D:/Insti/Godot/Projectos/Goblin-Mayhem-TD/assets/Path.tsx": {
             "scaleInDock": 1
         },
+        "Map/Example.tsx": {
+            "scaleInDock": 1
+        },
         "Map/Path.tsx": {
             "dynamicWrapping": false,
             "scaleInDock": 0.25
@@ -52,16 +57,20 @@
                 "y": 5504.4277360066835
             }
         },
+        "Map/map_tiles.png": {
+            "scaleInDock": 0.25,
+            "scaleInEditor": 1
+        },
         "Map/map_tiles.tsx": {
             "dynamicWrapping": true,
             "scaleInDock": 1
         },
         "Map/mapa1.tmx": {
             "scale": 0.125,
-            "selectedLayer": 0,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 6548,
-                "y": 3024
+                "x": 6872,
+                "y": 2856
             }
         },
         "Path.tsx": {
@@ -94,12 +103,15 @@
     "map.tileWidth": 16,
     "map.width": 40,
     "openFiles": [
+        "Map/map_tiles.png",
+        "Map/mapa1.tmx"
     ],
     "project": "sin nombre.tiled-project",
     "recentFiles": [
+        "Map/map_tiles.png",
+        "Map/mapa1.tmx",
         "C:/Users/droch/AppData/Local/Temp/Rar$DRa11240.37589.rartemp/Map/map_empty.tmx",
         "C:/Users/droch/AppData/Local/Temp/Rar$DIa11240.34710.rartemp/map_empty.tmx",
-        "Map/mapa1.tmx",
         "mapa1.tmx",
         "Map/map_empty.tmx",
         "Path.tsx",

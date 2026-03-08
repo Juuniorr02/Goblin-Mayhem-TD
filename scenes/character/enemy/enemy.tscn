@@ -56,8 +56,10 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ygshw"]
 size = Vector2(11, 28)
 
-[node name="Node2D" type="PathFollow2D"]
+[node name="Node2D" type="CharacterBody2D" groups=["enemies"]]
+scale = Vector2(2.1, 2.1)
 script = ExtResource("2_4gyqm")
+Speed = 50.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
