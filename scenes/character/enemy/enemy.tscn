@@ -1,41 +1,35 @@
 [gd_scene load_steps=11 format=3 uid="uid://dbeqdm5gepyap"]
 
-[ext_resource type="Texture2D" uid="uid://bo5r3xb6asa1a" path="res://assets/character/enemy/sombra (1).png" id="1_7k104"]
 [ext_resource type="Script" uid="uid://djm0046nxvish" path="res://scripts/character/enemy/Enemy.cs" id="2_4gyqm"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6tklo"]
-atlas = ExtResource("1_7k104")
-region = Rect2(0, 0, 56, 56)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lk0iw"]
-atlas = ExtResource("1_7k104")
-region = Rect2(56, 0, 56, 56)
+[ext_resource type="Texture2D" uid="uid://bbvi61e0beacf" path="res://assets/character/enemy/Golem.png" id="2_lk0iw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_735o0"]
-atlas = ExtResource("1_7k104")
-region = Rect2(112, 0, 56, 56)
+atlas = ExtResource("2_lk0iw")
+region = Rect2(0, 0, 56, 56)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4kjq8"]
-atlas = ExtResource("1_7k104")
-region = Rect2(168, 0, 56, 56)
+atlas = ExtResource("2_lk0iw")
+region = Rect2(56, 0, 56, 56)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bnw2t"]
-atlas = ExtResource("1_7k104")
-region = Rect2(224, 0, 56, 56)
+atlas = ExtResource("2_lk0iw")
+region = Rect2(112, 0, 56, 56)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uscpi"]
-atlas = ExtResource("1_7k104")
+atlas = ExtResource("2_lk0iw")
+region = Rect2(168, 0, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0fbgq"]
+atlas = ExtResource("2_lk0iw")
+region = Rect2(224, 0, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ygshw"]
+atlas = ExtResource("2_lk0iw")
 region = Rect2(280, 0, 56, 56)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0fbgq"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6tklo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lk0iw")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_735o0")
 }, {
@@ -47,6 +41,12 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_uscpi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0fbgq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ygshw")
 }],
 "loop": true,
 "name": &"walk",
@@ -59,14 +59,15 @@ size = Vector2(11, 28)
 [node name="Node2D" type="CharacterBody2D" groups=["enemies"]]
 scale = Vector2(2.1, 2.1)
 script = ExtResource("2_4gyqm")
-Speed = 50.0
+Speed = 150.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_0fbgq")
 animation = &"walk"
 autoplay = "walk"
-frame_progress = 0.97563004
+frame_progress = 0.4266486
+flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D"]
 position = Vector2(0, 2)
