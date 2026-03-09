@@ -1,8 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://glkqem0qes2a"]
+[gd_scene load_steps=3 format=3 uid="uid://glkqem0qes2a"]
 
 [ext_resource type="Script" uid="uid://diifuf6vbqyod" path="res://scripts/ui/MenuController.cs" id="1"]
+[ext_resource type="Texture2D" uid="uid://cphe0cuchlj5s" path="res://assets/ui/background/fondo.png" id="1_vhthp"]
 
 [node name="Menu" type="CanvasLayer"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -1
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_vhthp")
+expand_mode = 1
 
 [node name="MenuController" type="Node" parent="."]
 script = ExtResource("1")

@@ -80,6 +80,7 @@ public partial class menu_pausa : CanvasLayer
 
     private void OnGuardar()
 	{
+		QuitarPausa();
     	GD.Print("Guardar partida");
 
     	var save = GetNode<SaveSystem>("/root/SaveSystem");
@@ -88,6 +89,7 @@ public partial class menu_pausa : CanvasLayer
 
 	private void OnGuardarSalir()
 	{
+		QuitarPausa();
     	GD.Print("Guardar y salir");
 
 		var save = GetNode<SaveSystem>("/root/SaveSystem");
@@ -100,6 +102,7 @@ public partial class menu_pausa : CanvasLayer
 
 	private async void OnCargar()
 	{
+		QuitarPausa();
     	GD.Print("Cargar partida");
 
     	var save = GetNode<SaveSystem>("/root/SaveSystem");

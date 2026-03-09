@@ -16,7 +16,7 @@ public partial class OptionsController : Control
     private const string ConfigPath = "user://config.cfg";
     
     // Rutas base
-    private const string BasePath = "CanvasLayer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer";
+    private const string BasePath = "CanvasLayer/CenterContainer/PanelContainer/MarginContainer/PanelContainer/VBoxContainer/VBoxContainer";
     private const string ResolucionPath = BasePath + "/Resolucion/Resolucion/Resolucion/ResolucionOption";
     private const string ModoPath = BasePath + "/Modo/Modo/Modo/ModoOption";
     private const string CalidadPath = BasePath + "/Calidad/Calidad/Calidad/CalidadOption";

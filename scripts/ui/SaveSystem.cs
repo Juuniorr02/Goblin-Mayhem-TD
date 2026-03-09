@@ -9,9 +9,12 @@ public partial class SaveSystem : Node
     {
         var data = new Godot.Collections.Dictionary();
 
+        // escena actual
         data["scene"] = GetTree().CurrentScene.SceneFilePath;
 
-        // 📷 guardar cámara
+        // ========================
+        // GUARDAR CÁMARA
+        // ========================
         var cam = GetTree().GetFirstNodeInGroup("camera") as Node3D;
         if (cam != null)
         {
@@ -23,7 +26,67 @@ public partial class SaveSystem : Node
             };
         }
 
+        // ========================
+        // GUARDAR TORRES
+        // ========================
+        var towersData = new Godot.Collections.Array();
+
+        var towersNode = GetTree().CurrentScene.GetNodeOrNull<Node>("Towers");
+
+        if (towersNode != null)
+        {
+            foreach (Node child in towersNode.GetChildren())
+            {
+                if (child is Node3D tower)
+                {
+                    var towerInfo = new Godot.Collections.Dictionary
+                    {
+                        { "scene", tower.SceneFilePath },
+                        { "x", tower.GlobalPosition.X },
+                        { "y", tower.GlobalPosition.Y },
+                        { "z", tower.GlobalPosition.Z }
+                    };
+
+                    towersData.Add(towerInfo);
+                }
+            }
+        }
+
+        data["towers"] = towersData;
+
+        // ========================
+        // GUARDAR ENEMIGOS
+        // ========================
+        var enemiesData = new Godot.Collections.Array();
+
+        var enemiesNode = GetTree().CurrentScene.GetNodeOrNull<Node>("Enemies");
+
+        if (enemiesNode != null)
+        {
+            foreach (Node child in enemiesNode.GetChildren())
+            {
+                if (child is Node3D enemy)
+                {
+                    var enemyInfo = new Godot.Collections.Dictionary
+                    {
+                        { "scene", enemy.SceneFilePath },
+                        { "x", enemy.GlobalPosition.X },
+                        { "y", enemy.GlobalPosition.Y },
+                        { "z", enemy.GlobalPosition.Z }
+                    };
+
+                    enemiesData.Add(enemyInfo);
+                }
+            }
+        }
+
+        data["enemies"] = enemiesData;
+
+        // ========================
+        // GUARDAR ARCHIVO
+        // ========================
         var json = Json.Stringify(data);
+
         using var file = FileAccess.Open(SavePath, FileAccess.ModeFlags.Write);
         file.StoreString(json);
 
@@ -42,6 +105,7 @@ public partial class SaveSystem : Node
         var json = file.GetAsText();
 
         var parser = new Json();
+
         if (parser.Parse(json) != Error.Ok)
         {
             GD.PrintErr("❌ save corrupto");
@@ -60,8 +124,11 @@ public partial class SaveSystem : Node
 
         await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
 
-        // 📷 restaurar cámara
+        // ========================
+        // RESTAURAR CÁMARA
+        // ========================
         var cam = GetTree().GetFirstNodeInGroup("camera") as Node3D;
+
         if (cam != null && data.ContainsKey("camera_pos"))
         {
             var pos = data["camera_pos"].AsGodotDictionary();
@@ -71,6 +138,56 @@ public partial class SaveSystem : Node
                 (float)pos["y"],
                 (float)pos["z"]
             );
+        }
+
+        // ========================
+        // RESTAURAR TORRES
+        // ========================
+        if (data.ContainsKey("towers"))
+        {
+            var towersNode = GetTree().CurrentScene.GetNodeOrNull<Node>("Towers");
+            var towers = data["towers"].AsGodotArray();
+
+            foreach (Godot.Collections.Dictionary tower in towers)
+            {
+                string scenePath = tower["scene"].AsString();
+
+                var packed = GD.Load<PackedScene>(scenePath);
+                var instance = packed.Instantiate<Node3D>();
+
+                instance.GlobalPosition = new Vector3(
+                    (float)tower["x"],
+                    (float)tower["y"],
+                    (float)tower["z"]
+                );
+
+                towersNode.AddChild(instance);
+            }
+        }
+
+        // ========================
+        // RESTAURAR ENEMIGOS
+        // ========================
+        if (data.ContainsKey("enemies"))
+        {
+            var enemiesNode = GetTree().CurrentScene.GetNodeOrNull<Node>("Enemies");
+            var enemies = data["enemies"].AsGodotArray();
+
+            foreach (Godot.Collections.Dictionary enemy in enemies)
+            {
+                string scenePath = enemy["scene"].AsString();
+
+                var packed = GD.Load<PackedScene>(scenePath);
+                var instance = packed.Instantiate<Node3D>();
+
+                instance.GlobalPosition = new Vector3(
+                    (float)enemy["x"],
+                    (float)enemy["y"],
+                    (float)enemy["z"]
+                );
+
+                enemiesNode.AddChild(instance);
+            }
         }
 
         GD.Print("✅ partida cargada");

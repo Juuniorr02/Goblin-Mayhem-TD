@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cjpnag1s71ey2"
-path="res://.godot/imported/cañon-Sheet.png-67fcae8b7be6bb8b532be8386c914cc2.ctex"
+uid="uid://bodlpu3irch0t"
+path="res://.godot/imported/IconoOleada-Sheet.png-31ee5d381bf4be189468d1087b697b9e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/character/tower/cañon-Sheet.png"
-dest_files=["res://.godot/imported/cañon-Sheet.png-67fcae8b7be6bb8b532be8386c914cc2.ctex"]
+source_file="res://assets/ui/button/IconoOleada-Sheet.png"
+dest_files=["res://.godot/imported/IconoOleada-Sheet.png-31ee5d381bf4be189468d1087b697b9e.ctex"]
 
 [params]
 
