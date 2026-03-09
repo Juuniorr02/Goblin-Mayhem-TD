@@ -10,11 +10,16 @@ public partial class Enemy : Node2D
 
     public void SetPath(Vector2[] path)
     {
-        this.path = path;
-        if (path.Length > 0)
-            GlobalPosition = path[0];
+        if (path == null || path.Length == 0)
+            return;
 
-        ZIndex = 1; // para que aparezca sobre el suelo
+        this.path = path;
+        currentIndex = 0;
+
+        // Centrar al enemigo en el primer tile
+        GlobalPosition = path[0];
+        ZIndex = 1;
+        GD.Print($"Enemigo spawn en {GlobalPosition}, comenzando path de {path.Length} puntos");
     }
 
     public override void _Process(double delta)
@@ -26,10 +31,16 @@ public partial class Enemy : Node2D
         Vector2 dir = (target - GlobalPosition).Normalized();
         float step = Speed * (float)delta;
 
+        // Moverse hacia el siguiente tile
         if ((target - GlobalPosition).Length() <= step)
         {
             GlobalPosition = target;
             currentIndex++;
+
+            if (currentIndex < path.Length)
+                GD.Print($"Enemigo llegó a tile {path[currentIndex-1]} -> siguiente {path[currentIndex]}");
+            else
+                GD.Print($"Enemigo llegó al final del path en {target}");
         }
         else
         {

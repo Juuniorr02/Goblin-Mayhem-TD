@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://da24bvxuerl1j"]
+[gd_scene load_steps=8 format=3 uid="uid://da24bvxuerl1j"]
 
 [ext_resource type="PackedScene" uid="uid://drtu3t2orl8sd" path="res://assets/level/Map/mapa1.tmx" id="1_nggc0"]
 [ext_resource type="Script" uid="uid://ccef7herjptu0" path="res://scripts/character/CameraRig.cs" id="2_gvmle"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://ddtj2hn2hhtfd" path="res://scripts/character/enemy/EnemySpawner.cs" id="3_mg8dc"]
 [ext_resource type="Script" uid="uid://cubvhlo0alqh1" path="res://scripts/level/terrain/Pathfinding.cs" id="4_5yh3o"]
 [ext_resource type="Script" uid="uid://bowdoqcpa107q" path="res://scripts/character/enemy/TestWave.cs" id="6_1ob00"]
+[ext_resource type="PackedScene" uid="uid://cor65fcesxg0a" path="res://scenes/ui/menu_pausa.tscn" id="7_wpisc"]
 
 [node name="Level1" type="Node2D"]
 
@@ -20,6 +21,7 @@ script = ExtResource("3_mg8dc")
 EnemyScene = ExtResource("2_pgq8h")
 PathfindingNode = NodePath("../Navigation")
 EnemiesContainer = NodePath("../Enemies")
+EnemiesPerWave = 1
 
 [node name="Enemies" type="Node2D" parent="."]
 
@@ -41,3 +43,5 @@ MaxZoom = 6.0
 [node name="TestWave" type="Node" parent="." node_paths=PackedStringArray("Spawner")]
 script = ExtResource("6_1ob00")
 Spawner = NodePath("../EnemySpawner")
+
+[node name="menu_pausa" parent="." instance=ExtResource("7_wpisc")]
