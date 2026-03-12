@@ -8,7 +8,7 @@ public partial class MenuController : Node
     private AcceptDialog messageDialog;
     private Label dialogLabel;
 
-    private SaveSystem save; // ⭐ referencia al autoload
+    private SaveSystem save;
 
     public override void _Ready()
     {
