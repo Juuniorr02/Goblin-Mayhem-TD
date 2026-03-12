@@ -1,0 +1,67 @@
+[gd_scene load_steps=11 format=3 uid="uid://dd1ml503ns506"]
+
+[ext_resource type="PackedScene" uid="uid://joyf4m63bcjk" path="res://assets/level/Map/mapa2.tmx" id="1_5fc2a"]
+[ext_resource type="Script" uid="uid://cubvhlo0alqh1" path="res://scripts/level/terrain/Pathfinding.cs" id="2_abfbc"]
+[ext_resource type="Script" uid="uid://ddtj2hn2hhtfd" path="res://scripts/character/enemy/EnemySpawner.cs" id="3_wwvym"]
+[ext_resource type="PackedScene" uid="uid://dbeqdm5gepyap" path="res://scenes/character/enemy/enemy.tscn" id="4_8nqb7"]
+[ext_resource type="PackedScene" uid="uid://ci612q8twcycd" path="res://scenes/ui/iu.tscn" id="5_iwtdf"]
+[ext_resource type="Script" uid="uid://ccef7herjptu0" path="res://scripts/character/CameraRig.cs" id="6_a1srb"]
+[ext_resource type="Script" uid="uid://bowdoqcpa107q" path="res://scripts/character/enemy/TestWave.cs" id="7_2mh14"]
+[ext_resource type="PackedScene" uid="uid://cor65fcesxg0a" path="res://scenes/ui/menu_pausa.tscn" id="8_h3ie6"]
+
+[sub_resource type="Curve2D" id="Curve2D_5fc2a"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 6202, 6239, 0, 0, 0, 0, 7186, 5783, 0, 0, 0, 0, 5865, 5197, 0, 0, 0, 0, 7675, 4347, 0, 0, 0, 0, 6884, 4022, 0, 0, 0, 0, 7683, 3683, 0, 0, 0, 0, 7021, 3410, 0, 0, 0, 0, 7670, 3122, 0, 0, 0, 0, 5865, 2311, 0, 0, 0, 0, 7225, 1713, 0, 0, 0, 0, 7015, 1639)
+}
+point_count = 11
+
+[sub_resource type="Curve2D" id="Curve2D_abfbc"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 7453, 6360, 0, 0, 0, 0, 6237, 5789, 0, 0, 0, 0, 7668, 5112, 0, 0, 0, 0, 5961, 4353, 0, 0, 0, 0, 6522, 4127, 0, 0, 0, 0, 5963, 3926, 0, 0, 0, 0, 6418, 3757, 0, 0, 0, 0, 5967, 3582, 0, 0, 0, 0, 6618, 3289, 0, 0, 0, 0, 5975, 3031, 0, 0, 0, 0, 6383, 2856, 0, 0, 0, 0, 6072, 2757, 0, 0, 0, 0, 7782, 1970, 0, 0, 0, 0, 7032, 1632)
+}
+point_count = 14
+
+[node name="Level2" type="Node2D"]
+
+[node name="mapa2" parent="." instance=ExtResource("1_5fc2a")]
+
+[node name="Pathfinding" type="Node" parent="."]
+script = ExtResource("2_abfbc")
+
+[node name="EnemySpawner" type="Node" parent="." node_paths=PackedStringArray("EnemiesContainer", "CaminoA", "CaminoB")]
+script = ExtResource("3_wwvym")
+EnemyScene = ExtResource("4_8nqb7")
+EnemiesContainer = NodePath("../EnemiesContainer")
+CaminoA = NodePath("CaminoA")
+CaminoB = NodePath("CaminoB")
+
+[node name="CaminoA" type="Path2D" parent="EnemySpawner"]
+curve = SubResource("Curve2D_5fc2a")
+
+[node name="CaminoB" type="Path2D" parent="EnemySpawner"]
+curve = SubResource("Curve2D_abfbc")
+
+[node name="EnemiesContainer" type="Node2D" parent="."]
+
+[node name="Towers" type="Node2D" parent="."]
+
+[node name="IU" parent="." instance=ExtResource("5_iwtdf")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(7057, 1182)
+zoom = Vector2(0.485, 0.485)
+limit_enabled = false
+limit_left = 0
+limit_top = 0
+limit_right = 1145
+limit_bottom = 555
+script = ExtResource("6_a1srb")
+MoveSpeed = 1400.0
+MinZoom = 0.01
+MaxZoom = 6.0
+
+[node name="TestWave" type="Node" parent="." node_paths=PackedStringArray("Spawner")]
+script = ExtResource("7_2mh14")
+Spawner = NodePath("../EnemySpawner")
+
+[node name="menu_pausa" parent="." instance=ExtResource("8_h3ie6")]
