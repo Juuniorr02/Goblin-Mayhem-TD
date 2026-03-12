@@ -1,12 +1,14 @@
-[gd_scene load_steps=20 format=3 uid="uid://ci612q8twcycd"]
+[gd_scene load_steps=22 format=3 uid="uid://ci612q8twcycd"]
 
 [ext_resource type="Texture2D" uid="uid://bodlpu3irch0t" path="res://assets/ui/button/IconoOleada-Sheet.png" id="1_g0mth"]
-[ext_resource type="Texture2D" uid="uid://5sui3kk7ym6x" path="res://assets/character/tower/cañon.png" id="1_t64rc"]
+[ext_resource type="Texture2D" uid="uid://5sui3kk7ym6x" path="res://assets/ui/icon/cañon.png" id="1_t64rc"]
 [ext_resource type="Texture2D" uid="uid://blnmjnr4qmfkb" path="res://assets/ui/icon/Vidas.png" id="1_tyt0d"]
+[ext_resource type="Script" uid="uid://cs0vdio4tt68i" path="res://scripts/ui/Iu.cs" id="1_viny6"]
 [ext_resource type="Texture2D" uid="uid://c6eovl815j15h" path="res://assets/ui/icon/Coin1.png" id="2_svasj"]
 [ext_resource type="Texture2D" uid="uid://crw7qp1kr00u0" path="res://assets/ui/icon/Maderas.png" id="3_viny6"]
 [ext_resource type="Texture2D" uid="uid://bonxvf3bnviti" path="res://assets/ui/icon/Piedras.png" id="4_rlfxr"]
 [ext_resource type="Texture2D" uid="uid://d4aohjas4nc4o" path="res://assets/ui/icon/Hierro.png" id="5_ud8xl"]
+[ext_resource type="Texture2D" uid="uid://7prl0kc2ksyg" path="res://assets/ui/icon/lanzallamas.png" id="8_svasj"]
 
 [sub_resource type="Theme" id="Theme_1nckr"]
 
@@ -90,6 +92,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_viny6")
 
 [node name="IU" type="CanvasLayer" parent="."]
 
@@ -139,115 +142,128 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="Stats" type="VBoxContainer" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats"]
+[node name="Stats" type="CenterContainer" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats"]
 layout_mode = 2
 
-[node name="Separation" type="MarginContainer" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats"]
+[node name="Stats" type="VBoxContainer" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats"]
+layout_mode = 2
+
+[node name="Separation" type="MarginContainer" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Stats"]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="Health" type="HBoxContainer" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats"]
+[node name="Health" type="HBoxContainer" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Stats"]
 layout_mode = 2
 
-[node name="Health" type="TextureRect" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Health"]
+[node name="Health" type="TextureRect" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Health"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.25
 texture = ExtResource("1_tyt0d")
 
-[node name="Health2" type="Label" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Health"]
+[node name="Health2" type="Label" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Health"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Separation2" type="MarginContainer" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats"]
+[node name="Separation2" type="MarginContainer" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Stats"]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="Gold" type="HBoxContainer" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats"]
+[node name="Gold" type="HBoxContainer" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Stats"]
 layout_mode = 2
 
-[node name="Gold" type="TextureRect" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Gold"]
+[node name="Gold" type="TextureRect" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Gold"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.25
 texture = ExtResource("2_svasj")
 
-[node name="Gold2" type="Label" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Gold"]
+[node name="Gold2" type="Label" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Gold"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "500"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Separation3" type="MarginContainer" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats"]
+[node name="Separation3" type="MarginContainer" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Stats"]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="Wood" type="HBoxContainer" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats"]
+[node name="Wood" type="HBoxContainer" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Stats"]
 layout_mode = 2
 
-[node name="Wood" type="TextureRect" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Wood"]
+[node name="Wood" type="TextureRect" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Wood"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.25
 texture = ExtResource("3_viny6")
 
-[node name="Wood2" type="Label" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Wood"]
+[node name="Wood2" type="Label" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Wood"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Separation4" type="MarginContainer" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats"]
+[node name="Separation4" type="MarginContainer" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Stats"]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="Stone" type="HBoxContainer" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats"]
+[node name="Stone" type="HBoxContainer" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Stats"]
 layout_mode = 2
 
-[node name="Stone" type="TextureRect" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Stone"]
+[node name="Stone" type="TextureRect" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Stone"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.25
 texture = ExtResource("4_rlfxr")
 
-[node name="Stone2" type="Label" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Stone"]
+[node name="Stone2" type="Label" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Stone"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Separation5" type="MarginContainer" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats"]
+[node name="Separation5" type="MarginContainer" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Stats"]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="Iron" type="HBoxContainer" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats"]
+[node name="Iron" type="HBoxContainer" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Stats"]
 layout_mode = 2
 
-[node name="Iron" type="TextureRect" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Iron"]
+[node name="Iron" type="TextureRect" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Iron"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.25
 texture = ExtResource("5_ud8xl")
 
-[node name="Iron2" type="Label" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Iron"]
+[node name="Iron2" type="Label" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Iron"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Separation6" type="MarginContainer" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats"]
+[node name="Separation6" type="MarginContainer" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Stats"]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
@@ -280,7 +296,7 @@ size_flags_vertical = 3
 [node name="Blank" type="VBoxContainer" parent="IU/IU/IU/Top/Wave/Wave"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 1.2
+size_flags_stretch_ratio = 1.5
 
 [node name="Wave" type="VBoxContainer" parent="IU/IU/IU/Top/Wave/Wave"]
 layout_mode = 2
@@ -300,15 +316,15 @@ offset_right = 73.0
 offset_bottom = 69.0
 scale = Vector2(0.72179794, 0.8265525)
 theme = SubResource("Theme_tyt0d")
-text = "99"
+text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Wave2" type="AnimatedSprite2D" parent="IU/IU/IU/Top/Wave/Wave/Wave/TextureButton"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="IU/IU/IU/Top/Wave/Wave/Wave/TextureButton"]
 z_index = -1
 texture_filter = 1
 position = Vector2(55, 54)
-scale = Vector2(0.4, 0.4)
+scale = Vector2(0.40295896, 0.4)
 sprite_frames = SubResource("SpriteFrames_ify78")
 animation = &"wave"
 frame = 8
@@ -490,7 +506,7 @@ texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture_normal = ExtResource("1_t64rc")
+texture_normal = ExtResource("8_svasj")
 
 [node name="Ballista" type="HBoxContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers"]
 layout_mode = 2
@@ -582,6 +598,198 @@ theme_override_constants/margin_bottom = 5
 layout_mode = 2
 
 [node name="Barricade" type="TextureButton" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Barricade/Barricade/Barricade/Barricade/Barricade"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("1_t64rc")
+
+[node name="Bloon" type="HBoxContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Bloon" type="MarginContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Bloon"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Bloon" type="PanelContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Bloon/Bloon"]
+layout_mode = 2
+
+[node name="Bloon" type="MarginContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Bloon/Bloon/Bloon"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Bloon" type="PanelContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Bloon/Bloon/Bloon/Bloon"]
+layout_mode = 2
+
+[node name="Bloon" type="TextureButton" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Bloon/Bloon/Bloon/Bloon/Bloon"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("1_t64rc")
+
+[node name="Nest" type="HBoxContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Nest" type="MarginContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Nest"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Nest" type="PanelContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Nest/Nest"]
+layout_mode = 2
+
+[node name="Nest" type="MarginContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Nest/Nest/Nest"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Nest" type="PanelContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Nest/Nest/Nest/Nest"]
+layout_mode = 2
+
+[node name="Nest" type="TextureButton" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Nest/Nest/Nest/Nest/Nest"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("1_t64rc")
+
+[node name="Ship" type="HBoxContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Ship" type="MarginContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Ship"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Ship" type="PanelContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Ship/Ship"]
+layout_mode = 2
+
+[node name="Ship" type="MarginContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Ship/Ship/Ship"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Ship" type="PanelContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Ship/Ship/Ship/Ship"]
+layout_mode = 2
+
+[node name="Ship" type="TextureButton" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Ship/Ship/Ship/Ship/Ship"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("1_t64rc")
+
+[node name="Atun" type="HBoxContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Atun" type="MarginContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Atun"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Atun" type="PanelContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Atun/Atun"]
+layout_mode = 2
+
+[node name="Atun" type="MarginContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Atun/Atun/Atun"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Atun" type="PanelContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Atun/Atun/Atun/Atun"]
+layout_mode = 2
+
+[node name="Atun" type="TextureButton" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Atun/Atun/Atun/Atun/Atun"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("1_t64rc")
+
+[node name="Barracks" type="HBoxContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Barracks" type="MarginContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Barracks"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Barracks" type="PanelContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Barracks/Barracks"]
+layout_mode = 2
+
+[node name="Barracks" type="MarginContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Barracks/Barracks/Barracks"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Barracks" type="PanelContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Barracks/Barracks/Barracks/Barracks"]
+layout_mode = 2
+
+[node name="Barracks" type="TextureButton" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Barracks/Barracks/Barracks/Barracks/Barracks"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("1_t64rc")
+
+[node name="Torch" type="HBoxContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Torch" type="MarginContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Torch"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Torch" type="PanelContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Torch/Torch"]
+layout_mode = 2
+
+[node name="Torch" type="MarginContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Torch/Torch/Torch"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Torch" type="PanelContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Torch/Torch/Torch/Torch"]
+layout_mode = 2
+
+[node name="Torch" type="TextureButton" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Torch/Torch/Torch/Torch/Torch"]
 texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 4

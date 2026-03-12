@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5sui3kk7ym6x"
-path="res://.godot/imported/cañon.png-5cddb01800f452db165c54bfea528da3.ctex"
+uid="uid://cjpnag1s71ey2"
+path="res://.godot/imported/cañon-Sheet.png-a78b337f2132428bc87e1eb5655b5f34.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/character/tower/cañon.png"
-dest_files=["res://.godot/imported/cañon.png-5cddb01800f452db165c54bfea528da3.ctex"]
+source_file="res://assets/ui/icon/cañon-Sheet.png"
+dest_files=["res://.godot/imported/cañon-Sheet.png-a78b337f2132428bc87e1eb5655b5f34.ctex"]
 
 [params]
 
