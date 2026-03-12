@@ -1,9 +1,16 @@
-[gd_scene load_steps=14 format=3 uid="uid://ci612q8twcycd"]
+[gd_scene load_steps=20 format=3 uid="uid://ci612q8twcycd"]
 
 [ext_resource type="Texture2D" uid="uid://bodlpu3irch0t" path="res://assets/ui/button/IconoOleada-Sheet.png" id="1_g0mth"]
 [ext_resource type="Texture2D" uid="uid://5sui3kk7ym6x" path="res://assets/character/tower/cañon.png" id="1_t64rc"]
+[ext_resource type="Texture2D" uid="uid://blnmjnr4qmfkb" path="res://assets/ui/icon/Vidas.png" id="1_tyt0d"]
+[ext_resource type="Texture2D" uid="uid://c6eovl815j15h" path="res://assets/ui/icon/Coin1.png" id="2_svasj"]
+[ext_resource type="Texture2D" uid="uid://crw7qp1kr00u0" path="res://assets/ui/icon/Maderas.png" id="3_viny6"]
+[ext_resource type="Texture2D" uid="uid://bonxvf3bnviti" path="res://assets/ui/icon/Piedras.png" id="4_rlfxr"]
+[ext_resource type="Texture2D" uid="uid://d4aohjas4nc4o" path="res://assets/ui/icon/Hierro.png" id="5_ud8xl"]
 
 [sub_resource type="Theme" id="Theme_1nckr"]
+
+[sub_resource type="Theme" id="Theme_tyt0d"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s01qv"]
 atlas = ExtResource("1_g0mth")
@@ -149,11 +156,12 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.25
+texture = ExtResource("1_tyt0d")
 
 [node name="Health2" type="Label" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Health"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Vida"
+text = "100"
 
 [node name="Separation2" type="MarginContainer" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats"]
 layout_mode = 2
@@ -169,11 +177,12 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.25
+texture = ExtResource("2_svasj")
 
 [node name="Gold2" type="Label" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Gold"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Oro"
+text = "500"
 
 [node name="Separation3" type="MarginContainer" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats"]
 layout_mode = 2
@@ -189,11 +198,12 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.25
+texture = ExtResource("3_viny6")
 
 [node name="Wood2" type="Label" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Wood"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Madera"
+text = "100"
 
 [node name="Separation4" type="MarginContainer" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats"]
 layout_mode = 2
@@ -209,11 +219,12 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.25
+texture = ExtResource("4_rlfxr")
 
 [node name="Stone2" type="Label" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Stone"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Piedra"
+text = "0"
 
 [node name="Separation5" type="MarginContainer" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats"]
 layout_mode = 2
@@ -229,11 +240,12 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.25
+texture = ExtResource("5_ud8xl")
 
 [node name="Iron2" type="Label" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Iron"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Metal"
+text = "0"
 
 [node name="Separation6" type="MarginContainer" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats"]
 layout_mode = 2
@@ -250,7 +262,7 @@ size_flags_stretch_ratio = 1.5
 [node name="Blank" type="VBoxContainer" parent="IU/IU/IU/Top/Stats"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 1.5
+size_flags_stretch_ratio = 2.0
 
 [node name="Center" type="VBoxContainer" parent="IU/IU/IU/Top"]
 layout_mode = 2
@@ -273,21 +285,29 @@ size_flags_stretch_ratio = 1.2
 [node name="Wave" type="VBoxContainer" parent="IU/IU/IU/Top/Wave/Wave"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+alignment = 1
 
-[node name="Wave" type="CenterContainer" parent="IU/IU/IU/Top/Wave/Wave/Wave"]
+[node name="TextureButton" type="TextureButton" parent="IU/IU/IU/Top/Wave/Wave/Wave"]
 layout_mode = 2
-size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Wave" type="Button" parent="IU/IU/IU/Top/Wave/Wave/Wave/Wave"]
-z_index = 1
-layout_mode = 2
-text = "1"
+[node name="Label" type="Label" parent="IU/IU/IU/Top/Wave/Wave/Wave/TextureButton"]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 46.0
+offset_right = 73.0
+offset_bottom = 69.0
+scale = Vector2(0.72179794, 0.8265525)
+theme = SubResource("Theme_tyt0d")
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Wave" type="AnimatedSprite2D" parent="IU/IU/IU/Top/Wave/Wave/Wave/Wave/Wave"]
+[node name="Wave2" type="AnimatedSprite2D" parent="IU/IU/IU/Top/Wave/Wave/Wave/TextureButton"]
 z_index = -1
 texture_filter = 1
-position = Vector2(4, 3)
+position = Vector2(55, 54)
 scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_ify78")
 animation = &"wave"
@@ -316,6 +336,10 @@ size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
 
 [node name="Blank" type="HBoxContainer" parent="IU/IU/IU/Bottom/Towers"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Blank2" type="HBoxContainer" parent="IU/IU/IU/Bottom/Towers"]
 layout_mode = 2
 size_flags_vertical = 3
 

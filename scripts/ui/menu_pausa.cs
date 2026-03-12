@@ -75,7 +75,6 @@ public partial class menu_pausa : CanvasLayer
         isPaused = false;
         GetTree().Paused = false;
         Visible = false;
-        Input.MouseMode = Input.MouseModeEnum.Captured;
     }
 
     private void OnGuardar()
