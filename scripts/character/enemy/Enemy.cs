@@ -2,55 +2,39 @@ using Godot;
 
 public partial class Enemy : Node2D
 {
-    [Export] public float Speed = 100f; // píxeles por segundo
+    [Export] public float Speed = 120f;
     [Export] public int DamageToBase = 1;
 
-    private Vector2[] path;
-    private int currentIndex = 0;
+    private PathFollow2D follow;
+    private bool finished = false;
 
-    public void SetPath(Vector2[] path)
+    public override void _Ready()
     {
-        if (path == null || path.Length == 0)
-            return;
-
-        this.path = path;
-        currentIndex = 0;
-
-        // Centrar al enemigo en el primer tile
-        GlobalPosition = path[0];
+        follow = GetParent<PathFollow2D>();
         ZIndex = 1;
-        GD.Print($"Enemigo spawn en {GlobalPosition}, comenzando path de {path.Length} puntos");
+
+        if (follow == null)
+            GD.PrintErr("Enemy: no se encontró PathFollow2D padre.");
     }
 
     public override void _Process(double delta)
     {
-        if (path == null || currentIndex >= path.Length)
+        if (follow == null || finished)
             return;
 
-        Vector2 target = path[currentIndex];
-        Vector2 dir = (target - GlobalPosition).Normalized();
-        float step = Speed * (float)delta;
+        follow.Progress += Speed * (float)delta;
 
-        // Moverse hacia el siguiente tile
-        if ((target - GlobalPosition).Length() <= step)
+        float pathLength = follow.GetParent<Path2D>().Curve.GetBakedLength();
+        if (follow.Progress >= pathLength)
         {
-            GlobalPosition = target;
-            currentIndex++;
+            finished = true;
+            GD.Print($"Enemigo llegó a la base y hace {DamageToBase} daño!");
 
-            if (currentIndex < path.Length)
-                GD.Print($"Enemigo llegó a tile {path[currentIndex-1]} -> siguiente {path[currentIndex]}");
-            else
-                GD.Print($"Enemigo llegó al final del path en {target}");
-        }
-        else
-        {
-            GlobalPosition += dir * step;
-        }
+            // Daño a la base aquí si quieres
+            // Base.ReduceHealth(DamageToBase);
 
-        // Llegó a la base
-        if (currentIndex >= path.Length)
-        {
-            GD.Print($"Enemigo llegó a la base y quita {DamageToBase} de vida!");
+            // Eliminar enemigo y su PathFollow2D
+            follow.QueueFree();
             QueueFree();
         }
     }

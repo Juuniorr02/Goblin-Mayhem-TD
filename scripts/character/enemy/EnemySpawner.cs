@@ -3,39 +3,27 @@ using Godot;
 public partial class EnemySpawner : Node
 {
     [Export] public PackedScene EnemyScene;
-    [Export] public Pathfinding PathfindingNode;
     [Export] public Node2D EnemiesContainer;
+
+    [Export] public Path2D CaminoA;
+    [Export] public Path2D CaminoB;
 
     [Export] public float SpawnInterval = 1.0f;
     [Export] public int EnemiesPerWave = 10;
 
     private int enemiesSpawned = 0;
     private float spawnTimer = 0f;
-
-    private Vector2I spawnTile;
-    private Vector2I baseTile;
     private bool spawning = false;
-
-    public override void _Ready()
-    {
-        if (PathfindingNode == null)
-        {
-            GD.PrintErr("EnemySpawner: PathfindingNode no asignado.");
-            return;
-        }
-
-        spawnTile = FindTileById(122);
-        baseTile = FindTileById(136);
-    }
 
     public override void _Process(double delta)
     {
         if (!spawning) return;
 
         spawnTimer += (float)delta;
+
         if (spawnTimer >= SpawnInterval && enemiesSpawned < EnemiesPerWave)
         {
-            SpawnEnemy();
+            SpawnEnemyRandomPath();
             spawnTimer = 0f;
             enemiesSpawned++;
         }
@@ -48,42 +36,27 @@ public partial class EnemySpawner : Node
         spawning = true;
     }
 
-    private void SpawnEnemy()
+private void SpawnEnemyRandomPath()
+{
+    if (EnemyScene == null) return;
+
+    // Elegir camino aleatorio
+    Path2D selectedPath = GD.Randf() < 0.7f ? CaminoA : CaminoB;
+    if (selectedPath == null) return;
+
+    // Crear PathFollow2D y ponerlo en el Path2D
+    PathFollow2D follow = new PathFollow2D
     {
-        if (EnemyScene == null || EnemiesContainer == null) return;
+        Loop = false,
+        Progress = 0,
+        Rotates = true // ← rotación automática en Godot 4
+    };
+    selectedPath.AddChild(follow);
 
-        var enemy = EnemyScene.Instantiate<Enemy>();
+    // Instanciar enemigo y agregarlo como hijo del PathFollow2D
+    Enemy enemy = EnemyScene.Instantiate<Enemy>();
+    follow.AddChild(enemy);
 
-        // Obtener path en tiles
-        Vector2I[] pathTiles = PathfindingNode.GetPath(spawnTile, baseTile);
-
-        // Convertir path a posiciones globales sobre la capa de suelo
-        Vector2[] pathGlobal = new Vector2[pathTiles.Length];
-        for (int i = 0; i < pathTiles.Length; i++)
-            pathGlobal[i] = PathfindingNode.TileToGlobalPos(pathTiles[i]);
-
-        enemy.SetPath(pathGlobal);
-
-        EnemiesContainer.AddChild(enemy);
-    }
-
-    private Vector2I FindTileById(int tileId)
-    {
-        var tileMap = PathfindingNode.tileMap;
-        if (tileMap == null) return Vector2I.Zero;
-
-        Rect2I usedRect = tileMap.GetUsedRect();
-        for (int x = usedRect.Position.X; x < usedRect.Position.X + usedRect.Size.X; x++)
-        {
-            for (int y = usedRect.Position.Y; y < usedRect.Position.Y + usedRect.Size.Y; y++)
-            {
-                Vector2I pos = new Vector2I(x, y);
-                if (tileMap.GetCellSourceId(pos) == tileId)
-                    return pos;
-            }
-        }
-
-        GD.PrintErr("No se encontró el tile con ID " + tileId);
-        return Vector2I.Zero;
-    }
+    GD.Print("[Spawner] Spawneando enemigo en " + selectedPath.Name);
+}
 }

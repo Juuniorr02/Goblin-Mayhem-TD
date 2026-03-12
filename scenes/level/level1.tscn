@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://da24bvxuerl1j"]
+[gd_scene load_steps=11 format=3 uid="uid://da24bvxuerl1j"]
 
 [ext_resource type="PackedScene" uid="uid://drtu3t2orl8sd" path="res://assets/level/Map/mapa1.tmx" id="1_nggc0"]
 [ext_resource type="Script" uid="uid://ccef7herjptu0" path="res://scripts/character/CameraRig.cs" id="2_gvmle"]
@@ -9,26 +9,45 @@
 [ext_resource type="PackedScene" uid="uid://cor65fcesxg0a" path="res://scenes/ui/menu_pausa.tscn" id="7_wpisc"]
 [ext_resource type="PackedScene" uid="uid://ci612q8twcycd" path="res://scenes/ui/iu.tscn" id="8_w02j3"]
 
-[node name="Level1" type="Node2D"]
+[sub_resource type="Curve2D" id="Curve2D_w02j3"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 10574, 4866, 0, 0, 0, 0, 8824, 4024, 0, 0, 0, 0, 6138, 2754, 0, 0, 0, 0, 5005, 2219)
+}
+point_count = 4
 
-[node name="IU" parent="." instance=ExtResource("8_w02j3")]
+[sub_resource type="Curve2D" id="Curve2D_q1drb"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 10565, 4873, 0, 0, 0, 0, 8811, 4028, 0, 0, 0, 0, 9611, 3639, 0, 0, 0, 0, 8222, 2979, 0, 0, 0, 0, 8108, 3032, 0, 0, 0, 0, 6829, 2432, 0, 0, 0, 0, 6143, 2756, 0, 0, 0, 0, 5019, 2224)
+}
+point_count = 8
+
+[node name="Level1" type="Node2D"]
 
 [node name="mapa1" parent="." instance=ExtResource("1_nggc0")]
 
-[node name="Navigation" type="Node" parent="."]
+[node name="Pathfinding" type="Node" parent="."]
 script = ExtResource("4_5yh3o")
 mapSize = Vector2i(60, 60)
 
-[node name="EnemySpawner" type="Node" parent="." node_paths=PackedStringArray("PathfindingNode", "EnemiesContainer")]
+[node name="EnemySpawner" type="Node" parent="." node_paths=PackedStringArray("PathfindingNode", "EnemiesContainer", "CaminoA", "CaminoB")]
 script = ExtResource("3_mg8dc")
 EnemyScene = ExtResource("2_pgq8h")
-PathfindingNode = NodePath("../Navigation")
-EnemiesContainer = NodePath("../Enemies")
-EnemiesPerWave = 1
+PathfindingNode = NodePath("../Pathfinding")
+EnemiesContainer = NodePath("../EnemiesContainer")
+CaminoA = NodePath("CaminoA")
+CaminoB = NodePath("CaminoB")
 
-[node name="Enemies" type="Node2D" parent="."]
+[node name="CaminoA" type="Path2D" parent="EnemySpawner"]
+curve = SubResource("Curve2D_w02j3")
+
+[node name="CaminoB" type="Path2D" parent="EnemySpawner"]
+curve = SubResource("Curve2D_q1drb")
+
+[node name="EnemiesContainer" type="Node2D" parent="."]
 
 [node name="Towers" type="Node2D" parent="."]
+
+[node name="IU" parent="." instance=ExtResource("8_w02j3")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(9677, 4314)
