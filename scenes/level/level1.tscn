@@ -11,13 +11,13 @@
 
 [sub_resource type="Curve2D" id="Curve2D_w02j3"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 10574, 4866, 0, 0, 0, 0, 8824, 4024, 0, 0, 0, 0, 6138, 2754, 0, 0, 0, 0, 5005, 2219)
+"points": PackedVector2Array(0, 0, 0, 0, 10594, 4846, 0, 0, 0, 0, 8826, 4017, 0, 0, 0, 0, 6143, 2745, 0, 0, 0, 0, 5033, 2216)
 }
 point_count = 4
 
 [sub_resource type="Curve2D" id="Curve2D_q1drb"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 10565, 4873, 0, 0, 0, 0, 8811, 4028, 0, 0, 0, 0, 9611, 3639, 0, 0, 0, 0, 8222, 2979, 0, 0, 0, 0, 8108, 3032, 0, 0, 0, 0, 6829, 2432, 0, 0, 0, 0, 6143, 2756, 0, 0, 0, 0, 5019, 2224)
+"points": PackedVector2Array(0, 0, 0, 0, 10591, 4844, 0, 0, 0, 0, 8824, 4001, 0, 0, 0, 0, 9602, 3619, 0, 0, 0, 0, 8228, 2993, 0, 0, 0, 0, 8099, 3013, 0, 0, 0, 0, 6830, 2416, 0, 0, 0, 0, 6166, 2769, 0, 0, 0, 0, 5028, 2217)
 }
 point_count = 8
 
@@ -27,12 +27,10 @@ point_count = 8
 
 [node name="Pathfinding" type="Node" parent="."]
 script = ExtResource("4_5yh3o")
-mapSize = Vector2i(60, 60)
 
-[node name="EnemySpawner" type="Node" parent="." node_paths=PackedStringArray("PathfindingNode", "EnemiesContainer", "CaminoA", "CaminoB")]
+[node name="EnemySpawner" type="Node" parent="." node_paths=PackedStringArray("EnemiesContainer", "CaminoA", "CaminoB")]
 script = ExtResource("3_mg8dc")
 EnemyScene = ExtResource("2_pgq8h")
-PathfindingNode = NodePath("../Pathfinding")
 EnemiesContainer = NodePath("../EnemiesContainer")
 CaminoA = NodePath("CaminoA")
 CaminoB = NodePath("CaminoB")
