@@ -49,7 +49,7 @@ private void SpawnEnemyRandomPath()
     {
         Loop = false,
         Progress = 0,
-        Rotates = true // ← rotación automática en Godot 4
+        Rotates = false // ← rotación automática en Godot 4
     };
     selectedPath.AddChild(follow);
 
