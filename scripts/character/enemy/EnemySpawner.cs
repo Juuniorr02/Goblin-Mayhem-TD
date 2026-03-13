@@ -82,6 +82,5 @@ private void SpawnEnemy()
     follow.AddChild(enemy);
 
     GD.Print("Spawn: " + data.EnemyName + " en " + selectedPath.Name);
-    
 }
 }
