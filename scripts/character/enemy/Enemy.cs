@@ -2,9 +2,8 @@ using Godot;
 
 public partial class Enemy : Node2D
 {
-    [Export] public float Speed = 120f;
-    [Export] public int DamageToBase = 1;
-    [Export] public AnimatedSprite2D sprite; 
+    [Export] public AnimatedSprite2D sprite;
+    [Export] public EnemyData Data;
 
     private PathFollow2D follow;
     private Path2D path;
@@ -13,24 +12,18 @@ public partial class Enemy : Node2D
     public override void _Ready()
     {
         follow = GetParent<PathFollow2D>();
-        ZIndex = 1;
+        path = follow?.GetParent<Path2D>();
 
-        if (follow == null)
-        {
-            GD.PrintErr("Enemy: no se encontró PathFollow2D padre.");
-        }
-        else
-        {
-            path = follow.GetParent<Path2D>();
-        }
+        if (Data != null)
+            ZIndex = Data.IsFlying ? 5 : 1;
     }
 
     public override void _Process(double delta)
     {
-        if (follow == null || path == null || finished)
+        if (follow == null || path == null || finished || Data == null)
             return;
 
-        follow.Progress += Speed * (float)delta;
+        follow.Progress += Data.Speed * (float)delta;
 
         Vector2 direccion = GetManualDirection(path, follow.Progress);
 
@@ -39,7 +32,6 @@ public partial class Enemy : Node2D
         else if (direccion.X < 0)
             sprite.FlipH = true;
 
-        // Comprobar si llegó al final
         QuitarVidaBase();
     }
 
@@ -51,8 +43,8 @@ public partial class Enemy : Node2D
         {
             finished = true;
 
-            GD.Print("El enemigo ha llegado a la base y ha quitado " + DamageToBase + " de vida.");
-            Base.Instance.Health -= DamageToBase;
+            GD.Print(Data.EnemyName + " llegó a la base y quitó " + Data.DamageToBase);
+
             follow.QueueFree();
             QueueFree();
         }
