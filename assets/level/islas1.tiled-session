@@ -1,13 +1,28 @@
 {
-    "activeFile": "",
+    "activeFile": "Map/islas1.tmx",
     "expandedProjectPaths": [
+        ".",
+        "Map"
     ],
     "file.lastUsedOpenFilter": "Todos los archivos (*)",
     "fileStates": {
+        "Map/Example.tsx": {
+            "scaleInDock": 0.25
+        },
+        "Map/islas1.tmx": {
+            "scale": 0.125,
+            "selectedLayer": 5,
+            "viewCenter": {
+                "x": 5680,
+                "y": 3072
+            }
+        }
     },
     "openFiles": [
+        "Map/islas1.tmx"
     ],
     "project": "islas1.tiled-project",
     "recentFiles": [
+        "Map/islas1.tmx"
     ]
 }

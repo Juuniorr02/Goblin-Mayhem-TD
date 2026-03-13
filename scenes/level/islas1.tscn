@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bbhtlt0ao6cq4"]
+[gd_scene load_steps=8 format=3 uid="uid://bbhtlt0ao6cq4"]
 
 [ext_resource type="PackedScene" uid="uid://dbpo1475xjqsm" path="res://assets/level/Map/islas1.tmx" id="1_rm5c3"]
 [ext_resource type="Script" uid="uid://cubvhlo0alqh1" path="res://scripts/level/terrain/Pathfinding.cs" id="2_ruufv"]
@@ -8,18 +8,6 @@
 [ext_resource type="Script" uid="uid://ccef7herjptu0" path="res://scripts/character/CameraRig.cs" id="6_gxakk"]
 [ext_resource type="PackedScene" uid="uid://cor65fcesxg0a" path="res://scenes/ui/menu_pausa.tscn" id="7_icjwj"]
 
-[sub_resource type="Curve2D" id="Curve2D_0uf55"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 6202, 6239, 0, 0, 0, 0, 7186, 5783, 0, 0, 0, 0, 5865, 5197, 0, 0, 0, 0, 7675, 4347, 0, 0, 0, 0, 6884, 4022, 0, 0, 0, 0, 7683, 3683, 0, 0, 0, 0, 7021, 3410, 0, 0, 0, 0, 7670, 3122, 0, 0, 0, 0, 5865, 2311, 0, 0, 0, 0, 7225, 1713, 0, 0, 0, 0, 7015, 1639)
-}
-point_count = 11
-
-[sub_resource type="Curve2D" id="Curve2D_coh8c"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 7453, 6360, 0, 0, 0, 0, 6237, 5789, 0, 0, 0, 0, 7668, 5112, 0, 0, 0, 0, 5961, 4353, 0, 0, 0, 0, 6522, 4127, 0, 0, 0, 0, 5963, 3926, 0, 0, 0, 0, 6418, 3757, 0, 0, 0, 0, 5967, 3582, 0, 0, 0, 0, 6618, 3289, 0, 0, 0, 0, 5975, 3031, 0, 0, 0, 0, 6383, 2856, 0, 0, 0, 0, 6072, 2757, 0, 0, 0, 0, 7782, 1970, 0, 0, 0, 0, 7032, 1632)
-}
-point_count = 14
-
 [node name="Islas1" type="Node2D"]
 
 [node name="islas1" parent="." instance=ExtResource("1_rm5c3")]
@@ -27,17 +15,16 @@ point_count = 14
 [node name="Pathfinding" type="Node" parent="."]
 script = ExtResource("2_ruufv")
 
-[node name="EnemySpawner" type="Node" parent="." node_paths=PackedStringArray("CaminoA", "CaminoB")]
+[node name="EnemySpawner" type="Node" parent="." node_paths=PackedStringArray("CaminoA")]
 script = ExtResource("3_5oaqd")
 EnemyScene = ExtResource("4_j2psb")
-CaminoA = NodePath("CaminoA")
-CaminoB = NodePath("CaminoB")
+CaminoA = NodePath("CaminoAcuatico")
+
+[node name="CaminoAcuatico" type="Path2D" parent="EnemySpawner"]
 
 [node name="CaminoA" type="Path2D" parent="EnemySpawner"]
-curve = SubResource("Curve2D_0uf55")
 
-[node name="CaminoB" type="Path2D" parent="EnemySpawner"]
-curve = SubResource("Curve2D_coh8c")
+[node name="CaminoVolador" type="Path2D" parent="EnemySpawner"]
 
 [node name="EnemiesContainer" type="Node2D" parent="."]
 
@@ -47,7 +34,7 @@ curve = SubResource("Curve2D_coh8c")
 metadata/_edit_use_anchors_ = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(7057, 1182)
+position = Vector2(6936, 570)
 zoom = Vector2(0.485, 0.485)
 limit_enabled = false
 limit_left = 0
