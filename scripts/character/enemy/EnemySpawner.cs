@@ -7,6 +7,9 @@ public partial class EnemySpawner : Node
 
     [Export] public Path2D CaminoA;
     [Export] public Path2D CaminoB;
+    [Export] public Path2D CaminoVolador;
+
+    [Export] public EnemyData[] EnemyTypes;
 
     [Export] public float SpawnInterval = 1.0f;
     [Export] public int EnemiesPerWave = 10;
@@ -23,7 +26,7 @@ public partial class EnemySpawner : Node
 
         if (spawnTimer >= SpawnInterval && enemiesSpawned < EnemiesPerWave)
         {
-            SpawnEnemyRandomPath();
+            SpawnEnemy();
             spawnTimer = 0f;
             enemiesSpawned++;
         }
@@ -36,15 +39,35 @@ public partial class EnemySpawner : Node
         spawning = true;
     }
 
-private void SpawnEnemyRandomPath()
+private void SpawnEnemy()
 {
-    if (EnemyScene == null) return;
+    if (EnemyTypes.Length == 0)
+    {
+        GD.PrintErr("No hay enemigos en EnemyTypes");
+        return;
+    }
 
-    // Elegir camino aleatorio
-    Path2D selectedPath = GD.Randf() < 0.7f ? CaminoA : CaminoB;
-    if (selectedPath == null) return;
+    EnemyData data = EnemyTypes[GD.RandRange(0, EnemyTypes.Length - 1)];
 
-    // Crear PathFollow2D y ponerlo en el Path2D
+    if (data?.EnemyScene == null)
+    {
+        GD.PrintErr("EnemyData sin EnemyScene asignada: " + data?.EnemyName);
+        return;
+    }
+
+    Path2D selectedPath = null;
+
+    if (data.IsFlying)
+        selectedPath = CaminoVolador;
+    else
+        selectedPath = GD.Randf() < 0.5f ? CaminoA : CaminoB;
+
+    if (selectedPath == null)
+    {
+        GD.PrintErr("SelectedPath es null para: " + data.EnemyName);
+        return;
+    }
+
     PathFollow2D follow = new PathFollow2D
     {
         Loop = false,
@@ -53,10 +76,11 @@ private void SpawnEnemyRandomPath()
     };
     selectedPath.AddChild(follow);
 
-    // Instanciar enemigo y agregarlo como hijo del PathFollow2D
-    Enemy enemy = EnemyScene.Instantiate<Enemy>();
+    Enemy enemy = data.EnemyScene.Instantiate<Enemy>();
+    enemy.Data = data;
+
     follow.AddChild(enemy);
 
-    GD.Print("[Spawner] Spawneando enemigo en " + selectedPath.Name);
+    GD.Print("Spawn: " + data.EnemyName + " en " + selectedPath.Name);
 }
 }

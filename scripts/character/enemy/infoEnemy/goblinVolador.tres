@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=3 format=3 uid="uid://cigq0efht168k"]
+
+[ext_resource type="PackedScene" uid="uid://cfini72hfkjsy" path="res://scenes/character/enemy/goblin_volador.tscn" id="1_lffl3"]
+[ext_resource type="Script" uid="uid://dtfsd6sb6u7oe" path="res://scripts/character/enemy/EnemyData.cs" id="1_q7jtq"]
+
+[resource]
+script = ExtResource("1_q7jtq")
+EnemyName = "Goblin Volador"
+Speed = 200.0
+IsFlying = true
+EnemyScene = ExtResource("1_lffl3")
+metadata/_custom_type_script = "uid://dtfsd6sb6u7oe"

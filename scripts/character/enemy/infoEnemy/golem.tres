@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=3 format=3 uid="uid://7lteypp1glo"]
+
+[ext_resource type="Script" uid="uid://dtfsd6sb6u7oe" path="res://scripts/character/enemy/EnemyData.cs" id="1_5fa77"]
+[ext_resource type="PackedScene" uid="uid://dbeqdm5gepyap" path="res://scenes/character/enemy/enemy.tscn" id="1_qjo8u"]
+
+[resource]
+script = ExtResource("1_5fa77")
+EnemyName = "Golem"
+EnemyScene = ExtResource("1_qjo8u")
+metadata/_custom_type_script = "uid://dtfsd6sb6u7oe"
