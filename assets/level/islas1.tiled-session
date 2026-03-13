@@ -10,11 +10,11 @@
             "scaleInDock": 0.25
         },
         "Map/islas1.tmx": {
-            "scale": 0.33,
-            "selectedLayer": 2,
+            "scale": 0.125,
+            "selectedLayer": 5,
             "viewCenter": {
-                "x": 4187.878787878788,
-                "y": 1706.0606060606062
+                "x": 5680,
+                "y": 3072
             }
         }
     },
