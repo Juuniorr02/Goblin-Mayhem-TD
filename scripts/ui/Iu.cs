@@ -5,48 +5,68 @@ public partial class Iu : Control
 {
     private TextureButton waveButton;
     private Label waveLabel;
+    private Label goldLabel;
+    private Label healthLabel;
+    private Label ironLabel;
+    private Label woodLabel;
+    private Label stoneLabel;
+
     private AnimatedSprite2D waveAnimation;
     private Timer cooldownTimer;
 
     [Export] private EnemySpawner spawner;
 
-    private int round = 0;
-
     public override void _Ready()
     {
-        waveButton = GetNode<TextureButton>("IU/IU/IU/Top/Wave/Wave/Wave/TextureButton");
-        waveLabel = GetNode<Label>("IU/IU/IU/Top/Wave/Wave/Wave/TextureButton/Label");
-        waveAnimation = GetNode<AnimatedSprite2D>("IU/IU/IU/Top/Wave/Wave/Wave/TextureButton/AnimatedSprite2D");
+        waveButton = GetNode<TextureButton>("IU/IU/IU/Top/Wave/Wave/Wave/Wave");
+        waveLabel = GetNode<Label>("IU/IU/IU/Top/Wave/Wave/Wave/Wave/WaveLabel");
 
-        // Crear timer para el cooldown
+        goldLabel = GetNode<Label>("%GoldLabel");
+        healthLabel = GetNode<Label>("%HealthLabel");
+        ironLabel = GetNode<Label>("%IronLabel");
+        woodLabel = GetNode<Label>("%WoodLabel");
+        stoneLabel = GetNode<Label>("%StoneLabel");
+
+        waveAnimation = GetNode<AnimatedSprite2D>("IU/IU/IU/Top/Wave/Wave/Wave/Wave/WaveSprite");
+
         cooldownTimer = new Timer();
         cooldownTimer.WaitTime = 80;
         cooldownTimer.OneShot = true;
         AddChild(cooldownTimer);
 
         cooldownTimer.Timeout += OnCooldownFinished;
-
         waveButton.Pressed += OnWaveButtonPressed;
+
+        UpdateIU();
+    }
+
+    public override void _Process(double delta)
+    {
+        UpdateIU();
+    }
+
+    private void UpdateIU()
+    {
+        goldLabel.Text = Base.Instance.Gold.ToString();
+        healthLabel.Text = Base.Instance.Health.ToString();
+        ironLabel.Text = Base.Instance.Iron.ToString();
+        woodLabel.Text = Base.Instance.Wood.ToString();
+        stoneLabel.Text = Base.Instance.Stone.ToString();
+
+        waveLabel.Text = Wave.Instance.CurrentWave.ToString();
     }
 
     private void OnWaveButtonPressed()
     {
-        // sumar ronda
-        round++;
-        waveLabel.Text = round.ToString();
+        Wave.Instance.StartNextWave();
 
-        // reiniciar animación aunque esté en curso
         waveAnimation.Stop();
         waveAnimation.Frame = 0;
         waveAnimation.Play("wave");
 
-        // ejecutar spawn
         spawner?.StartWave();
 
-        // bloquear botón
         waveButton.Disabled = true;
-
-        // iniciar cooldown
         cooldownTimer.Start();
     }
 
