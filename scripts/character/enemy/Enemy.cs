@@ -7,7 +7,7 @@ public partial class Enemy : Node2D
     [Export] public AnimatedSprite2D sprite; 
 
     private PathFollow2D follow;
-    private Path2D path; // Referencia al Path2D para acceder a la curva
+    private Path2D path;
     private bool finished = false;
 
     public override void _Ready()
@@ -21,49 +21,50 @@ public partial class Enemy : Node2D
         }
         else
         {
-            // El Path2D suele ser el padre del PathFollow2D
             path = follow.GetParent<Path2D>();
         }
     }
 
-public override void _Process(double delta)
-{
-    if (follow == null || path == null || finished)
-        return;
-
-    follow.Progress += Speed * (float)delta;
-
-    Vector2 direccion = GetManualDirection(path, follow.Progress);
-
-    // Si X es positivo, va a la derecha. Si es negativo, a la izquierda.
-    if (direccion.X > 0)
+    public override void _Process(double delta)
     {
-        sprite.FlipH = false;  // Mirar a la derecha (normal)
-    }
-    else if (direccion.X < 0)
-    {
-        sprite.FlipH = true;// Mirar a la izquierda (espejo)
+        if (follow == null || path == null || finished)
+            return;
+
+        follow.Progress += Speed * (float)delta;
+
+        Vector2 direccion = GetManualDirection(path, follow.Progress);
+
+        if (direccion.X > 0)
+            sprite.FlipH = false;
+        else if (direccion.X < 0)
+            sprite.FlipH = true;
+
+        // Comprobar si llegó al final
+        QuitarVidaBase();
     }
 
-    // Lógica de llegada a la base
-    float pathLength = path.Curve.GetBakedLength();
-    if (follow.Progress >= pathLength)
+    public void QuitarVidaBase()
     {
-        finished = true;
-        follow.QueueFree();
-        QueueFree();
+        float pathLength = path.Curve.GetBakedLength();
+
+        if (follow.Progress >= pathLength)
+        {
+            finished = true;
+
+            GD.Print("El enemigo ha llegado a la base y ha quitado " + DamageToBase + " de vida.");
+
+            follow.QueueFree();
+            QueueFree();
+        }
     }
-}
 
     public Vector2 GetManualDirection(Path2D path, float progress)
     {
         Curve2D curve = path.Curve;
+
         Vector2 posActual = curve.SampleBaked(progress);
-        
-        // Miramos 1 píxel más adelante
         Vector2 posSiguiente = curve.SampleBaked(progress + 1.0f);
-        
-        // Retornamos el vector normalizado (dirección pura)
+
         return (posSiguiente - posActual).Normalized();
     }
 }
