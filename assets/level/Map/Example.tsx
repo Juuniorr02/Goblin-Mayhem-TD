@@ -315,15 +315,27 @@
   <image source="../Tiles/castle_window_W.png" width="256" height="352"/>
  </tile>
  <tile id="104">
+  <properties>
+   <property name="can_build" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/dirt_center_N.png" width="256" height="352"/>
  </tile>
  <tile id="105">
+  <properties>
+   <property name="can_build" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/dirt_center_E.png" width="256" height="352"/>
  </tile>
  <tile id="106">
+  <properties>
+   <property name="can_build" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/dirt_center_S.png" width="256" height="352"/>
  </tile>
  <tile id="107">
+  <properties>
+   <property name="can_build" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/dirt_center_W.png" width="256" height="352"/>
  </tile>
  <tile id="108">
@@ -339,27 +351,51 @@
   <image source="../Tiles/dirt_low_W.png" width="256" height="352"/>
  </tile>
  <tile id="112">
+  <properties>
+   <property name="can_build" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/grass_center_N.png" width="256" height="352"/>
  </tile>
  <tile id="113">
+  <properties>
+   <property name="can_build" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/grass_center_E.png" width="256" height="352"/>
  </tile>
  <tile id="114">
+  <properties>
+   <property name="can_build" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/grass_center_S.png" width="256" height="352"/>
  </tile>
  <tile id="115">
+  <properties>
+   <property name="can_build" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/grass_center_W.png" width="256" height="352"/>
  </tile>
  <tile id="116">
+  <properties>
+   <property name="can_build" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/grass_corner_N.png" width="256" height="352"/>
  </tile>
  <tile id="117">
+  <properties>
+   <property name="can_build" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/grass_corner_E.png" width="256" height="352"/>
  </tile>
  <tile id="118">
+  <properties>
+   <property name="can_build" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/grass_corner_S.png" width="256" height="352"/>
  </tile>
  <tile id="119">
+  <properties>
+   <property name="can_build" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/grass_corner_W.png" width="256" height="352"/>
  </tile>
  <tile id="120">
@@ -975,15 +1011,27 @@
   <image source="../Tiles/structure_arch_W.png" width="256" height="352"/>
  </tile>
  <tile id="324">
+  <properties>
+   <property name="can_build" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/structure_high_N.png" width="256" height="352"/>
  </tile>
  <tile id="325">
+  <properties>
+   <property name="can_build" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/structure_high_E.png" width="256" height="352"/>
  </tile>
  <tile id="326">
+  <properties>
+   <property name="can_build" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/structure_high_S.png" width="256" height="352"/>
  </tile>
  <tile id="327">
+  <properties>
+   <property name="can_build" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/structure_high_W.png" width="256" height="352"/>
  </tile>
  <tile id="328">
@@ -1359,15 +1407,27 @@
   <image source="../Tiles/cliff_W.png" width="256" height="352"/>
  </tile>
  <tile id="452">
+  <properties>
+   <property name="can_build" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/dirt_corner_E.png" width="256" height="352"/>
  </tile>
  <tile id="453">
+  <properties>
+   <property name="can_build" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/dirt_corner_N.png" width="256" height="352"/>
  </tile>
  <tile id="454">
+  <properties>
+   <property name="can_build" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/dirt_corner_S.png" width="256" height="352"/>
  </tile>
  <tile id="455">
+  <properties>
+   <property name="can_build" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/dirt_corner_W.png" width="256" height="352"/>
  </tile>
  <tile id="456">
@@ -1515,15 +1575,27 @@
   <image source="../Tiles/furrow_W.png" width="256" height="352"/>
  </tile>
  <tile id="504">
+  <properties>
+   <property name="can_build" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/grass_block_E.png" width="256" height="352"/>
  </tile>
  <tile id="505">
+  <properties>
+   <property name="can_build" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/grass_block_N.png" width="256" height="352"/>
  </tile>
  <tile id="506">
+  <properties>
+   <property name="can_build" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/grass_block_S.png" width="256" height="352"/>
  </tile>
  <tile id="507">
+  <properties>
+   <property name="can_build" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/grass_block_W.png" width="256" height="352"/>
  </tile>
  <tile id="508">

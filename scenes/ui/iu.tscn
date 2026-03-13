@@ -442,7 +442,7 @@ theme_override_constants/margin_bottom = 5
 [node name="Cannon" type="PanelContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Cannon/Cannon/Cannon/Cannon"]
 layout_mode = 2
 
-[node name="Cannon" type="TextureButton" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Cannon/Cannon/Cannon/Cannon/Cannon"]
+[node name="Cannon" type="TextureButton" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Cannon/Cannon/Cannon/Cannon/Cannon" groups=["botones_torres"]]
 texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 4
@@ -804,3 +804,5 @@ texture_normal = ExtResource("1_t64rc")
 [node name="Right" type="VBoxContainer" parent="IU/IU/IU/Bottom"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[connection signal="pressed" from="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Cannon/Cannon/Cannon/Cannon/Cannon/Cannon" to="." method="OnCannonPressed"]
