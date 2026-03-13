@@ -44,7 +44,7 @@ public partial class Enemy : Node2D
             finished = true;
 
             GD.Print(Data.EnemyName + " llegó a la base y quitó " + Data.DamageToBase);
-
+            Base.Instance.Health -= Data.DamageToBase;
             follow.QueueFree();
             QueueFree();
         }
