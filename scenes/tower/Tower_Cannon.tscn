@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3]
-
-[ext_resource path="res://scripts/character/tower/TowerCannon.cs" type="Script" id="1"]
-[ext_resource path="res://assets/character/tower/Cañon-Sheet.png" type="Texture2D" id="1_4vgca"]
-
-[node name="Tower_Cannon" type="Sprite3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.034325927, 0, 0)
-texture = ExtResource("1_4vgca")
-script = ExtResource("1")

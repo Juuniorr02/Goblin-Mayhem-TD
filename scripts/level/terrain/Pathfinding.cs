@@ -5,8 +5,8 @@ public partial class Pathfinding : Node
 {
     public TileMapLayer tileMap;
 
-    private const float TILE_WIDTH = 232f;   // ancho isométrico
-    private const float TILE_HEIGHT = 110f;  // alto isométrico
+    public const float TILE_WIDTH = 232f;   // ancho isométrico
+    public const float TILE_HEIGHT = 110f;  // alto isométrico
 
     public override void _Ready()
     {
