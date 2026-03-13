@@ -18,6 +18,8 @@ config/features=PackedStringArray("4.5", "C#", "Mobile")
 
 GameSettings="*res://scripts/ui/GameSettings.cs"
 SaveSystem="*res://scripts/ui/SaveSystem.cs"
+Base="*res://scripts/character/base/Base.cs"
+Wave="*res://scripts/character/base/Wave.cs"
 
 [dotnet]
 
