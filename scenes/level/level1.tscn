@@ -1,10 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://da24bvxuerl1j"]
+[gd_scene load_steps=13 format=3 uid="uid://da24bvxuerl1j"]
 
 [ext_resource type="PackedScene" uid="uid://drtu3t2orl8sd" path="res://assets/level/Map/mapa1.tmx" id="1_nggc0"]
 [ext_resource type="Script" uid="uid://ccef7herjptu0" path="res://scripts/character/CameraRig.cs" id="2_gvmle"]
 [ext_resource type="PackedScene" uid="uid://dbeqdm5gepyap" path="res://scenes/character/enemy/enemy.tscn" id="2_pgq8h"]
 [ext_resource type="Script" uid="uid://ddtj2hn2hhtfd" path="res://scripts/character/enemy/EnemySpawner.cs" id="3_mg8dc"]
 [ext_resource type="Script" uid="uid://cubvhlo0alqh1" path="res://scripts/level/terrain/Pathfinding.cs" id="4_5yh3o"]
+[ext_resource type="Resource" uid="uid://7lteypp1glo" path="res://scripts/character/enemy/infoEnemy/golem.tres" id="5_q1drb"]
+[ext_resource type="Resource" uid="uid://cigq0efht168k" path="res://scripts/character/enemy/infoEnemy/goblinVolador.tres" id="6_oe6cc"]
 [ext_resource type="PackedScene" uid="uid://cor65fcesxg0a" path="res://scenes/ui/menu_pausa.tscn" id="7_wpisc"]
 [ext_resource type="PackedScene" uid="uid://ci612q8twcycd" path="res://scenes/ui/iu.tscn" id="8_w02j3"]
 
@@ -20,6 +22,12 @@ _data = {
 }
 point_count = 8
 
+[sub_resource type="Curve2D" id="Curve2D_wpisc"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 13821, 3305, 0, 0, 0, 0, 10243, 3113, 0, 0, 0, 0, 9611, 2912, 0, 0, 0, 0, 9301, 2986, 0, 0, 0, 0, 8736, 2750, 0, 0, 0, 0, 7747, 2353, 0, 0, 0, 0, 6826, 2293, 0, 0, 0, 0, 5594, 2340, 0, 0, 0, 0, 5034, 2227)
+}
+point_count = 9
+
 [node name="Level1" type="Node2D"]
 
 [node name="mapa1" parent="." instance=ExtResource("1_nggc0")]
@@ -27,18 +35,23 @@ point_count = 8
 [node name="Pathfinding" type="Node" parent="."]
 script = ExtResource("4_5yh3o")
 
-[node name="EnemySpawner" type="Node" parent="." node_paths=PackedStringArray("EnemiesContainer", "CaminoA", "CaminoB")]
+[node name="EnemySpawner" type="Node" parent="." node_paths=PackedStringArray("EnemiesContainer", "CaminoA", "CaminoB", "CaminoVolador")]
 script = ExtResource("3_mg8dc")
 EnemyScene = ExtResource("2_pgq8h")
 EnemiesContainer = NodePath("../EnemiesContainer")
 CaminoA = NodePath("CaminoA")
 CaminoB = NodePath("CaminoB")
+CaminoVolador = NodePath("CaminoVolador")
+EnemyTypes = Array[Object]([ExtResource("5_q1drb"), ExtResource("6_oe6cc")])
 
-[node name="CaminoA" type="Path2D" parent="EnemySpawner"]
+[node name="CaminoA" type="Path2D" parent="EnemySpawner" groups=["enemies"]]
 curve = SubResource("Curve2D_w02j3")
 
-[node name="CaminoB" type="Path2D" parent="EnemySpawner"]
+[node name="CaminoB" type="Path2D" parent="EnemySpawner" groups=["enemies"]]
 curve = SubResource("Curve2D_q1drb")
+
+[node name="CaminoVolador" type="Path2D" parent="EnemySpawner" groups=["Volador"]]
+curve = SubResource("Curve2D_wpisc")
 
 [node name="EnemiesContainer" type="Node2D" parent="."]
 

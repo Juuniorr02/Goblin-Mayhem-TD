@@ -1,0 +1,73 @@
+[gd_scene load_steps=11 format=3 uid="uid://cfini72hfkjsy"]
+
+[ext_resource type="Script" uid="uid://djm0046nxvish" path="res://scripts/character/enemy/Enemy.cs" id="1_4d1o2"]
+[ext_resource type="Texture2D" uid="uid://b1bxse6y3rl6r" path="res://assets/character/enemy/Angel-Sheet.png" id="1_y5fst"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4d1o2"]
+atlas = ExtResource("1_y5fst")
+region = Rect2(0, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bgsfn"]
+atlas = ExtResource("1_y5fst")
+region = Rect2(96, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xbksk"]
+atlas = ExtResource("1_y5fst")
+region = Rect2(192, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g4shs"]
+atlas = ExtResource("1_y5fst")
+region = Rect2(288, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2sd62"]
+atlas = ExtResource("1_y5fst")
+region = Rect2(384, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x53nx"]
+atlas = ExtResource("1_y5fst")
+region = Rect2(480, 0, 96, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gw8ua"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4d1o2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bgsfn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xbksk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g4shs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2sd62")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x53nx")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 11.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pap0l"]
+size = Vector2(11, 28)
+
+[node name="GoblinVolador" type="CharacterBody2D" node_paths=PackedStringArray("sprite") groups=["Volador", "enemies"]]
+script = ExtResource("1_4d1o2")
+sprite = NodePath("AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_gw8ua")
+animation = &"walk"
+autoplay = "walk"
+frame_progress = 0.69522965
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_pap0l")
