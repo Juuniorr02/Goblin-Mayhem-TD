@@ -7,6 +7,7 @@ public partial class EnemySpawner : Node
 
     [Export] public Path2D CaminoA;
     [Export] public Path2D CaminoB;
+    [Export] public Path2D CaminoAcuatico;
     [Export] public Path2D CaminoVolador;
 
     [Export] public EnemyData[] EnemyTypes;
@@ -59,6 +60,8 @@ private void SpawnEnemy()
 
     if (data.IsFlying)
         selectedPath = CaminoVolador;
+    else if (data.IsAquatic)
+        selectedPath = CaminoAcuatico;
     else
         selectedPath = GD.Randf() < 0.5f ? CaminoA : CaminoB;
 

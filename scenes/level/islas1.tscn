@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bbhtlt0ao6cq4"]
+[gd_scene load_steps=14 format=3 uid="uid://bbhtlt0ao6cq4"]
 
 [ext_resource type="PackedScene" uid="uid://dbpo1475xjqsm" path="res://assets/level/Map/islas1.tmx" id="1_rm5c3"]
 [ext_resource type="Script" uid="uid://cubvhlo0alqh1" path="res://scripts/level/terrain/Pathfinding.cs" id="2_ruufv"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://ci612q8twcycd" path="res://scenes/ui/iu.tscn" id="5_xakld"]
 [ext_resource type="Script" uid="uid://ccef7herjptu0" path="res://scripts/character/CameraRig.cs" id="6_gxakk"]
 [ext_resource type="PackedScene" uid="uid://cor65fcesxg0a" path="res://scenes/ui/menu_pausa.tscn" id="7_icjwj"]
+[ext_resource type="Resource" uid="uid://dawwh4paoh1f2" path="res://scripts/character/enemy/infoEnemy/goblinTronco.tres" id="7_j2psb"]
 
 [sub_resource type="Curve2D" id="Curve2D_rm5c3"]
 _data = {
@@ -35,14 +36,14 @@ point_count = 2
 [node name="Pathfinding" type="Node" parent="."]
 script = ExtResource("2_ruufv")
 
-[node name="EnemySpawner" type="Node" parent="." node_paths=PackedStringArray("EnemiesContainer", "CaminoA", "CaminoB", "CaminoVolador")]
+[node name="EnemySpawner" type="Node" parent="." node_paths=PackedStringArray("EnemiesContainer", "CaminoA", "CaminoAcuatico", "CaminoVolador")]
 script = ExtResource("3_5oaqd")
 EnemyScene = ExtResource("4_j2psb")
 EnemiesContainer = NodePath("../EnemiesContainer")
 CaminoA = NodePath("CaminoA")
-CaminoB = NodePath("CaminoAcuatico")
+CaminoAcuatico = NodePath("CaminoAcuatico")
 CaminoVolador = NodePath("CaminoVolador")
-EnemyTypes = Array[Object]([ExtResource("5_5oaqd"), ExtResource("5_ruufv")])
+EnemyTypes = Array[Object]([ExtResource("5_5oaqd"), ExtResource("5_ruufv"), ExtResource("7_j2psb")])
 
 [node name="CaminoA" type="Path2D" parent="EnemySpawner"]
 curve = SubResource("Curve2D_rm5c3")
