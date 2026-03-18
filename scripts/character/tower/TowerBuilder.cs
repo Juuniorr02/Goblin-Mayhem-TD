@@ -3,7 +3,8 @@ using System.Collections.Generic;
 
 public partial class TowerBuilder : Node2D
 {
-    public TileMapLayer BuildableTilemap; 
+    // Lista para almacenar todas las capas que encuentre YATI
+    private List<TileMapLayer> allLayers = new();
 
     [Export] public Node2D TowersParent;              
     [Export] public PackedScene GhostTowerScene;       
@@ -12,14 +13,32 @@ public partial class TowerBuilder : Node2D
     [Export] public Vector2 GhostOffset = new Vector2(0, 0); 
 
     private string currentTowerName = "";
+    private string lastLayerName = "";
     private Node2D ghostInstance;
     private Dictionary<Vector2I, Node2D> occupiedTiles = new();
 
     public override void _Ready()
     {
-        // 1. Buscar el Mapa
-        if (BuildableTilemap == null)
-            BuildableTilemap = GetTree().Root.FindChild("Suelo", true, false) as TileMapLayer;
+        // 1. Buscar el nodo raíz del mapa generado por YATI
+        // AJUSTE: Cambia "Mapa" por el nombre del nodo principal de tu .tmx en la escena
+        Node mapRoot = GetTree().Root.FindChild("mapa2", true, false);
+
+        if (mapRoot != null)
+        {
+            // Buscamos todas las capas (TileMapLayer) que sean hijas del mapa
+            foreach (Node child in mapRoot.GetChildren())
+            {
+                if (child is TileMapLayer layer)
+                {
+                    allLayers.Add(layer);
+                    GD.Print($"Capa detectada: {layer.Name}");
+                }
+            }
+        }
+        else
+        {
+            GD.PrintErr("ERROR: No se encontró el nodo raíz del mapa. Revisa el nombre en FindChild.");
+        }
 
         // 2. Buscar el Botón por grupo
         var botones = GetTree().GetNodesInGroup("botones_torres");
@@ -28,11 +47,11 @@ public partial class TowerBuilder : Node2D
             if (nodo is TextureButton btn && btn.Name == "Cannon")
             {
                 btn.Pressed += OnCannonPressed;
-                GD.Print("Botón Cannon conectado por grupo.");
+                GD.Print("Botón Cannon conectado.");
             }
         }
 
-        // 3. Ghost
+        // 3. Configurar Ghost
         if (GhostTowerScene != null)
         {
             ghostInstance = GhostTowerScene.Instantiate<Node2D>();
@@ -43,11 +62,12 @@ public partial class TowerBuilder : Node2D
 
     public override void _Process(double delta)
     {
-        if (ghostInstance == null || !ghostInstance.Visible || BuildableTilemap == null) return;
+        if (ghostInstance == null || !ghostInstance.Visible || allLayers.Count == 0) return;
 
-        Vector2I tilePos = GetTileUnderMouse();
-        Vector2 localPos = BuildableTilemap.MapToLocal(tilePos);
-        ghostInstance.GlobalPosition = BuildableTilemap.ToGlobal(localPos) + GhostOffset;
+        // Usamos la primera capa solo para calcular la posición de la rejilla (suelen ser iguales)
+        Vector2I tilePos = GetTileUnderMouse(allLayers[0]);
+        Vector2 localPos = allLayers[0].MapToLocal(tilePos);
+        ghostInstance.GlobalPosition = allLayers[0].ToGlobal(localPos) + GhostOffset;
 
         ghostInstance.Modulate = CanBuildOnTile(tilePos) ? new Color(0, 1, 0, 0.5f) : new Color(1, 0, 0, 0.5f);
     }
@@ -58,7 +78,6 @@ public partial class TowerBuilder : Node2D
         {
             if (!string.IsNullOrEmpty(currentTowerName))
             {
-                GD.Print("--- Intento de construcción detectado ---");
                 AttemptBuild();
             }
         }
@@ -66,22 +85,21 @@ public partial class TowerBuilder : Node2D
 
     private void AttemptBuild()
     {
-        if (BuildableTilemap == null) return;
+        if (allLayers.Count == 0) return;
 
-        Vector2I tilePos = GetTileUnderMouse();
-        GD.Print($"1. Posición clicada: {tilePos}");
+        Vector2I tilePos = GetTileUnderMouse(allLayers[0]);
 
         if (!CanBuildOnTile(tilePos))
         {
-            GD.Print("2. RECHAZADO: No se cumplen las condiciones de construcción.");
+            GD.Print("Construcción rechazada: No permitido o casilla ocupada.");
             return;
         }
 
         if (TowersScenes.TryGetValue(currentTowerName, out PackedScene scene))
         {
             Node2D towerInstance = scene.Instantiate<Node2D>();
-            Vector2 localPos = BuildableTilemap.MapToLocal(tilePos);
-            towerInstance.GlobalPosition = BuildableTilemap.ToGlobal(localPos) + GhostOffset;
+            Vector2 localPos = allLayers[0].MapToLocal(tilePos);
+            towerInstance.GlobalPosition = allLayers[0].ToGlobal(localPos) + GhostOffset;
 
             TowersParent.AddChild(towerInstance);
             occupiedTiles[tilePos] = towerInstance;
@@ -89,56 +107,62 @@ public partial class TowerBuilder : Node2D
             if (towerInstance.HasMethod("SetEnemiesContainer"))
                 towerInstance.Call("SetEnemiesContainer", EnemiesContainer);
             
-            GD.Print($"3. ¡ÉXITO! Torre {currentTowerName} construida.");
-        }
-        else
-        {
-            GD.Print($"2. ERROR: '{currentTowerName}' no está en el diccionario del Inspector.");
+            GD.Print($"¡Torre {currentTowerName} construida!");
         }
     }
 
-    private Vector2I GetTileUnderMouse()
+    private Vector2I GetTileUnderMouse(TileMapLayer layer)
     {
         Vector2 mousePos = GetGlobalMousePosition();
-        Vector2 localPos = BuildableTilemap.ToLocal(mousePos);
-        return BuildableTilemap.LocalToMap(localPos);
+        Vector2 localPos = layer.ToLocal(mousePos);
+        return layer.LocalToMap(localPos);
     }
 
-    private bool CanBuildOnTile(Vector2I tilePos)
+ private bool CanBuildOnTile(Vector2I tilePos)
+{
+    // Recorremos de arriba (capa 5) hacia abajo (Suelo)
+    for (int i = allLayers.Count - 1; i >= 0; i--)
     {
-        if (BuildableTilemap == null) return false;
+        TileMapLayer layer = allLayers[i];
+        TileData data = layer.GetCellTileData(tilePos);
 
-        TileData data = BuildableTilemap.GetCellTileData(tilePos);
-        if (data == null) 
+        // Si no hay nada en esta capa (aire), bajamos a la siguiente
+        if (data == null) continue;
+
+        // --- LÓGICA DE PRINT (Solo si cambia la capa) ---
+        if (layer.Name != lastLayerName)
         {
-            GD.Print("   - Fallo: Celda sin TileData (vacía)");
-            return false;
+            lastLayerName = layer.Name;
+            GD.Print($"[Mouse] Objeto detectado en Capa: {lastLayerName}");
         }
 
-        bool canBuild = false;
-
-        // Comprobación de Metadata (Tiled)
-        if (data.HasMeta("can_build"))
+        // Buscamos la propiedad en el TileSet (sin prefijo data_)
+        int layerIndex = layer.TileSet.GetCustomDataLayerByName("can_build");
+        
+        if (layerIndex != -1)
         {
-            canBuild = data.GetMeta("can_build").AsBool();
-            GD.Print($"   - Metadata 'can_build' encontrada: {canBuild}");
-        }
-        else 
-        {
-            GD.Print("   - Fallo: El tile no tiene Metadata 'can_build'.");
-            foreach (var meta in data.GetMetaList()) GD.Print($"     * Meta disponible: {meta}");
+            Variant buildData = data.GetCustomData("can_build");
+            bool canBuild = buildData.VariantType != Variant.Type.Nil && buildData.AsBool();
+            
+            // SI EL OBJETO MÁS ALTO ES CONSTRUIBLE:
+            if (canBuild)
+            {
+                // Solo permitimos si no hay otra torre ya puesta
+                return !occupiedTiles.ContainsKey(tilePos);
+            }
         }
 
-        if (occupiedTiles.ContainsKey(tilePos)) GD.Print("   - Fallo: Tile ya ocupado.");
-
-        return canBuild && !occupiedTiles.ContainsKey(tilePos);
+        // Si el código llega aquí, significa que ha encontrado un Tile (como la roca) 
+        // pero NO tiene permiso para construir. 
+        // RETORNAMOS FALSE INMEDIATAMENTE: No dejamos que el código mire las capas de abajo.
+        return false; 
     }
 
-    public void OnCannonPressed()
-    {
-        GD.Print("Acción: Botón Cannon pulsado.");
-        SelectTower("Cannon"); 
-    }
+    return false; // No hay nada en ninguna capa
+}
+
+
+    public void OnCannonPressed() => SelectTower("Cannon");
 
     public void SelectTower(string towerName)
     {

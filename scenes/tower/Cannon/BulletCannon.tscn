@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhkjyqx4q14ja"]
+
+[ext_resource type="Texture2D" uid="uid://bhg3mri134xqo" path="res://assets/character/tower/Cannon/BulletCannon.png" id="1_bxw6y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b4w28"]
+
+[node name="BulletCannon" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_bxw6y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_b4w28")
