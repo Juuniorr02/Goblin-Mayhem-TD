@@ -58,7 +58,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1oupt"]
@@ -71,7 +71,7 @@ BulletScene = ExtResource("2_6f5h2")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_5l07i")
-frame_progress = 0.99002385
+frame_progress = 0.4960929
 
 [node name="Muzzle" type="Marker2D" parent="."]
 
