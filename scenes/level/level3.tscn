@@ -1,0 +1,87 @@
+[gd_scene load_steps=16 format=3 uid="uid://c04ivpxt3pkep"]
+
+[ext_resource type="PackedScene" uid="uid://bboh74w07n6xi" path="res://assets/level/Map/pantano.tmx" id="1_mawj5"]
+[ext_resource type="Script" uid="uid://cubvhlo0alqh1" path="res://scripts/level/terrain/Pathfinding.cs" id="2_hl87u"]
+[ext_resource type="Script" uid="uid://ddtj2hn2hhtfd" path="res://scripts/character/enemy/EnemySpawner.cs" id="3_prun6"]
+[ext_resource type="PackedScene" uid="uid://dbeqdm5gepyap" path="res://scenes/character/enemy/enemy.tscn" id="4_s654b"]
+[ext_resource type="Resource" uid="uid://7lteypp1glo" path="res://scripts/character/enemy/infoEnemy/golem.tres" id="5_pm7bs"]
+[ext_resource type="Resource" uid="uid://cigq0efht168k" path="res://scripts/character/enemy/infoEnemy/goblinVolador.tres" id="6_amlx2"]
+[ext_resource type="Resource" uid="uid://dawwh4paoh1f2" path="res://scripts/character/enemy/infoEnemy/goblinTronco.tres" id="7_wgq0p"]
+[ext_resource type="Script" uid="uid://dlfq6grfckhot" path="res://scripts/character/tower/TowerBuilder.cs" id="8_sit12"]
+[ext_resource type="PackedScene" uid="uid://ieo0rfx4mn8y" path="res://scenes/tower/Cannon/Cannon.tscn" id="9_0k37d"]
+[ext_resource type="PackedScene" uid="uid://ci612q8twcycd" path="res://scenes/ui/iu.tscn" id="10_v8yas"]
+[ext_resource type="Script" uid="uid://ccef7herjptu0" path="res://scripts/character/CameraRig.cs" id="11_rt8em"]
+[ext_resource type="PackedScene" uid="uid://cor65fcesxg0a" path="res://scenes/ui/menu_pausa.tscn" id="12_y753q"]
+
+[sub_resource type="Curve2D" id="Curve2D_mawj5"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 6499, 5011, 0, 0, 0, 0, 6026, 4790, 0, 0, 0, 0, 6237, 4690, 0, 0, 0, 0, 4365, 3796, 0, 0, 0, 0, 4176, 3920, 0, 0, 0, 0, 3930, 3806, 0, 0, 0, 0, 4145, 3692, 0, 0, 0, 0, 2543, 2946, 0, 0, 0, 0, 3461, 2487, 0, 0, 0, 0, 5781, 3589, 0, 0, 0, 0, 5218, 3872, 0, 0, 0, 0, 5681, 4103, 0, 0, 0, 0, 6823, 3516, 0, 0, 0, 0, 4258, 2332, 0, 0, 0, 0, 6095, 1472)
+}
+point_count = 15
+
+[sub_resource type="Curve2D" id="Curve2D_hl87u"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 7566, 5070, 0, 0, 0, 0, 8550, 4593, 0, 0, 0, 0, 8125, 4376, 0, 0, 0, 0, 8570, 4158, 0, 0, 0, 0, 8802, 4255, 0, 0, 0, 0, 8691, 4327, 0, 0, 0, 0, 8781, 4372, 0, 0, 0, 0, 9962, 3813, 0, 0, 0, 0, 9268, 3485, 0, 0, 0, 0, 7769, 4206, 0, 0, 0, 0, 5805, 3264, 0, 0, 0, 0, 7186, 2608, 0, 0, 0, 0, 8460, 3202, 0, 0, 0, 0, 10545, 2204, 0, 0, 0, 0, 10079, 2011, 0, 0, 0, 0, 9264, 2380, 0, 0, 0, 0, 7324, 1455)
+}
+point_count = 17
+
+[sub_resource type="Curve2D" id="Curve2D_prun6"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 5943, 5204, 0, 0, 0, 0, 2582, 3563, 0, 0, 0, 0, 6688, 1587)
+}
+point_count = 3
+
+[node name="Pantano" type="Node2D"]
+
+[node name="pantano" parent="." instance=ExtResource("1_mawj5")]
+
+[node name="Pathfinding" type="Node" parent="."]
+script = ExtResource("2_hl87u")
+
+[node name="EnemySpawner" type="Node" parent="." node_paths=PackedStringArray("EnemiesContainer", "CaminoA", "CaminoAcuatico", "CaminoVolador")]
+script = ExtResource("3_prun6")
+EnemyScene = ExtResource("4_s654b")
+EnemiesContainer = NodePath("../EnemiesContainer")
+CaminoA = NodePath("CaminoA")
+CaminoAcuatico = NodePath("CaminoAcuatico")
+CaminoVolador = NodePath("CaminoVolador")
+EnemyTypes = Array[Object]([ExtResource("5_pm7bs"), ExtResource("6_amlx2"), ExtResource("7_wgq0p")])
+
+[node name="CaminoA" type="Path2D" parent="EnemySpawner"]
+curve = SubResource("Curve2D_mawj5")
+
+[node name="CaminoAcuatico" type="Path2D" parent="EnemySpawner"]
+curve = SubResource("Curve2D_hl87u")
+
+[node name="CaminoVolador" type="Path2D" parent="EnemySpawner"]
+curve = SubResource("Curve2D_prun6")
+
+[node name="EnemiesContainer" type="Node2D" parent="."]
+
+[node name="Towers" type="Node2D" parent="." node_paths=PackedStringArray("TowersParent", "EnemiesContainer")]
+script = ExtResource("8_sit12")
+TowersParent = NodePath(".")
+GhostTowerScene = ExtResource("9_0k37d")
+EnemiesContainer = NodePath("../EnemiesContainer")
+TowersScenes = Dictionary[String, PackedScene]({
+"Cannon": ExtResource("9_0k37d")
+})
+
+[node name="IU" parent="." node_paths=PackedStringArray("spawner") instance=ExtResource("10_v8yas")]
+spawner = NodePath("../EnemySpawner")
+metadata/_edit_use_anchors_ = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(6936, 570)
+zoom = Vector2(0.485, 0.485)
+limit_enabled = false
+limit_left = 0
+limit_top = 0
+limit_right = 1145
+limit_bottom = 555
+script = ExtResource("11_rt8em")
+MoveSpeed = 1400.0
+MinZoom = 0.01
+MaxZoom = 6.0
+
+[node name="menu_pausa" parent="." instance=ExtResource("12_y753q")]
