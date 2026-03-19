@@ -23,6 +23,7 @@ public partial class TowerBuilder : Node2D
         // AJUSTE: Cambia "Mapa" por el nombre del nodo principal de tu .tmx en la escena
         Node mapRoot = GetTree().Root.FindChild("mapa2", true, false);
         Node mapRoot2 = GetTree().Root.FindChild("islas1", true, false);
+        Node mapRoot3 = GetTree().Root.FindChild("pantano", true, false);
 
         if (mapRoot != null)
         {
@@ -38,7 +39,7 @@ public partial class TowerBuilder : Node2D
         }
         else
         {
-            GD.PrintErr("ERROR: No se encontró el nodo raíz del mapa. Revisa el nombre en FindChild.");
+            GD.PrintErr("ERROR: No se encontró el nodo raíz del mapa. Revisa el nombre en FindChild.(mapa2)");
         }
 
         if (mapRoot2 != null)
@@ -55,7 +56,23 @@ public partial class TowerBuilder : Node2D
         }
         else
         {
-            GD.PrintErr("ERROR: No se encontró el nodo raíz del mapa. Revisa el nombre en FindChild.");
+            GD.PrintErr("ERROR: No se encontró el nodo raíz del mapa. Revisa el nombre en FindChild.(islas1)");
+        }
+        if (mapRoot3 != null)
+        {
+            // Buscamos todas las capas (TileMapLayer) que sean hijas del mapa
+            foreach (Node child in mapRoot3.GetChildren())
+            {
+                if (child is TileMapLayer layer)
+                {
+                    allLayers.Add(layer);
+                    GD.Print($"Capa detectada: {layer.Name}");
+                }
+            }
+        }
+        else
+        {
+            GD.PrintErr("ERROR: No se encontró el nodo raíz del mapa. Revisa el nombre en FindChild.(pantano)");
         }
 
         // 2. Buscar el Botón por grupo
