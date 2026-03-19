@@ -369,27 +369,15 @@
   <image source="../Tiles/grass_center_W.png" width="256" height="352"/>
  </tile>
  <tile id="116">
-  <properties>
-   <property name="data_can_build" type="bool" value="true"/>
-  </properties>
   <image source="../Tiles/grass_corner_N.png" width="256" height="352"/>
  </tile>
  <tile id="117">
-  <properties>
-   <property name="data_can_build" type="bool" value="true"/>
-  </properties>
   <image source="../Tiles/grass_corner_E.png" width="256" height="352"/>
  </tile>
  <tile id="118">
-  <properties>
-   <property name="data_can_build" type="bool" value="true"/>
-  </properties>
   <image source="../Tiles/grass_corner_S.png" width="256" height="352"/>
  </tile>
  <tile id="119">
-  <properties>
-   <property name="data_can_build" type="bool" value="true"/>
-  </properties>
   <image source="../Tiles/grass_corner_W.png" width="256" height="352"/>
  </tile>
  <tile id="120">
