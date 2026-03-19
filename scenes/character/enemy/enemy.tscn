@@ -8,6 +8,9 @@
 script = ExtResource("2_735o0")
 metadata/_custom_type_script = "uid://dtfsd6sb6u7oe"
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ygshw"]
+size = Vector2(11, 28)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_735o0"]
 atlas = ExtResource("2_lk0iw")
 region = Rect2(0, 0, 56, 56)
@@ -58,14 +61,16 @@ animations = [{
 "speed": 7.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ygshw"]
-size = Vector2(11, 28)
-
 [node name="Node2D" type="CharacterBody2D" node_paths=PackedStringArray("sprite") groups=["enemies"]]
 scale = Vector2(2.1, 2.1)
 script = ExtResource("2_4gyqm")
 sprite = NodePath("AnimatedSprite2D")
 Data = SubResource("Resource_4kjq8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2.0000002)
+scale = Vector2(1.0000001, 1.0000001)
+shape = SubResource("RectangleShape2D_ygshw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -74,7 +79,3 @@ animation = &"walk"
 autoplay = "walk"
 frame_progress = 0.4266486
 flip_h = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D"]
-position = Vector2(0, 2)
-shape = SubResource("RectangleShape2D_ygshw")

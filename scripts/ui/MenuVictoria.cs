@@ -1,0 +1,108 @@
+using Godot;
+
+public partial class MenuVictoria : CanvasLayer
+{
+    private Button btnSiguiente;
+    private Button btnVolver;
+    private Button btnReiniciar;
+	private int waveActual;
+
+	private int winningWave;
+
+	[Export]public int WinningWave;
+
+    private bool isPaused = false;
+
+    public override void _Ready()
+    {
+        ProcessMode = ProcessModeEnum.Always;
+
+        btnSiguiente = GetNodeOrNull<Button>("PanelContainer/VBoxContainer/botones/siguiente");
+        btnVolver = GetNodeOrNull<Button>("PanelContainer/VBoxContainer/botones/volver");
+        btnReiniciar = GetNodeOrNull<Button>("PanelContainer/VBoxContainer/botones/reiniciar");
+
+        ConfigurarBoton(btnSiguiente);
+        ConfigurarBoton(btnVolver);
+        ConfigurarBoton(btnReiniciar);
+
+        if (btnSiguiente != null)
+            btnSiguiente.Pressed += OnSiguiente;
+
+        if (btnReiniciar != null)
+            btnReiniciar.Pressed += OnReiniciar;
+
+        if (btnVolver != null)
+            btnVolver.Pressed += OnGuardarSalir;
+
+        Visible = false;
+    }
+
+	public override void _Process(double delta)
+    {
+        UpdateMenuVictoria();
+    }
+
+    private void ConfigurarBoton(Button b)
+    {
+        if (b == null) return;
+
+        b.ProcessMode = ProcessModeEnum.Always;
+        b.MouseFilter = Control.MouseFilterEnum.Stop;
+    }
+
+    public void UpdateMenuVictoria()
+	{
+		waveActual = Wave.Instance.CurrentWave;
+		
+		if (Wave.Instance.CurrentWave == WinningWave)
+		{
+			isPaused = true;
+        	GetTree().Paused = true;
+        	Visible = true;
+        	Input.MouseMode = Input.MouseModeEnum.Visible;
+		}
+	}
+
+    private void Pausar()
+    {
+        isPaused = true;
+        GetTree().Paused = true;
+        Visible = true;
+        Input.MouseMode = Input.MouseModeEnum.Visible;
+    }
+
+    private void QuitarPausa()
+    {
+        isPaused = false;
+        GetTree().Paused = false;
+        Visible = false;
+    }
+
+    private void OnReiniciar()
+	{
+		QuitarPausa();
+        Base.Instance.RepairBase();
+        Wave.Instance.ResetWaves();
+    	GD.Print("Reiniciar partida");
+    	GetTree().ReloadCurrentScene();
+	}
+
+	private void OnGuardarSalir()
+	{
+		QuitarPausa();
+    	GD.Print("Guardar y salir");
+
+		var save = GetNode<SaveSystem>("/root/SaveSystem");
+    	save.SaveGame();
+
+    	QuitarPausa();
+    	Input.MouseMode = Input.MouseModeEnum.Visible;
+    	GetTree().ChangeSceneToFile("res://scenes/ui/Menu.tscn");
+	}
+
+	private async void OnSiguiente()
+	{
+		Input.MouseMode = Input.MouseModeEnum.Visible;
+    	GetTree().ChangeSceneToFile("res://scenes/level/aldea.tscn");
+	}
+}

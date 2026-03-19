@@ -8,6 +8,9 @@
 script = ExtResource("2_bgsfn")
 metadata/_custom_type_script = "uid://dtfsd6sb6u7oe"
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pap0l"]
+size = Vector2(11, 28)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_4d1o2"]
 atlas = ExtResource("1_y5fst")
 region = Rect2(0, 0, 96, 64)
@@ -58,13 +61,14 @@ animations = [{
 "speed": 11.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pap0l"]
-size = Vector2(11, 28)
-
 [node name="GoblinVolador" type="CharacterBody2D" node_paths=PackedStringArray("sprite") groups=["Volador", "enemies"]]
 script = ExtResource("1_4d1o2")
 sprite = NodePath("AnimatedSprite2D")
 Data = SubResource("Resource_bgsfn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_pap0l")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -73,7 +77,3 @@ animation = &"walk"
 autoplay = "walk"
 frame_progress = 0.69522965
 flip_h = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D"]
-position = Vector2(0, 2)
-shape = SubResource("RectangleShape2D_pap0l")

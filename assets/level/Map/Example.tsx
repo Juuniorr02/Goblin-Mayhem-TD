@@ -537,15 +537,27 @@
   <image source="../Tiles/grass_riverCrossing_W.png" width="256" height="352"/>
  </tile>
  <tile id="172">
+  <properties>
+   <property name="data_can_build_boat" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/grass_riverEnd_N.png" width="256" height="352"/>
  </tile>
  <tile id="173">
+  <properties>
+   <property name="data_can_build_boat" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/grass_riverEnd_E.png" width="256" height="352"/>
  </tile>
  <tile id="174">
+  <properties>
+   <property name="data_can_build_boat" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/grass_riverEnd_S.png" width="256" height="352"/>
  </tile>
  <tile id="175">
+  <properties>
+   <property name="data_can_build_boat" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/grass_riverEnd_W.png" width="256" height="352"/>
  </tile>
  <tile id="176">
@@ -1018,19 +1030,19 @@
  </tile>
  <tile id="324">
   <properties>
-   <property name="data_can_build" type="bool" value="true"/>
+   <property name="data_can_build_atun" type="bool" value="true"/>
   </properties>
   <image source="../Tiles/structure_high_N.png" width="256" height="352"/>
  </tile>
  <tile id="325">
   <properties>
-   <property name="data_can_build" type="bool" value="true"/>
+   <property name="data_can_build_atun" type="bool" value="true"/>
   </properties>
   <image source="../Tiles/structure_high_E.png" width="256" height="352"/>
  </tile>
  <tile id="326">
   <properties>
-   <property name="data_can_build" type="bool" value="true"/>
+   <property name="data_can_build_atun" type="bool" value="true"/>
   </properties>
   <image source="../Tiles/structure_high_S.png" width="256" height="352"/>
  </tile>
@@ -1074,12 +1086,21 @@
   <image source="../Tiles/tree_single_W.png" width="256" height="352"/>
  </tile>
  <tile id="340">
+  <properties>
+   <property name="data_can_build_boat" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/water_center_N.png" width="256" height="352"/>
  </tile>
  <tile id="341">
+  <properties>
+   <property name="data_can_build_boat" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/water_center_E.png" width="256" height="352"/>
  </tile>
  <tile id="342">
+  <properties>
+   <property name="data_can_build_boat" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/water_center_S.png" width="256" height="352"/>
  </tile>
  <tile id="343">

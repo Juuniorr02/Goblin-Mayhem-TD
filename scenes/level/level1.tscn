@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://da24bvxuerl1j"]
+[gd_scene load_steps=15 format=3 uid="uid://da24bvxuerl1j"]
 
 [ext_resource type="PackedScene" uid="uid://drtu3t2orl8sd" path="res://assets/level/Map/mapa1.tmx" id="1_nggc0"]
 [ext_resource type="Script" uid="uid://ccef7herjptu0" path="res://scripts/character/CameraRig.cs" id="2_gvmle"]
@@ -9,6 +9,8 @@
 [ext_resource type="Resource" uid="uid://cigq0efht168k" path="res://scripts/character/enemy/infoEnemy/goblinVolador.tres" id="6_oe6cc"]
 [ext_resource type="PackedScene" uid="uid://cor65fcesxg0a" path="res://scenes/ui/menu_pausa.tscn" id="7_wpisc"]
 [ext_resource type="PackedScene" uid="uid://ci612q8twcycd" path="res://scenes/ui/iu.tscn" id="8_w02j3"]
+[ext_resource type="PackedScene" uid="uid://c6o5datpm682p" path="res://scenes/ui/menu_victoria.tscn" id="10_m2gd4"]
+[ext_resource type="PackedScene" uid="uid://c387degtgk6i6" path="res://scenes/ui/menu_derrota.tscn" id="11_jawes"]
 
 [sub_resource type="Curve2D" id="Curve2D_w02j3"]
 _data = {
@@ -43,6 +45,8 @@ CaminoA = NodePath("CaminoA")
 CaminoB = NodePath("CaminoB")
 CaminoVolador = NodePath("CaminoVolador")
 EnemyTypes = Array[Object]([ExtResource("5_q1drb"), ExtResource("6_oe6cc")])
+SpawnInterval = 0.5
+EnemiesPerWave = 100
 
 [node name="CaminoA" type="Path2D" parent="EnemySpawner" groups=["enemies"]]
 curve = SubResource("Curve2D_w02j3")
@@ -74,3 +78,8 @@ MinZoom = 0.01
 MaxZoom = 6.0
 
 [node name="menu_pausa" parent="." instance=ExtResource("7_wpisc")]
+
+[node name="menu_victoria" parent="." instance=ExtResource("10_m2gd4")]
+WinningWave = 3
+
+[node name="menu_derrota" parent="." instance=ExtResource("11_jawes")]

@@ -15,4 +15,9 @@ public partial class Wave : Node
     {
         CurrentWave++;
     }
+
+    public void ResetWaves()
+    {
+        CurrentWave = 0;
+    }
 }
