@@ -22,11 +22,29 @@ public partial class TowerBuilder : Node2D
         // 1. Buscar el nodo raíz del mapa generado por YATI
         // AJUSTE: Cambia "Mapa" por el nombre del nodo principal de tu .tmx en la escena
         Node mapRoot = GetTree().Root.FindChild("mapa2", true, false);
+        Node mapRoot2 = GetTree().Root.FindChild("islas1", true, false);
 
         if (mapRoot != null)
         {
             // Buscamos todas las capas (TileMapLayer) que sean hijas del mapa
             foreach (Node child in mapRoot.GetChildren())
+            {
+                if (child is TileMapLayer layer)
+                {
+                    allLayers.Add(layer);
+                    GD.Print($"Capa detectada: {layer.Name}");
+                }
+            }
+        }
+        else
+        {
+            GD.PrintErr("ERROR: No se encontró el nodo raíz del mapa. Revisa el nombre en FindChild.");
+        }
+
+        if (mapRoot2 != null)
+        {
+            // Buscamos todas las capas (TileMapLayer) que sean hijas del mapa
+            foreach (Node child in mapRoot2.GetChildren())
             {
                 if (child is TileMapLayer layer)
                 {

@@ -7,6 +7,7 @@
     "file.lastUsedOpenFilter": "Todos los archivos (*)",
     "fileStates": {
         "Map/Example.tsx": {
+            "dynamicWrapping": true,
             "scaleInDock": 0.25
         },
         "Map/islas1.tmx": {
