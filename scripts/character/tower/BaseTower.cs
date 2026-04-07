@@ -14,35 +14,72 @@ public abstract partial class BaseTower : Node2D
 
     public override void _Ready()
     {
-        muzzle = GetNode<Marker2D>("Muzzle");
-        shootTimer = GetNode<Timer>("ShootTimer");
-        
+        muzzle = GetNodeOrNull<Marker2D>("Muzzle");
+        shootTimer = GetNodeOrNull<Timer>("ShootTimer");
+
+        if (muzzle == null || shootTimer == null)
+        {
+            GD.PrintErr("Tower setup incorrect: falta Muzzle o ShootTimer");
+            return;
+        }
+
         var area = GetNode<Area2D>("DetectionRange");
-        area.BodyEntered += (body) => { if (body is Node2D n) enemiesInRange.Add(n); };
-        area.BodyExited += (body) => { if (body is Node2D n) enemiesInRange.Remove(n); };
-        
+
+        area.BodyEntered += (body) =>
+        {
+            if (body.IsInGroup("Enemies") && body is Node2D n)
+                enemiesInRange.Add(n);
+        };
+
+        area.BodyExited += (body) =>
+        {
+            if (body is Node2D n)
+                enemiesInRange.Remove(n);
+        };
+
         shootTimer.Timeout += Shoot;
     }
 
     public override void _Process(double delta)
     {
         UpdateTarget();
-        if (currentTarget != null && IsInstanceValid(currentTarget))
-        {
-            Vector2 direction = currentTarget.GlobalPosition - GlobalPosition;
-            Rotation = (float)Mathf.LerpAngle(Rotation, direction.Angle(), RotationSpeed * (float)delta);
-        }
+
+        if (currentTarget == null || !IsInstanceValid(currentTarget))
+            return;
+
+        Vector2 direction = currentTarget.GlobalPosition - GlobalPosition;
+
+        Rotation = Mathf.LerpAngle(
+            Rotation,
+            direction.Angle(),
+            RotationSpeed * (float)delta
+        );
     }
 
     protected virtual void UpdateTarget()
     {
         enemiesInRange.RemoveAll(e => !IsInstanceValid(e));
-        currentTarget = enemiesInRange.Count > 0 ? enemiesInRange[0] : null;
 
-        if (currentTarget != null && shootTimer.IsStopped()) shootTimer.Start();
-        else if (currentTarget == null) shootTimer.Stop();
+        float minDist = float.MaxValue;
+        Node2D best = null;
+
+        foreach (var enemy in enemiesInRange)
+        {
+            float dist = GlobalPosition.DistanceTo(enemy.GlobalPosition);
+            if (dist < minDist)
+            {
+                minDist = dist;
+                best = enemy;
+            }
+        }
+
+        currentTarget = best;
+
+        if (currentTarget != null && shootTimer.IsStopped())
+            shootTimer.Start();
+        else if (currentTarget == null)
+            shootTimer.Stop();
     }
 
-    // Cada torre puede disparar de forma diferente (proyectil, rayo, etc.)
     protected abstract void Shoot();
 }

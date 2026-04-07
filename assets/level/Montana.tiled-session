@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "Map/Example.tsx",
+    "activeFile": "Map/mapa2.tmx",
     "expandedProjectPaths": [
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
@@ -14,11 +14,11 @@
             "scaleInEditor": 0.5
         },
         "Map/mapa2.tmx": {
-            "scale": 0.25,
-            "selectedLayer": 0,
+            "scale": 0.125,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 6960,
-                "y": 3298
+                "x": 5984,
+                "y": 3396
             }
         },
         "Map/mapa2/Example.tsx": {
@@ -40,8 +40,8 @@
     "project": "Montana.tiled-project",
     "property.type": "bool",
     "recentFiles": [
-        "Map/mapa2.tmx",
         "Map/Example.tsx",
+        "Map/mapa2.tmx",
         "Map/mapa2/mapa2.tmx"
     ]
 }

@@ -81,7 +81,7 @@ limit_right = 1145
 limit_bottom = 555
 script = ExtResource("6_gxakk")
 MoveSpeed = 1400.0
-MinZoom = 0.01
-MaxZoom = 6.0
+MinZoom = 0.23
+MaxZoom = 2.0
 
 [node name="menu_pausa" parent="." instance=ExtResource("7_icjwj")]
