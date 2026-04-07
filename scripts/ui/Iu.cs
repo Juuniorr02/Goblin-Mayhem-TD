@@ -18,8 +18,8 @@ public partial class Iu : Control
 
     public override void _Ready()
     {
-        waveButton = GetNode<TextureButton>("IU/IU/IU/Top/Wave/Wave/Wave/Wave");
-        waveLabel = GetNode<Label>("IU/IU/IU/Top/Wave/Wave/Wave/Wave/WaveLabel");
+        waveButton = GetNode<TextureButton>("%WaveButton");
+        waveLabel = GetNode<Label>("%WaveLabel");
 
         goldLabel = GetNode<Label>("%GoldLabel");
         healthLabel = GetNode<Label>("%HealthLabel");
@@ -27,7 +27,7 @@ public partial class Iu : Control
         woodLabel = GetNode<Label>("%WoodLabel");
         stoneLabel = GetNode<Label>("%StoneLabel");
 
-        waveAnimation = GetNode<AnimatedSprite2D>("IU/IU/IU/Top/Wave/Wave/Wave/Wave/WaveSprite");
+        waveAnimation = GetNode<AnimatedSprite2D>("%WaveSprite");
 
         cooldownTimer = new Timer();
         cooldownTimer.WaitTime = 80;

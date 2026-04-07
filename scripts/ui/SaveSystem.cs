@@ -54,33 +54,6 @@ public partial class SaveSystem : Node
 
         data["towers"] = towersData;
 
-        // ========================
-        // GUARDAR ENEMIGOS
-        // ========================
-        var enemiesData = new Godot.Collections.Array();
-
-        var enemiesNode = GetTree().CurrentScene.GetNodeOrNull<Node>("Enemies");
-
-        if (enemiesNode != null)
-        {
-            foreach (Node child in enemiesNode.GetChildren())
-            {
-                if (child is Node3D enemy)
-                {
-                    var enemyInfo = new Godot.Collections.Dictionary
-                    {
-                        { "scene", enemy.SceneFilePath },
-                        { "x", enemy.GlobalPosition.X },
-                        { "y", enemy.GlobalPosition.Y },
-                        { "z", enemy.GlobalPosition.Z }
-                    };
-
-                    enemiesData.Add(enemyInfo);
-                }
-            }
-        }
-
-        data["enemies"] = enemiesData;
 
         // ========================
         // GUARDAR ARCHIVO
@@ -162,31 +135,6 @@ public partial class SaveSystem : Node
                 );
 
                 towersNode.AddChild(instance);
-            }
-        }
-
-        // ========================
-        // RESTAURAR ENEMIGOS
-        // ========================
-        if (data.ContainsKey("enemies"))
-        {
-            var enemiesNode = GetTree().CurrentScene.GetNodeOrNull<Node>("Enemies");
-            var enemies = data["enemies"].AsGodotArray();
-
-            foreach (Godot.Collections.Dictionary enemy in enemies)
-            {
-                string scenePath = enemy["scene"].AsString();
-
-                var packed = GD.Load<PackedScene>(scenePath);
-                var instance = packed.Instantiate<Node3D>();
-
-                instance.GlobalPosition = new Vector3(
-                    (float)enemy["x"],
-                    (float)enemy["y"],
-                    (float)enemy["z"]
-                );
-
-                enemiesNode.AddChild(instance);
             }
         }
 

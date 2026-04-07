@@ -26,6 +26,11 @@ public partial class Base : Node
         Health -= damage;
     }
 
+    public void RepairBase()
+    {
+        Health = 100;
+    }
+
     public void AddIron(int amount)
 	{
 		Iron += amount;
