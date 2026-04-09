@@ -1,12 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://c1no67p7guund"]
+[gd_scene load_steps=5 format=3 uid="uid://c1no67p7guund"]
 
 [ext_resource type="Script" uid="uid://dxrb3eals0n8w" path="res://scripts/character/tower/Mortar/MorteroShot.cs" id="1_2n7cv"]
 [ext_resource type="Texture2D" uid="uid://174a1p6gscqj" path="res://assets/character/tower/Mortero/Bolademortero-Sheet.png" id="1_gu0w7"]
+[ext_resource type="PackedScene" uid="uid://cmbsecxsq7ho3" path="res://scenes/tower/Mortero/explosion.tscn" id="2_0kss6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gu0w7"]
 
 [node name="MorteroShot" type="Area2D"]
 script = ExtResource("1_2n7cv")
+ExplosionEffect = ExtResource("2_0kss6")
 
 [node name="VisualContainer" type="Node2D" parent="."]
 
