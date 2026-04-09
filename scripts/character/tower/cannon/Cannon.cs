@@ -7,27 +7,24 @@ public partial class Cannon : BaseTower
         if (!IsInstanceValid(currentTarget) || BulletScene == null || muzzle == null)
             return;
 
-        // Cambiamos el casteo a Node para evitar el error de InvalidCastException
         var bulletNode = BulletScene.Instantiate();
+        GetTree().CurrentScene.AddChild(bulletNode);
         
-        if (bulletNode is Bullet bullet)
+        // Usamos GlobalPosition directamente en el nodo
+        if (bulletNode is Node2D bullet2D)
         {
-            GetTree().CurrentScene.AddChild(bullet);
-            bullet.GlobalPosition = muzzle.GlobalPosition;
-
-            Vector2 direction = (currentTarget.GlobalPosition - muzzle.GlobalPosition).Normalized();
-            bullet.Direction = direction;
+            bullet2D.GlobalPosition = muzzle.GlobalPosition;
             
-            // Si quieres que la bala no rote visualmente, comenta la siguiente línea:
-            // bullet.Rotation = direction.Angle();
-
-            bullet.Damage = Damage;
-            GD.Print("[CANNON] ¡Disparo realizado con éxito!");
-        }
-        else
-        {
-            GD.PrintErr("[ERROR] El objeto instanciado no tiene el script 'Bullet.cs'");
-            bulletNode.QueueFree(); // Limpiamos el nodo fallido
+            // Intentamos configurar las propiedades si el script existe
+            if (bulletNode is Bullet bulletScript)
+            {
+                Vector2 direction = (currentTarget.GlobalPosition - muzzle.GlobalPosition).Normalized();
+                bulletScript.Direction = direction;
+                bulletScript.Damage = Damage;
+                bulletScript.Rotation = direction.Angle();
+            }
+            
+            GD.Print("[CANNON] ¡Fuego!");
         }
     }
 }

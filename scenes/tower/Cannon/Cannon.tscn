@@ -74,6 +74,7 @@ sprite_frames = SubResource("SpriteFrames_5l07i")
 frame_progress = 0.4960929
 
 [node name="Muzzle" type="Marker2D" parent="."]
+position = Vector2(18, -2)
 
 [node name="ShootTimer" type="Timer" parent="."]
 

@@ -8,11 +8,14 @@ public partial class Bullet : Area2D
     public Vector2 Direction = Vector2.Zero;
     public float Damage = 10f;
 
-    private float lifeTimer = 3f;
+    private float lifeTimer = 0f;
 
     public override void _Ready()
     {
+        // Conectamos la señal de colisión
         BodyEntered += OnEnemyHit;
+        // También conectamos AreaEntered por si tus enemigos son áreas
+        AreaEntered += OnEnemyHit;
     }
 
     public override void _Process(double delta)
@@ -29,17 +32,21 @@ public partial class Bullet : Area2D
 
     private void OnEnemyHit(Node body)
     {
-        // Corregido al grupo "enemies" en minúscula
+        // 1. IGNORAR SI ES UNA TORRE (Para que no desaparezca al nacer)
+        if (body.Name.ToString().Contains("Tower") || body is BaseTower)
+            return;
+
+        // 2. COMPROBAR SI ES ENEMIGO
         if (!body.IsInGroup("enemies"))
             return;
 
-        GD.Print($"[IMPACTO] Bala golpeó a: {body.Name}");
+        GD.Print($"[IMPACTO CANNON] Golpeó a: {body.Name}");
 
         if (body.HasMethod("TakeDamage"))
         {
             body.Call("TakeDamage", Damage);
         }
 
-        QueueFree();
+        QueueFree(); // Desaparece solo al dar al enemigo
     }
 }
