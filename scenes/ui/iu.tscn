@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://ci612q8twcycd"]
+[gd_scene load_steps=23 format=3 uid="uid://ci612q8twcycd"]
 
 [ext_resource type="Texture2D" uid="uid://bodlpu3irch0t" path="res://assets/ui/button/IconoOleada-Sheet.png" id="1_g0mth"]
 [ext_resource type="Texture2D" uid="uid://5sui3kk7ym6x" path="res://assets/ui/icon/cañon.png" id="1_t64rc"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://crw7qp1kr00u0" path="res://assets/ui/icon/Maderas.png" id="3_viny6"]
 [ext_resource type="Texture2D" uid="uid://bonxvf3bnviti" path="res://assets/ui/icon/Piedras.png" id="4_rlfxr"]
 [ext_resource type="Texture2D" uid="uid://d4aohjas4nc4o" path="res://assets/ui/icon/Hierro.png" id="5_ud8xl"]
+[ext_resource type="Texture2D" uid="uid://22thccdtcdp4" path="res://assets/character/tower/Archer/TorrearqueroIcono.png" id="8_rlfxr"]
 [ext_resource type="Texture2D" uid="uid://7prl0kc2ksyg" path="res://assets/ui/icon/lanzallamas.png" id="8_svasj"]
 
 [sub_resource type="Theme" id="Theme_1nckr"]
@@ -412,13 +413,13 @@ theme_override_constants/margin_bottom = 5
 [node name="Archer" type="PanelContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Archer/Archer/Archer/Archer"]
 layout_mode = 2
 
-[node name="Archer" type="TextureButton" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Archer/Archer/Archer/Archer/Archer"]
+[node name="Archer" type="TextureButton" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Archer/Archer/Archer/Archer/Archer" groups=["botones_torres"]]
 texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 size_flags_stretch_ratio = 2.0
-texture_normal = ExtResource("1_t64rc")
+texture_normal = ExtResource("8_rlfxr")
 
 [node name="Cannon" type="HBoxContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers"]
 layout_mode = 2
@@ -808,4 +809,5 @@ texture_normal = ExtResource("1_t64rc")
 layout_mode = 2
 size_flags_horizontal = 3
 
+[connection signal="pressed" from="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Archer/Archer/Archer/Archer/Archer/Archer" to="." method="OnArcherPressed"]
 [connection signal="pressed" from="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Cannon/Cannon/Cannon/Cannon/Cannon/Cannon" to="." method="OnCannonPressed"]

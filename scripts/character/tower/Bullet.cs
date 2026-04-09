@@ -8,7 +8,7 @@ public partial class Bullet : Area2D
     public Vector2 Direction = Vector2.Zero;
     public float Damage = 10f;
 
-    private float lifeTimer = 0f;
+    private float lifeTimer = 3f;
 
     public override void _Ready()
     {
