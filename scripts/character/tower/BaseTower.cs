@@ -4,7 +4,6 @@ using System.Collections.Generic;
 public abstract partial class BaseTower : Node2D
 {
     [Export] public PackedScene BulletScene;
-    [Export] public float RotationSpeed = 10.0f;
     [Export] public float Damage = 10f;
 
     protected List<Node2D> enemiesInRange = new();
@@ -14,71 +13,47 @@ public abstract partial class BaseTower : Node2D
 
     public override void _Ready()
     {
-        muzzle = GetNodeOrNull<Marker2D>("Muzzle");
-        shootTimer = GetNodeOrNull<Timer>("ShootTimer");
+        muzzle = GetNodeOrNull<Marker2D>("muzzle") ?? GetNodeOrNull<Marker2D>("Muzzle");
+        shootTimer = GetNodeOrNull<Timer>("shootTimer") ?? GetNodeOrNull<Timer>("ShootTimer");
 
-        if (muzzle == null || shootTimer == null)
+        var area = GetNodeOrNull<Area2D>("DetectionRange") ?? GetNodeOrNull<Area2D>("detectionRange");
+        
+        if (area != null)
         {
-            GD.PrintErr("Tower setup incorrect: falta Muzzle o ShootTimer");
-            return;
+            area.BodyEntered += (body) => {
+                if (body.IsInGroup("enemies") && body is Node2D n)
+                    enemiesInRange.Add(n);
+            };
+            area.BodyExited += (body) => {
+                if (body is Node2D n)
+                    enemiesInRange.Remove(n);
+            };
         }
 
-        var area = GetNode<Area2D>("DetectionRange");
-
-        area.BodyEntered += (body) =>
-        {
-            if (body.IsInGroup("Enemies") && body is Node2D n)
-                enemiesInRange.Add(n);
-        };
-
-        area.BodyExited += (body) =>
-        {
-            if (body is Node2D n)
-                enemiesInRange.Remove(n);
-        };
-
-        shootTimer.Timeout += Shoot;
+        if (shootTimer != null)
+            shootTimer.Timeout += Shoot;
     }
 
     public override void _Process(double delta)
     {
         UpdateTarget();
-
-        if (currentTarget == null || !IsInstanceValid(currentTarget))
-            return;
-
-        Vector2 direction = currentTarget.GlobalPosition - GlobalPosition;
-
-        Rotation = Mathf.LerpAngle(
-            Rotation,
-            direction.Angle(),
-            RotationSpeed * (float)delta
-        );
+        // Se ha eliminado la lógica de rotación aquí
     }
 
     protected virtual void UpdateTarget()
     {
-        enemiesInRange.RemoveAll(e => !IsInstanceValid(e));
+        enemiesInRange.RemoveAll(e => !IsInstanceValid(e) || !e.IsInsideTree());
 
-        float minDist = float.MaxValue;
-        Node2D best = null;
-
-        foreach (var enemy in enemiesInRange)
+        if (enemiesInRange.Count > 0)
         {
-            float dist = GlobalPosition.DistanceTo(enemy.GlobalPosition);
-            if (dist < minDist)
-            {
-                minDist = dist;
-                best = enemy;
-            }
+            currentTarget = enemiesInRange[0]; // Apuntar al primero en la lista
+            if (shootTimer.IsStopped()) shootTimer.Start();
         }
-
-        currentTarget = best;
-
-        if (currentTarget != null && shootTimer.IsStopped())
-            shootTimer.Start();
-        else if (currentTarget == null)
+        else
+        {
+            currentTarget = null;
             shootTimer.Stop();
+        }
     }
 
     protected abstract void Shoot();

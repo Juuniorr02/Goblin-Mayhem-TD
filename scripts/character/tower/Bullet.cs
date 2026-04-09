@@ -17,29 +17,28 @@ public partial class Bullet : Area2D
 
     public override void _Process(double delta)
     {
-        // Movimiento
         if (Direction != Vector2.Zero)
         {
             GlobalPosition += Direction * Speed * (float)delta;
         }
 
-        // Autodestrucción por tiempo
         lifeTimer += (float)delta;
         if (lifeTimer >= LifeTime)
             QueueFree();
     }
 
-    private void OnEnemyHit(Node2D body)
+    private void OnEnemyHit(Node body)
     {
-        // 🔹 Solo afectar enemigos
-        if (!body.IsInGroup("Enemies"))
+        // Corregido al grupo "enemies" en minúscula
+        if (!body.IsInGroup("enemies"))
             return;
 
-        // 🔹 Aplicar daño si existe el método
-        if (body.HasMethod("TakeDamage"))
-            body.Call("TakeDamage", Damage);
+        GD.Print($"[IMPACTO] Bala golpeó a: {body.Name}");
 
-        GD.Print("Impacto a: " + body.Name);
+        if (body.HasMethod("TakeDamage"))
+        {
+            body.Call("TakeDamage", Damage);
+        }
 
         QueueFree();
     }
