@@ -202,6 +202,7 @@ public partial class TowerBuilder : Node2D
 
     public void OnCannonPressed() => SelectTower("Cannon");
     public void OnArcherPressed() => SelectTower("Archer");
+    public void OnMortarPressed() => SelectTower("Mortar");
 
     public void SelectTower(string towerName)
     {
