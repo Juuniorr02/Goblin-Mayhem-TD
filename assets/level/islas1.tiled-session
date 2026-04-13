@@ -8,22 +8,25 @@
     "fileStates": {
         "Map/Example.tsx": {
             "dynamicWrapping": true,
-            "scaleInDock": 0.25
+            "scaleInDock": 0.25,
+            "scaleInEditor": 1
         },
         "Map/islas1.tmx": {
             "scale": 0.125,
-            "selectedLayer": 3,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 6644,
-                "y": 2856
+                "x": 10268,
+                "y": 3648
             }
         }
     },
     "openFiles": [
-        "Map/islas1.tmx"
+        "Map/islas1.tmx",
+        "Map/Example.tsx"
     ],
     "project": "islas1.tiled-project",
     "recentFiles": [
+        "Map/Example.tsx",
         "Map/islas1.tmx"
     ]
 }
