@@ -9,7 +9,7 @@ script = ExtResource("2_bgsfn")
 metadata/_custom_type_script = "uid://dtfsd6sb6u7oe"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pap0l"]
-size = Vector2(11, 28)
+size = Vector2(36, 26)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4d1o2"]
 atlas = ExtResource("1_y5fst")
@@ -67,7 +67,7 @@ sprite = NodePath("AnimatedSprite2D")
 Data = SubResource("Resource_bgsfn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2)
+position = Vector2(1, -2)
 shape = SubResource("RectangleShape2D_pap0l")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

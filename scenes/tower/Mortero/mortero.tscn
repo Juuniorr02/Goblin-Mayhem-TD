@@ -1,0 +1,78 @@
+[gd_scene load_steps=12 format=3 uid="uid://bm2tdm7lsq5q3"]
+
+[ext_resource type="Script" uid="uid://ce7sms75wfqap" path="res://scripts/character/tower/Mortar/MorteroTower.cs" id="1_nvavh"]
+[ext_resource type="PackedScene" uid="uid://c1no67p7guund" path="res://scenes/tower/Mortero/mortero_shot.tscn" id="2_kjqeh"]
+[ext_resource type="Texture2D" uid="uid://b7rdimph5fqua" path="res://assets/character/tower/Mortero/Mortero-Sheet.png" id="3_1iu7l"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_26hvp"]
+atlas = ExtResource("3_1iu7l")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3fqct"]
+atlas = ExtResource("3_1iu7l")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_np6lr"]
+atlas = ExtResource("3_1iu7l")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gds3b"]
+atlas = ExtResource("3_1iu7l")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i2sep"]
+atlas = ExtResource("3_1iu7l")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lb761"]
+atlas = ExtResource("3_1iu7l")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j3lhl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_26hvp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3fqct")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_np6lr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gds3b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i2sep")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lb761")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1oupt"]
+size = Vector2(543, 512.75)
+
+[node name="Mortero" type="Node2D"]
+script = ExtResource("1_nvavh")
+BulletScene = ExtResource("2_kjqeh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_j3lhl")
+frame_progress = 0.36016473
+
+[node name="Muzzle" type="Marker2D" parent="."]
+position = Vector2(19, -37)
+
+[node name="ShootTimer" type="Timer" parent="."]
+
+[node name="DetectionRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
+position = Vector2(-2, 1)
+shape = SubResource("RectangleShape2D_1oupt")

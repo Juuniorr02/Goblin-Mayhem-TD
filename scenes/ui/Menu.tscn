@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://glkqem0qes2a"]
+[gd_scene load_steps=4 format=3 uid="uid://glkqem0qes2a"]
 
 [ext_resource type="Script" uid="uid://diifuf6vbqyod" path="res://scripts/ui/MenuController.cs" id="1"]
 [ext_resource type="Texture2D" uid="uid://cphe0cuchlj5s" path="res://assets/ui/background/fondo.png" id="1_vhthp"]
+
+[sub_resource type="Theme" id="Theme_vhthp"]
 
 [node name="Menu" type="CanvasLayer"]
 
@@ -44,6 +46,7 @@ text = "Cargar partida"
 
 [node name="Opciones" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
+theme = SubResource("Theme_vhthp")
 text = "Opciones"
 
 [node name="Salir" type="Button" parent="CenterContainer/VBoxContainer"]

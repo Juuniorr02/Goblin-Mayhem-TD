@@ -1,6 +1,6 @@
 using Godot;
 
-public partial class Enemy : Node2D
+public partial class Enemy : CharacterBody2D 
 {
     [Export] public AnimatedSprite2D sprite;
     [Export] public EnemyData Data;
@@ -9,6 +9,7 @@ public partial class Enemy : Node2D
     private Path2D path;
     private bool finished = false;
 
+    [Export] public float Health = 50f;
     public override void _Ready()
     {
         follow = GetParent<PathFollow2D>();
@@ -58,5 +59,17 @@ public partial class Enemy : Node2D
         Vector2 posSiguiente = curve.SampleBaked(progress + 1.0f);
 
         return (posSiguiente - posActual).Normalized();
+    }
+        public void TakeDamage(float amount)
+    {
+        Health -= amount;
+        GD.Print($"{Data.EnemyName} recibió daño. Vida restante: {Health}");
+        
+        if (Health <= 0)
+        {
+            // Lógica de muerte
+            follow.QueueFree(); // Eliminamos el seguidor del camino también
+            QueueFree();
+        }
     }
 }

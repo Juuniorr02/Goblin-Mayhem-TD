@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://ieo0rfx4mn8y"]
 
-[ext_resource type="Script" uid="uid://chhydj5v5lgvu" path="res://scripts/character/tower/Cannon.cs" id="1_b4w28"]
+[ext_resource type="Script" uid="uid://chhydj5v5lgvu" path="res://scripts/character/tower/cannon/Cannon.cs" id="1_b4w28"]
 [ext_resource type="Texture2D" uid="uid://bttr6f60xnl3s" path="res://assets/character/tower/Cannon/CanonAnim.png" id="2_1oupt"]
 [ext_resource type="PackedScene" uid="uid://bhkjyqx4q14ja" path="res://scenes/tower/Cannon/BulletCannon.tscn" id="2_6f5h2"]
 
@@ -74,6 +74,7 @@ sprite_frames = SubResource("SpriteFrames_5l07i")
 frame_progress = 0.4960929
 
 [node name="Muzzle" type="Marker2D" parent="."]
+position = Vector2(18, -2)
 
 [node name="ShootTimer" type="Timer" parent="."]
 

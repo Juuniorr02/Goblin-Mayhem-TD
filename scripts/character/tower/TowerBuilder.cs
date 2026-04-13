@@ -79,10 +79,13 @@ public partial class TowerBuilder : Node2D
         var botones = GetTree().GetNodesInGroup("botones_torres");
         foreach (Node nodo in botones)
         {
-            if (nodo is TextureButton btn && btn.Name == "Cannon")
+            if (nodo is TextureButton btn)
             {
-                btn.Pressed += OnCannonPressed;
-                GD.Print("Botón Cannon conectado.");
+                // Conectamos CUALQUIER botón del grupo usando su nombre como referencia
+                string towerId = btn.Name; // Asume que el botón se llama "Cannon", "Archer", etc.
+                btn.Pressed += () => SelectTower(towerId);
+                
+                GD.Print($"Botón {towerId} configurado automáticamente.");
             }
         }
 
@@ -198,6 +201,8 @@ public partial class TowerBuilder : Node2D
 
 
     public void OnCannonPressed() => SelectTower("Cannon");
+    public void OnArcherPressed() => SelectTower("Archer");
+    public void OnMortarPressed() => SelectTower("Mortar");
 
     public void SelectTower(string towerName)
     {
@@ -205,4 +210,7 @@ public partial class TowerBuilder : Node2D
         if (ghostInstance != null)
             ghostInstance.Visible = !string.IsNullOrEmpty(towerName);
     }
+
+    
+
 }
