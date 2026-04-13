@@ -66,6 +66,7 @@ size = Vector2(543, 512.75)
 
 [node name="cannon" type="Node2D"]
 script = ExtResource("1_b4w28")
+IsGhost = true
 BulletScene = ExtResource("2_6f5h2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

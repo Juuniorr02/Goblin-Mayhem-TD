@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://cq4w56mk4nxmm"]
+[gd_scene load_steps=14 format=3 uid="uid://cq4w56mk4nxmm"]
 
 [ext_resource type="Script" uid="uid://djm0046nxvish" path="res://scripts/character/enemy/Enemy.cs" id="1_uqbeg"]
 [ext_resource type="Texture2D" uid="uid://bbvi61e0beacf" path="res://assets/character/enemy/Golem.png" id="2_0kgeq"]
 [ext_resource type="Script" uid="uid://dtfsd6sb6u7oe" path="res://scripts/character/enemy/EnemyData.cs" id="2_ypm4a"]
+[ext_resource type="Texture2D" uid="uid://cmwjmb8slpq0e" path="res://assets/character/enemy/BlancoVida.png" id="3_ypm4a"]
 
 [sub_resource type="Resource" id="Resource_m17yy"]
 script = ExtResource("2_ypm4a")
@@ -61,11 +62,23 @@ animations = [{
 "speed": 7.0
 }]
 
-[node name="GoblinTronco" type="CharacterBody2D" node_paths=PackedStringArray("sprite") groups=["Acuatico"]]
+[node name="GoblinTronco" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "HealthBar") groups=["Acuatico"]]
 scale = Vector2(2.1, 2.1)
 script = ExtResource("1_uqbeg")
 sprite = NodePath("AnimatedSprite2D")
 Data = SubResource("Resource_m17yy")
+HealthBar = NodePath("TextureProgressBar")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+top_level = true
+z_index = 10
+offset_left = -15.000002
+offset_top = -60.0
+offset_right = 341.0
+offset_bottom = 124.0
+scale = Vector2(0.16, 0.05)
+nine_patch_stretch = true
+texture_progress = ExtResource("3_ypm4a")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2.0000002)

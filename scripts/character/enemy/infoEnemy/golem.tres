@@ -6,5 +6,6 @@
 [resource]
 script = ExtResource("1_5fa77")
 EnemyName = "Golem"
+Speed = 75.0
 EnemyScene = ExtResource("1_qjo8u")
 metadata/_custom_type_script = "uid://dtfsd6sb6u7oe"

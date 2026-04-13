@@ -47,6 +47,8 @@ CaminoA = NodePath("CaminoA")
 CaminoB = NodePath("CaminoB")
 CaminoVolador = NodePath("CaminoVolador")
 EnemyTypes = Array[Object]([ExtResource("5_abfbc"), ExtResource("6_wwvym")])
+SpawnInterval = 0.5
+EnemiesPerWave = 20
 
 [node name="CaminoA" type="Path2D" parent="EnemySpawner"]
 curve = SubResource("Curve2D_5fc2a")

@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_q7jtq")
 EnemyName = "Goblin Volador"
-Speed = 200.0
+Speed = 100.0
 IsFlying = true
 EnemyScene = ExtResource("1_lffl3")
 metadata/_custom_type_script = "uid://dtfsd6sb6u7oe"
