@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("1_4vo2c")
 EnemyName = "Goblin Tronco"
+Speed = 50.0
 DamageToBase = 2
 IsAquatic = true
 EnemyScene = ExtResource("1_o4cq3")
