@@ -62,7 +62,7 @@ animations = [{
 "speed": 7.0
 }]
 
-[node name="GoblinTronco" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "HealthBar") groups=["Acuatico"]]
+[node name="GoblinTronco" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "HealthBar") groups=["Acuatico", "enemies"]]
 scale = Vector2(2.1, 2.1)
 script = ExtResource("1_uqbeg")
 sprite = NodePath("AnimatedSprite2D")
