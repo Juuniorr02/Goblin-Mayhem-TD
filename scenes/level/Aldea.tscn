@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://b0rk6ct0lsega"]
 
-[ext_resource type="PackedScene" uid="uid://3j87wq4emqjy" path="res://assets/level/Map/Aldea.tmx" id="1_pfoe4"]
+[ext_resource type="PackedScene" uid="uid://db3gopv2d5x4p" path="res://assets/level/Map/Aldea.tmx" id="1_pfoe4"]
 [ext_resource type="PackedScene" uid="uid://cga8wa1itf7t7" path="res://scenes/ui/uialdea.tscn" id="2_agm6m"]
 [ext_resource type="Script" uid="uid://ccef7herjptu0" path="res://scripts/character/CameraRig.cs" id="3_agm6m"]
 [ext_resource type="PackedScene" uid="uid://dgc77kp8vuy4p" path="res://scenes/ui/options_pausa.tscn" id="4_0xsrs"]
@@ -15,16 +15,16 @@ position = Vector2(-430, 217)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(6502, 2730)
-zoom = Vector2(0.485, 0.485)
+zoom = Vector2(0.25, 0.25)
 limit_enabled = false
 limit_left = 0
 limit_top = 0
 limit_right = 1145
 limit_bottom = 555
 script = ExtResource("3_agm6m")
-MoveSpeed = 1400.0
-MinZoom = 0.23
-MaxZoom = 2.0
+MoveSpeed = 0.0
+MinZoom = 0.25
+MaxZoom = 0.25
 
 [node name="menu_pausa" parent="." instance=ExtResource("4_omjs1")]
 
