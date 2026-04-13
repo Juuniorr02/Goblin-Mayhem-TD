@@ -1,7 +1,31 @@
-[gd_scene load_steps=2 format=3 uid="uid://b0rk6ct0lsega"]
+[gd_scene load_steps=6 format=3 uid="uid://b0rk6ct0lsega"]
 
 [ext_resource type="PackedScene" uid="uid://3j87wq4emqjy" path="res://assets/level/Map/Aldea.tmx" id="1_pfoe4"]
+[ext_resource type="PackedScene" uid="uid://cga8wa1itf7t7" path="res://scenes/ui/uialdea.tscn" id="2_agm6m"]
+[ext_resource type="Script" uid="uid://ccef7herjptu0" path="res://scripts/character/CameraRig.cs" id="3_agm6m"]
+[ext_resource type="PackedScene" uid="uid://dgc77kp8vuy4p" path="res://scenes/ui/options_pausa.tscn" id="4_0xsrs"]
+[ext_resource type="PackedScene" uid="uid://cor65fcesxg0a" path="res://scenes/ui/menu_pausa.tscn" id="4_omjs1"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Aldea" type="Node2D"]
 
 [node name="Aldea" parent="." instance=ExtResource("1_pfoe4")]
+position = Vector2(-430, 217)
+
+[node name="UIAldea" parent="." instance=ExtResource("2_agm6m")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(6502, 2730)
+zoom = Vector2(0.485, 0.485)
+limit_enabled = false
+limit_left = 0
+limit_top = 0
+limit_right = 1145
+limit_bottom = 555
+script = ExtResource("3_agm6m")
+MoveSpeed = 1400.0
+MinZoom = 0.23
+MaxZoom = 2.0
+
+[node name="menu_pausa" parent="." instance=ExtResource("4_omjs1")]
+
+[node name="OptionsPausa" parent="." instance=ExtResource("4_0xsrs")]

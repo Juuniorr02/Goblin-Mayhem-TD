@@ -3,9 +3,10 @@ using Godot;
 public partial class menu_pausa : CanvasLayer
 {
     private Button btnGuardar;
-    private Button btnGuardarSalir;
     private Button btnVolver;
     private Button btnCargar;
+    private Button btnReiniciar;
+    private Button btnOpciones;
 
     private bool isPaused = false;
 
@@ -14,20 +15,25 @@ public partial class menu_pausa : CanvasLayer
         ProcessMode = ProcessModeEnum.Always;
 
         btnGuardar = GetNodeOrNull<Button>("CenterContainer/VBoxContainer/guardar");
-        btnGuardarSalir = GetNodeOrNull<Button>("CenterContainer/VBoxContainer/guardarsalir");
         btnVolver = GetNodeOrNull<Button>("CenterContainer/VBoxContainer/volver");
         btnCargar = GetNodeOrNull<Button>("CenterContainer/VBoxContainer/cargar");
+        btnReiniciar = GetNodeOrNull<Button>("CenterContainer/VBoxContainer/reiniciar");
+        btnOpciones = GetNodeOrNull<Button>("CenterContainer/VBoxContainer/opciones");
 
         ConfigurarBoton(btnGuardar);
-        ConfigurarBoton(btnGuardarSalir);
         ConfigurarBoton(btnVolver);
         ConfigurarBoton(btnCargar);
+        ConfigurarBoton(btnReiniciar);
+        ConfigurarBoton(btnOpciones);
+        
+        if (btnOpciones != null)
+            btnOpciones.Pressed += OnOpciones;
+            
+        if (btnReiniciar != null)
+            btnReiniciar.Pressed += OnReiniciar;
 
         if (btnGuardar != null)
             btnGuardar.Pressed += OnGuardar;
-
-        if (btnGuardarSalir != null)
-            btnGuardarSalir.Pressed += OnGuardarSalir;
 
         if (btnCargar != null)
             btnCargar.Pressed += OnCargar;
@@ -86,19 +92,6 @@ public partial class menu_pausa : CanvasLayer
     	save.SaveGame();
 	}
 
-	private void OnGuardarSalir()
-	{
-		QuitarPausa();
-    	GD.Print("Guardar y salir");
-
-		var save = GetNode<SaveSystem>("/root/SaveSystem");
-    	save.SaveGame();
-
-    	QuitarPausa();
-    	Input.MouseMode = Input.MouseModeEnum.Visible;
-    	GetTree().ChangeSceneToFile("res://scenes/ui/Menu.tscn");
-	}
-
 	private async void OnCargar()
 	{
 		QuitarPausa();
@@ -107,4 +100,27 @@ public partial class menu_pausa : CanvasLayer
     	var save = GetNode<SaveSystem>("/root/SaveSystem");
     	await save.LoadGame();
 	}
+
+    private void OnReiniciar()
+	{
+		QuitarPausa();
+        Input.MouseMode = Input.MouseModeEnum.Visible;
+        Base.Instance.RepairBase();
+        Wave.Instance.ResetWaves();
+    	GD.Print("Reiniciar partida");
+    	GetTree().ReloadCurrentScene();
+	}
+
+    private void OnOpciones()
+    {
+        var optionsMenu = GetTree().CurrentScene.GetNodeOrNull<OptionsPausa>("OptionsPausa");
+
+        if (optionsMenu != null)
+        {
+            GD.Print("Abrir menú de opciones");
+
+            optionsMenu.MostrarOpciones(this);
+            Visible = false;
+        }
+    }
 }

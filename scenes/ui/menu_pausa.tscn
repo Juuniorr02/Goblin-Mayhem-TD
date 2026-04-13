@@ -28,9 +28,13 @@ text = "Cargar partida"
 layout_mode = 2
 text = "Guardar partida"
 
-[node name="guardarsalir" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="reinciar" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
-text = "Guardar y salir"
+text = "Reiniciar"
+
+[node name="opciones" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Opciones"
 
 [node name="volver" type="Button" parent="CenterContainer/VBoxContainer"]
 z_index = 10

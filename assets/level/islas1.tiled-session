@@ -1,21 +1,38 @@
 {
     "activeFile": "Map/islas1.tmx",
     "expandedProjectPaths": [
-        ".",
-        "Map"
+        "Map",
+        "."
     ],
     "file.lastUsedOpenFilter": "Todos los archivos (*)",
     "fileStates": {
+        "Map/Aldea.tmx": {
+            "scale": 0.08292025862068965,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 6964.522417153997,
+                "y": 3304.3794671864844
+            }
+        },
         "Map/Example.tsx": {
             "dynamicWrapping": true,
-            "scaleInDock": 0.25
+            "scaleInDock": 0.25,
+            "scaleInEditor": 1
         },
         "Map/islas1.tmx": {
-            "scale": 0.125,
-            "selectedLayer": 3,
+            "scale": 0.33,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 6644,
-                "y": 2856
+                "x": 9734.848484848484,
+                "y": 4636.363636363636
+            }
+        },
+        "Map/mapa2.tmx": {
+            "scale": 0.08292025862068965,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 6964.522417153997,
+                "y": 3304.3794671864844
             }
         }
     },
@@ -24,6 +41,9 @@
     ],
     "project": "islas1.tiled-project",
     "recentFiles": [
-        "Map/islas1.tmx"
+        "Map/islas1.tmx",
+        "Map/Aldea.tmx",
+        "Map/mapa2.tmx",
+        "Map/Example.tsx"
     ]
 }

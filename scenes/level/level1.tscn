@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://da24bvxuerl1j"]
+[gd_scene load_steps=16 format=3 uid="uid://da24bvxuerl1j"]
 
 [ext_resource type="PackedScene" uid="uid://drtu3t2orl8sd" path="res://assets/level/Map/mapa1.tmx" id="1_nggc0"]
 [ext_resource type="Script" uid="uid://ccef7herjptu0" path="res://scripts/character/CameraRig.cs" id="2_gvmle"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://ci612q8twcycd" path="res://scenes/ui/iu.tscn" id="8_w02j3"]
 [ext_resource type="PackedScene" uid="uid://c6o5datpm682p" path="res://scenes/ui/menu_victoria.tscn" id="10_m2gd4"]
 [ext_resource type="PackedScene" uid="uid://c387degtgk6i6" path="res://scenes/ui/menu_derrota.tscn" id="11_jawes"]
+[ext_resource type="PackedScene" uid="uid://dgc77kp8vuy4p" path="res://scenes/ui/options_pausa.tscn" id="12_jawes"]
 
 [sub_resource type="Curve2D" id="Curve2D_w02j3"]
 _data = {
@@ -83,3 +84,5 @@ MaxZoom = 2.0
 WinningWave = 3
 
 [node name="menu_derrota" parent="." instance=ExtResource("11_jawes")]
+
+[node name="OptionsPausa" parent="." instance=ExtResource("12_jawes")]

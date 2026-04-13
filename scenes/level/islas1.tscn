@@ -12,10 +12,10 @@
 [ext_resource type="Resource" uid="uid://dawwh4paoh1f2" path="res://scripts/character/enemy/infoEnemy/goblinTronco.tres" id="7_j2psb"]
 [ext_resource type="Script" uid="uid://dlfq6grfckhot" path="res://scripts/character/tower/TowerBuilder.cs" id="8_gxakk"]
 [ext_resource type="PackedScene" uid="uid://ieo0rfx4mn8y" path="res://scenes/tower/Cannon/Cannon.tscn" id="9_icjwj"]
+[ext_resource type="PackedScene" uid="uid://i7fnxkfidwjh" path="res://scenes/tower/ArcherTower/archerTower.tscn" id="10_kwew4"]
+[ext_resource type="PackedScene" uid="uid://bm2tdm7lsq5q3" path="res://scenes/tower/Mortero/mortero.tscn" id="11_muthk"]
 [ext_resource type="PackedScene" uid="uid://c6o5datpm682p" path="res://scenes/ui/menu_victoria.tscn" id="13_coh8c"]
-[ext_resource type="Script" uid="uid://ck7o6ah3nsvvh" path="res://scripts/ui/MenuVictoria.cs" id="14_kwew4"]
 [ext_resource type="PackedScene" uid="uid://c387degtgk6i6" path="res://scenes/ui/menu_derrota.tscn" id="15_muthk"]
-[ext_resource type="Script" uid="uid://do6tvm3dxp1dk" path="res://scripts/ui/MenuDerrota.cs" id="16_kwew4"]
 
 [sub_resource type="Curve2D" id="Curve2D_rm5c3"]
 _data = {
@@ -68,7 +68,9 @@ TowersParent = NodePath(".")
 GhostTowerScene = ExtResource("9_icjwj")
 EnemiesContainer = NodePath("../EnemiesContainer")
 TowersScenes = Dictionary[String, PackedScene]({
-"Cannon": ExtResource("9_icjwj")
+"Archer": ExtResource("10_kwew4"),
+"Cannon": ExtResource("9_icjwj"),
+"Mortar": ExtResource("11_muthk")
 })
 
 [node name="IU" parent="." node_paths=PackedStringArray("spawner") instance=ExtResource("5_xakld")]
@@ -91,7 +93,6 @@ MaxZoom = 2.0
 [node name="menu_pausa" parent="." instance=ExtResource("7_icjwj")]
 
 [node name="menu_victoria" parent="." instance=ExtResource("13_coh8c")]
-script = ExtResource("14_kwew4")
+WinningWave = 6
 
 [node name="menu_derrota" parent="." instance=ExtResource("15_muthk")]
-script = ExtResource("16_kwew4")

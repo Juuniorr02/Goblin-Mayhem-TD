@@ -510,7 +510,7 @@ theme_override_constants/margin_bottom = 5
 [node name="Flame" type="PanelContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Flame/Flame/Flame/Flame"]
 layout_mode = 2
 
-[node name="Flame" type="TextureButton" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Flame/Flame/Flame/Flame/Flame"]
+[node name="Flame" type="TextureButton" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Flame/Flame/Flame/Flame/Flame" groups=["botones_torres"]]
 texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 4
@@ -542,7 +542,7 @@ theme_override_constants/margin_bottom = 5
 [node name="Ballista" type="PanelContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Ballista/Ballista/Ballista/Ballista"]
 layout_mode = 2
 
-[node name="Ballista" type="TextureButton" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Ballista/Ballista/Ballista/Ballista/Ballista"]
+[node name="Ballista" type="TextureButton" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Ballista/Ballista/Ballista/Ballista/Ballista" groups=["botones_torres"]]
 texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 4
@@ -574,7 +574,7 @@ theme_override_constants/margin_bottom = 5
 [node name="Wizard" type="PanelContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Wizard/Wizard/Wizard/Wizard"]
 layout_mode = 2
 
-[node name="Wizard" type="TextureButton" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Wizard/Wizard/Wizard/Wizard/Wizard"]
+[node name="Wizard" type="TextureButton" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Wizard/Wizard/Wizard/Wizard/Wizard" groups=["botones_torres"]]
 texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 4
@@ -606,7 +606,7 @@ theme_override_constants/margin_bottom = 5
 [node name="Barricade" type="PanelContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Barricade/Barricade/Barricade/Barricade"]
 layout_mode = 2
 
-[node name="Barricade" type="TextureButton" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Barricade/Barricade/Barricade/Barricade/Barricade"]
+[node name="Barricade" type="TextureButton" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Barricade/Barricade/Barricade/Barricade/Barricade" groups=["botones_torres"]]
 texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 4
@@ -638,7 +638,7 @@ theme_override_constants/margin_bottom = 5
 [node name="Bloon" type="PanelContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Bloon/Bloon/Bloon/Bloon"]
 layout_mode = 2
 
-[node name="Bloon" type="TextureButton" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Bloon/Bloon/Bloon/Bloon/Bloon"]
+[node name="Bloon" type="TextureButton" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Bloon/Bloon/Bloon/Bloon/Bloon" groups=["botones_torres"]]
 texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 4
@@ -670,7 +670,7 @@ theme_override_constants/margin_bottom = 5
 [node name="Nest" type="PanelContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Nest/Nest/Nest/Nest"]
 layout_mode = 2
 
-[node name="Nest" type="TextureButton" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Nest/Nest/Nest/Nest/Nest"]
+[node name="Nest" type="TextureButton" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Nest/Nest/Nest/Nest/Nest" groups=["botones_torres"]]
 texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 4
@@ -702,7 +702,7 @@ theme_override_constants/margin_bottom = 5
 [node name="Ship" type="PanelContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Ship/Ship/Ship/Ship"]
 layout_mode = 2
 
-[node name="Ship" type="TextureButton" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Ship/Ship/Ship/Ship/Ship"]
+[node name="Ship" type="TextureButton" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Ship/Ship/Ship/Ship/Ship" groups=["botones_torres"]]
 texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 4
@@ -734,7 +734,7 @@ theme_override_constants/margin_bottom = 5
 [node name="Atun" type="PanelContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Atun/Atun/Atun/Atun"]
 layout_mode = 2
 
-[node name="Atun" type="TextureButton" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Atun/Atun/Atun/Atun/Atun"]
+[node name="Atun" type="TextureButton" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Atun/Atun/Atun/Atun/Atun" groups=["botones_torres"]]
 texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 4
@@ -766,7 +766,7 @@ theme_override_constants/margin_bottom = 5
 [node name="Barracks" type="PanelContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Barracks/Barracks/Barracks/Barracks"]
 layout_mode = 2
 
-[node name="Barracks" type="TextureButton" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Barracks/Barracks/Barracks/Barracks/Barracks"]
+[node name="Barracks" type="TextureButton" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Barracks/Barracks/Barracks/Barracks/Barracks" groups=["botones_torres"]]
 texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 4
@@ -798,7 +798,7 @@ theme_override_constants/margin_bottom = 5
 [node name="Torch" type="PanelContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Torch/Torch/Torch/Torch"]
 layout_mode = 2
 
-[node name="Torch" type="TextureButton" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Torch/Torch/Torch/Torch/Torch"]
+[node name="Torch" type="TextureButton" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Torch/Torch/Torch/Torch/Torch" groups=["botones_torres"]]
 texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 4
@@ -812,3 +812,13 @@ size_flags_horizontal = 3
 [connection signal="pressed" from="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Archer/Archer/Archer/Archer/Archer/Archer" to="." method="OnArcherPressed"]
 [connection signal="pressed" from="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Cannon/Cannon/Cannon/Cannon/Cannon/Cannon" to="." method="OnCannonPressed"]
 [connection signal="pressed" from="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Mortar/Mortar/Mortar/Mortar/Mortar/Mortar" to="." method="OnMortarPressed"]
+[connection signal="pressed" from="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Flame/Flame/Flame/Flame/Flame/Flame" to="." method="OnFlamePressed"]
+[connection signal="pressed" from="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Ballista/Ballista/Ballista/Ballista/Ballista/Ballista" to="." method="OnBallistaPressed"]
+[connection signal="pressed" from="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Wizard/Wizard/Wizard/Wizard/Wizard/Wizard" to="." method="OnWizardPressed"]
+[connection signal="pressed" from="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Barricade/Barricade/Barricade/Barricade/Barricade/Barricade" to="." method="OnBarricadePressed"]
+[connection signal="pressed" from="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Bloon/Bloon/Bloon/Bloon/Bloon/Bloon" to="." method="OnBloonPressed"]
+[connection signal="pressed" from="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Nest/Nest/Nest/Nest/Nest/Nest" to="." method="OnNestPressed"]
+[connection signal="pressed" from="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Ship/Ship/Ship/Ship/Ship/Ship" to="." method="OnShipPressed"]
+[connection signal="pressed" from="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Atun/Atun/Atun/Atun/Atun/Atun" to="." method="OnAtunPressed"]
+[connection signal="pressed" from="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Barracks/Barracks/Barracks/Barracks/Barracks/Barracks" to="." method="OnBarracksPressed"]
+[connection signal="pressed" from="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Torch/Torch/Torch/Torch/Torch/Torch" to="." method="OnTorchPressed"]
