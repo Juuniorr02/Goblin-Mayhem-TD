@@ -510,7 +510,7 @@ theme_override_constants/margin_bottom = 5
 [node name="Flame" type="PanelContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Flame/Flame/Flame/Flame"]
 layout_mode = 2
 
-[node name="Flame" type="TextureButton" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Flame/Flame/Flame/Flame/Flame"]
+[node name="Flame" type="TextureButton" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Flame/Flame/Flame/Flame/Flame" groups=["botones_torres"]]
 texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 4
@@ -812,3 +812,4 @@ size_flags_horizontal = 3
 [connection signal="pressed" from="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Archer/Archer/Archer/Archer/Archer/Archer" to="." method="OnArcherPressed"]
 [connection signal="pressed" from="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Cannon/Cannon/Cannon/Cannon/Cannon/Cannon" to="." method="OnCannonPressed"]
 [connection signal="pressed" from="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Mortar/Mortar/Mortar/Mortar/Mortar/Mortar" to="." method="OnMortarPressed"]
+[connection signal="pressed" from="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Flame/Flame/Flame/Flame/Flame/Flame" to="." method="OnFlamePressed"]
