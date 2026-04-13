@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0rk6ct0lsega"]
+
+[ext_resource type="PackedScene" uid="uid://3j87wq4emqjy" path="res://assets/level/Map/Aldea.tmx" id="1_pfoe4"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Aldea" parent="." instance=ExtResource("1_pfoe4")]
