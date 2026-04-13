@@ -28,7 +28,7 @@ text = "Cargar partida"
 layout_mode = 2
 text = "Guardar partida"
 
-[node name="reinciar" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="reiniciar" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 text = "Reiniciar"
 

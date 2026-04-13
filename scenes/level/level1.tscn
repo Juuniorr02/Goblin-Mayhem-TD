@@ -78,11 +78,11 @@ MoveSpeed = 1400.0
 MinZoom = 0.23
 MaxZoom = 2.0
 
-[node name="menu_pausa" parent="." instance=ExtResource("7_wpisc")]
-
 [node name="menu_victoria" parent="." instance=ExtResource("10_m2gd4")]
-WinningWave = 3
+WinningWave = 10
 
 [node name="menu_derrota" parent="." instance=ExtResource("11_jawes")]
+
+[node name="menu_pausa" parent="." instance=ExtResource("7_wpisc")]
 
 [node name="OptionsPausa" parent="." instance=ExtResource("12_jawes")]
