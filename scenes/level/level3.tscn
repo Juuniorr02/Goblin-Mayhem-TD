@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c04ivpxt3pkep"]
+[gd_scene load_steps=19 format=3 uid="uid://c04ivpxt3pkep"]
 
 [ext_resource type="PackedScene" uid="uid://bboh74w07n6xi" path="res://assets/level/Map/pantano.tmx" id="1_mawj5"]
 [ext_resource type="Script" uid="uid://cubvhlo0alqh1" path="res://scripts/level/terrain/Pathfinding.cs" id="2_hl87u"]
@@ -12,6 +12,9 @@
 [ext_resource type="PackedScene" uid="uid://ci612q8twcycd" path="res://scenes/ui/iu.tscn" id="10_v8yas"]
 [ext_resource type="Script" uid="uid://ccef7herjptu0" path="res://scripts/character/CameraRig.cs" id="11_rt8em"]
 [ext_resource type="PackedScene" uid="uid://cor65fcesxg0a" path="res://scenes/ui/menu_pausa.tscn" id="12_y753q"]
+[ext_resource type="PackedScene" uid="uid://dgc77kp8vuy4p" path="res://scenes/ui/options_pausa.tscn" id="13_s654b"]
+[ext_resource type="PackedScene" uid="uid://c6o5datpm682p" path="res://scenes/ui/menu_victoria.tscn" id="14_pm7bs"]
+[ext_resource type="PackedScene" uid="uid://c387degtgk6i6" path="res://scenes/ui/menu_derrota.tscn" id="15_amlx2"]
 
 [sub_resource type="Curve2D" id="Curve2D_mawj5"]
 _data = {
@@ -68,6 +71,10 @@ TowersScenes = Dictionary[String, PackedScene]({
 })
 
 [node name="IU" parent="." node_paths=PackedStringArray("spawner") instance=ExtResource("10_v8yas")]
+offset_left = -2106.0
+offset_top = -525.0
+offset_right = -2106.0
+offset_bottom = -525.0
 spawner = NodePath("../EnemySpawner")
 metadata/_edit_use_anchors_ = true
 
@@ -85,3 +92,10 @@ MinZoom = 0.23
 MaxZoom = 2.0
 
 [node name="menu_pausa" parent="." instance=ExtResource("12_y753q")]
+
+[node name="OptionsPausa" parent="." instance=ExtResource("13_s654b")]
+
+[node name="menu_victoria" parent="." instance=ExtResource("14_pm7bs")]
+WinningWave = 10
+
+[node name="menu_derrota" parent="." instance=ExtResource("15_amlx2")]

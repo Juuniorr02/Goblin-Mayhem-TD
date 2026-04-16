@@ -1,10 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://cor65fcesxg0a"]
+[gd_scene load_steps=2 format=3 uid="uid://6wmhfodnhdx"]
 
-[ext_resource type="Script" uid="uid://csvueeipcym1h" path="res://scripts/ui/menu_pausa.cs" id="1_57d5x"]
+[ext_resource type="Script" uid="uid://dgsgg6rxxb1qt" path="res://scripts/level/aldea/menu_pausa_aldea.cs" id="1_usgnm"]
 
-[node name="menu_pausa" type="CanvasLayer"]
-layer = 5
-script = ExtResource("1_57d5x")
+[node name="menu_pausa_aldea" type="CanvasLayer"]
+script = ExtResource("1_usgnm")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 anchors_preset = 12
@@ -28,10 +27,6 @@ text = "Cargar partida"
 layout_mode = 2
 text = "Guardar partida"
 
-[node name="reiniciar" type="Button" parent="CenterContainer/VBoxContainer"]
-layout_mode = 2
-text = "Reiniciar"
-
 [node name="opciones" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 text = "Opciones"
@@ -45,7 +40,7 @@ z_index = 10
 texture_filter = 1
 layout_mode = 2
 action_mode = 0
-text = "Salir del nivel"
+text = "Salir al menu"
 icon_alignment = 1
 expand_icon = true
 

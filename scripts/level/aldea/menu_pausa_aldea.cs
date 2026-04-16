@@ -1,11 +1,10 @@
 using Godot;
 
-public partial class menu_pausa : CanvasLayer
+public partial class menu_pausa_aldea : CanvasLayer
 {
     private Button btnGuardar;
     private Button btnVolver;
     private Button btnCargar;
-    private Button btnReiniciar;
     private Button btnOpciones;
     private Button btnSalir;
 
@@ -18,22 +17,17 @@ public partial class menu_pausa : CanvasLayer
         btnGuardar = GetNodeOrNull<Button>("CenterContainer/VBoxContainer/guardar");
         btnVolver = GetNodeOrNull<Button>("CenterContainer/VBoxContainer/volver");
         btnCargar = GetNodeOrNull<Button>("CenterContainer/VBoxContainer/cargar");
-        btnReiniciar = GetNodeOrNull<Button>("CenterContainer/VBoxContainer/reiniciar");
         btnOpciones = GetNodeOrNull<Button>("CenterContainer/VBoxContainer/opciones");
         btnSalir = GetNodeOrNull<Button>("CenterContainer/VBoxContainer/salir");
 
         ConfigurarBoton(btnGuardar);
         ConfigurarBoton(btnVolver);
         ConfigurarBoton(btnCargar);
-        ConfigurarBoton(btnReiniciar);
         ConfigurarBoton(btnOpciones);
         ConfigurarBoton(btnSalir);
         
         if (btnOpciones != null)
             btnOpciones.Pressed += OnOpciones;
-            
-        if (btnReiniciar != null)
-            btnReiniciar.Pressed += OnReiniciar;
 
         if (btnGuardar != null)
             btnGuardar.Pressed += OnGuardar;
@@ -107,19 +101,9 @@ public partial class menu_pausa : CanvasLayer
     	await save.LoadGame();
 	}
 
-    private void OnReiniciar()
-	{
-		QuitarPausa();
-        Input.MouseMode = Input.MouseModeEnum.Visible;
-        Base.Instance.RepairBase();
-        Wave.Instance.ResetWaves();
-    	GD.Print("Reiniciar partida");
-    	GetTree().ReloadCurrentScene();
-	}
-
     private void OnOpciones()
     {
-        var optionsMenu = GetTree().CurrentScene.GetNodeOrNull<OptionsPausa>("OptionsPausa");
+        var optionsMenu = GetTree().CurrentScene.GetNodeOrNull<OptionsPausaAldea>("OptionsPausaAldea");
 
         if (optionsMenu != null)
         {
