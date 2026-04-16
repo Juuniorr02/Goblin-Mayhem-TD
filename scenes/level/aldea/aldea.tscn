@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://dlkmwoujs2ffa" path="res://scripts/level/aldea/Aldea.cs" id="1_xy8tv"]
 [ext_resource type="PackedScene" uid="uid://db3gopv2d5x4p" path="res://assets/level/Map/aldea.tmx" id="2_r5q8b"]
 [ext_resource type="PackedScene" uid="uid://cga8wa1itf7t7" path="res://scenes/ui/uialdea.tscn" id="3_bq6bm"]
+[ext_resource type="Script" uid="uid://0yfmp0uplcf0" path="res://scripts/level/aldea/Uialdea.cs" id="4_ib1id"]
 [ext_resource type="Script" uid="uid://ccef7herjptu0" path="res://scripts/character/CameraRig.cs" id="4_yay4l"]
-[ext_resource type="Script" uid="uid://btql0vb42o30d" path="res://scripts/ui/button/Ayuntamiento.cs" id="5_2depw"]
 [ext_resource type="PackedScene" uid="uid://6wmhfodnhdx" path="res://scenes/level/aldea/menu_pausa_aldea.tscn" id="6_ib1id"]
 [ext_resource type="PackedScene" uid="uid://bsnre104stsy0" path="res://scenes/level/aldea/options_pausa_aldea.tscn" id="7_o7wln"]
 [ext_resource type="PackedScene" uid="uid://cxr58qt2snegv" path="res://scenes/level/aldea/menu_aserradero.tscn" id="8_8mv7s"]
@@ -21,9 +21,10 @@ script = ExtResource("1_xy8tv")
 position = Vector2(-430, 217)
 
 [node name="UIAldea" parent="." instance=ExtResource("3_bq6bm")]
+script = ExtResource("4_ib1id")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(6502, 2730)
+position = Vector2(6535, 2914)
 zoom = Vector2(0.25, 0.25)
 limit_enabled = false
 limit_left = 0
@@ -35,55 +36,79 @@ MoveSpeed = 0.0
 MinZoom = 0.25
 MaxZoom = 0.25
 
-[node name="BotonAyuntamiento" type="Button" parent="."]
+[node name="menu_pausa_aldea" parent="." instance=ExtResource("6_ib1id")]
+layer = 5
+visible = false
+
+[node name="OptionsPausaAldea" parent="." instance=ExtResource("7_o7wln")]
+layer = 5
+visible = false
+
+[node name="Botones" type="CanvasLayer" parent="."]
+layer = 10
+follow_viewport_enabled = true
+
+[node name="BotonAyuntamiento" type="Button" parent="Botones"]
 z_index = 3
 texture_filter = 1
+custom_minimum_size = Vector2(8, 8)
 offset_left = 5921.0005
 offset_top = 1257.0
 offset_right = 5929.0005
 offset_bottom = 1265.0
 scale = Vector2(155.79207, 120.26515)
-script = ExtResource("5_2depw")
+flat = true
 
-[node name="menu_ayuntamiento" parent="BotonAyuntamiento" instance=ExtResource("9_vy6mu")]
+[node name="menu_ayuntamiento" parent="Botones/BotonAyuntamiento" instance=ExtResource("9_vy6mu")]
+layer = 6
 visible = false
+offset = Vector2(5000, 1000)
+scale = Vector2(3, 3)
+transform = Transform2D(3, 0, 0, 3, 5000, 1000)
+follow_viewport_enabled = true
 
-[node name="BotonCantera" type="Button" parent="."]
+[node name="BotonCantera" type="Button" parent="Botones"]
 z_index = 3
 offset_left = 7306.9995
 offset_top = 3015.0
 offset_right = 7314.9995
 offset_bottom = 3023.0
 scale = Vector2(91.89639, 64.59721)
+flat = true
 
-[node name="menu_cantera" parent="BotonCantera" instance=ExtResource("11_fx5rj")]
+[node name="menu_cantera" parent="Botones/BotonCantera" instance=ExtResource("11_fx5rj")]
 visible = false
+follow_viewport_enabled = true
 
-[node name="BotonMina" type="Button" parent="."]
+[node name="BotonMina" type="Button" parent="Botones"]
 z_index = 3
 offset_left = 8576.001
 offset_top = 2033.0
 offset_right = 8584.001
 offset_bottom = 2041.0
 scale = Vector2(-61.062122, 95.93618)
+flat = true
 metadata/_edit_use_anchors_ = true
 
-[node name="menu_mina" parent="BotonMina" instance=ExtResource("13_tilys")]
+[node name="menu_mina" parent="Botones/BotonMina" instance=ExtResource("13_tilys")]
 visible = false
+follow_viewport_enabled = true
 
-[node name="BotonAserradero" type="Button" parent="."]
+[node name="BotonAserradero" type="Button" parent="Botones"]
 z_index = 3
 offset_left = 3825.0
 offset_top = 3039.0
 offset_right = 3833.0
 offset_bottom = 3047.0
 scale = Vector2(93.6691, -49.20361)
+flat = true
 metadata/_edit_use_anchors_ = true
 
-[node name="menu_aserradero" parent="BotonAserradero" instance=ExtResource("8_8mv7s")]
+[node name="menu_aserradero" parent="Botones/BotonAserradero" instance=ExtResource("8_8mv7s")]
 visible = false
+follow_viewport_enabled = true
 
-[node name="BotonBarrio" type="Button" parent="."]
+[node name="BotonBarrio" type="Button" parent="Botones"]
 z_index = 3
 offset_left = 6259.0005
 offset_top = 2112.0002
@@ -91,23 +116,21 @@ offset_right = 6267.0005
 offset_bottom = 2120.0002
 rotation = -1.1257482
 scale = Vector2(-79.010574, 133.04248)
+flat = true
 
-[node name="menu_barrio" parent="BotonBarrio" instance=ExtResource("10_0jmeu")]
+[node name="menu_barrio" parent="Botones/BotonBarrio" instance=ExtResource("10_0jmeu")]
 visible = false
+follow_viewport_enabled = true
 
-[node name="BotonHerreria" type="Button" parent="."]
+[node name="BotonHerreria" type="Button" parent="Botones"]
 z_index = 3
 offset_left = 5816.0
 offset_top = 3386.0
 offset_right = 5824.0
 offset_bottom = 3394.0
 scale = Vector2(80.92591, 66.97712)
+flat = true
 
-[node name="menu_herreria" parent="BotonHerreria" instance=ExtResource("12_splcq")]
+[node name="menu_herreria" parent="Botones/BotonHerreria" instance=ExtResource("12_splcq")]
 visible = false
-
-[node name="menu_pausa_aldea" parent="." instance=ExtResource("6_ib1id")]
-layer = 5
-
-[node name="OptionsPausaAldea" parent="." instance=ExtResource("7_o7wln")]
-layer = 5
+follow_viewport_enabled = true

@@ -477,27 +477,51 @@
   <image source="../Tiles/grass_pathSplit_W.png" width="256" height="352"/>
  </tile>
  <tile id="152">
+  <properties>
+   <property name="data_can_build_boat" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/grass_river_N.png" width="256" height="352"/>
  </tile>
  <tile id="153">
+  <properties>
+   <property name="data_can_build_boat" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/grass_river_E.png" width="256" height="352"/>
  </tile>
  <tile id="154">
+  <properties>
+   <property name="data_can_build_boat" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/grass_river_S.png" width="256" height="352"/>
  </tile>
  <tile id="155">
+  <properties>
+   <property name="data_can_build_boat" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/grass_river_W.png" width="256" height="352"/>
  </tile>
  <tile id="156">
+  <properties>
+   <property name="data_can_build_boat" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/grass_riverBend_N.png" width="256" height="352"/>
  </tile>
  <tile id="157">
+  <properties>
+   <property name="data_can_build_boat" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/grass_riverBend_E.png" width="256" height="352"/>
  </tile>
  <tile id="158">
+  <properties>
+   <property name="data_can_build_boat" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/grass_riverBend_S.png" width="256" height="352"/>
  </tile>
  <tile id="159">
+  <properties>
+   <property name="data_can_build_boat" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/grass_riverBend_W.png" width="256" height="352"/>
  </tile>
  <tile id="160">
@@ -513,27 +537,51 @@
   <image source="../Tiles/grass_riverBridge_W.png" width="256" height="352"/>
  </tile>
  <tile id="164">
+  <properties>
+   <property name="data_can_build_boat" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/grass_riverCorner_N.png" width="256" height="352"/>
  </tile>
  <tile id="165">
+  <properties>
+   <property name="data_can_build_boat" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/grass_riverCorner_E.png" width="256" height="352"/>
  </tile>
  <tile id="166">
+  <properties>
+   <property name="data_can_build_boat" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/grass_riverCorner_S.png" width="256" height="352"/>
  </tile>
  <tile id="167">
+  <properties>
+   <property name="data_can_build_boat" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/grass_riverCorner_W.png" width="256" height="352"/>
  </tile>
  <tile id="168">
+  <properties>
+   <property name="data_can_build_boat" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/grass_riverCrossing_N.png" width="256" height="352"/>
  </tile>
  <tile id="169">
+  <properties>
+   <property name="data_can_build_boat" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/grass_riverCrossing_E.png" width="256" height="352"/>
  </tile>
  <tile id="170">
+  <properties>
+   <property name="data_can_build_boat" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/grass_riverCrossing_S.png" width="256" height="352"/>
  </tile>
  <tile id="171">
+  <properties>
+   <property name="data_can_build_boat" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/grass_riverCrossing_W.png" width="256" height="352"/>
  </tile>
  <tile id="172">
@@ -561,15 +609,27 @@
   <image source="../Tiles/grass_riverEnd_W.png" width="256" height="352"/>
  </tile>
  <tile id="176">
+  <properties>
+   <property name="data_can_build_boat" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/grass_riverEndSquare_N.png" width="256" height="352"/>
  </tile>
  <tile id="177">
+  <properties>
+   <property name="data_can_build_boat" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/grass_riverEndSquare_E.png" width="256" height="352"/>
  </tile>
  <tile id="178">
+  <properties>
+   <property name="data_can_build_boat" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/grass_riverEndSquare_S.png" width="256" height="352"/>
  </tile>
  <tile id="179">
+  <properties>
+   <property name="data_can_build_boat" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/grass_riverEndSquare_W.png" width="256" height="352"/>
  </tile>
  <tile id="180">
@@ -585,15 +645,27 @@
   <image source="../Tiles/grass_riverSlope_W.png" width="256" height="352"/>
  </tile>
  <tile id="184">
+  <properties>
+   <property name="data_can_build_boat" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/grass_riverSplit_N.png" width="256" height="352"/>
  </tile>
  <tile id="185">
+  <properties>
+   <property name="data_can_build_boat" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/grass_riverSplit_E.png" width="256" height="352"/>
  </tile>
  <tile id="186">
+  <properties>
+   <property name="data_can_build_boat" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/grass_riverSplit_S.png" width="256" height="352"/>
  </tile>
  <tile id="187">
+  <properties>
+   <property name="data_can_build_boat" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/grass_riverSplit_W.png" width="256" height="352"/>
  </tile>
  <tile id="188">
@@ -633,51 +705,99 @@
   <image source="../Tiles/grass_slopeConvex_W.png" width="256" height="352"/>
  </tile>
  <tile id="200">
+  <properties>
+   <property name="data_can_build_boat" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/grass_water_N.png" width="256" height="352"/>
  </tile>
  <tile id="201">
+  <properties>
+   <property name="data_can_build_boat" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/grass_water_E.png" width="256" height="352"/>
  </tile>
  <tile id="202">
+  <properties>
+   <property name="data_can_build_boat" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/grass_water_S.png" width="256" height="352"/>
  </tile>
  <tile id="203">
+  <properties>
+   <property name="data_can_build_boat" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/grass_water_W.png" width="256" height="352"/>
  </tile>
  <tile id="204">
+  <properties>
+   <property name="data_can_build_boat" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/grass_waterConcave_N.png" width="256" height="352"/>
  </tile>
  <tile id="205">
+  <properties>
+   <property name="data_can_build_boat" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/grass_waterConcave_E.png" width="256" height="352"/>
  </tile>
  <tile id="206">
+  <properties>
+   <property name="data_can_build_boat" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/grass_waterConcave_S.png" width="256" height="352"/>
  </tile>
  <tile id="207">
+  <properties>
+   <property name="data_can_build_boat" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/grass_waterConcave_W.png" width="256" height="352"/>
  </tile>
  <tile id="208">
+  <properties>
+   <property name="data_can_build_boat" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/grass_waterConvex_N.png" width="256" height="352"/>
  </tile>
  <tile id="209">
+  <properties>
+   <property name="data_can_build_boat" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/grass_waterConvex_E.png" width="256" height="352"/>
  </tile>
  <tile id="210">
+  <properties>
+   <property name="data_can_build_boat" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/grass_waterConvex_S.png" width="256" height="352"/>
  </tile>
  <tile id="211">
+  <properties>
+   <property name="data_can_build_boat" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/grass_waterConvex_W.png" width="256" height="352"/>
  </tile>
  <tile id="212">
+  <properties>
+   <property name="data_can_build_boat" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/grass_waterRiver_N.png" width="256" height="352"/>
  </tile>
  <tile id="213">
+  <properties>
+   <property name="data_can_build_boat" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/grass_waterRiver_E.png" width="256" height="352"/>
  </tile>
  <tile id="214">
+  <properties>
+   <property name="data_can_build_boat" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/grass_waterRiver_S.png" width="256" height="352"/>
  </tile>
  <tile id="215">
+  <properties>
+   <property name="data_can_build_boat" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/grass_waterRiver_W.png" width="256" height="352"/>
  </tile>
  <tile id="216">
@@ -687,21 +807,12 @@
   <image source="../Tiles/rocks_dirt_N.png" width="256" height="352"/>
  </tile>
  <tile id="217">
-  <properties>
-   <property name="data_can_build" type="bool" value="true"/>
-  </properties>
   <image source="../Tiles/rocks_dirt_E.png" width="256" height="352"/>
  </tile>
  <tile id="218">
-  <properties>
-   <property name="data_can_build" type="bool" value="true"/>
-  </properties>
   <image source="../Tiles/rocks_dirt_S.png" width="256" height="352"/>
  </tile>
  <tile id="219">
-  <properties>
-   <property name="data_can_build" type="bool" value="true"/>
-  </properties>
   <image source="../Tiles/rocks_dirt_W.png" width="256" height="352"/>
  </tile>
  <tile id="220">
@@ -711,21 +822,12 @@
   <image source="../Tiles/rocks_grass_N.png" width="256" height="352"/>
  </tile>
  <tile id="221">
-  <properties>
-   <property name="data_can_build" type="bool" value="true"/>
-  </properties>
   <image source="../Tiles/rocks_grass_E.png" width="256" height="352"/>
  </tile>
  <tile id="222">
-  <properties>
-   <property name="data_can_build" type="bool" value="true"/>
-  </properties>
   <image source="../Tiles/rocks_grass_S.png" width="256" height="352"/>
  </tile>
  <tile id="223">
-  <properties>
-   <property name="data_can_build" type="bool" value="true"/>
-  </properties>
   <image source="../Tiles/rocks_grass_W.png" width="256" height="352"/>
  </tile>
  <tile id="224">
@@ -1107,15 +1209,27 @@
   <image source="../Tiles/water_center_W.png" width="256" height="352"/>
  </tile>
  <tile id="344">
+  <properties>
+   <property name="data_can_build_boat" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/water_fall_N.png" width="256" height="352"/>
  </tile>
  <tile id="345">
+  <properties>
+   <property name="data_can_build_boat" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/water_fall_E.png" width="256" height="352"/>
  </tile>
  <tile id="346">
+  <properties>
+   <property name="data_can_build_boat" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/water_fall_S.png" width="256" height="352"/>
  </tile>
  <tile id="347">
+  <properties>
+   <property name="data_can_build_boat" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/water_fall_W.png" width="256" height="352"/>
  </tile>
  <tile id="348">

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://m6j2062p6kiy"]
 
-[ext_resource type="Script" uid="uid://bwuylli68p26m" path="res://scripts/level/menu_barrio.cs" id="1_a5fe6"]
+[ext_resource type="Script" uid="uid://bwuylli68p26m" path="res://scripts/level/aldea/menu_barrio.cs" id="1_a5fe6"]
 
 [node name="menu_barrio" type="CanvasLayer"]
 script = ExtResource("1_a5fe6")
@@ -39,14 +39,31 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="Espacio2" type="MarginContainer" parent="CenterContainer/PanelContainer/MarginContainer/PanelContainer/VBoxContainer/VBoxContainer"]
+[node name="Info" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/PanelContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "    200 oro/ronda --> 400 oro/ronda    
+Coste de mejora: 1000 oro"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Mejorar" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/PanelContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Mejorar"
+
+[node name="Espacio3" type="MarginContainer" parent="CenterContainer/PanelContainer/MarginContainer/PanelContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="Espacio3" type="MarginContainer" parent="CenterContainer/PanelContainer/MarginContainer/PanelContainer/VBoxContainer/VBoxContainer"]
+[node name="Volver" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/PanelContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Volver"
+
+[node name="Espacio2" type="MarginContainer" parent="CenterContainer/PanelContainer/MarginContainer/PanelContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5

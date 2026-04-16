@@ -23,8 +23,8 @@
             "scale": 0.33,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 9734.848484848484,
-                "y": 4636.363636363636
+                "x": 11228.78787878788,
+                "y": 3633.3333333333335
             }
         },
         "Map/mapa2.tmx": {
@@ -37,13 +37,15 @@
         }
     },
     "openFiles": [
+        "Map/Example.tsx",
         "Map/islas1.tmx"
     ],
     "project": "islas1.tiled-project",
+    "property.type": "bool",
     "recentFiles": [
+        "Map/Example.tsx",
         "Map/islas1.tmx",
         "Map/Aldea.tmx",
-        "Map/mapa2.tmx",
-        "Map/Example.tsx"
+        "Map/mapa2.tmx"
     ]
 }

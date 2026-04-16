@@ -1,5 +1,4 @@
 using Godot;
-using System;
 
 public partial class Aldea : Node2D
 {
@@ -22,18 +21,18 @@ public partial class Aldea : Node2D
 	{
 		ProcessMode = ProcessModeEnum.Always;
 
-		menu_ayuntamiento = GetNodeOrNull<menu_ayuntamiento>("BotonAyuntamiento/MenuAyuntamiento");
-		menu_cantera = GetNodeOrNull<menu_cantera>("BotonCantera/MenuCantera");
-		menu_aserradero = GetNodeOrNull<menu_aserradero>("BotonAserradero/MenuAserradero");
-		menu_herreria = GetNodeOrNull<menu_herreria>("BotonHerreria/MenuHerreria");
-		menu_mina = GetNodeOrNull<menu_mina>("BotonMina/MenuMina");
-		menu_barrio = GetNodeOrNull<menu_barrio>("BotonBarrio/MenuBarrio");
-		btnAyuntamiento = GetNodeOrNull<Button>("BotonAyuntamiento");
-		btnCantera = GetNodeOrNull<Button>("BotonCantera");
-		btnAserradero = GetNodeOrNull<Button>("BotonAserradero");
-		btnHerreria = GetNodeOrNull<Button>("BotonHerreria");
-		btnMina = GetNodeOrNull<Button>("BotonMina");
-		btnBarrio = GetNodeOrNull<Button>("BotonBarrio");
+		menu_ayuntamiento = GetNodeOrNull<menu_ayuntamiento>("Botones/BotonAyuntamiento/menu_ayuntamiento");
+		menu_cantera = GetNodeOrNull<menu_cantera>("Botones/BotonCantera/menu_cantera");
+		menu_aserradero = GetNodeOrNull<menu_aserradero>("Botones/BotonAserradero/menu_aserradero");
+		menu_herreria = GetNodeOrNull<menu_herreria>("Botones/BotonHerreria/menu_herreria");
+		menu_mina = GetNodeOrNull<menu_mina>("Botones/BotonMina/menu_mina");
+		menu_barrio = GetNodeOrNull<menu_barrio>("Botones/BotonBarrio/menu_barrio");
+		btnAyuntamiento = GetNodeOrNull<Button>("Botones/BotonAyuntamiento");
+		btnCantera = GetNodeOrNull<Button>("Botones/BotonCantera");
+		btnAserradero = GetNodeOrNull<Button>("Botones/BotonAserradero");
+		btnHerreria = GetNodeOrNull<Button>("Botones/BotonHerreria");
+		btnMina = GetNodeOrNull<Button>("Botones/BotonMina");
+		btnBarrio = GetNodeOrNull<Button>("Botones/BotonBarrio");
 
 		ConfigurarBoton(btnAyuntamiento);
 		ConfigurarBoton(btnCantera);
