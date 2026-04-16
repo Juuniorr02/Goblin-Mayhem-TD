@@ -3,12 +3,12 @@
 importer="YATI"
 type="PackedScene"
 uid="uid://3j87wq4emqjy"
-path="res://.godot/imported/Aldea.tmx-fb77d9e04a8f08d13a5152b8c650c1f0.tscn"
+path="res://.godot/imported/aldea.tmx-151b7aef8e9a26c0b024779d8b1910d3.tscn"
 
 [deps]
 
-source_file="res://assets/level/Map/Aldea.tmx"
-dest_files=["res://.godot/imported/Aldea.tmx-fb77d9e04a8f08d13a5152b8c650c1f0.tscn"]
+source_file="res://assets/level/Map/aldea.tmx"
+dest_files=["res://.godot/imported/aldea.tmx-151b7aef8e9a26c0b024779d8b1910d3.tscn"]
 
 [params]
 
