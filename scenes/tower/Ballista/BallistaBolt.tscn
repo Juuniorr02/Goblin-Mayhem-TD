@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bl1mn3iuwuwdg" path="res://scripts/character/tower/ballista/BallistaBolt.cs" id="2_wmogr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gf3nl"]
-size = Vector2(32, 5)
+size = Vector2(22, 16)
 
 [node name="Area2D" type="Area2D"]
 script = ExtResource("2_wmogr")

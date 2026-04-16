@@ -20,9 +20,11 @@ scale_curve = SubResource("CurveTexture_ah6ns")
 color = Color(0.9692678, 0.5802898, 0.033856455, 1)
 
 [node name="GPUParticles2D" type="GPUParticles2D"]
+scale = Vector2(0.5, 0.5)
 emitting = false
 amount = 28
 one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_ml5ej")
 script = ExtResource("1_ah6ns")
+ScaleMultiplier = 10.0
