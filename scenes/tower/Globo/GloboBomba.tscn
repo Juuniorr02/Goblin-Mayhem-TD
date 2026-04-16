@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://4mvv8wmaaava"]
+
+[ext_resource type="Script" uid="uid://6etarajw0x4s" path="res://scripts/character/tower/Globo/GloboBomba.cs" id="1_68lfp"]
+[ext_resource type="Texture2D" uid="uid://cqwv1gcqxcon7" path="res://assets/character/tower/Globo/Bombaglobo.png" id="2_08pfd"]
+[ext_resource type="PackedScene" uid="uid://cmbsecxsq7ho3" path="res://scenes/tower/Mortero/explosion.tscn" id="2_ebi3c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b4w28"]
+
+[node name="GloboBomba" type="Area2D"]
+script = ExtResource("1_68lfp")
+ExplosionEffect = ExtResource("2_ebi3c")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_08pfd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_b4w28")

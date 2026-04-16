@@ -14,11 +14,11 @@
             "scaleInEditor": 0.5
         },
         "Map/mapa2.tmx": {
-            "scale": 0.125,
+            "scale": 0.33,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 5984,
-                "y": 3396
+                "x": 6827.272727272727,
+                "y": 4780.30303030303
             }
         },
         "Map/mapa2/Example.tsx": {

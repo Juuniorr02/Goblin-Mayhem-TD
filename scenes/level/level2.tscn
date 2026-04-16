@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dd1ml503ns506"]
+[gd_scene load_steps=25 format=3 uid="uid://dd1ml503ns506"]
 
 [ext_resource type="PackedScene" uid="uid://joyf4m63bcjk" path="res://assets/level/Map/mapa2.tmx" id="1_5fc2a"]
 [ext_resource type="Script" uid="uid://cubvhlo0alqh1" path="res://scripts/level/terrain/Pathfinding.cs" id="2_abfbc"]
@@ -11,12 +11,15 @@
 [ext_resource type="Script" uid="uid://dlfq6grfckhot" path="res://scripts/character/tower/TowerBuilder.cs" id="7_wwvym"]
 [ext_resource type="PackedScene" uid="uid://ieo0rfx4mn8y" path="res://scenes/tower/Cannon/Cannon.tscn" id="8_8nqb7"]
 [ext_resource type="PackedScene" uid="uid://cor65fcesxg0a" path="res://scenes/ui/menu_pausa.tscn" id="8_h3ie6"]
+[ext_resource type="PackedScene" uid="uid://fwle2vth706y" path="res://scenes/tower/Construir/Martillo.tscn" id="8_h687j"]
 [ext_resource type="PackedScene" uid="uid://i7fnxkfidwjh" path="res://scenes/tower/ArcherTower/archerTower.tscn" id="9_iwtdf"]
 [ext_resource type="PackedScene" uid="uid://bm2tdm7lsq5q3" path="res://scenes/tower/Mortero/mortero.tscn" id="10_a1srb"]
 [ext_resource type="PackedScene" uid="uid://doxdk8ijaiqly" path="res://scenes/tower/Flamethrower/flamethrower.tscn" id="11_2mh14"]
 [ext_resource type="PackedScene" uid="uid://ckc1i5qv6sle8" path="res://scenes/tower/Ballista/ballista.tscn" id="12_h3ie6"]
+[ext_resource type="PackedScene" uid="uid://cuq0at3ylsro3" path="res://scenes/tower/MageTower/mage_tower.tscn" id="13_3pfqo"]
 [ext_resource type="PackedScene" uid="uid://dgc77kp8vuy4p" path="res://scenes/ui/options_pausa.tscn" id="14_mlipa"]
 [ext_resource type="PackedScene" uid="uid://c6o5datpm682p" path="res://scenes/ui/menu_victoria.tscn" id="15_0l7l4"]
+[ext_resource type="PackedScene" uid="uid://ce0pn5jdtd7uu" path="res://scenes/tower/Globo/globo.tscn" id="15_8k8u7"]
 [ext_resource type="PackedScene" uid="uid://c387degtgk6i6" path="res://scenes/ui/menu_derrota.tscn" id="16_tthrg"]
 
 [sub_resource type="Curve2D" id="Curve2D_5fc2a"]
@@ -56,12 +59,15 @@ SpawnInterval = 0.5
 EnemiesPerWave = 20
 
 [node name="CaminoA" type="Path2D" parent="EnemySpawner"]
+z_index = 1
 curve = SubResource("Curve2D_5fc2a")
 
 [node name="CaminoB" type="Path2D" parent="EnemySpawner"]
+z_index = 1
 curve = SubResource("Curve2D_abfbc")
 
 [node name="CaminoVolador" type="Path2D" parent="EnemySpawner"]
+z_index = 2
 curve = SubResource("Curve2D_adi8m")
 
 [node name="EnemiesContainer" type="Node2D" parent="."]
@@ -69,14 +75,16 @@ curve = SubResource("Curve2D_adi8m")
 [node name="Towers" type="Node2D" parent="." node_paths=PackedStringArray("TowersParent", "EnemiesContainer")]
 script = ExtResource("7_wwvym")
 TowersParent = NodePath(".")
-GhostTowerScene = ExtResource("8_8nqb7")
+GhostTowerScene = ExtResource("8_h687j")
 EnemiesContainer = NodePath("../EnemiesContainer")
 TowersScenes = Dictionary[String, PackedScene]({
 "Archer": ExtResource("9_iwtdf"),
 "Ballista": ExtResource("12_h3ie6"),
+"Bloon": ExtResource("15_8k8u7"),
 "Cannon": ExtResource("8_8nqb7"),
 "Flame": ExtResource("11_2mh14"),
-"Mortar": ExtResource("10_a1srb")
+"Mortar": ExtResource("10_a1srb"),
+"Wizard": ExtResource("13_3pfqo")
 })
 
 [node name="IU" parent="." node_paths=PackedStringArray("spawner") instance=ExtResource("5_iwtdf")]
