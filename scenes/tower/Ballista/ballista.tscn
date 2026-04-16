@@ -1,0 +1,83 @@
+[gd_scene load_steps=12 format=3 uid="uid://ckc1i5qv6sle8"]
+
+[ext_resource type="Script" uid="uid://b1axsr4jj2u2q" path="res://scripts/character/tower/ballista/BallistaTower.cs" id="1_13gvo"]
+[ext_resource type="Texture2D" uid="uid://cmh0htep4f3gj" path="res://assets/character/tower/Ballista/Ballesta-Sheet.png" id="2_1yx0p"]
+[ext_resource type="PackedScene" uid="uid://0lrd82ny8vvc" path="res://scenes/tower/Ballista/BallistaBolt.tscn" id="2_c1b5q"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ptcyb"]
+atlas = ExtResource("2_1yx0p")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e34yn"]
+atlas = ExtResource("2_1yx0p")
+region = Rect2(64, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_im4er"]
+atlas = ExtResource("2_1yx0p")
+region = Rect2(128, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_prfq5"]
+atlas = ExtResource("2_1yx0p")
+region = Rect2(192, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_88c8l"]
+atlas = ExtResource("2_1yx0p")
+region = Rect2(256, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vbby3"]
+atlas = ExtResource("2_1yx0p")
+region = Rect2(320, 0, 64, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_htc7t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ptcyb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e34yn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_im4er")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_prfq5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_88c8l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vbby3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kwryj"]
+
+[node name="ballista" type="Node2D"]
+script = ExtResource("1_13gvo")
+BulletScene = ExtResource("2_c1b5q")
+Damage = 15.0
+FireRate = 0.5
+CanTargetLand = false
+CanTargetAir = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_htc7t")
+frame_progress = 0.006880025
+
+[node name="Muzzle" type="Marker2D" parent="."]
+position = Vector2(-19, -2)
+
+[node name="ShootTimer" type="Timer" parent="."]
+
+[node name="DetectionRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
+position = Vector2(-2, 1)
+scale = Vector2(40, 40)
+shape = SubResource("CircleShape2D_kwryj")

@@ -54,6 +54,7 @@ script = ExtResource("1_0thnu")
 Spread = 0.01
 BulletScene = ExtResource("2_mnmbe")
 Damage = 0.5
+FireRate = 10.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
