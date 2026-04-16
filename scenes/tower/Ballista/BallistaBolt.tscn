@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://0lrd82ny8vvc"]
+
+[ext_resource type="Texture2D" uid="uid://5h36lc7x3gop" path="res://assets/character/tower/Ballista/Flecha-Sheet.png" id="2_6ubhm"]
+[ext_resource type="Script" uid="uid://bl1mn3iuwuwdg" path="res://scripts/character/tower/ballista/BallistaBolt.cs" id="2_wmogr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gf3nl"]
+size = Vector2(32, 5)
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("2_wmogr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_gf3nl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_6ubhm")

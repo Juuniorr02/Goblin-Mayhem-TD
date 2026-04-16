@@ -1,0 +1,75 @@
+[gd_scene load_steps=11 format=3 uid="uid://doxdk8ijaiqly"]
+
+[ext_resource type="Script" uid="uid://crqokv4rwu2dj" path="res://scripts/character/tower/Flamethrower/FlameThrower.cs" id="1_0thnu"]
+[ext_resource type="Texture2D" uid="uid://cfusp2kdh8h5g" path="res://assets/character/tower/FlameThrower/Lanzallamas2,5-Sheet.png" id="2_0thnu"]
+[ext_resource type="PackedScene" uid="uid://bvlxkoud1hcen" path="res://scenes/tower/Flamethrower/Flame.tscn" id="2_mnmbe"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mnmbe"]
+atlas = ExtResource("2_0thnu")
+region = Rect2(0, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xotgb"]
+atlas = ExtResource("2_0thnu")
+region = Rect2(96, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2vgo2"]
+atlas = ExtResource("2_0thnu")
+region = Rect2(192, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cyfhq"]
+atlas = ExtResource("2_0thnu")
+region = Rect2(288, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5kuh6"]
+atlas = ExtResource("2_0thnu")
+region = Rect2(384, 0, 96, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7cemk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mnmbe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xotgb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2vgo2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cyfhq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5kuh6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kwryj"]
+
+[node name="Flamethrower" type="Node2D"]
+script = ExtResource("1_0thnu")
+Spread = 0.01
+BulletScene = ExtResource("2_mnmbe")
+Damage = 0.5
+FireRate = 10.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_7cemk")
+frame = 4
+frame_progress = 0.39942288
+
+[node name="Muzzle" type="Marker2D" parent="."]
+position = Vector2(1, -2)
+
+[node name="ShootTimer" type="Timer" parent="."]
+
+[node name="DetectionRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
+position = Vector2(-2, 1)
+scale = Vector2(20, 20)
+shape = SubResource("CircleShape2D_kwryj")

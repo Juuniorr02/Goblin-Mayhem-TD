@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvlxkoud1hcen"]
+
+[ext_resource type="Script" uid="uid://cjqj10a7x7tsa" path="res://scripts/character/tower/Flamethrower/Flame.cs" id="1_bckms"]
+[ext_resource type="Texture2D" uid="uid://d2sctjm50bs30" path="res://assets/character/tower/FlameThrower/Bolamago.png" id="2_v3elj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b4w28"]
+
+[node name="Flame" type="Area2D"]
+script = ExtResource("1_bckms")
+Speed = 600.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_v3elj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_b4w28")
