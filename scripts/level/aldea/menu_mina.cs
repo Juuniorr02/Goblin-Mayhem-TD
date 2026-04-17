@@ -3,7 +3,9 @@ using System;
 
 public partial class menu_mina : CanvasLayer
 {
+	public Aldea aldea;
 	public Label labelInfo;
+	public Label LabelNombre;
 	public Button btnMejorar;
 	public Button btnVolver;
 	private bool isPaused = false;
@@ -13,6 +15,7 @@ public partial class menu_mina : CanvasLayer
 		ProcessMode = ProcessModeEnum.Always;
 
 		labelInfo = GetNodeOrNull<Label>("CenterContainer/PanelContainer/MarginContainer/PanelContainer/VBoxContainer/VBoxContainer/Info");
+		LabelNombre = GetNodeOrNull<Label>("CenterContainer/PanelContainer/MarginContainer/PanelContainer/VBoxContainer/VBoxContainer/Nombre");
 		btnMejorar = GetNodeOrNull<Button>("CenterContainer/PanelContainer/MarginContainer/PanelContainer/VBoxContainer/VBoxContainer/Mejorar");
 		btnVolver = GetNodeOrNull<Button>("CenterContainer/PanelContainer/MarginContainer/PanelContainer/VBoxContainer/VBoxContainer/Volver");
 
@@ -36,6 +39,14 @@ public partial class menu_mina : CanvasLayer
         b.MouseFilter = Control.MouseFilterEnum.Stop;
     }
 
+	public override void _Input(InputEvent e)
+    {
+        if (e.IsActionPressed("pausa"))
+        {
+            if (isPaused) OnVolver();
+        }
+    }
+
 	public void Abrir()
 	{
         isPaused = true;
@@ -48,6 +59,7 @@ public partial class menu_mina : CanvasLayer
 	{
 		isPaused = false;
         GetTree().Paused = false;
+		aldea.MenuCerrado();
         Visible = false;
 	}
 

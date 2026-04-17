@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://c04ivpxt3pkep"]
 
-[ext_resource type="PackedScene" uid="uid://bboh74w07n6xi" path="res://assets/level/Map/pantano.tmx" id="1_mawj5"]
+[ext_resource type="PackedScene" uid="uid://ucghgvf60jf8" path="res://assets/level/Map/pantano1.tmx" id="1_mawj5"]
 [ext_resource type="Script" uid="uid://cubvhlo0alqh1" path="res://scripts/level/terrain/Pathfinding.cs" id="2_hl87u"]
 [ext_resource type="Script" uid="uid://ddtj2hn2hhtfd" path="res://scripts/character/enemy/EnemySpawner.cs" id="3_prun6"]
 [ext_resource type="PackedScene" uid="uid://dbeqdm5gepyap" path="res://scenes/character/enemy/enemy.tscn" id="4_s654b"]

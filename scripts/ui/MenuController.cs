@@ -94,7 +94,7 @@ public partial class MenuController : Node
 
     public void OnNewGame()
     {
-        GetTree().ChangeSceneToFile("res://scenes/level/level1.tscn");
+        GetTree().ChangeSceneToFile("res://scenes/level/tutorial.tscn");
     }
 
     public async void OnLoadGame()

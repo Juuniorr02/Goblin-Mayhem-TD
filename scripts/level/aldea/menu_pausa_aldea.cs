@@ -8,6 +8,9 @@ public partial class menu_pausa_aldea : CanvasLayer
     private Button btnOpciones;
     private Button btnSalir;
 
+    private float lastPressTime = -1f;
+    private float doublePressThreshold = 0.3f;
+
     private bool isPaused = false;
 
     public override void _Ready()
@@ -56,8 +59,20 @@ public partial class menu_pausa_aldea : CanvasLayer
     {
         if (e.IsActionPressed("pausa"))
         {
-            if (isPaused) QuitarPausa();
-            else Pausar();
+            float currentTime = Time.GetTicksMsec() / 2000.0f;
+
+            if (lastPressTime > 0 && currentTime - lastPressTime <= doublePressThreshold)
+            {
+                if (isPaused) QuitarPausa();
+                else Pausar();
+
+                lastPressTime = -1f;
+            }
+
+            else
+            {
+            lastPressTime = currentTime;
+            }
         }
     }
 

@@ -36,13 +36,13 @@ layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="NuevaPartida" type="Button" parent="CenterContainer/VBoxContainer"]
-layout_mode = 2
-text = "Nueva partida"
-
 [node name="CargarPartida" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 text = "Cargar partida"
+
+[node name="NuevaPartida" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Nueva partida"
 
 [node name="Opciones" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2

@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://c8gkmpv3cm5lb"]
+
+[ext_resource type="PackedScene" uid="uid://d4jqwlcllpu4n" path="res://assets/level/Map/mapa_mundi.tmx" id="1_vwjia"]
+[ext_resource type="Script" uid="uid://ccef7herjptu0" path="res://scripts/character/CameraRig.cs" id="2_bt43m"]
+[ext_resource type="PackedScene" uid="uid://xs0ivbuxfewb" path="res://scenes/level/aldea/uimapa.tscn" id="3_bmao8"]
+[ext_resource type="PackedScene" uid="uid://6wmhfodnhdx" path="res://scenes/level/aldea/menu_pausa_aldea.tscn" id="4_8nlh4"]
+[ext_resource type="PackedScene" uid="uid://bsnre104stsy0" path="res://scenes/level/aldea/options_pausa_aldea.tscn" id="5_7frjm"]
+
+[node name="mapa_mundi" type="Node2D"]
+
+[node name="mapa_mundi" parent="." instance=ExtResource("1_vwjia")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(6937, 3385)
+zoom = Vector2(0.2, 0.2)
+limit_enabled = false
+limit_left = 0
+limit_top = 0
+limit_right = 1145
+limit_bottom = 555
+script = ExtResource("2_bt43m")
+MoveSpeed = 1400.0
+MinZoom = 0.1
+MaxZoom = 1.0
+
+[node name="uimapa" parent="." instance=ExtResource("3_bmao8")]
+
+[node name="menu_pausa_aldea" parent="." instance=ExtResource("4_8nlh4")]
+layer = 7
+visible = false
+
+[node name="OptionsPausaAldea" parent="." instance=ExtResource("5_7frjm")]
+layer = 8
+visible = false

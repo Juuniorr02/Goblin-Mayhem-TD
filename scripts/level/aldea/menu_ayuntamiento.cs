@@ -3,7 +3,9 @@ using System;
 
 public partial class menu_ayuntamiento : CanvasLayer
 {
+	public Aldea aldea;
 	public Label labelInfo;
+	public Label LabelNombre;
 	public Button btnMejorar;
 	public Button btnVolver;
 
@@ -14,6 +16,7 @@ public partial class menu_ayuntamiento : CanvasLayer
 		ProcessMode = ProcessModeEnum.Always;
 
 		labelInfo = GetNodeOrNull<Label>("CenterContainer/PanelContainer/MarginContainer/PanelContainer/VBoxContainer/VBoxContainer/Info");
+		LabelNombre = GetNodeOrNull<Label>("CenterContainer/PanelContainer/MarginContainer/PanelContainer/VBoxContainer/VBoxContainer/Nombre");
 		btnMejorar = GetNodeOrNull<Button>("CenterContainer/PanelContainer/MarginContainer/PanelContainer/VBoxContainer/VBoxContainer/Mejorar");
 		btnVolver = GetNodeOrNull<Button>("CenterContainer/PanelContainer/MarginContainer/PanelContainer/VBoxContainer/VBoxContainer/Volver");
 
@@ -35,6 +38,15 @@ public partial class menu_ayuntamiento : CanvasLayer
 
         b.ProcessMode = ProcessModeEnum.Always;
         b.MouseFilter = Control.MouseFilterEnum.Stop;
+		b.FocusMode = Control.FocusModeEnum.None;
+    }
+
+	public override void _Input(InputEvent e)
+    {
+        if (e.IsActionPressed("pausa"))
+        {
+            if (isPaused) OnVolver();
+        }
     }
 
 	public void Abrir()
@@ -49,6 +61,7 @@ public partial class menu_ayuntamiento : CanvasLayer
 	{
 		isPaused = false;
         GetTree().Paused = false;
+		aldea.MenuCerrado();
         Visible = false;
 	}
 

@@ -810,6 +810,9 @@
   <image source="../Tiles/rocks_dirt_E.png" width="256" height="352"/>
  </tile>
  <tile id="218">
+  <properties>
+   <property name="data_can_build_boat" type="bool" value="true"/>
+  </properties>
   <image source="../Tiles/rocks_dirt_S.png" width="256" height="352"/>
  </tile>
  <tile id="219">

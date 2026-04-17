@@ -32,16 +32,22 @@ layout_mode = 2
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="Espacio1" type="MarginContainer" parent="CenterContainer/PanelContainer/MarginContainer/PanelContainer/VBoxContainer/VBoxContainer"]
+[node name="Espacio4" type="MarginContainer" parent="CenterContainer/PanelContainer/MarginContainer/PanelContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
+[node name="Nombre" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/PanelContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Mina Nivel 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Info" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/PanelContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
-text = "    200 oro/ronda --> 400 oro/ronda    
+text = "    200 metal/ronda --> 400 metal/ronda    
 Coste de mejora: 1000 oro"
 horizontal_alignment = 1
 vertical_alignment = 1

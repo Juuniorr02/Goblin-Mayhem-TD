@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://da24bvxuerl1j"]
 
-[ext_resource type="PackedScene" uid="uid://drtu3t2orl8sd" path="res://assets/level/Map/mapa1.tmx" id="1_nggc0"]
+[ext_resource type="PackedScene" uid="uid://bxah54x2mw4ix" path="res://assets/level/Map/tutorial.tmx" id="1_nggc0"]
 [ext_resource type="Script" uid="uid://ccef7herjptu0" path="res://scripts/character/CameraRig.cs" id="2_gvmle"]
 [ext_resource type="PackedScene" uid="uid://dbeqdm5gepyap" path="res://scenes/character/enemy/enemy.tscn" id="2_pgq8h"]
 [ext_resource type="Script" uid="uid://ddtj2hn2hhtfd" path="res://scripts/character/enemy/EnemySpawner.cs" id="3_mg8dc"]
@@ -79,7 +79,7 @@ MinZoom = 0.23
 MaxZoom = 2.0
 
 [node name="menu_victoria" parent="." instance=ExtResource("10_m2gd4")]
-WinningWave = 10
+WinningWave = 1
 
 [node name="menu_derrota" parent="." instance=ExtResource("11_jawes")]
 
