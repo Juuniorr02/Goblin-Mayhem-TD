@@ -30,6 +30,7 @@ metadata/_custom_type_script = "uid://dxi6h4dntdvec"
 
 [sub_resource type="Resource" id="Resource_h687j"]
 script = ExtResource("4_3pfqo")
+WaveName = "Oleada 1"
 Groups = Array[Object]([SubResource("Resource_dkogb")])
 SpawnInterval = 0.001
 metadata/_custom_type_script = "uid://b7rcgtrq61w48"
