@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://b0rk6ct0lsega"]
+[gd_scene load_steps=14 format=3 uid="uid://b0rk6ct0lsega"]
 
 [ext_resource type="Script" uid="uid://dlkmwoujs2ffa" path="res://scripts/level/aldea/Aldea.cs" id="1_xy8tv"]
 [ext_resource type="PackedScene" uid="uid://db3gopv2d5x4p" path="res://assets/level/Map/aldea.tmx" id="2_r5q8b"]
@@ -14,16 +14,16 @@
 [ext_resource type="PackedScene" uid="uid://di7opanmbhxda" path="res://scenes/level/aldea/menu_herreria.tscn" id="12_splcq"]
 [ext_resource type="PackedScene" uid="uid://bbedvtd2kryv7" path="res://scenes/level/aldea/menu_mina.tscn" id="13_tilys"]
 
-[node name="Aldea" type="Node2D" unique_id=532393598]
+[node name="Aldea" type="Node2D"]
 script = ExtResource("1_xy8tv")
 
-[node name="Aldea" parent="." unique_id=947604909 instance=ExtResource("2_r5q8b")]
+[node name="Aldea" parent="." instance=ExtResource("2_r5q8b")]
 position = Vector2(-430, 217)
 
-[node name="UIAldea" parent="." unique_id=1314224194 instance=ExtResource("3_bq6bm")]
+[node name="UIAldea" parent="." instance=ExtResource("3_bq6bm")]
 script = ExtResource("4_ib1id")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=979832846]
+[node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(6535, 2914)
 zoom = Vector2(0.25, 0.25)
 limit_enabled = false
@@ -36,19 +36,19 @@ MoveSpeed = 0.0
 MinZoom = 0.25
 MaxZoom = 0.25
 
-[node name="menu_pausa_aldea" parent="." unique_id=554102415 instance=ExtResource("6_ib1id")]
+[node name="menu_pausa_aldea" parent="." instance=ExtResource("6_ib1id")]
 layer = 7
 visible = false
 
-[node name="OptionsPausaAldea" parent="." unique_id=790742628 instance=ExtResource("7_o7wln")]
+[node name="OptionsPausaAldea" parent="." instance=ExtResource("7_o7wln")]
 layer = 8
 visible = false
 
-[node name="Botones" type="CanvasLayer" parent="." unique_id=1035703917]
+[node name="Botones" type="CanvasLayer" parent="."]
 layer = 10
 follow_viewport_enabled = true
 
-[node name="BotonAyuntamiento" type="Button" parent="Botones" unique_id=169110334]
+[node name="BotonAyuntamiento" type="Button" parent="Botones"]
 z_index = 3
 texture_filter = 1
 custom_minimum_size = Vector2(8, 8)
@@ -59,7 +59,7 @@ offset_bottom = 1265.0
 scale = Vector2(155.79207, 120.26515)
 flat = true
 
-[node name="menu_ayuntamiento" parent="Botones/BotonAyuntamiento" unique_id=1408984464 instance=ExtResource("9_vy6mu")]
+[node name="menu_ayuntamiento" parent="Botones/BotonAyuntamiento" instance=ExtResource("9_vy6mu")]
 layer = 6
 visible = false
 offset = Vector2(4000, 1000)
@@ -67,7 +67,7 @@ scale = Vector2(3, 3)
 transform = Transform2D(3, 0, 0, 3, 4000, 1000)
 follow_viewport_enabled = true
 
-[node name="BotonCantera" type="Button" parent="Botones" unique_id=1790396688]
+[node name="BotonCantera" type="Button" parent="Botones"]
 z_index = 3
 offset_left = 7306.9995
 offset_top = 3015.0
@@ -76,7 +76,7 @@ offset_bottom = 3023.0
 scale = Vector2(91.89639, 64.59721)
 flat = true
 
-[node name="menu_cantera" parent="Botones/BotonCantera" unique_id=228065778 instance=ExtResource("11_fx5rj")]
+[node name="menu_cantera" parent="Botones/BotonCantera" instance=ExtResource("11_fx5rj")]
 layer = 6
 visible = false
 offset = Vector2(4800, 1250)
@@ -84,7 +84,7 @@ scale = Vector2(3, 3)
 transform = Transform2D(3, 0, 0, 3, 4800, 1250)
 follow_viewport_enabled = true
 
-[node name="BotonMina" type="Button" parent="Botones" unique_id=1379263161]
+[node name="BotonMina" type="Button" parent="Botones"]
 z_index = 3
 offset_left = 8576.001
 offset_top = 2033.0
@@ -94,11 +94,11 @@ scale = Vector2(-61.062122, 95.93618)
 flat = true
 metadata/_edit_use_anchors_ = true
 
-[node name="menu_mina" parent="Botones/BotonMina" unique_id=580478449 instance=ExtResource("13_tilys")]
+[node name="menu_mina" parent="Botones/BotonMina" instance=ExtResource("13_tilys")]
 visible = false
 follow_viewport_enabled = true
 
-[node name="BotonAserradero" type="Button" parent="Botones" unique_id=1299098308]
+[node name="BotonAserradero" type="Button" parent="Botones"]
 z_index = 3
 offset_left = 3825.0
 offset_top = 3039.0
@@ -108,11 +108,11 @@ scale = Vector2(93.6691, -49.20361)
 flat = true
 metadata/_edit_use_anchors_ = true
 
-[node name="menu_aserradero" parent="Botones/BotonAserradero" unique_id=668161935 instance=ExtResource("8_8mv7s")]
+[node name="menu_aserradero" parent="Botones/BotonAserradero" instance=ExtResource("8_8mv7s")]
 visible = false
 follow_viewport_enabled = true
 
-[node name="BotonBarrio" type="Button" parent="Botones" unique_id=36267740]
+[node name="BotonBarrio" type="Button" parent="Botones"]
 z_index = 3
 offset_left = 6259.0005
 offset_top = 2112.0002
@@ -122,11 +122,11 @@ rotation = -1.1257482
 scale = Vector2(-79.010574, 133.04248)
 flat = true
 
-[node name="menu_barrio" parent="Botones/BotonBarrio" unique_id=992546624 instance=ExtResource("10_0jmeu")]
+[node name="menu_barrio" parent="Botones/BotonBarrio" instance=ExtResource("10_0jmeu")]
 visible = false
 follow_viewport_enabled = true
 
-[node name="BotonHerreria" type="Button" parent="Botones" unique_id=1204100197]
+[node name="BotonHerreria" type="Button" parent="Botones"]
 z_index = 3
 offset_left = 5816.0
 offset_top = 3386.0
@@ -135,6 +135,6 @@ offset_bottom = 3394.0
 scale = Vector2(80.92591, 66.97712)
 flat = true
 
-[node name="menu_herreria" parent="Botones/BotonHerreria" unique_id=1461588106 instance=ExtResource("12_splcq")]
+[node name="menu_herreria" parent="Botones/BotonHerreria" instance=ExtResource("12_splcq")]
 visible = false
 follow_viewport_enabled = true

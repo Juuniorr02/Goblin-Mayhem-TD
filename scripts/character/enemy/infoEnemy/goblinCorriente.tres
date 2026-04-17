@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=3 format=3 uid="uid://b2o41jjpwfncg"]
+
+[ext_resource type="Script" uid="uid://dtfsd6sb6u7oe" path="res://scripts/character/enemy/EnemyData.cs" id="1_0u41p"]
+[ext_resource type="PackedScene" uid="uid://b3y0cxwfpbrdd" path="res://scenes/character/enemy/goblinCorriente.tscn" id="1_noy4o"]
+
+[resource]
+script = ExtResource("1_0u41p")
+EnemyName = "Goblin Corriente"
+Speed = 90.0
+EnemyScene = ExtResource("1_noy4o")
+metadata/_custom_type_script = "uid://dtfsd6sb6u7oe"

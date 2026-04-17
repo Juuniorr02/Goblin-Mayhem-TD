@@ -62,7 +62,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ygshw"]
 size = Vector2(11, 28)
 
-[node name="Node2D" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "HealthBar") groups=["enemies"]]
+[node name="Golem" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "HealthBar") groups=["enemies"]]
 scale = Vector2(2.1, 2.1)
 script = ExtResource("2_4gyqm")
 sprite = NodePath("AnimatedSprite2D")
