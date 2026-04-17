@@ -30,7 +30,7 @@ public partial class Iu : Control
         waveAnimation = GetNode<AnimatedSprite2D>("%WaveSprite");
 
         cooldownTimer = new Timer();
-        cooldownTimer.WaitTime = 80;
+        cooldownTimer.WaitTime = 80; // Tiempo de espera entre oleadas
         cooldownTimer.OneShot = true;
         AddChild(cooldownTimer);
 
@@ -47,25 +47,40 @@ public partial class Iu : Control
 
     private void UpdateIU()
     {
-        goldLabel.Text = Base.Instance.Gold.ToString();
-        healthLabel.Text = Base.Instance.Health.ToString();
-        ironLabel.Text = Base.Instance.Iron.ToString();
-        woodLabel.Text = Base.Instance.Wood.ToString();
-        stoneLabel.Text = Base.Instance.Stone.ToString();
+        // Asumiendo que Base.Instance y Wave.Instance existen y funcionan
+        if (Base.Instance != null)
+        {
+            goldLabel.Text = Base.Instance.Gold.ToString();
+            healthLabel.Text = Base.Instance.Health.ToString();
+            ironLabel.Text = Base.Instance.Iron.ToString();
+            woodLabel.Text = Base.Instance.Wood.ToString();
+            stoneLabel.Text = Base.Instance.Stone.ToString();
+        }
 
-        waveLabel.Text = Wave.Instance.CurrentWave.ToString();
+        if (Wave.Instance != null)
+        {
+            waveLabel.Text = Wave.Instance.CurrentWave.ToString();
+        }
     }
 
     private void OnWaveButtonPressed()
     {
+        if (Wave.Instance == null) return;
+
+        // 1. Iniciamos la lógica de la siguiente oleada
         Wave.Instance.StartNextWave();
 
+        // 2. Animación
         waveAnimation.Stop();
         waveAnimation.Frame = 0;
         waveAnimation.Play("wave");
 
-        spawner?.StartWave();
+        // 3. Sincronizamos con el Spawner: 
+        // Si CurrentWave es 1, pasamos el índice 0 al spawner.
+        int targetIndex = Wave.Instance.CurrentWave - 1;
+        spawner?.StartWave(targetIndex);
 
+        // 4. Bloqueamos botón
         waveButton.Disabled = true;
         cooldownTimer.Start();
     }

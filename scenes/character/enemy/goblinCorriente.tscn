@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://b3y0cxwfpbrdd"]
+
+[ext_resource type="Script" uid="uid://djm0046nxvish" path="res://scripts/character/enemy/Enemy.cs" id="1_84caw"]
+[ext_resource type="Texture2D" uid="uid://cmwjmb8slpq0e" path="res://assets/character/enemy/BlancoVida.png" id="3_pxc4p"]
+[ext_resource type="Texture2D" uid="uid://bt511gd3ygqsd" path="res://assets/character/enemy/GoblinCorriente/fotograma0000.png" id="4_21mui"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g8cwo"]
+atlas = ExtResource("4_21mui")
+region = Rect2(70, 75, 878, 949)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_84caw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g8cwo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ygshw"]
+size = Vector2(11, 28)
+
+[node name="goblinCorriente" type="CharacterBody2D" groups=["enemies"]]
+scale = Vector2(0.25, 0.25)
+script = ExtResource("1_84caw")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+top_level = true
+z_index = 10
+offset_left = -15.000002
+offset_top = -60.0
+offset_right = 341.0
+offset_bottom = 124.0
+scale = Vector2(0.16, 0.05)
+nine_patch_stretch = true
+texture_progress = ExtResource("3_pxc4p")
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.0000001, 1.0000001)
+sprite_frames = SubResource("SpriteFrames_84caw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2.0000005)
+scale = Vector2(1.0000002, 1.0000002)
+shape = SubResource("RectangleShape2D_ygshw")
