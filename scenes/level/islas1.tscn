@@ -1,19 +1,37 @@
-[gd_scene load_steps=18 format=3 uid="uid://bbhtlt0ao6cq4"]
+[gd_scene load_steps=24 format=3 uid="uid://bbhtlt0ao6cq4"]
 
 [ext_resource type="PackedScene" uid="uid://dbpo1475xjqsm" path="res://assets/level/Map/islas1.tmx" id="1_rm5c3"]
 [ext_resource type="Script" uid="uid://cubvhlo0alqh1" path="res://scripts/level/terrain/Pathfinding.cs" id="2_ruufv"]
 [ext_resource type="Script" uid="uid://ddtj2hn2hhtfd" path="res://scripts/character/enemy/EnemySpawner.cs" id="3_5oaqd"]
+[ext_resource type="Script" uid="uid://dxi6h4dntdvec" path="res://scripts/character/enemy/EnemyGroup.cs" id="5_5awaq"]
 [ext_resource type="PackedScene" uid="uid://ci612q8twcycd" path="res://scenes/ui/iu.tscn" id="5_xakld"]
 [ext_resource type="Script" uid="uid://ccef7herjptu0" path="res://scripts/character/CameraRig.cs" id="6_gxakk"]
+[ext_resource type="Script" uid="uid://b7rcgtrq61w48" path="res://scripts/character/enemy/WaveData.cs" id="6_lkcam"]
 [ext_resource type="PackedScene" uid="uid://cor65fcesxg0a" path="res://scenes/ui/menu_pausa.tscn" id="7_icjwj"]
+[ext_resource type="Resource" uid="uid://dawwh4paoh1f2" path="res://scripts/character/enemy/infoEnemy/goblinTronco.tres" id="7_j2psb"]
 [ext_resource type="PackedScene" uid="uid://b4kgd56vbuq80" path="res://scenes/tower/ship/ship.tscn" id="8_0uf55"]
 [ext_resource type="Script" uid="uid://dlfq6grfckhot" path="res://scripts/character/tower/TowerBuilder.cs" id="8_gxakk"]
+[ext_resource type="PackedScene" uid="uid://dd15bvxn3ddsy" path="res://scenes/tower/Tuna/tuna_hatchery.tscn" id="9_coh8c"]
 [ext_resource type="PackedScene" uid="uid://ieo0rfx4mn8y" path="res://scenes/tower/Cannon/Cannon.tscn" id="9_icjwj"]
 [ext_resource type="PackedScene" uid="uid://i7fnxkfidwjh" path="res://scenes/tower/ArcherTower/archerTower.tscn" id="10_kwew4"]
 [ext_resource type="PackedScene" uid="uid://bm2tdm7lsq5q3" path="res://scenes/tower/Mortero/mortero.tscn" id="11_muthk"]
 [ext_resource type="PackedScene" uid="uid://c6o5datpm682p" path="res://scenes/ui/menu_victoria.tscn" id="13_coh8c"]
 [ext_resource type="PackedScene" uid="uid://c387degtgk6i6" path="res://scenes/ui/menu_derrota.tscn" id="15_muthk"]
 [ext_resource type="PackedScene" uid="uid://dgc77kp8vuy4p" path="res://scenes/ui/options_pausa.tscn" id="17_muthk"]
+
+[sub_resource type="Resource" id="Resource_eoogh"]
+script = ExtResource("5_5awaq")
+EnemyType = ExtResource("7_j2psb")
+Count = 10
+Path = 3
+metadata/_custom_type_script = "uid://dxi6h4dntdvec"
+
+[sub_resource type="Resource" id="Resource_rq80n"]
+script = ExtResource("6_lkcam")
+WaveName = "Prueba"
+Groups = Array[Object]([SubResource("Resource_eoogh")])
+SpawnInterval = 0.5
+metadata/_custom_type_script = "uid://b7rcgtrq61w48"
 
 [sub_resource type="Curve2D" id="Curve2D_rm5c3"]
 _data = {
@@ -45,6 +63,7 @@ script = ExtResource("3_5oaqd")
 CaminoA = NodePath("CaminoA")
 CaminoAcuatico = NodePath("CaminoAcuatico")
 CaminoVolador = NodePath("CaminoVolador")
+Waves = Array[Object]([SubResource("Resource_rq80n")])
 
 [node name="CaminoA" type="Path2D" parent="EnemySpawner"]
 curve = SubResource("Curve2D_rm5c3")
@@ -64,6 +83,7 @@ GhostTowerScene = ExtResource("9_icjwj")
 EnemiesContainer = NodePath("../EnemiesContainer")
 TowersScenes = Dictionary[String, PackedScene]({
 "Archer": ExtResource("10_kwew4"),
+"Atun": ExtResource("9_coh8c"),
 "Cannon": ExtResource("9_icjwj"),
 "Mortar": ExtResource("11_muthk"),
 "Ship": ExtResource("8_0uf55")
