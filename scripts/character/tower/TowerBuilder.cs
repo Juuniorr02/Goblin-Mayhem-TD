@@ -125,25 +125,43 @@ public partial class TowerBuilder : Node2D
         return layer.LocalToMap(localPos);
     }
 
-    private bool CanBuildOnTile(Vector2I tilePos)
-    {
-        for (int i = allLayers.Count - 1; i >= 0; i--)
-        {
-            TileMapLayer layer = allLayers[i];
-            TileData data = layer.GetCellTileData(tilePos);
-            if (data == null) continue;
+private bool CanBuildOnTile(Vector2I tilePos)
+{
+    // 1. Si ya hay algo construido, fuera.
+    if (occupiedTiles.ContainsKey(tilePos)) return false;
 
-            int layerIndex = layer.TileSet.GetCustomDataLayerByName("can_build");
-            if (layerIndex != -1)
-            {
-                Variant buildData = data.GetCustomData("can_build");
-                if (buildData.VariantType != Variant.Type.Nil && buildData.AsBool())
-                    return !occupiedTiles.ContainsKey(tilePos);
-            }
+    // 2. Recorremos las capas (de la superior a la inferior)
+    for (int i = allLayers.Count - 1; i >= 0; i--)
+    {
+        TileMapLayer layer = allLayers[i];
+        TileData data = layer.GetCellTileData(tilePos);
+        
+        // Si en esta capa no hay tile, pasamos a la siguiente capa más abajo
+        if (data == null) continue;
+
+        // 3. Decidimos qué "permiso" necesitamos
+        string propertyRequired = (currentTowerName == "Ship") ? "can_build_boat" : "can_build";
+
+        // 4. Verificamos si el tile tiene esa propiedad específica
+        // Importante: GetCustomData devuelve un valor nulo si la propiedad no existe en el TileSet
+        Variant buildData = data.GetCustomData(propertyRequired);
+
+        if (buildData.VariantType != Variant.Type.Nil && buildData.AsBool())
+        {
+            // ¡Éxito! El tile tiene la propiedad correcta y es 'true'
+            return true;
+        }
+        else
+        {
+            // Si encontramos un tile pero no tiene la propiedad que buscamos, 
+            // dejamos de buscar en capas inferiores para evitar construir en "el vacío"
+            // o en capas que no corresponden.
             return false; 
         }
-        return false;
     }
+    return false; 
+}
+
 
     public void SelectTower(string towerName)
     {
