@@ -1,9 +1,9 @@
 [gd_scene load_steps=14 format=3 uid="uid://cfini72hfkjsy"]
 
 [ext_resource type="Script" uid="uid://djm0046nxvish" path="res://scripts/character/enemy/Enemy.cs" id="1_4d1o2"]
-[ext_resource type="Texture2D" uid="uid://b1bxse6y3rl6r" path="res://assets/character/enemy/Angel-Sheet.png" id="1_y5fst"]
 [ext_resource type="Script" uid="uid://dtfsd6sb6u7oe" path="res://scripts/character/enemy/EnemyData.cs" id="2_bgsfn"]
 [ext_resource type="Texture2D" uid="uid://cmwjmb8slpq0e" path="res://assets/character/enemy/BlancoVida.png" id="3_xbksk"]
+[ext_resource type="Texture2D" uid="uid://b4asisj632tfm" path="res://assets/character/enemy/GoblinAlas/GoblinAlas.png" id="4_xbksk"]
 
 [sub_resource type="Resource" id="Resource_bgsfn"]
 script = ExtResource("2_bgsfn")
@@ -12,42 +12,33 @@ metadata/_custom_type_script = "uid://dtfsd6sb6u7oe"
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pap0l"]
 size = Vector2(36, 26)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4d1o2"]
-atlas = ExtResource("1_y5fst")
+[sub_resource type="AtlasTexture" id="AtlasTexture_g4shs"]
+atlas = ExtResource("4_xbksk")
 region = Rect2(0, 0, 96, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bgsfn"]
-atlas = ExtResource("1_y5fst")
+[sub_resource type="AtlasTexture" id="AtlasTexture_2sd62"]
+atlas = ExtResource("4_xbksk")
 region = Rect2(96, 0, 96, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xbksk"]
-atlas = ExtResource("1_y5fst")
+[sub_resource type="AtlasTexture" id="AtlasTexture_x53nx"]
+atlas = ExtResource("4_xbksk")
 region = Rect2(192, 0, 96, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_g4shs"]
-atlas = ExtResource("1_y5fst")
+[sub_resource type="AtlasTexture" id="AtlasTexture_gw8ua"]
+atlas = ExtResource("4_xbksk")
 region = Rect2(288, 0, 96, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2sd62"]
-atlas = ExtResource("1_y5fst")
+[sub_resource type="AtlasTexture" id="AtlasTexture_pap0l"]
+atlas = ExtResource("4_xbksk")
 region = Rect2(384, 0, 96, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_x53nx"]
-atlas = ExtResource("1_y5fst")
+[sub_resource type="AtlasTexture" id="AtlasTexture_cy2fd"]
+atlas = ExtResource("4_xbksk")
 region = Rect2(480, 0, 96, 64)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_gw8ua"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_am54j"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4d1o2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bgsfn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xbksk")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_g4shs")
 }, {
@@ -56,10 +47,19 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_x53nx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gw8ua")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pap0l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cy2fd")
 }],
 "loop": true,
-"name": &"walk",
-"speed": 11.0
+"name": &"default",
+"speed": 5.0
 }]
 
 [node name="GoblinVolador" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "HealthBar") groups=["Volador", "enemies"]]
@@ -86,8 +86,6 @@ shape = SubResource("RectangleShape2D_pap0l")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-sprite_frames = SubResource("SpriteFrames_gw8ua")
-animation = &"walk"
-autoplay = "walk"
-frame_progress = 0.69522965
+sprite_frames = SubResource("SpriteFrames_am54j")
+autoplay = "default"
 flip_h = true

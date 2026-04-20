@@ -4,7 +4,6 @@ using System.Collections.Generic;
 public partial class TowerBuilder : Node2D
 {
     private List<TileMapLayer> allLayers = new();
-
     [Export] public Node2D TowersParent;              
     [Export] public PackedScene GhostTowerScene;       
     [Export] public Node2D EnemiesContainer;          
@@ -12,12 +11,12 @@ public partial class TowerBuilder : Node2D
     [Export] public Vector2 GhostOffset = new Vector2(0, 0); 
 
     private string currentTowerName = "";
-    private string lastLayerName = "";
     private Node2D ghostInstance;
     private Dictionary<Vector2I, Node2D> occupiedTiles = new();
 
     public override void _Ready()
     {
+        // Tu lógica de detección de mapas
         string[] mapNames = { "mapa2", "islas1", "pantano" };
         foreach (string name in mapNames)
         {
@@ -26,40 +25,65 @@ public partial class TowerBuilder : Node2D
             {
                 foreach (Node child in mapRoot.GetChildren())
                 {
-                    if (child is TileMapLayer layer)
-                    {
-                        allLayers.Add(layer);
-                        GD.Print($"Capa detectada en {name}: {layer.Name}");
-                    }
+                    if (child is TileMapLayer layer) allLayers.Add(layer);
                 }
             }
         }
-
+        
         var botones = GetTree().GetNodesInGroup("botones_torres");
         foreach (Node nodo in botones)
         {
-            if (nodo is TextureButton btn)
-            {
-                string towerId = btn.Name;
-                btn.Pressed += () => SelectTower(towerId);
-            }
+            if (nodo is TextureButton btn) btn.Pressed += () => SelectTower(btn.Name);
         }
 
+        // Creamos el fantasma (Martillo) inicialmente oculto
         if (GhostTowerScene != null)
         {
             ghostInstance = GhostTowerScene.Instantiate<Node2D>();
             AddChild(ghostInstance);
-            
-            // --- CAMBIO CLAVE PARA EL GHOST ---
-            // Le decimos al ghost que no debe disparar
-            if (ghostInstance.HasMethod("set_IsGhost")) // Si usas [Export] automático
-                ghostInstance.Set("IsGhost", true);
-            else if (ghostInstance.GetScript().As<CSharpScript>() != null)
-                ghostInstance.Set("IsGhost", true);
-
             ghostInstance.Visible = false;
         }
     }
+
+   public void SelectTower(string towerName)
+{
+    currentTowerName = towerName;
+    if (ghostInstance == null) return;
+
+    if (string.IsNullOrEmpty(towerName))
+    {
+        ghostInstance.Visible = false;
+        return;
+    }
+
+    ghostInstance.Visible = true;
+    
+    if (TowersScenes.TryGetValue(towerName, out PackedScene towerScene))
+    {
+        var dummyTower = towerScene.Instantiate<Node2D>();
+        float rangeX = 0;
+        float rangeY = 0;
+
+        var area = dummyTower.GetNodeOrNull<Area2D>("DetectionRange") ?? dummyTower.GetNodeOrNull<Area2D>("detectionRange");
+        var collision = area?.GetNodeOrNull<CollisionShape2D>("CollisionShape2D");
+        
+        if (collision != null && collision.Shape is CircleShape2D circle) 
+        {
+            // --- EL TRUCO: Multiplicamos el radio por la escala del nodo ---
+            // Esto detectará si el rango está estirado o es muy grande
+            rangeX = circle.Radius * collision.Scale.X * area.Scale.X;
+            rangeY = circle.Radius * collision.Scale.Y * area.Scale.Y;
+        }
+
+        // Le pasamos AMBOS radios al martillo para que dibuje el óvalo perfecto
+        if (ghostInstance.HasMethod("UpdateRangeVisual"))
+        {
+            ghostInstance.Call("UpdateRangeVisual", rangeX, rangeY);
+        }
+        
+        dummyTower.QueueFree();
+    }
+}
 
     public override void _Process(double delta)
     {
@@ -69,7 +93,8 @@ public partial class TowerBuilder : Node2D
         Vector2 localPos = allLayers[0].MapToLocal(tilePos);
         ghostInstance.GlobalPosition = allLayers[0].ToGlobal(localPos) + GhostOffset;
 
-        ghostInstance.Modulate = CanBuildOnTile(tilePos) ? new Color(0, 1, 0, 0.5f) : new Color(1, 0, 0, 0.5f);
+        // Color verde si puede construir, rojo si no
+        ghostInstance.Modulate = CanBuildOnTile(tilePos) ? new Color(0, 1, 0, 0.6f) : new Color(1, 0, 0, 0.6f);
     }
 
     public override void _Input(InputEvent @event)
@@ -77,13 +102,13 @@ public partial class TowerBuilder : Node2D
         if (@event is InputEventMouseButton mbe && mbe.Pressed)
         {
             if (mbe.ButtonIndex == MouseButton.Left && !string.IsNullOrEmpty(currentTowerName))
+            {
                 AttemptBuild();
+            }
             else if (mbe.ButtonIndex == MouseButton.Right)
+            {
                 CancelSelection();
-        }
-        else if (@event is InputEventKey ek && ek.Pressed && ek.Keycode == Key.Escape)
-        {
-            CancelSelection();
+            }
         }
     }
 
@@ -98,17 +123,14 @@ public partial class TowerBuilder : Node2D
         {
             Node2D towerInstance = scene.Instantiate<Node2D>();
             
-            // --- ASEGURAR QUE LA TORRE REAL SÍ DISPARE ---
-            towerInstance.Set("IsGhost", false);
-
             Vector2 localPos = allLayers[0].MapToLocal(tilePos);
             towerInstance.GlobalPosition = allLayers[0].ToGlobal(localPos) + GhostOffset;
 
             TowersParent.AddChild(towerInstance);
             occupiedTiles[tilePos] = towerInstance;
-
-            if (towerInstance.HasMethod("SetEnemiesContainer"))
-                towerInstance.Call("SetEnemiesContainer", EnemiesContainer);
+            
+            // Si quieres que se deseleccione tras construir, descomenta la siguiente línea:
+            // CancelSelection();
         }
     }
 
@@ -125,38 +147,26 @@ public partial class TowerBuilder : Node2D
         return layer.LocalToMap(localPos);
     }
 
-private bool CanBuildOnTile(Vector2I tilePos)
-{
-    if (occupiedTiles.ContainsKey(tilePos)) return false;
-
-    for (int i = allLayers.Count - 1; i >= 0; i--)
+    private bool CanBuildOnTile(Vector2I tilePos)
     {
-        TileMapLayer layer = allLayers[i];
-        TileData data = layer.GetCellTileData(tilePos);
-        if (data == null) continue;
-
-        // Lógica de propiedades por tipo de torre
-        string propertyRequired = currentTowerName switch 
+        if (occupiedTiles.ContainsKey(tilePos)) return false;
+        for (int i = allLayers.Count - 1; i >= 0; i--)
         {
-            "Ship" => "can_build_boat",
-            "AtunHatchery" => "can_build_atun", // <--- Nueva propiedad
-            _ => "can_build"
-        };
+            TileMapLayer layer = allLayers[i];
+            TileData data = layer.GetCellTileData(tilePos);
+            if (data == null) continue;
 
-        Variant buildData = data.GetCustomData(propertyRequired);
-        if (buildData.VariantType != Variant.Type.Nil && buildData.AsBool())
-            return true;
-        else
+            // Lógica de exclusividad de tiles
+            string prop = currentTowerName switch { 
+                "Ship" => "can_build_boat", 
+                "AtunHatchery" => "can_build_atun", 
+                _ => "can_build" 
+            };
+
+            Variant buildData = data.GetCustomData(prop);
+            if (buildData.VariantType != Variant.Type.Nil && buildData.AsBool()) return true;
             return false;
-    }
-    return false;
-}
-
-
-    public void SelectTower(string towerName)
-    {
-        currentTowerName = towerName;
-        if (ghostInstance != null)
-            ghostInstance.Visible = !string.IsNullOrEmpty(towerName);
+        }
+        return false;
     }
 }
