@@ -9,12 +9,8 @@ public partial class SaveSystem : Node
     {
         var data = new Godot.Collections.Dictionary();
 
-        // escena actual
         data["scene"] = GetTree().CurrentScene.SceneFilePath;
 
-        // ========================
-        // GUARDAR CÁMARA
-        // ========================
         var cam = GetTree().GetFirstNodeInGroup("camera") as Node3D;
         if (cam != null)
         {
@@ -26,9 +22,6 @@ public partial class SaveSystem : Node
             };
         }
 
-        // ========================
-        // GUARDAR TORRES
-        // ========================
         var towersData = new Godot.Collections.Array();
 
         var towersNode = GetTree().CurrentScene.GetNodeOrNull<Node>("Towers");
@@ -54,10 +47,6 @@ public partial class SaveSystem : Node
 
         data["towers"] = towersData;
 
-
-        // ========================
-        // GUARDAR ARCHIVO
-        // ========================
         var json = Json.Stringify(data);
 
         using var file = FileAccess.Open(SavePath, FileAccess.ModeFlags.Write);
@@ -97,9 +86,6 @@ public partial class SaveSystem : Node
 
         await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
 
-        // ========================
-        // RESTAURAR CÁMARA
-        // ========================
         var cam = GetTree().GetFirstNodeInGroup("camera") as Node3D;
 
         if (cam != null && data.ContainsKey("camera_pos"))
@@ -113,9 +99,6 @@ public partial class SaveSystem : Node
             );
         }
 
-        // ========================
-        // RESTAURAR TORRES
-        // ========================
         if (data.ContainsKey("towers"))
         {
             var towersNode = GetTree().CurrentScene.GetNodeOrNull<Node>("Towers");
