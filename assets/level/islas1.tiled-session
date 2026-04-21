@@ -1,5 +1,5 @@
 {
-    "activeFile": "Map/pantano.tmx",
+    "activeFile": "Map/mapa_mundi.tmx",
     "expandedProjectPaths": [
         "Map",
         "."
@@ -16,8 +16,8 @@
         },
         "Map/Example.tsx": {
             "dynamicWrapping": true,
-            "scaleInDock": 0.25,
-            "scaleInEditor": 1
+            "scaleInDock": 0.125,
+            "scaleInEditor": 0.33
         },
         "Map/aldea - copia.tmx": {
             "scale": 0.08292025862068965,
@@ -52,11 +52,11 @@
             }
         },
         "Map/mapa_mundi.tmx": {
-            "scale": 0.25,
-            "selectedLayer": 1,
+            "scale": 0.0625,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 6694,
-                "y": 1344
+                "x": 7048,
+                "y": 4464
             }
         },
         "Map/pantano.tmx": {
@@ -69,16 +69,16 @@
         }
     },
     "openFiles": [
-        "Map/Example.tsx",
-        "Map/islas1.tmx",
-        "Map/pantano.tmx"
+        "Map/mapa_mundi.tmx",
+        "Map/Example.tsx"
     ],
     "project": "islas1.tiled-project",
     "property.type": "bool",
     "recentFiles": [
+        "Map/Example.tsx",
+        "Map/mapa_mundi.tmx",
         "Map/islas1.tmx",
         "Map/aldea - copia.tmx",
-        "Map/Example.tsx",
         "Map/pantano.tmx",
         "Map/mapa1.tmx",
         "Map/Aldea.tmx",
