@@ -1,17 +1,38 @@
-[gd_scene load_steps=16 format=3 uid="uid://da24bvxuerl1j"]
+[gd_scene load_steps=27 format=3 uid="uid://da24bvxuerl1j"]
 
 [ext_resource type="PackedScene" uid="uid://bxah54x2mw4ix" path="res://assets/level/Map/tutorial.tmx" id="1_nggc0"]
 [ext_resource type="Script" uid="uid://ccef7herjptu0" path="res://scripts/character/CameraRig.cs" id="2_gvmle"]
-[ext_resource type="PackedScene" uid="uid://dbeqdm5gepyap" path="res://scenes/character/enemy/enemy.tscn" id="2_pgq8h"]
 [ext_resource type="Script" uid="uid://ddtj2hn2hhtfd" path="res://scripts/character/enemy/EnemySpawner.cs" id="3_mg8dc"]
 [ext_resource type="Script" uid="uid://cubvhlo0alqh1" path="res://scripts/level/terrain/Pathfinding.cs" id="4_5yh3o"]
+[ext_resource type="Script" uid="uid://dxi6h4dntdvec" path="res://scripts/character/enemy/EnemyGroup.cs" id="5_eqyvb"]
 [ext_resource type="Resource" uid="uid://7lteypp1glo" path="res://scripts/character/enemy/infoEnemy/golem.tres" id="5_q1drb"]
-[ext_resource type="Resource" uid="uid://cigq0efht168k" path="res://scripts/character/enemy/infoEnemy/goblinVolador.tres" id="6_oe6cc"]
+[ext_resource type="Script" uid="uid://b7rcgtrq61w48" path="res://scripts/character/enemy/WaveData.cs" id="6_uu0py"]
+[ext_resource type="Script" uid="uid://dlfq6grfckhot" path="res://scripts/character/tower/TowerBuilder.cs" id="7_ccv4g"]
 [ext_resource type="PackedScene" uid="uid://cor65fcesxg0a" path="res://scenes/ui/menu_pausa.tscn" id="7_wpisc"]
+[ext_resource type="PackedScene" uid="uid://fwle2vth706y" path="res://scenes/tower/Construir/Martillo.tscn" id="8_a2hd1"]
 [ext_resource type="PackedScene" uid="uid://ci612q8twcycd" path="res://scenes/ui/iu.tscn" id="8_w02j3"]
+[ext_resource type="PackedScene" uid="uid://i7fnxkfidwjh" path="res://scenes/tower/ArcherTower/archerTower.tscn" id="9_my4yt"]
+[ext_resource type="PackedScene" uid="uid://ckc1i5qv6sle8" path="res://scenes/tower/Ballista/ballista.tscn" id="10_d3eop"]
 [ext_resource type="PackedScene" uid="uid://c6o5datpm682p" path="res://scenes/ui/menu_victoria.tscn" id="10_m2gd4"]
+[ext_resource type="PackedScene" uid="uid://ce0pn5jdtd7uu" path="res://scenes/tower/Globo/globo.tscn" id="11_cs0a3"]
 [ext_resource type="PackedScene" uid="uid://c387degtgk6i6" path="res://scenes/ui/menu_derrota.tscn" id="11_jawes"]
+[ext_resource type="PackedScene" uid="uid://ieo0rfx4mn8y" path="res://scenes/tower/Cannon/Cannon.tscn" id="12_e3tai"]
 [ext_resource type="PackedScene" uid="uid://dgc77kp8vuy4p" path="res://scenes/ui/options_pausa.tscn" id="12_jawes"]
+[ext_resource type="PackedScene" uid="uid://doxdk8ijaiqly" path="res://scenes/tower/Flamethrower/flamethrower.tscn" id="13_ftrai"]
+[ext_resource type="PackedScene" uid="uid://bm2tdm7lsq5q3" path="res://scenes/tower/Mortero/mortero.tscn" id="14_ox7j1"]
+[ext_resource type="PackedScene" uid="uid://cuq0at3ylsro3" path="res://scenes/tower/MageTower/mage_tower.tscn" id="15_41y5b"]
+
+[sub_resource type="Resource" id="Resource_tqsr0"]
+script = ExtResource("5_eqyvb")
+EnemyType = ExtResource("5_q1drb")
+Path = 1
+metadata/_custom_type_script = "uid://dxi6h4dntdvec"
+
+[sub_resource type="Resource" id="Resource_brejp"]
+script = ExtResource("6_uu0py")
+WaveName = "1"
+Groups = Array[Object]([SubResource("Resource_tqsr0")])
+metadata/_custom_type_script = "uid://b7rcgtrq61w48"
 
 [sub_resource type="Curve2D" id="Curve2D_w02j3"]
 _data = {
@@ -38,16 +59,12 @@ point_count = 9
 [node name="Pathfinding" type="Node" parent="."]
 script = ExtResource("4_5yh3o")
 
-[node name="EnemySpawner" type="Node" parent="." node_paths=PackedStringArray("EnemiesContainer", "CaminoA", "CaminoB", "CaminoVolador")]
+[node name="EnemySpawner" type="Node" parent="." node_paths=PackedStringArray("CaminoA", "CaminoB", "CaminoVolador")]
 script = ExtResource("3_mg8dc")
-EnemyScene = ExtResource("2_pgq8h")
-EnemiesContainer = NodePath("../EnemiesContainer")
 CaminoA = NodePath("CaminoA")
 CaminoB = NodePath("CaminoB")
 CaminoVolador = NodePath("CaminoVolador")
-EnemyTypes = Array[Object]([ExtResource("5_q1drb"), ExtResource("6_oe6cc")])
-SpawnInterval = 0.5
-EnemiesPerWave = 100
+Waves = Array[Object]([SubResource("Resource_brejp")])
 
 [node name="CaminoA" type="Path2D" parent="EnemySpawner" groups=["enemies"]]
 curve = SubResource("Curve2D_w02j3")
@@ -60,19 +77,31 @@ curve = SubResource("Curve2D_wpisc")
 
 [node name="EnemiesContainer" type="Node2D" parent="."]
 
-[node name="Towers" type="Node2D" parent="."]
+[node name="Towers" type="Node2D" parent="." node_paths=PackedStringArray("TowersParent", "EnemiesContainer")]
+script = ExtResource("7_ccv4g")
+TowersParent = NodePath(".")
+GhostTowerScene = ExtResource("8_a2hd1")
+EnemiesContainer = NodePath("")
+TowersScenes = Dictionary[String, PackedScene]({
+"Archer": ExtResource("9_my4yt"),
+"Ballista": ExtResource("10_d3eop"),
+"Bloon": ExtResource("11_cs0a3"),
+"Cannon": ExtResource("12_e3tai"),
+"Flame": ExtResource("13_ftrai"),
+"Mortar": ExtResource("14_ox7j1"),
+"Wizard": ExtResource("15_41y5b")
+})
 
 [node name="IU" parent="." node_paths=PackedStringArray("spawner") instance=ExtResource("8_w02j3")]
 spawner = NodePath("../EnemySpawner")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(9677, 4314)
+position = Vector2(7057, 1182)
 zoom = Vector2(0.485, 0.485)
-limit_enabled = false
-limit_left = 0
-limit_top = 0
-limit_right = 1145
-limit_bottom = 555
+limit_left = -3000
+limit_top = -3000
+limit_right = 17000
+limit_bottom = 9750
 script = ExtResource("2_gvmle")
 MoveSpeed = 1400.0
 MinZoom = 0.23

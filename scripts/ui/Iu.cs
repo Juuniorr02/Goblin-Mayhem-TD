@@ -65,6 +65,7 @@ public partial class Iu : Control
 
     private void OnWaveButtonPressed()
     {
+        MouseFilter = Control.MouseFilterEnum.Stop;
         if (Wave.Instance == null) return;
 
         // 1. Iniciamos la lógica de la siguiente oleada
