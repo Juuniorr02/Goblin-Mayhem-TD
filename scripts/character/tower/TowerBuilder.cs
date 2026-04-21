@@ -129,8 +129,7 @@ public partial class TowerBuilder : Node2D
             TowersParent.AddChild(towerInstance);
             occupiedTiles[tilePos] = towerInstance;
             
-            // Si quieres que se deseleccione tras construir, descomenta la siguiente línea:
-            // CancelSelection();
+            CancelSelection();
         }
     }
 
