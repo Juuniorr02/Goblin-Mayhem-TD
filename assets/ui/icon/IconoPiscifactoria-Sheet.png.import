@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6dkv6r7fmkr2"
-path="res://.godot/imported/Nido-Sheet.png-1c0d70dc525a4a853b1b2cef2d37c98b.ctex"
+uid="uid://duy2srishpoac"
+path="res://.godot/imported/IconoPiscifactoria-Sheet.png-abbb43cebe10826e4c90567bd6c5db7f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/character/tower/grifo/Nido-Sheet.png"
-dest_files=["res://.godot/imported/Nido-Sheet.png-1c0d70dc525a4a853b1b2cef2d37c98b.ctex"]
+source_file="res://assets/ui/icon/IconoPiscifactoria-Sheet.png"
+dest_files=["res://.godot/imported/IconoPiscifactoria-Sheet.png-abbb43cebe10826e4c90567bd6c5db7f.ctex"]
 
 [params]
 

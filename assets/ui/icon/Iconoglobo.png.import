@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6dkv6r7fmkr2"
-path="res://.godot/imported/Nido-Sheet.png-1c0d70dc525a4a853b1b2cef2d37c98b.ctex"
+uid="uid://chkxwk7jk6i04"
+path="res://.godot/imported/Iconoglobo.png-80ec2eac42eb6c35ae14860812710c1d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/character/tower/grifo/Nido-Sheet.png"
-dest_files=["res://.godot/imported/Nido-Sheet.png-1c0d70dc525a4a853b1b2cef2d37c98b.ctex"]
+source_file="res://assets/ui/icon/Iconoglobo.png"
+dest_files=["res://.godot/imported/Iconoglobo.png-80ec2eac42eb6c35ae14860812710c1d.ctex"]
 
 [params]
 

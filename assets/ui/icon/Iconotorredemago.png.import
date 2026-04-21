@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cjpnag1s71ey2"
-path="res://.godot/imported/cañon-Sheet.png-a78b337f2132428bc87e1eb5655b5f34.ctex"
+uid="uid://gv17j7r8f06e"
+path="res://.godot/imported/Iconotorredemago.png-e24104bc7530147d377074abf9f1ff97.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/icon/cañon-Sheet.png"
-dest_files=["res://.godot/imported/cañon-Sheet.png-a78b337f2132428bc87e1eb5655b5f34.ctex"]
+source_file="res://assets/ui/icon/Iconotorredemago.png"
+dest_files=["res://.godot/imported/Iconotorredemago.png-e24104bc7530147d377074abf9f1ff97.ctex"]
 
 [params]
 

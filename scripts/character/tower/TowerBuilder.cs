@@ -33,7 +33,12 @@ public partial class TowerBuilder : Node2D
         var botones = GetTree().GetNodesInGroup("botones_torres");
         foreach (Node nodo in botones)
         {
-            if (nodo is TextureButton btn) btn.Pressed += () => SelectTower(btn.Name);
+            if (nodo is TextureButton btn)
+            {
+                btn.Pressed += () => SelectTower(btn.Name);
+                btn.ProcessMode = ProcessModeEnum.Always;
+                btn.MouseFilter = Control.MouseFilterEnum.Stop;
+            }
         }
 
         // Creamos el fantasma (Martillo) inicialmente oculto
@@ -158,7 +163,7 @@ public partial class TowerBuilder : Node2D
             // Lógica de exclusividad de tiles
             string prop = currentTowerName switch { 
                 "Ship" => "can_build_boat", 
-                "AtunHatchery" => "can_build_atun", 
+                "Atun" => "can_build_atun", 
                 _ => "can_build" 
             };
 

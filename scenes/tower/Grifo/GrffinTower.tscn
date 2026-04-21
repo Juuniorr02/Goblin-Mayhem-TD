@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bv6xb2o3otqu3"]
 
 [ext_resource type="Script" uid="uid://bo37tnnl5lrab" path="res://scripts/character/tower/grifo/GriffinTower.cs" id="1_2xxnb"]
-[ext_resource type="Texture2D" uid="uid://dep6iq8371u5v" path="res://assets/character/tower/grifo/Nido-Sheet.png" id="2_hqq15"]
+[ext_resource type="Texture2D" uid="uid://dep6iq8371u5v" path="res://assets/ui/icon/Nido-Sheet.png" id="2_hqq15"]
 [ext_resource type="PackedScene" uid="uid://dflxu41q1chvl" path="res://scenes/tower/Grifo/Griffin.tscn" id="2_jrnjw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kwryj"]

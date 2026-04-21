@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://22thccdtcdp4"
-path="res://.godot/imported/TorrearqueroIcono.png-11facc8e089d372789fcb93049874328.ctex"
+path="res://.godot/imported/TorrearqueroIcono.png-20df7d6744cd58547ab4c1a5d6bb7deb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/character/tower/Archer/TorrearqueroIcono.png"
-dest_files=["res://.godot/imported/TorrearqueroIcono.png-11facc8e089d372789fcb93049874328.ctex"]
+source_file="res://assets/ui/icon/TorrearqueroIcono.png"
+dest_files=["res://.godot/imported/TorrearqueroIcono.png-20df7d6744cd58547ab4c1a5d6bb7deb.ctex"]
 
 [params]
 

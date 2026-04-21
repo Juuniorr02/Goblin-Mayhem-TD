@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://ci612q8twcycd"]
+[gd_scene load_steps=30 format=3 uid="uid://ci612q8twcycd"]
 
 [ext_resource type="Texture2D" uid="uid://bodlpu3irch0t" path="res://assets/ui/button/IconoOleada-Sheet.png" id="1_g0mth"]
 [ext_resource type="Texture2D" uid="uid://5sui3kk7ym6x" path="res://assets/ui/icon/cañon.png" id="1_t64rc"]
@@ -8,8 +8,15 @@
 [ext_resource type="Texture2D" uid="uid://crw7qp1kr00u0" path="res://assets/ui/icon/Maderas.png" id="3_viny6"]
 [ext_resource type="Texture2D" uid="uid://bonxvf3bnviti" path="res://assets/ui/icon/Piedras.png" id="4_rlfxr"]
 [ext_resource type="Texture2D" uid="uid://d4aohjas4nc4o" path="res://assets/ui/icon/Hierro.png" id="5_ud8xl"]
-[ext_resource type="Texture2D" uid="uid://22thccdtcdp4" path="res://assets/character/tower/Archer/TorrearqueroIcono.png" id="8_rlfxr"]
+[ext_resource type="Texture2D" uid="uid://22thccdtcdp4" path="res://assets/ui/icon/TorrearqueroIcono.png" id="8_rlfxr"]
 [ext_resource type="Texture2D" uid="uid://7prl0kc2ksyg" path="res://assets/ui/icon/lanzallamas.png" id="8_svasj"]
+[ext_resource type="Texture2D" uid="uid://dgrfope32f46" path="res://assets/ui/icon/IconoMortero-Sheet.png" id="10_17ct8"]
+[ext_resource type="Texture2D" uid="uid://b02vvm3raqbr4" path="res://assets/ui/icon/IconoBalista.png" id="11_ud8xl"]
+[ext_resource type="Texture2D" uid="uid://gv17j7r8f06e" path="res://assets/ui/icon/Iconotorredemago.png" id="12_akgsa"]
+[ext_resource type="Texture2D" uid="uid://chkxwk7jk6i04" path="res://assets/ui/icon/Iconoglobo.png" id="13_2dtyk"]
+[ext_resource type="Texture2D" uid="uid://c4uh2xppu58k3" path="res://assets/ui/icon/Icononido-Sheet.png" id="14_ify78"]
+[ext_resource type="Texture2D" uid="uid://cng1ixd27b0v8" path="res://assets/ui/icon/IconoBarco-Sheet.png" id="15_bjwdg"]
+[ext_resource type="Texture2D" uid="uid://duy2srishpoac" path="res://assets/ui/icon/IconoPiscifactoria-Sheet.png" id="16_n0sti"]
 
 [sub_resource type="Theme" id="Theme_1nckr"]
 
@@ -375,6 +382,7 @@ size_flags_stretch_ratio = 0.5
 
 [node name="Towers" type="PanelContainer" parent="IU/IU/IU/Bottom/Towers/Towers"]
 self_modulate = Color(1, 1, 1, 0)
+texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -479,11 +487,12 @@ theme_override_constants/margin_bottom = 5
 layout_mode = 2
 
 [node name="Mortar" type="TextureButton" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Mortar/Mortar/Mortar/Mortar/Mortar" groups=["botones_torres"]]
+unique_name_in_owner = true
 texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture_normal = ExtResource("1_t64rc")
+texture_normal = ExtResource("10_17ct8")
 
 [node name="Flame" type="HBoxContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers"]
 layout_mode = 2
@@ -547,7 +556,7 @@ texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture_normal = ExtResource("1_t64rc")
+texture_normal = ExtResource("11_ud8xl")
 
 [node name="Wizard" type="HBoxContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers"]
 layout_mode = 2
@@ -579,7 +588,7 @@ texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture_normal = ExtResource("1_t64rc")
+texture_normal = ExtResource("12_akgsa")
 
 [node name="Bloon" type="HBoxContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers"]
 layout_mode = 2
@@ -611,7 +620,7 @@ texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture_normal = ExtResource("1_t64rc")
+texture_normal = ExtResource("13_2dtyk")
 
 [node name="Nest" type="HBoxContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers"]
 layout_mode = 2
@@ -643,7 +652,7 @@ texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture_normal = ExtResource("1_t64rc")
+texture_normal = ExtResource("14_ify78")
 
 [node name="Ship" type="HBoxContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers"]
 layout_mode = 2
@@ -675,7 +684,7 @@ texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture_normal = ExtResource("1_t64rc")
+texture_normal = ExtResource("15_bjwdg")
 
 [node name="Atun" type="HBoxContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers"]
 layout_mode = 2
@@ -707,7 +716,7 @@ texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture_normal = ExtResource("1_t64rc")
+texture_normal = ExtResource("16_n0sti")
 
 [node name="Right" type="VBoxContainer" parent="IU/IU/IU/Bottom"]
 layout_mode = 2
@@ -715,7 +724,6 @@ size_flags_horizontal = 3
 
 [connection signal="pressed" from="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Archer/Archer/Archer/Archer/Archer/Archer" to="." method="OnArcherPressed"]
 [connection signal="pressed" from="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Cannon/Cannon/Cannon/Cannon/Cannon/Cannon" to="." method="OnCannonPressed"]
-[connection signal="pressed" from="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Mortar/Mortar/Mortar/Mortar/Mortar/Mortar" to="." method="OnMortarPressed"]
 [connection signal="pressed" from="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Flame/Flame/Flame/Flame/Flame/Flame" to="." method="OnFlamePressed"]
 [connection signal="pressed" from="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Ballista/Ballista/Ballista/Ballista/Ballista/Ballista" to="." method="OnBallistaPressed"]
 [connection signal="pressed" from="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Wizard/Wizard/Wizard/Wizard/Wizard/Wizard" to="." method="OnWizardPressed"]
