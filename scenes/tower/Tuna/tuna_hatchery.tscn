@@ -9,7 +9,6 @@
 [node name="TunaHatchery" type="Node2D"]
 script = ExtResource("1_iltbc")
 BulletScene = ExtResource("2_38rkd")
-CanTargetLand = false
 CanTargetWater = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

@@ -17,7 +17,7 @@ public partial class TowerBuilder : Node2D
     public override void _Ready()
     {
         // Tu lógica de detección de mapas
-        string[] mapNames = { "mapa2", "islas1", "pantano" };
+        string[] mapNames = { "tutorial, montana1", "islas1", "pantano1" };
         foreach (string name in mapNames)
         {
             Node mapRoot = GetTree().Root.FindChild(name, true, false);

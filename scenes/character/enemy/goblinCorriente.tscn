@@ -1,8 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://b3y0cxwfpbrdd"]
+[gd_scene load_steps=9 format=3 uid="uid://b3y0cxwfpbrdd"]
 
 [ext_resource type="Script" uid="uid://djm0046nxvish" path="res://scripts/character/enemy/Enemy.cs" id="1_84caw"]
+[ext_resource type="Script" uid="uid://dtfsd6sb6u7oe" path="res://scripts/character/enemy/EnemyData.cs" id="2_84caw"]
 [ext_resource type="Texture2D" uid="uid://cmwjmb8slpq0e" path="res://assets/character/enemy/BlancoVida.png" id="3_pxc4p"]
 [ext_resource type="Texture2D" uid="uid://bt511gd3ygqsd" path="res://assets/character/enemy/GoblinCorriente/fotograma0000.png" id="4_21mui"]
+
+[sub_resource type="Resource" id="Resource_lsg1d"]
+script = ExtResource("2_84caw")
+metadata/_custom_type_script = "uid://dtfsd6sb6u7oe"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g8cwo"]
 atlas = ExtResource("4_21mui")
@@ -25,6 +30,7 @@ size = Vector2(11, 28)
 [node name="goblinCorriente" type="CharacterBody2D" groups=["enemies"]]
 scale = Vector2(0.25, 0.25)
 script = ExtResource("1_84caw")
+Data = SubResource("Resource_lsg1d")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]
 top_level = true

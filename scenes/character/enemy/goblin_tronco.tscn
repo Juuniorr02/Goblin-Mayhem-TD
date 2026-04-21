@@ -7,6 +7,8 @@
 
 [sub_resource type="Resource" id="Resource_m17yy"]
 script = ExtResource("2_ypm4a")
+EnemyName = "Goblin Tronco"
+IsAquatic = true
 metadata/_custom_type_script = "uid://dtfsd6sb6u7oe"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ygshw"]
