@@ -13,11 +13,14 @@ public partial class TowerBuilder : Node2D
     private string currentTowerName = "";
     private Node2D ghostInstance;
     private Dictionary<Vector2I, Node2D> occupiedTiles = new();
+    private List<TextureButton> towerButtons = new(); // Para rastrear los botones
 
     public override void _Ready()
     {
-        // Lógica de detección de mapas
-        string[] mapNames = { "tutorial", "montana1", "islas1", "pantano1" };
+        allLayers.Clear();
+        towerButtons.Clear();
+
+        string[] mapNames = { "mapa2", "islas1", "pantano" };
         foreach (string name in mapNames)
         {
             Node mapRoot = GetTree().Root.FindChild(name, true, false);
@@ -36,9 +39,8 @@ public partial class TowerBuilder : Node2D
             if (nodo is TextureButton btn)
             {
                 btn.Pressed += () => SelectTower(btn.Name);
-                btn.ProcessMode = ProcessModeEnum.Always;
-                // Importante: Stop evita que el click atraviese el botón
-                btn.MouseFilter = Control.MouseFilterEnum.Stop; 
+                btn.MouseFilter = Control.MouseFilterEnum.Stop; // La UI bloquea el clic hacia abajo
+                towerButtons.Add(btn);
             }
         }
 
@@ -98,14 +100,15 @@ public partial class TowerBuilder : Node2D
         ghostInstance.Modulate = CanBuildOnTile(tilePos) ? new Color(0, 1, 0, 0.6f) : new Color(1, 0, 0, 0.6f);
     }
 
-    // CAMBIO CLAVE: Usamos _UnhandledInput en lugar de _Input
-    // Esto solo se dispara si NO hiciste click en un botón de la UI
-    public override void _UnhandledInput(InputEvent @event)
+    public override void _Input(InputEvent @event)
     {
         if (@event is InputEventMouseButton mbe && mbe.Pressed)
         {
             if (mbe.ButtonIndex == MouseButton.Left && !string.IsNullOrEmpty(currentTowerName))
             {
+                // PROTECCIÓN: Si el ratón está sobre un botón de la UI, NO intentes construir
+                if (IsMouseOverUI()) return;
+
                 AttemptBuild();
             }
             else if (mbe.ButtonIndex == MouseButton.Right)
@@ -114,6 +117,23 @@ public partial class TowerBuilder : Node2D
             }
         }
     }
+
+    // Comprueba si el ratón está encima de algún botón para evitar construir debajo
+private bool IsMouseOverUI()
+{
+    // 1. Preguntamos si hay algún nodo de la interfaz bajo el ratón ahora mismo
+    // Control.MouseButton es el filtro estándar para esto.
+    var guiObj = GetViewport().GuiGetHoveredControl();
+    
+    // 2. Si el ratón está sobre algo de la interfaz (guiObj != null)
+    // y ese algo tiene el MouseFilter en 'Stop', bloqueamos la construcción.
+    if (guiObj != null && guiObj.MouseFilter == Control.MouseFilterEnum.Stop)
+    {
+        return true;
+    }
+    
+    return false;
+}
 
     private void AttemptBuild()
     {
@@ -125,14 +145,11 @@ public partial class TowerBuilder : Node2D
         if (TowersScenes.TryGetValue(currentTowerName, out PackedScene scene))
         {
             Node2D towerInstance = scene.Instantiate<Node2D>();
-            
             Vector2 localPos = allLayers[0].MapToLocal(tilePos);
             towerInstance.GlobalPosition = allLayers[0].ToGlobal(localPos) + GhostOffset;
 
             TowersParent.AddChild(towerInstance);
             occupiedTiles[tilePos] = towerInstance;
-            
-            CancelSelection();
         }
     }
 
@@ -160,13 +177,12 @@ public partial class TowerBuilder : Node2D
 
             string prop = currentTowerName switch { 
                 "Ship" => "can_build_boat", 
-                "Atun" => "can_build_atun", 
+                "AtunHatchery" => "can_build_atun", 
                 _ => "can_build" 
             };
 
             Variant buildData = data.GetCustomData(prop);
             if (buildData.VariantType != Variant.Type.Nil && buildData.AsBool()) return true;
-            return false;
         }
         return false;
     }
