@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://vl8wetgatfc4"
-path="res://.godot/imported/fotograma0000 (1).png-fa3dcb0a9dd3dd889e61e5bfa96ffff4.ctex"
+uid="uid://c8cyiamkro6op"
+path="res://.godot/imported/GoblinTiburon.png-7aecb4b470b7a19bd39db9bd41732800.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/character/enemy/GoblinTronco/fotograma0000 (1).png"
-dest_files=["res://.godot/imported/fotograma0000 (1).png-fa3dcb0a9dd3dd889e61e5bfa96ffff4.ctex"]
+source_file="res://assets/character/enemy/GoblinTronco/GoblinTiburon.png"
+dest_files=["res://.godot/imported/GoblinTiburon.png-7aecb4b470b7a19bd39db9bd41732800.ctex"]
 
 [params]
 

@@ -1,0 +1,56 @@
+[gd_scene load_steps=10 format=3 uid="uid://cku44kfv3cei4"]
+
+[ext_resource type="Script" uid="uid://ckwinn0bimw25" path="res://scripts/character/tower/grifo/Griffin.cs" id="1_u51wi"]
+[ext_resource type="Texture2D" uid="uid://boedo440b4aob" path="res://assets/character/tower/Tuna/Atun-Sheet.png" id="2_ibtbg"]
+[ext_resource type="Script" uid="uid://cw18wpqics2e8" path="res://scripts/character/tower/atun/Tuna.cs" id="3_ibtbg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3aaem"]
+atlas = ExtResource("2_ibtbg")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0u1r4"]
+atlas = ExtResource("2_ibtbg")
+region = Rect2(64, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qisa3"]
+atlas = ExtResource("2_ibtbg")
+region = Rect2(128, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wm6gy"]
+atlas = ExtResource("2_ibtbg")
+region = Rect2(192, 0, 64, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_futsd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3aaem")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0u1r4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qisa3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wm6gy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b4w28"]
+
+[node name="Tuna" type="CharacterBody2D"]
+script = ExtResource("1_u51wi")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_futsd")
+autoplay = "default"
+frame_progress = 0.19580641
+script = ExtResource("3_ibtbg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_b4w28")

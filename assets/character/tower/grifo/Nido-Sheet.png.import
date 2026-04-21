@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ddysmfnkdarrb"
-path="res://.godot/imported/Ballesta-Sheet.png-7fb6ba1c82a42d19dd0d853892fdc75e.ctex"
+uid="uid://dep6iq8371u5v"
+path="res://.godot/imported/Nido-Sheet.png-1c0d70dc525a4a853b1b2cef2d37c98b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/character/tower/Ballesta-Sheet.png"
-dest_files=["res://.godot/imported/Ballesta-Sheet.png-7fb6ba1c82a42d19dd0d853892fdc75e.ctex"]
+source_file="res://assets/character/tower/grifo/Nido-Sheet.png"
+dest_files=["res://.godot/imported/Nido-Sheet.png-1c0d70dc525a4a853b1b2cef2d37c98b.ctex"]
 
 [params]
 

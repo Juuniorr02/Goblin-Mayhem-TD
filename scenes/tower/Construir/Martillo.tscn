@@ -1,8 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://fwle2vth706y"]
+[gd_scene load_steps=3 format=3 uid="uid://fwle2vth706y"]
 
 [ext_resource type="Texture2D" uid="uid://bovqloc0sr8xj" path="res://assets/character/tower/Construir/Martillito-Sheet.png" id="1_xjp2l"]
+[ext_resource type="Script" uid="uid://defxaxh62aoh1" path="res://scripts/character/tower/Martillo.cs" id="2_0pbsm"]
 
 [node name="Martillo" type="Sprite2D"]
 texture_filter = 1
 scale = Vector2(2, 2)
 texture = ExtResource("1_xjp2l")
+script = ExtResource("2_0pbsm")
+
+[node name="RangeVisual" type="Node" parent="."]

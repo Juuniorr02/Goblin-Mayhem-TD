@@ -1,65 +1,79 @@
-[gd_scene load_steps=14 format=3 uid="uid://cq4w56mk4nxmm"]
+[gd_scene load_steps=16 format=3 uid="uid://cq4w56mk4nxmm"]
 
 [ext_resource type="Script" uid="uid://djm0046nxvish" path="res://scripts/character/enemy/Enemy.cs" id="1_uqbeg"]
-[ext_resource type="Texture2D" uid="uid://bbvi61e0beacf" path="res://assets/character/enemy/Golem.png" id="2_0kgeq"]
 [ext_resource type="Script" uid="uid://dtfsd6sb6u7oe" path="res://scripts/character/enemy/EnemyData.cs" id="2_ypm4a"]
 [ext_resource type="Texture2D" uid="uid://cmwjmb8slpq0e" path="res://assets/character/enemy/BlancoVida.png" id="3_ypm4a"]
+[ext_resource type="Texture2D" uid="uid://c8cyiamkro6op" path="res://assets/character/enemy/GoblinTronco/GoblinTiburon.png" id="4_ypm4a"]
 
 [sub_resource type="Resource" id="Resource_m17yy"]
 script = ExtResource("2_ypm4a")
 metadata/_custom_type_script = "uid://dtfsd6sb6u7oe"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ygshw"]
-size = Vector2(11, 28)
+size = Vector2(57.619034, 28)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_735o0"]
-atlas = ExtResource("2_0kgeq")
-region = Rect2(0, 0, 56, 56)
+[sub_resource type="AtlasTexture" id="AtlasTexture_m17yy"]
+atlas = ExtResource("4_ypm4a")
+region = Rect2(0, 0, 96, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4kjq8"]
-atlas = ExtResource("2_0kgeq")
-region = Rect2(56, 0, 56, 56)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ltgbk"]
+atlas = ExtResource("4_ypm4a")
+region = Rect2(96, 0, 96, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bnw2t"]
-atlas = ExtResource("2_0kgeq")
-region = Rect2(112, 0, 56, 56)
+[sub_resource type="AtlasTexture" id="AtlasTexture_60ohc"]
+atlas = ExtResource("4_ypm4a")
+region = Rect2(192, 0, 96, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_uscpi"]
-atlas = ExtResource("2_0kgeq")
-region = Rect2(168, 0, 56, 56)
+[sub_resource type="AtlasTexture" id="AtlasTexture_rpufh"]
+atlas = ExtResource("4_ypm4a")
+region = Rect2(288, 0, 96, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0fbgq"]
-atlas = ExtResource("2_0kgeq")
-region = Rect2(224, 0, 56, 56)
+[sub_resource type="AtlasTexture" id="AtlasTexture_fovs4"]
+atlas = ExtResource("4_ypm4a")
+region = Rect2(384, 0, 96, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ygshw"]
-atlas = ExtResource("2_0kgeq")
-region = Rect2(280, 0, 56, 56)
+[sub_resource type="AtlasTexture" id="AtlasTexture_gvtus"]
+atlas = ExtResource("4_ypm4a")
+region = Rect2(480, 0, 96, 64)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_0fbgq"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_5mxiv"]
+atlas = ExtResource("4_ypm4a")
+region = Rect2(576, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i8koa"]
+atlas = ExtResource("4_ypm4a")
+region = Rect2(672, 0, 96, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_it5qu"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_735o0")
+"texture": SubResource("AtlasTexture_m17yy")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4kjq8")
+"texture": SubResource("AtlasTexture_ltgbk")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bnw2t")
+"texture": SubResource("AtlasTexture_60ohc")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_uscpi")
+"texture": SubResource("AtlasTexture_rpufh")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0fbgq")
+"texture": SubResource("AtlasTexture_fovs4")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ygshw")
+"texture": SubResource("AtlasTexture_gvtus")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5mxiv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i8koa")
 }],
 "loop": true,
-"name": &"walk",
-"speed": 7.0
+"name": &"default",
+"speed": 10.0
 }]
 
 [node name="GoblinTronco" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "HealthBar") groups=["Acuatico", "enemies"]]
@@ -81,14 +95,13 @@ nine_patch_stretch = true
 texture_progress = ExtResource("3_ypm4a")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2.0000002)
-scale = Vector2(1.0000001, 1.0000001)
+position = Vector2(3.0952423, 2.0000012)
+scale = Vector2(1.0000004, 1.0000004)
 shape = SubResource("RectangleShape2D_ygshw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-sprite_frames = SubResource("SpriteFrames_0fbgq")
-animation = &"walk"
-autoplay = "walk"
-frame_progress = 0.4266486
+sprite_frames = SubResource("SpriteFrames_it5qu")
+autoplay = "default"
+frame_progress = 0.5917796
 flip_h = true

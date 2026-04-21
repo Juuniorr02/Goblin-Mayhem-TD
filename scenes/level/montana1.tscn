@@ -1,10 +1,14 @@
-[gd_scene load_steps=22 format=3 uid="uid://dd1ml503ns506"]
+[gd_scene load_steps=33 format=3 uid="uid://dd1ml503ns506"]
 
 [ext_resource type="PackedScene" uid="uid://box8tpwtebkqj" path="res://assets/level/Map/montana1.tmx" id="1_5fc2a"]
 [ext_resource type="Script" uid="uid://cubvhlo0alqh1" path="res://scripts/level/terrain/Pathfinding.cs" id="2_abfbc"]
 [ext_resource type="Script" uid="uid://ddtj2hn2hhtfd" path="res://scripts/character/enemy/EnemySpawner.cs" id="3_wwvym"]
+[ext_resource type="Script" uid="uid://b7rcgtrq61w48" path="res://scripts/character/enemy/WaveData.cs" id="4_3pfqo"]
+[ext_resource type="Resource" uid="uid://7lteypp1glo" path="res://scripts/character/enemy/infoEnemy/golem.tres" id="4_8k8u7"]
+[ext_resource type="Script" uid="uid://dxi6h4dntdvec" path="res://scripts/character/enemy/EnemyGroup.cs" id="5_hfw40"]
 [ext_resource type="PackedScene" uid="uid://ci612q8twcycd" path="res://scenes/ui/iu.tscn" id="5_iwtdf"]
 [ext_resource type="Script" uid="uid://ccef7herjptu0" path="res://scripts/character/CameraRig.cs" id="6_a1srb"]
+[ext_resource type="Resource" uid="uid://cigq0efht168k" path="res://scripts/character/enemy/infoEnemy/goblinVolador.tres" id="7_hfw40"]
 [ext_resource type="Script" uid="uid://dlfq6grfckhot" path="res://scripts/character/tower/TowerBuilder.cs" id="7_wwvym"]
 [ext_resource type="PackedScene" uid="uid://ieo0rfx4mn8y" path="res://scenes/tower/Cannon/Cannon.tscn" id="8_8nqb7"]
 [ext_resource type="PackedScene" uid="uid://cor65fcesxg0a" path="res://scenes/ui/menu_pausa.tscn" id="8_h3ie6"]
@@ -18,6 +22,41 @@
 [ext_resource type="PackedScene" uid="uid://c6o5datpm682p" path="res://scenes/ui/menu_victoria.tscn" id="15_0l7l4"]
 [ext_resource type="PackedScene" uid="uid://ce0pn5jdtd7uu" path="res://scenes/tower/Globo/globo.tscn" id="15_8k8u7"]
 [ext_resource type="PackedScene" uid="uid://c387degtgk6i6" path="res://scenes/ui/menu_derrota.tscn" id="16_tthrg"]
+[ext_resource type="PackedScene" uid="uid://bv6xb2o3otqu3" path="res://scenes/tower/Grifo/GrffinTower.tscn" id="17_g8uhd"]
+[ext_resource type="PackedScene" uid="uid://b4kgd56vbuq80" path="res://scenes/tower/ship/ship.tscn" id="18_5r8ub"]
+
+[sub_resource type="Resource" id="Resource_dkogb"]
+script = ExtResource("5_hfw40")
+EnemyType = ExtResource("4_8k8u7")
+metadata/_custom_type_script = "uid://dxi6h4dntdvec"
+
+[sub_resource type="Resource" id="Resource_h687j"]
+script = ExtResource("4_3pfqo")
+WaveName = "Oleada 1"
+Groups = Array[Object]([SubResource("Resource_dkogb")])
+SpawnInterval = 0.5
+metadata/_custom_type_script = "uid://b7rcgtrq61w48"
+
+[sub_resource type="Resource" id="Resource_7cd37"]
+script = ExtResource("5_hfw40")
+EnemyType = ExtResource("7_hfw40")
+Count = 45
+Path = 4
+metadata/_custom_type_script = "uid://dxi6h4dntdvec"
+
+[sub_resource type="Resource" id="Resource_qrghn"]
+script = ExtResource("5_hfw40")
+EnemyType = ExtResource("4_8k8u7")
+Count = 89
+Path = 2
+metadata/_custom_type_script = "uid://dxi6h4dntdvec"
+
+[sub_resource type="Resource" id="Resource_8f5mf"]
+script = ExtResource("4_3pfqo")
+WaveName = "Oleada 2"
+Groups = Array[Object]([SubResource("Resource_7cd37"), SubResource("Resource_qrghn")])
+SpawnInterval = 0.5
+metadata/_custom_type_script = "uid://b7rcgtrq61w48"
 
 [sub_resource type="Curve2D" id="Curve2D_5fc2a"]
 _data = {
@@ -49,6 +88,7 @@ script = ExtResource("3_wwvym")
 CaminoA = NodePath("CaminoA")
 CaminoB = NodePath("CaminoB")
 CaminoVolador = NodePath("CaminoVolador")
+Waves = Array[Object]([SubResource("Resource_h687j"), SubResource("Resource_8f5mf")])
 
 [node name="CaminoA" type="Path2D" parent="EnemySpawner"]
 z_index = 1
@@ -76,6 +116,8 @@ TowersScenes = Dictionary[String, PackedScene]({
 "Cannon": ExtResource("8_8nqb7"),
 "Flame": ExtResource("11_2mh14"),
 "Mortar": ExtResource("10_a1srb"),
+"Nest": ExtResource("17_g8uhd"),
+"Ship": ExtResource("18_5r8ub"),
 "Wizard": ExtResource("13_3pfqo")
 })
 
@@ -85,10 +127,11 @@ spawner = NodePath("../EnemySpawner")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(7057, 1182)
 zoom = Vector2(0.485, 0.485)
-limit_left = -3000
-limit_top = -3000
-limit_right = 17000
-limit_bottom = 9750
+limit_enabled = false
+limit_left = 0
+limit_top = 0
+limit_right = 1145
+limit_bottom = 555
 script = ExtResource("6_a1srb")
 MoveSpeed = 1400.0
 MinZoom = 0.23
