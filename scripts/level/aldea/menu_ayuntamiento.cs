@@ -5,7 +5,7 @@ public partial class menu_ayuntamiento : CanvasLayer
 {
 	public Aldea aldea;
 	public Label labelInfo;
-	public Label LabelNombre;
+	public Label labelNombre;
 	public Button btnMejorar;
 	public Button btnVolver;
 
@@ -16,7 +16,7 @@ public partial class menu_ayuntamiento : CanvasLayer
 		ProcessMode = ProcessModeEnum.Always;
 
 		labelInfo = GetNodeOrNull<Label>("CenterContainer/PanelContainer/MarginContainer/PanelContainer/VBoxContainer/VBoxContainer/Info");
-		LabelNombre = GetNodeOrNull<Label>("CenterContainer/PanelContainer/MarginContainer/PanelContainer/VBoxContainer/VBoxContainer/Nombre");
+		labelNombre = GetNodeOrNull<Label>("CenterContainer/PanelContainer/MarginContainer/PanelContainer/VBoxContainer/VBoxContainer/Nombre");
 		btnMejorar = GetNodeOrNull<Button>("CenterContainer/PanelContainer/MarginContainer/PanelContainer/VBoxContainer/VBoxContainer/Mejorar");
 		btnVolver = GetNodeOrNull<Button>("CenterContainer/PanelContainer/MarginContainer/PanelContainer/VBoxContainer/VBoxContainer/Volver");
 
@@ -67,6 +67,82 @@ public partial class menu_ayuntamiento : CanvasLayer
 
 	public void OnMejorar()
 	{
-		GD.Print("Mejorar Ayuntamiento");
+		int amountGold, amountWood, amountStone, amountIron;
+
+		if(labelNombre.Text == "Ayuntamiento Nivel 1")
+		{
+			amountGold = 1000; amountWood = 0; amountStone = 0; amountIron = 0;
+			if(Recursos.Instance.TotalGold >= amountGold && Recursos.Instance.TotalWood >= amountWood && Recursos.Instance.TotalStone >= amountStone && Recursos.Instance.TotalIron >= amountIron)
+			{
+				Recursos.Instance.ProdGold += 100;
+				Recursos.Instance.TotalGold -= amountGold;
+				Recursos.Instance.TotalWood -= amountWood;
+				Recursos.Instance.TotalStone -= amountStone;
+				Recursos.Instance.TotalIron -= amountIron;
+				labelNombre.Text = "Ayuntamiento Nivel 2";
+				labelInfo.Text = "  Producción: 200 de oro por ronda  ";
+			}
+			else
+			{
+				GD.Print(Recursos.Instance.TotalGold, " ", Recursos.Instance.TotalWood, " ", Recursos.Instance.TotalStone, " ", Recursos.Instance.TotalIron);
+				labelInfo.Text = "  No tienes suficientes recursos.  ";
+			}
+
+		}
+		else if(labelNombre.Text == "Ayuntamiento Nivel 2")
+		{
+			amountGold = 2000; amountWood = 100; amountStone = 0; amountIron = 0;
+			if(Recursos.Instance.TotalGold >= amountGold && Recursos.Instance.TotalWood >= amountWood && Recursos.Instance.TotalStone >= amountStone && Recursos.Instance.TotalIron >= amountIron)
+			{
+				Recursos.Instance.ProdGold += 100;
+				Recursos.Instance.TotalGold -= amountGold;
+				Recursos.Instance.TotalWood -= amountWood;
+				Recursos.Instance.TotalStone -= amountStone;
+				Recursos.Instance.TotalIron -= amountIron;
+				labelNombre.Text = "Ayuntamiento Nivel 3";
+				labelInfo.Text = "  Producción: 300 de oro por ronda  ";
+			}
+			else
+			{
+				labelInfo.Text = "  No tienes suficientes recursos.  ";
+			}
+		}
+		else if(labelNombre.Text == "Ayuntamiento Nivel 3")
+		{
+			amountGold = 3000; amountWood = 200; amountStone = 100; amountIron = 0;
+			if(Recursos.Instance.TotalGold >= amountGold && Recursos.Instance.TotalWood >= amountWood && Recursos.Instance.TotalStone >= amountStone && Recursos.Instance.TotalIron >= amountIron)
+			{
+				Recursos.Instance.ProdGold += 100;
+				Recursos.Instance.TotalGold -= amountGold;
+				Recursos.Instance.TotalWood -= amountWood;
+				Recursos.Instance.TotalStone -= amountStone;
+				Recursos.Instance.TotalIron -= amountIron;
+				labelNombre.Text = "Ayuntamiento Nivel 4";
+				labelInfo.Text = "  Producción: 400 de oro por ronda  ";
+			}
+			else
+			{
+				labelInfo.Text = "  No tienes suficientes recursos.  ";
+			}
+		}
+		else if(labelNombre.Text == "Ayuntamiento Nivel 4")
+		{
+			amountGold = 4000; amountWood = 400; amountStone = 200; amountIron = 100;
+			if(Recursos.Instance.TotalGold >= amountGold && Recursos.Instance.TotalWood >= amountWood && Recursos.Instance.TotalStone >= amountStone && Recursos.Instance.TotalIron >= amountIron)
+			{
+				Recursos.Instance.ProdGold += 100;
+				Recursos.Instance.TotalGold -= amountGold;
+				Recursos.Instance.TotalWood -= amountWood;
+				Recursos.Instance.TotalStone -= amountStone;
+				Recursos.Instance.TotalIron -= amountIron;
+				labelNombre.Text = "Ayuntamiento Nivel 5";
+				labelInfo.Text = "  Producción: 500 de oro por ronda  ";
+				btnMejorar.Disabled = true;
+			}
+			else
+			{
+				labelInfo.Text = "  No tienes suficientes recursos.  ";
+			}
+		}
 	}
 }

@@ -3,105 +3,47 @@ using System.Text.Json;
 
 public partial class Recursos : Node
 {
+    public static Recursos Instance;
+
     private const string PATH = "user://recursos.json";
 
+	private Timer autosaveTimer;
+
+    // =========================
+    // 🎮 RECURSOS PARTIDA (RAM)
+    // =========================
     public int Gold;
     public int Wood;
     public int Stone;
     public int Iron;
 
-    public int BaseGold = 100;
-    public int BaseWood = 100;
-    public int BaseStone = 50;
-    public int BaseIron = 20;
+    // =========================
+    // 🏠 RECURSOS BASE NIVEL
+    // =========================
+    public int BaseGold = 500;
+    public int BaseWood = 200;
+    public int BaseStone = 0;
+    public int BaseIron = 0;
 
-    public int ProdGold = 10;
-	public int ProdWood = 5;
-    public int ProdStone = 3;
-    public int ProdIron = 2;
-    
-	public int TotalGold = 0;
-	public int TotalWood = 0;
-    public int TotalStone = 0;
-    public int TotalIron = 0;
+    // =========================
+    // 🏗️ PRODUCCIÓN ALDEA
+    // =========================
+    public int ProdGold;
+    public int ProdWood;
+    public int ProdStone;
+    public int ProdIron;
 
-    public override void _Ready()
-    {
-        LoadData();
-    }
+    // =========================
+    // 💰 RECURSOS TOTALES (SAVE)
+    // =========================
+    public int TotalGold = 5000;
+    public int TotalWood = 5000;
+    public int TotalStone = 5000;
+    public int TotalIron = 5000;
 
-    public void StartLevel()
-    {
-        Gold = BaseGold;
-
-        Wood = BaseWood + ProdWood;
-        Stone = BaseStone + ProdStone;
-        Iron = BaseIron + ProdIron;
-
-    }
-
-    public void AddProduction()
-    {
-		Gold += ProdGold;
-        Wood += ProdWood;
-        Stone += ProdStone;
-        Iron += ProdIron;
-    }
-
-    public void EndLevel()
-    {
-		TotalGold += Gold;
-        TotalWood += Wood;
-        TotalStone += Stone;
-        TotalIron += Iron;
-
-        SaveData();
-    }
-
-	public bool UpgradeGoldProduction(int cost, int amount)
-	{
-		if (TotalGold < cost) return false;
-
-		TotalGold -= cost;
-		ProdGold += amount;
-
-		SaveData();
-		return true;
-	}
-
-    public bool UpgradeWoodProduction(int cost, int amount)
-    {
-        if (TotalWood < cost) return false;
-
-        TotalWood -= cost;
-        ProdWood += amount;
-
-        SaveData();
-        return true;
-    }
-
-    public bool UpgradeStoneProduction(int cost, int amount)
-    {
-        if (TotalStone < cost) return false;
-
-        TotalStone -= cost;
-        ProdStone += amount;
-
-        SaveData();
-        return true;
-    }
-
-    public bool UpgradeIronProduction(int cost, int amount)
-    {
-        if (TotalIron < cost) return false;
-
-        TotalIron -= cost;
-        ProdIron += amount;
-
-        SaveData();
-        return true;
-    }
-
+    // =========================
+    // 📦 STRUCT DE GUARDADO
+    // =========================
     private class SaveDataStruct
     {
         public int TotalGold;
@@ -115,6 +57,66 @@ public partial class Recursos : Node
         public int ProdIron;
     }
 
+    // =========================
+    // 🚀 INIT
+    // =========================
+    public override void _Ready()
+    {
+
+		autosaveTimer = new Timer();
+    	autosaveTimer.WaitTime = 10.0f;
+    	autosaveTimer.Autostart = true;
+    	autosaveTimer.OneShot = false;
+
+    	autosaveTimer.Timeout += OnAutosaveTimeout;
+
+        Instance = this;
+        LoadData();
+    }
+
+    // =========================
+    // 🎮 INICIO DE PARTIDA
+    // =========================
+    public void StartLevel()
+    {
+        Gold = BaseGold + ProdGold;
+        Wood = BaseWood + ProdWood;
+        Stone = BaseStone + ProdStone;
+        Iron = BaseIron + ProdIron;
+    }
+
+    // =========================
+    // 🔁 PRODUCCIÓN POR RONDA
+    // =========================
+    public void AddProduction()
+    {
+        Gold += ProdGold;
+        Wood += ProdWood;
+        Stone += ProdStone;
+        Iron += ProdIron;
+    }
+
+    // =========================
+    // 🏁 FIN DE PARTIDA (GUARDAR)
+    // =========================
+    public void EndLevel()
+    {
+        TotalGold += Gold;
+        TotalWood += Wood;
+        TotalStone += Stone;
+        TotalIron += Iron;
+
+        SaveData();
+    }
+
+	private void OnAutosaveTimeout()
+	{
+    SaveData();
+	}
+
+    // =========================
+    // 💾 GUARDAR
+    // =========================
     public void SaveData()
     {
         var data = new SaveDataStruct
@@ -123,7 +125,8 @@ public partial class Recursos : Node
             TotalWood = TotalWood,
             TotalStone = TotalStone,
             TotalIron = TotalIron,
-			ProdGold = ProdGold,
+
+            ProdGold = ProdGold,
             ProdWood = ProdWood,
             ProdStone = ProdStone,
             ProdIron = ProdIron
@@ -135,6 +138,9 @@ public partial class Recursos : Node
         file.StoreString(json);
     }
 
+    // =========================
+    // 📂 CARGAR
+    // =========================
     public void LoadData()
     {
         if (!FileAccess.FileExists(PATH))
@@ -148,12 +154,12 @@ public partial class Recursos : Node
 
         var data = JsonSerializer.Deserialize<SaveDataStruct>(json);
 
-		TotalGold = data.TotalGold;
+        TotalGold = data.TotalGold;
         TotalWood = data.TotalWood;
         TotalStone = data.TotalStone;
         TotalIron = data.TotalIron;
 
-		ProdGold = data.ProdGold;
+        ProdGold = data.ProdGold;
         ProdWood = data.ProdWood;
         ProdStone = data.ProdStone;
         ProdIron = data.ProdIron;
