@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://bv6xb2o3otqu3"]
 
 [ext_resource type="Script" uid="uid://bo37tnnl5lrab" path="res://scripts/character/tower/grifo/GriffinTower.cs" id="1_2xxnb"]
-[ext_resource type="Texture2D" uid="uid://dep6iq8371u5v" path="res://assets/ui/icon/Nido-Sheet.png" id="2_hqq15"]
 [ext_resource type="PackedScene" uid="uid://dflxu41q1chvl" path="res://scenes/tower/Grifo/Griffin.tscn" id="2_jrnjw"]
+[ext_resource type="Texture2D" uid="uid://b6dkv6r7fmkr2" path="res://assets/character/tower/grifo/Nido-Sheet.png" id="3_hqq15"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kwryj"]
 
@@ -13,7 +13,7 @@ CanTargetAir = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("2_hqq15")
+texture = ExtResource("3_hqq15")
 
 [node name="Muzzle" type="Marker2D" parent="."]
 position = Vector2(1, -2)

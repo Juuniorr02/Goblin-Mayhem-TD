@@ -16,8 +16,8 @@ public partial class TowerBuilder : Node2D
 
     public override void _Ready()
     {
-        // Tu lógica de detección de mapas
-        string[] mapNames = { "tutorial, montana1", "islas1", "pantano1" };
+        // Lógica de detección de mapas
+        string[] mapNames = { "tutorial", "montana1", "islas1", "pantano1" };
         foreach (string name in mapNames)
         {
             Node mapRoot = GetTree().Root.FindChild(name, true, false);
@@ -37,11 +37,11 @@ public partial class TowerBuilder : Node2D
             {
                 btn.Pressed += () => SelectTower(btn.Name);
                 btn.ProcessMode = ProcessModeEnum.Always;
-                btn.MouseFilter = Control.MouseFilterEnum.Stop;
+                // Importante: Stop evita que el click atraviese el botón
+                btn.MouseFilter = Control.MouseFilterEnum.Stop; 
             }
         }
 
-        // Creamos el fantasma (Martillo) inicialmente oculto
         if (GhostTowerScene != null)
         {
             ghostInstance = GhostTowerScene.Instantiate<Node2D>();
@@ -50,45 +50,42 @@ public partial class TowerBuilder : Node2D
         }
     }
 
-   public void SelectTower(string towerName)
-{
-    currentTowerName = towerName;
-    if (ghostInstance == null) return;
-
-    if (string.IsNullOrEmpty(towerName))
+    public void SelectTower(string towerName)
     {
-        ghostInstance.Visible = false;
-        return;
-    }
+        currentTowerName = towerName;
+        if (ghostInstance == null) return;
 
-    ghostInstance.Visible = true;
-    
-    if (TowersScenes.TryGetValue(towerName, out PackedScene towerScene))
-    {
-        var dummyTower = towerScene.Instantiate<Node2D>();
-        float rangeX = 0;
-        float rangeY = 0;
-
-        var area = dummyTower.GetNodeOrNull<Area2D>("DetectionRange") ?? dummyTower.GetNodeOrNull<Area2D>("detectionRange");
-        var collision = area?.GetNodeOrNull<CollisionShape2D>("CollisionShape2D");
-        
-        if (collision != null && collision.Shape is CircleShape2D circle) 
+        if (string.IsNullOrEmpty(towerName))
         {
-            // --- EL TRUCO: Multiplicamos el radio por la escala del nodo ---
-            // Esto detectará si el rango está estirado o es muy grande
-            rangeX = circle.Radius * collision.Scale.X * area.Scale.X;
-            rangeY = circle.Radius * collision.Scale.Y * area.Scale.Y;
+            ghostInstance.Visible = false;
+            return;
         }
 
-        // Le pasamos AMBOS radios al martillo para que dibuje el óvalo perfecto
-        if (ghostInstance.HasMethod("UpdateRangeVisual"))
-        {
-            ghostInstance.Call("UpdateRangeVisual", rangeX, rangeY);
-        }
+        ghostInstance.Visible = true;
         
-        dummyTower.QueueFree();
+        if (TowersScenes.TryGetValue(towerName, out PackedScene towerScene))
+        {
+            var dummyTower = towerScene.Instantiate<Node2D>();
+            float rangeX = 0;
+            float rangeY = 0;
+
+            var area = dummyTower.GetNodeOrNull<Area2D>("DetectionRange") ?? dummyTower.GetNodeOrNull<Area2D>("detectionRange");
+            var collision = area?.GetNodeOrNull<CollisionShape2D>("CollisionShape2D");
+            
+            if (collision != null && collision.Shape is CircleShape2D circle) 
+            {
+                rangeX = circle.Radius * collision.Scale.X * area.Scale.X;
+                rangeY = circle.Radius * collision.Scale.Y * area.Scale.Y;
+            }
+
+            if (ghostInstance.HasMethod("UpdateRangeVisual"))
+            {
+                ghostInstance.Call("UpdateRangeVisual", rangeX, rangeY);
+            }
+            
+            dummyTower.QueueFree();
+        }
     }
-}
 
     public override void _Process(double delta)
     {
@@ -98,11 +95,12 @@ public partial class TowerBuilder : Node2D
         Vector2 localPos = allLayers[0].MapToLocal(tilePos);
         ghostInstance.GlobalPosition = allLayers[0].ToGlobal(localPos) + GhostOffset;
 
-        // Color verde si puede construir, rojo si no
         ghostInstance.Modulate = CanBuildOnTile(tilePos) ? new Color(0, 1, 0, 0.6f) : new Color(1, 0, 0, 0.6f);
     }
 
-    public override void _Input(InputEvent @event)
+    // CAMBIO CLAVE: Usamos _UnhandledInput en lugar de _Input
+    // Esto solo se dispara si NO hiciste click en un botón de la UI
+    public override void _UnhandledInput(InputEvent @event)
     {
         if (@event is InputEventMouseButton mbe && mbe.Pressed)
         {
@@ -160,7 +158,6 @@ public partial class TowerBuilder : Node2D
             TileData data = layer.GetCellTileData(tilePos);
             if (data == null) continue;
 
-            // Lógica de exclusividad de tiles
             string prop = currentTowerName switch { 
                 "Ship" => "can_build_boat", 
                 "Atun" => "can_build_atun", 
