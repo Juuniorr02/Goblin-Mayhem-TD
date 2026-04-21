@@ -20,6 +20,7 @@ GameSettings="*res://scripts/ui/GameSettings.cs"
 SaveSystem="*res://scripts/ui/SaveSystem.cs"
 Base="*res://scripts/character/base/Base.cs"
 Wave="*res://scripts/character/base/Wave.cs"
+Recursos="*res://scripts/ui/Recursos.cs"
 
 [dotnet]
 
