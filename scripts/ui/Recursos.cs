@@ -28,33 +28,33 @@ public partial class Recursos : Node
     // =========================
     // 🏗️ PRODUCCIÓN ALDEA
     // =========================
-    public int ProdGold;
-    public int ProdWood;
-    public int ProdStone;
-    public int ProdIron;
+    public int ProdGold { get; set; }
+    public int ProdWood { get; set; }
+    public int ProdStone { get; set; }
+    public int ProdIron { get; set; }
 
     // =========================
     // 💰 RECURSOS TOTALES (SAVE)
     // =========================
-    public int TotalGold = 5000;
-    public int TotalWood = 5000;
-    public int TotalStone = 5000;
-    public int TotalIron = 5000;
+    public int TotalGold { get; set; } = 5000;
+    public int TotalWood { get; set; } = 5000;
+    public int TotalStone { get; set; } = 5000;
+    public int TotalIron { get; set; } = 5000;
 
     // =========================
     // 📦 STRUCT DE GUARDADO
     // =========================
     private class SaveDataStruct
     {
-        public int TotalGold;
-        public int TotalWood;
-        public int TotalStone;
-        public int TotalIron;
+        public int TotalGold { get; set; }
+        public int TotalWood { get; set; }
+        public int TotalStone { get; set; }
+        public int TotalIron { get; set; }
 
-        public int ProdGold;
-        public int ProdWood;
-        public int ProdStone;
-        public int ProdIron;
+        public int ProdGold { get; set; }
+        public int ProdWood { get; set; }
+        public int ProdStone { get; set; }
+        public int ProdIron { get; set; }
     }
 
     // =========================
@@ -72,6 +72,8 @@ public partial class Recursos : Node
 
         Instance = this;
         LoadData();
+
+		AddChild(autosaveTimer);
     }
 
     // =========================
@@ -111,6 +113,7 @@ public partial class Recursos : Node
 
 	private void OnAutosaveTimeout()
 	{
+	GD.Print("AUTOSAVE");
     SaveData();
 	}
 
@@ -142,26 +145,42 @@ public partial class Recursos : Node
     // 📂 CARGAR
     // =========================
     public void LoadData()
-    {
-        if (!FileAccess.FileExists(PATH))
-        {
-            SaveData(); // crea archivo inicial
-            return;
-        }
+	{
+    	if (!FileAccess.FileExists(PATH))
+    	{
+        	SaveData();
+       		return;
+    	}
 
-        using var file = FileAccess.Open(PATH, FileAccess.ModeFlags.Read);
-        string json = file.GetAsText();
+    	using var file = FileAccess.Open(PATH, FileAccess.ModeFlags.Read);
+    	string json = file.GetAsText();
 
-        var data = JsonSerializer.Deserialize<SaveDataStruct>(json);
+    	// 🔥 Evitar JSON vacío o inválido
+    	if (string.IsNullOrEmpty(json) || json == "{}")
+    	{
+        	GD.Print("JSON vacío, usando valores por defecto");
+        	SaveData();
+        	return;
+    	}
 
-        TotalGold = data.TotalGold;
-        TotalWood = data.TotalWood;
-        TotalStone = data.TotalStone;
-        TotalIron = data.TotalIron;
+    	var data = JsonSerializer.Deserialize<SaveDataStruct>(json);
 
-        ProdGold = data.ProdGold;
-        ProdWood = data.ProdWood;
-        ProdStone = data.ProdStone;
-        ProdIron = data.ProdIron;
-    }
+    	// 🔥 Validar que no sea null
+    	if (data == null)
+    	{
+        	GD.Print("Error al deserializar, usando valores por defecto");
+        	SaveData();
+        	return;
+    	}
+
+    	TotalGold = data.TotalGold;
+    	TotalWood = data.TotalWood;
+    	TotalStone = data.TotalStone;
+    	TotalIron = data.TotalIron;
+
+    	ProdGold = data.ProdGold;
+    	ProdWood = data.ProdWood;
+    	ProdStone = data.ProdStone;
+    	ProdIron = data.ProdIron;
+	}
 }
