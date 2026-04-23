@@ -17,38 +17,45 @@ public partial class TowerBuilder : Node2D
 
     public override void _Ready()
     {
-        allLayers.Clear();
-        towerButtons.Clear();
-
-        string[] mapNames = { "montana1", "islas1", "pantano1", "level1", "tutorial" };
-        foreach (string name in mapNames)
-        {
-            Node mapRoot = GetTree().Root.FindChild(name, true, false);
-            if (mapRoot != null)
-            {
-                foreach (Node child in mapRoot.GetChildren())
-                {
-                    if (child is TileMapLayer layer) allLayers.Add(layer);
-                }
-            }
-        }
-        
-        var botones = GetTree().GetNodesInGroup("botones_torres");
-        foreach (Node nodo in botones)
-        {
-            if (nodo is TextureButton btn)
-            {
-                btn.Pressed += () => SelectTower(btn.Name);
-                btn.MouseFilter = Control.MouseFilterEnum.Stop; // La UI bloquea el clic hacia abajo
-                towerButtons.Add(btn);
-            }
-        }
+        RefreshMapLayers();
+        SetupButtons();
 
         if (GhostTowerScene != null)
         {
             ghostInstance = GhostTowerScene.Instantiate<Node2D>();
             AddChild(ghostInstance);
             ghostInstance.Visible = false;
+        }
+    }
+
+    // Busca automáticamente las capas de tiles en la escena actual
+    private void RefreshMapLayers()
+    {
+        allLayers.Clear();
+        // Buscamos todos los nodos tipo TileMapLayer en la escena activa
+        var nodes = GetTree().CurrentScene.FindChildren("*", "TileMapLayer", true, false);
+        foreach (var node in nodes)
+        {
+            if (node is TileMapLayer layer)
+            {
+                allLayers.Add(layer);
+                GD.Print("Capa de mapa detectada: " + layer.Name + " en " + layer.GetParent().Name);
+            }
+        }
+    }
+
+    private void SetupButtons()
+    {
+        towerButtons.Clear();
+        var botones = GetTree().GetNodesInGroup("botones_torres");
+        foreach (Node nodo in botones)
+        {
+            if (nodo is TextureButton btn)
+            {
+                btn.Pressed += () => SelectTower(btn.Name);
+                btn.MouseFilter = Control.MouseFilterEnum.Stop; 
+                towerButtons.Add(btn);
+            }
         }
     }
 
@@ -93,10 +100,15 @@ public partial class TowerBuilder : Node2D
     {
         if (ghostInstance == null || !ghostInstance.Visible || allLayers.Count == 0) return;
 
-        Vector2I tilePos = GetTileUnderMouse(allLayers[0]);
-        Vector2 localPos = allLayers[0].MapToLocal(tilePos);
-        ghostInstance.GlobalPosition = allLayers[0].ToGlobal(localPos) + GhostOffset;
+        // Buscamos en qué capa está el ratón para posicionar el fantasma correctamente
+        TileMapLayer currentLayer = GetLayerUnderMouse();
+        if (currentLayer == null) currentLayer = allLayers[0];
 
+        Vector2I tilePos = GetTileUnderMouse(currentLayer);
+        Vector2 localPos = currentLayer.MapToLocal(tilePos);
+        
+        // Usamos ToGlobal de la capa específica para que la posición sea exacta
+        ghostInstance.GlobalPosition = currentLayer.ToGlobal(localPos) + GhostOffset;
         ghostInstance.Modulate = CanBuildOnTile(tilePos) ? new Color(0, 1, 0, 0.6f) : new Color(1, 0, 0, 0.6f);
     }
 
@@ -106,9 +118,7 @@ public partial class TowerBuilder : Node2D
         {
             if (mbe.ButtonIndex == MouseButton.Left && !string.IsNullOrEmpty(currentTowerName))
             {
-                // PROTECCIÓN: Si el ratón está sobre un botón de la UI, NO intentes construir
                 if (IsMouseOverUI()) return;
-
                 AttemptBuild();
             }
             else if (mbe.ButtonIndex == MouseButton.Right)
@@ -118,35 +128,26 @@ public partial class TowerBuilder : Node2D
         }
     }
 
-    // Comprueba si el ratón está encima de algún botón para evitar construir debajo
-private bool IsMouseOverUI()
-{
-    // 1. Preguntamos si hay algún nodo de la interfaz bajo el ratón ahora mismo
-    // Control.MouseButton es el filtro estándar para esto.
-    var guiObj = GetViewport().GuiGetHoveredControl();
-    
-    // 2. Si el ratón está sobre algo de la interfaz (guiObj != null)
-    // y ese algo tiene el MouseFilter en 'Stop', bloqueamos la construcción.
-    if (guiObj != null && guiObj.MouseFilter == Control.MouseFilterEnum.Stop)
+    private bool IsMouseOverUI()
     {
-        return true;
+        var guiObj = GetViewport().GuiGetHoveredControl();
+        return guiObj != null && guiObj.MouseFilter == Control.MouseFilterEnum.Stop;
     }
-    
-    return false;
-}
 
     private void AttemptBuild()
     {
-        if (allLayers.Count == 0) return;
-        Vector2I tilePos = GetTileUnderMouse(allLayers[0]);
+        TileMapLayer targetLayer = GetLayerUnderMouse();
+        if (targetLayer == null) return;
+
+        Vector2I tilePos = GetTileUnderMouse(targetLayer);
 
         if (!CanBuildOnTile(tilePos)) return;
 
         if (TowersScenes.TryGetValue(currentTowerName, out PackedScene scene))
         {
             Node2D towerInstance = scene.Instantiate<Node2D>();
-            Vector2 localPos = allLayers[0].MapToLocal(tilePos);
-            towerInstance.GlobalPosition = allLayers[0].ToGlobal(localPos) + GhostOffset;
+            Vector2 localPos = targetLayer.MapToLocal(tilePos);
+            towerInstance.GlobalPosition = targetLayer.ToGlobal(localPos) + GhostOffset;
 
             TowersParent.AddChild(towerInstance);
             occupiedTiles[tilePos] = towerInstance;
@@ -159,6 +160,17 @@ private bool IsMouseOverUI()
         if (ghostInstance != null) ghostInstance.Visible = false;
     }
 
+    private TileMapLayer GetLayerUnderMouse()
+    {
+        // Buscamos de arriba hacia abajo qué capa tiene un tile donde apunta el ratón
+        for (int i = allLayers.Count - 1; i >= 0; i--)
+        {
+            Vector2I tp = GetTileUnderMouse(allLayers[i]);
+            if (allLayers[i].GetCellTileData(tp) != null) return allLayers[i];
+        }
+        return null;
+    }
+
     private Vector2I GetTileUnderMouse(TileMapLayer layer)
     {
         Vector2 mousePos = GetGlobalMousePosition();
@@ -169,9 +181,9 @@ private bool IsMouseOverUI()
     private bool CanBuildOnTile(Vector2I tilePos)
     {
         if (occupiedTiles.ContainsKey(tilePos)) return false;
-        for (int i = allLayers.Count - 1; i >= 0; i--)
+
+        foreach (TileMapLayer layer in allLayers)
         {
-            TileMapLayer layer = allLayers[i];
             TileData data = layer.GetCellTileData(tilePos);
             if (data == null) continue;
 
