@@ -1,0 +1,101 @@
+[gd_scene load_steps=15 format=3 uid="uid://i745c3evo8ho"]
+
+[ext_resource type="Script" uid="uid://djm0046nxvish" path="res://scripts/character/enemy/Enemy.cs" id="1_eju4t"]
+[ext_resource type="Script" uid="uid://dtfsd6sb6u7oe" path="res://scripts/character/enemy/EnemyData.cs" id="2_8104f"]
+[ext_resource type="Texture2D" uid="uid://cmwjmb8slpq0e" path="res://assets/character/enemy/BlancoVida.png" id="3_uocp3"]
+[ext_resource type="Texture2D" uid="uid://c18rmy14kikiu" path="res://assets/character/enemy/Wyvern/BossWyv-Sheet.png" id="4_dgo1u"]
+
+[sub_resource type="Resource" id="Resource_bgsfn"]
+script = ExtResource("2_8104f")
+metadata/_custom_type_script = "uid://dtfsd6sb6u7oe"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pap0l"]
+size = Vector2(97, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_obqac"]
+atlas = ExtResource("4_dgo1u")
+region = Rect2(0, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_680ne"]
+atlas = ExtResource("4_dgo1u")
+region = Rect2(96, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pmjuv"]
+atlas = ExtResource("4_dgo1u")
+region = Rect2(192, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a58jq"]
+atlas = ExtResource("4_dgo1u")
+region = Rect2(288, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4rc7a"]
+atlas = ExtResource("4_dgo1u")
+region = Rect2(384, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3cw4r"]
+atlas = ExtResource("4_dgo1u")
+region = Rect2(480, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fu7i5"]
+atlas = ExtResource("4_dgo1u")
+region = Rect2(576, 0, 96, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qela4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_obqac")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_680ne")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pmjuv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a58jq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4rc7a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3cw4r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fu7i5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="Wyvern" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "HealthBar") groups=["Volador", "enemies"]]
+script = ExtResource("1_eju4t")
+sprite = NodePath("AnimatedSprite2D")
+Data = SubResource("Resource_bgsfn")
+HealthBar = NodePath("TextureProgressBar")
+Health = 10.0
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+top_level = true
+z_index = 10
+offset_left = -15.000002
+offset_top = -60.0
+offset_right = 341.0
+offset_bottom = 124.0
+scale = Vector2(0.16, 0.05)
+nine_patch_stretch = true
+texture_progress = ExtResource("3_uocp3")
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8, 4)
+shape = SubResource("RectangleShape2D_pap0l")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_qela4")
+autoplay = "default"
+frame_progress = 0.73922837
+flip_h = true

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://djm0046nxvish" path="res://scripts/character/enemy/Enemy.cs" id="2_4gyqm"]
 [ext_resource type="Script" uid="uid://dtfsd6sb6u7oe" path="res://scripts/character/enemy/EnemyData.cs" id="2_735o0"]
-[ext_resource type="Texture2D" uid="uid://bbvi61e0beacf" path="res://assets/character/enemy/Golem.png" id="2_lk0iw"]
+[ext_resource type="Texture2D" uid="uid://bbvi61e0beacf" path="res://assets/character/enemy/Golem/Golem.png" id="2_lk0iw"]
 [ext_resource type="Texture2D" uid="uid://cmwjmb8slpq0e" path="res://assets/character/enemy/BlancoVida.png" id="4_4kjq8"]
 
 [sub_resource type="Resource" id="Resource_4kjq8"]
