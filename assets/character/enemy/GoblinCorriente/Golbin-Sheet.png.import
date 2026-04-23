@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bbvi61e0beacf"
-path="res://.godot/imported/Golem.png-b25c1b5511d66d059b8e2486ab5bec0f.ctex"
+uid="uid://dmu0lbvc68wg6"
+path="res://.godot/imported/Golbin-Sheet.png-58627a52abf9ed15a6b70f36e3f84c55.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/character/enemy/Golem.png"
-dest_files=["res://.godot/imported/Golem.png-b25c1b5511d66d059b8e2486ab5bec0f.ctex"]
+source_file="res://assets/character/enemy/GoblinCorriente/Golbin-Sheet.png"
+dest_files=["res://.godot/imported/Golbin-Sheet.png-58627a52abf9ed15a6b70f36e3f84c55.ctex"]
 
 [params]
 

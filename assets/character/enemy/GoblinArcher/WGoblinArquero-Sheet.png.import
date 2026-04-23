@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1bxse6y3rl6r"
-path="res://.godot/imported/Angel-Sheet.png-1dbd15ed277256eb6ffb5a9a1755acf1.ctex"
+uid="uid://cm8nk5f6c0eox"
+path="res://.godot/imported/WGoblinArquero-Sheet.png-e9987f0230c665fbe0512e363d94c140.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/character/enemy/Angel-Sheet.png"
-dest_files=["res://.godot/imported/Angel-Sheet.png-1dbd15ed277256eb6ffb5a9a1755acf1.ctex"]
+source_file="res://assets/character/enemy/GoblinArcher/WGoblinArquero-Sheet.png"
+dest_files=["res://.godot/imported/WGoblinArquero-Sheet.png-e9987f0230c665fbe0512e363d94c140.ctex"]
 
 [params]
 

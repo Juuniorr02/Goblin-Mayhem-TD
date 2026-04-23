@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=3 format=3 uid="uid://d2510p56t5xsd"]
+
+[ext_resource type="Script" uid="uid://dtfsd6sb6u7oe" path="res://scripts/character/enemy/EnemyData.cs" id="1_3gvw5"]
+[ext_resource type="PackedScene" uid="uid://dm5gq3x7pj0uj" path="res://scenes/character/enemy/BebeWyvern.tscn" id="1_ojoqu"]
+
+[resource]
+script = ExtResource("1_3gvw5")
+EnemyName = "Bebe Wyvern"
+IsFlying = true
+EnemyScene = ExtResource("1_ojoqu")
+metadata/_custom_type_script = "uid://dtfsd6sb6u7oe"

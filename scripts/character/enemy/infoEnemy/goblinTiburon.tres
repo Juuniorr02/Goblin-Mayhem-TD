@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=3 format=3 uid="uid://drcab2ys7ywqe"]
+
+[ext_resource type="PackedScene" uid="uid://cd6ykpa5p5qtf" path="res://scenes/character/enemy/goblinTiburon.tscn" id="1_o60gw"]
+[ext_resource type="Script" uid="uid://dtfsd6sb6u7oe" path="res://scripts/character/enemy/EnemyData.cs" id="1_rfbuh"]
+
+[resource]
+script = ExtResource("1_rfbuh")
+EnemyName = "Goblin Tiburon"
+IsAquatic = true
+EnemyScene = ExtResource("1_o60gw")
+metadata/_custom_type_script = "uid://dtfsd6sb6u7oe"

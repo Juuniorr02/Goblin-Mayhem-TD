@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8cyiamkro6op"
-path="res://.godot/imported/GoblinTiburon.png-7aecb4b470b7a19bd39db9bd41732800.ctex"
+uid="uid://c18rmy14kikiu"
+path="res://.godot/imported/BossWyv-Sheet.png-0c826576cdbe7638a8692a93b08329fd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/character/enemy/GoblinTronco/GoblinTiburon.png"
-dest_files=["res://.godot/imported/GoblinTiburon.png-7aecb4b470b7a19bd39db9bd41732800.ctex"]
+source_file="res://assets/character/enemy/Wyvern/BossWyv-Sheet.png"
+dest_files=["res://.godot/imported/BossWyv-Sheet.png-0c826576cdbe7638a8692a93b08329fd.ctex"]
 
 [params]
 
