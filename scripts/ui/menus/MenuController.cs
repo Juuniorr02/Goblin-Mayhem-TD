@@ -95,6 +95,10 @@ public partial class MenuController : Node
 
     public void OnNewGame()
     {
+        Recursos.Instance.Gold = 10000;
+        Recursos.Instance.Wood = 10000;
+        Recursos.Instance.Stone = 10000;
+        Recursos.Instance.Iron = 10000;
         GetTree().ChangeSceneToFile("res://scenes/level/terrain/tutorial.tscn");
     }
 

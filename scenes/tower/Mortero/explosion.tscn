@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cmbsecxsq7ho3"]
 
-[ext_resource type="Script" uid="uid://dfws3xvpe7xmq" path="res://scenes/tower/Mortero/Explosion.cs" id="1_ah6ns"]
+[ext_resource type="Script" uid="uid://dfws3xvpe7xmq" path="res://scripts/character/tower/mortar/Explosion.cs" id="1_ah6ns"]
 
 [sub_resource type="Curve" id="Curve_ehc7f"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]

@@ -1,26 +1,25 @@
-[gd_scene load_steps=27 format=3 uid="uid://da24bvxuerl1j"]
+[gd_scene load_steps=26 format=3 uid="uid://bvj23ok4pqai6"]
 
 [ext_resource type="PackedScene" uid="uid://bxah54x2mw4ix" path="res://assets/level/Map/tutorial.tmx" id="1_nggc0"]
-[ext_resource type="Script" uid="uid://ccef7herjptu0" path="res://scripts/character/CameraRig.cs" id="2_gvmle"]
+[ext_resource type="Script" uid="uid://ccef7herjptu0" path="res://scripts/character/camera/CameraRig.cs" id="2_gvmle"]
 [ext_resource type="Script" uid="uid://ddtj2hn2hhtfd" path="res://scripts/character/enemy/EnemySpawner.cs" id="3_mg8dc"]
 [ext_resource type="Script" uid="uid://cubvhlo0alqh1" path="res://scripts/level/terrain/Pathfinding.cs" id="4_5yh3o"]
 [ext_resource type="Script" uid="uid://dxi6h4dntdvec" path="res://scripts/character/enemy/EnemyGroup.cs" id="5_eqyvb"]
 [ext_resource type="Resource" uid="uid://7lteypp1glo" path="res://scripts/character/enemy/infoEnemy/golem.tres" id="5_q1drb"]
 [ext_resource type="Script" uid="uid://b7rcgtrq61w48" path="res://scripts/character/enemy/WaveData.cs" id="6_uu0py"]
-[ext_resource type="Script" uid="uid://dlfq6grfckhot" path="res://scripts/character/tower/TowerBuilder.cs" id="7_ccv4g"]
-[ext_resource type="PackedScene" uid="uid://cor65fcesxg0a" path="res://scenes/ui/menu_pausa.tscn" id="7_wpisc"]
+[ext_resource type="Script" uid="uid://dlfq6grfckhot" path="res://scripts/character/tower/funcionamiento/TowerBuilder.cs" id="7_ccv4g"]
+[ext_resource type="PackedScene" uid="uid://cor65fcesxg0a" path="res://scenes/ui/menus/menu_pausa.tscn" id="7_wpisc"]
 [ext_resource type="PackedScene" uid="uid://fwle2vth706y" path="res://scenes/tower/Construir/Martillo.tscn" id="8_a2hd1"]
-[ext_resource type="PackedScene" uid="uid://ci612q8twcycd" path="res://scenes/ui/iu.tscn" id="8_w02j3"]
+[ext_resource type="PackedScene" uid="uid://ci612q8twcycd" path="res://scenes/ui/ui/iu.tscn" id="8_w02j3"]
 [ext_resource type="PackedScene" uid="uid://i7fnxkfidwjh" path="res://scenes/tower/ArcherTower/archerTower.tscn" id="9_my4yt"]
 [ext_resource type="PackedScene" uid="uid://ckc1i5qv6sle8" path="res://scenes/tower/Ballista/ballista.tscn" id="10_d3eop"]
-[ext_resource type="PackedScene" uid="uid://c6o5datpm682p" path="res://scenes/ui/menu_victoria.tscn" id="10_m2gd4"]
 [ext_resource type="PackedScene" uid="uid://ce0pn5jdtd7uu" path="res://scenes/tower/Globo/globo.tscn" id="11_cs0a3"]
-[ext_resource type="PackedScene" uid="uid://c387degtgk6i6" path="res://scenes/ui/menu_derrota.tscn" id="11_jawes"]
 [ext_resource type="PackedScene" uid="uid://ieo0rfx4mn8y" path="res://scenes/tower/Cannon/Cannon.tscn" id="12_e3tai"]
-[ext_resource type="PackedScene" uid="uid://dgc77kp8vuy4p" path="res://scenes/ui/options_pausa.tscn" id="12_jawes"]
+[ext_resource type="PackedScene" uid="uid://dgc77kp8vuy4p" path="res://scenes/ui/menus/options_pausa.tscn" id="12_jawes"]
 [ext_resource type="PackedScene" uid="uid://doxdk8ijaiqly" path="res://scenes/tower/Flamethrower/flamethrower.tscn" id="13_ftrai"]
 [ext_resource type="PackedScene" uid="uid://bm2tdm7lsq5q3" path="res://scenes/tower/Mortero/mortero.tscn" id="14_ox7j1"]
 [ext_resource type="PackedScene" uid="uid://cuq0at3ylsro3" path="res://scenes/tower/MageTower/mage_tower.tscn" id="15_41y5b"]
+[ext_resource type="PackedScene" uid="uid://di2gid6004846" path="res://scenes/ui/menus/menu_derrota_tutorial.tscn" id="18_6kbys"]
 
 [sub_resource type="Resource" id="Resource_tqsr0"]
 script = ExtResource("5_eqyvb")
@@ -77,11 +76,10 @@ curve = SubResource("Curve2D_wpisc")
 
 [node name="EnemiesContainer" type="Node2D" parent="."]
 
-[node name="Towers" type="Node2D" parent="." node_paths=PackedStringArray("TowersParent", "EnemiesContainer")]
+[node name="Towers" type="Node2D" parent="." node_paths=PackedStringArray("TowersParent")]
 script = ExtResource("7_ccv4g")
 TowersParent = NodePath(".")
 GhostTowerScene = ExtResource("8_a2hd1")
-EnemiesContainer = NodePath("")
 TowersScenes = Dictionary[String, PackedScene]({
 "Archer": ExtResource("9_my4yt"),
 "Ballista": ExtResource("10_d3eop"),
@@ -107,10 +105,7 @@ MoveSpeed = 1400.0
 MinZoom = 0.23
 MaxZoom = 2.0
 
-[node name="menu_victoria" parent="." instance=ExtResource("10_m2gd4")]
-WinningWave = 1
-
-[node name="menu_derrota" parent="." instance=ExtResource("11_jawes")]
+[node name="menu_derrota_tutorial" parent="." instance=ExtResource("18_6kbys")]
 
 [node name="menu_pausa" parent="." instance=ExtResource("7_wpisc")]
 

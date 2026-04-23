@@ -33,19 +33,20 @@ enabled=PackedStringArray("res://addons/GDScript/addons/YATI/plugin.cfg")
 [file_customization]
 
 folder_colors={
-"res://assets/": "red",
+"res://addons/": "yellow",
+"res://assets/": "yellow",
 "res://assets/character/": "blue",
 "res://assets/level/": "teal",
 "res://assets/level/obstacle/": "teal",
 "res://assets/ui/": "purple",
 "res://assets/ui/background/": "purple",
 "res://assets/ui/button/": "purple",
-"res://lore/": "gray",
-"res://scenes/": "green",
+"res://lore/": "red",
+"res://scenes/": "yellow",
 "res://scenes/character/": "blue",
 "res://scenes/level/": "teal",
 "res://scenes/ui/": "purple",
-"res://scripts/": "pink",
+"res://scripts/": "yellow",
 "res://scripts/character/": "blue",
 "res://scripts/level/": "teal",
 "res://scripts/ui/": "purple"
