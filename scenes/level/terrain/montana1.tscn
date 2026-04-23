@@ -1,10 +1,10 @@
-[gd_scene load_steps=33 format=3 uid="uid://dd1ml503ns506"]
+[gd_scene load_steps=33 format=3 uid="uid://63n8ujelr0ty"]
 
 [ext_resource type="PackedScene" uid="uid://box8tpwtebkqj" path="res://assets/level/Map/montana1.tmx" id="1_5fc2a"]
 [ext_resource type="Script" uid="uid://cubvhlo0alqh1" path="res://scripts/level/terrain/Pathfinding.cs" id="2_abfbc"]
 [ext_resource type="Script" uid="uid://ddtj2hn2hhtfd" path="res://scripts/character/enemy/EnemySpawner.cs" id="3_wwvym"]
 [ext_resource type="Script" uid="uid://b7rcgtrq61w48" path="res://scripts/character/enemy/WaveData.cs" id="4_3pfqo"]
-[ext_resource type="Resource" uid="uid://d2510p56t5xsd" path="res://scripts/character/enemy/infoEnemy/bebeWyern.tres" id="4_5r8ub"]
+[ext_resource type="Resource" path="res://scripts/character/enemy/infoEnemy/bebeWyern.tres" id="4_5r8ub"]
 [ext_resource type="Resource" uid="uid://7lteypp1glo" path="res://scripts/character/enemy/infoEnemy/golem.tres" id="4_8k8u7"]
 [ext_resource type="Script" uid="uid://dxi6h4dntdvec" path="res://scripts/character/enemy/EnemyGroup.cs" id="5_hfw40"]
 [ext_resource type="PackedScene" uid="uid://ci612q8twcycd" path="res://scenes/ui/ui/iu.tscn" id="5_iwtdf"]
@@ -80,7 +80,7 @@ point_count = 8
 
 [node name="montana1" type="Node2D"]
 
-[node name="mapa2" parent="." instance=ExtResource("1_5fc2a")]
+[node name="montana1" parent="." instance=ExtResource("1_5fc2a")]
 
 [node name="Pathfinding" type="Node" parent="."]
 script = ExtResource("2_abfbc")
