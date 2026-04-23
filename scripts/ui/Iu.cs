@@ -88,25 +88,28 @@ public partial class Iu : Control
 
     private void UpdateIU()
     {
-        // Asumiendo que Base.Instance y Wave.Instance existen y funcionan
-        if (Base.Instance != null)
+        if (Base.Instance != null || Recursos.Instance != null)
         {
-            goldLabel.Text = Base.Instance.Gold.ToString();
+            goldLabel.Text = Recursos.Instance.Gold.ToString();
             healthLabel.Text = Base.Instance.Health.ToString();
-            ironLabel.Text = Base.Instance.Iron.ToString();
-            woodLabel.Text = Base.Instance.Wood.ToString();
-            stoneLabel.Text = Base.Instance.Stone.ToString();
+            ironLabel.Text = Recursos.Instance.Iron.ToString();
+            woodLabel.Text = Recursos.Instance.Wood.ToString();
+            stoneLabel.Text = Recursos.Instance.Stone.ToString();
         }
 
         if (Wave.Instance != null)
         {
             waveLabel.Text = Wave.Instance.CurrentWave.ToString();
+            if (Wave.Instance.CurrentWave == 0)
+            {
+                Recursos.Instance.StartLevel();
+            }
         }
     }
 
     private void OnWaveButtonPressed()
     {
-        MouseFilter = Control.MouseFilterEnum.Stop;
+        MouseFilter = MouseFilterEnum.Stop;
         if (Wave.Instance == null) return;
 
         // 1. Iniciamos la lógica de la siguiente oleada
@@ -125,6 +128,7 @@ public partial class Iu : Control
         // 4. Bloqueamos botón
         waveButton.Disabled = true;
         cooldownTimer.Start();
+        Recursos.Instance.AddProduction();
     }
 
     private void OnCooldownFinished()

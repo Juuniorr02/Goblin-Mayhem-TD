@@ -26,9 +26,9 @@ public partial class Uialdea : Control
 
     private void UpdateIU()
     {
-        goldLabel.Text = Base.Instance.Gold.ToString();
-        ironLabel.Text = Base.Instance.Iron.ToString();
-        woodLabel.Text = Base.Instance.Wood.ToString();
-        stoneLabel.Text = Base.Instance.Stone.ToString();
+        goldLabel.Text = Recursos.Instance.TotalGold.ToString();
+        ironLabel.Text = Recursos.Instance.TotalIron.ToString();
+        woodLabel.Text = Recursos.Instance.TotalWood.ToString();
+        stoneLabel.Text = Recursos.Instance.TotalStone.ToString();
     }
 }

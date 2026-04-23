@@ -177,7 +177,7 @@ private bool IsMouseOverUI()
 
             string prop = currentTowerName switch { 
                 "Ship" => "can_build_boat", 
-                "AtunHatchery" => "can_build_atun", 
+                "Atun" => "can_build_atun", 
                 _ => "can_build" 
             };
 

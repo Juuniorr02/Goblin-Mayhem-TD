@@ -102,6 +102,7 @@ public partial class MenuVictoria : CanvasLayer
 
 	private async void OnSiguiente()
 	{
+        Recursos.Instance.EndLevel();
 		Input.MouseMode = Input.MouseModeEnum.Visible;
         QuitarPausa();
     	GetTree().ChangeSceneToFile("res://scenes/level/aldea/mapa_mundi.tscn");

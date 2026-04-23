@@ -47,8 +47,6 @@ vertical_alignment = 1
 
 [node name="Info" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/PanelContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
-text = "    200 oro/ronda --> 400 oro/ronda    
-Coste de mejora: 1000 oro"
 horizontal_alignment = 1
 vertical_alignment = 1
 
