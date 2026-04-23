@@ -25,10 +25,13 @@ public partial class Iu : Control
     private AnimatedSprite2D waveAnimation;
     private Timer cooldownTimer;
 
+    private string scenePath;
+
     [Export] private EnemySpawner spawner;
 
     public override void _Ready()
     {
+        scenePath = GetTree().CurrentScene.SceneFilePath;
         waveButton = GetNode<TextureButton>("%WaveButton");
         waveLabel = GetNode<Label>("%WaveLabel");
 
@@ -63,7 +66,7 @@ public partial class Iu : Control
         waveAnimation = GetNode<AnimatedSprite2D>("%WaveSprite");
 
         cooldownTimer = new Timer();
-        cooldownTimer.WaitTime = 80; // Tiempo de espera entre oleadas
+        cooldownTimer.WaitTime = 20;
         cooldownTimer.OneShot = true;
         AddChild(cooldownTimer);
 
@@ -100,7 +103,14 @@ public partial class Iu : Control
         if (Wave.Instance != null)
         {
             waveLabel.Text = Wave.Instance.CurrentWave.ToString();
-            if (Wave.Instance.CurrentWave == 0)
+            if (Wave.Instance.CurrentWave == 0 && scenePath == "res://scenes/level/terrain/level1.tscn")
+            {
+                Recursos.Instance.Gold = 10000;
+                Recursos.Instance.Wood = 10000;
+                Recursos.Instance.Stone = 10000;
+                Recursos.Instance.Iron = 10000;
+            }
+            else if (Wave.Instance.CurrentWave == 0)
             {
                 Recursos.Instance.StartLevel();
             }
@@ -112,20 +122,15 @@ public partial class Iu : Control
         MouseFilter = MouseFilterEnum.Stop;
         if (Wave.Instance == null) return;
 
-        // 1. Iniciamos la lógica de la siguiente oleada
         Wave.Instance.StartNextWave();
 
-        // 2. Animación
         waveAnimation.Stop();
         waveAnimation.Frame = 0;
         waveAnimation.Play("wave");
 
-        // 3. Sincronizamos con el Spawner: 
-        // Si CurrentWave es 1, pasamos el índice 0 al spawner.
         int targetIndex = Wave.Instance.CurrentWave - 1;
         spawner?.StartWave(targetIndex);
 
-        // 4. Bloqueamos botón
         waveButton.Disabled = true;
         cooldownTimer.Start();
         Recursos.Instance.AddProduction();

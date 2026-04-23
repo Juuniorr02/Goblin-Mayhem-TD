@@ -1,10 +1,11 @@
 using Godot;
 
-public partial class MenuDerrotatutorial : CanvasLayer
+public partial class MenuDerrotaTutorial : CanvasLayer
 {
     private Button btnSiguiente;
 	private int healthActual;
     private bool isPaused = false;
+
 
     public override void _Ready()
     {
@@ -13,6 +14,8 @@ public partial class MenuDerrotatutorial : CanvasLayer
         btnSiguiente = GetNodeOrNull<Button>("PanelContainer/VBoxContainer/botones/siguiente");
 
         ConfigurarBoton(btnSiguiente);
+
+		Visible = false;
     }
 
 	public override void _Process(double delta)
@@ -34,10 +37,7 @@ public partial class MenuDerrotatutorial : CanvasLayer
 
 		if (Base.Instance.Health <= 0)
 		{
-			isPaused = true;
-        	GetTree().Paused = true;
-        	Visible = true;
-        	Input.MouseMode = Input.MouseModeEnum.Visible;
+			Pausar();
 		}
 	}
 

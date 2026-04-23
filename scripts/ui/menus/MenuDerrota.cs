@@ -51,10 +51,7 @@ public partial class MenuDerrota : CanvasLayer
 
 		if (Base.Instance.Health <= 0)
 		{
-			isPaused = true;
-        	GetTree().Paused = true;
-        	Visible = true;
-        	Input.MouseMode = Input.MouseModeEnum.Visible;
+			Pausar();
 		}
 	}
 
