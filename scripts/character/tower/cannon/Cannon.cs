@@ -27,4 +27,25 @@ public partial class Cannon : BaseTower
             GD.Print("[CANNON] ¡Fuego!");
         }
     }
+    
+    public override void Build()
+    {
+        int amountGold = 0, amountWood = 0, amountStone = 0, amountIron = 0;
+        
+        amountGold = 100; amountWood = 50; amountStone = 0; amountIron = 0;
+
+        if (Recursos.Instance.Gold >= amountGold && Recursos.Instance.Wood >= amountWood && Recursos.Instance.Stone >= amountStone && Recursos.Instance.Iron >= amountIron)
+        {
+            Recursos.Instance.Gold -= amountGold;
+            Recursos.Instance.Wood -= amountWood;
+            Recursos.Instance.Stone -= amountStone;
+            Recursos.Instance.Iron -= amountIron;
+
+            CanBuild = true;
+        }
+        else
+        {
+            CanBuild = false;
+        }
+    }
 }

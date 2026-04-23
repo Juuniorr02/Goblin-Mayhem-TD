@@ -146,6 +146,20 @@ public partial class TowerBuilder : Node2D
         if (TowersScenes.TryGetValue(currentTowerName, out PackedScene scene))
         {
             Node2D towerInstance = scene.Instantiate<Node2D>();
+
+            // 👇 AQUÍ VA TU CÓDIGO
+            if (towerInstance is BaseTower tower)
+            {
+                tower.Build();
+
+                if (!tower.CanBuild)
+                {
+                    tower.QueueFree();
+                    return;
+                }
+            }
+
+            // 👇 SOLO SI SE PUEDE CONSTRUIR
             Vector2 localPos = targetLayer.MapToLocal(tilePos);
             towerInstance.GlobalPosition = targetLayer.ToGlobal(localPos) + GhostOffset;
 

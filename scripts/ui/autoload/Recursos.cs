@@ -54,6 +54,22 @@ public partial class Recursos : Node
         Iron = BaseIron + ProdIron;
     }
 
+    public void FirstLevel()
+    {
+        Gold = 10000;
+        Wood = 10000;
+        Stone = 10000;
+        Iron = 10000;
+    }
+
+    public void FirstLevelEnd()
+    {
+        Gold = 0;
+        Wood = 0;
+        Stone = 0;
+        Iron = 0;
+    }
+
     public void AddProduction()
     {
         Gold += ProdGold;

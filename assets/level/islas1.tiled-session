@@ -31,8 +31,8 @@
             "scale": 0.125,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 7308,
-                "y": 3424
+                "x": 10524,
+                "y": 4696
             }
         },
         "Map/mapa1.tmx": {
@@ -55,8 +55,8 @@
             "scale": 0.0625,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 8648,
-                "y": 5536
+                "x": 7504,
+                "y": 3288
             }
         },
         "Map/pantano.tmx": {
@@ -77,8 +77,8 @@
     "property.type": "bool",
     "recentFiles": [
         "Map/mapa_mundi.tmx",
-        "Map/Example.tsx",
         "Map/islas1.tmx",
+        "Map/Example.tsx",
         "Map/aldea - copia.tmx",
         "Map/pantano.tmx",
         "Map/mapa1.tmx",
