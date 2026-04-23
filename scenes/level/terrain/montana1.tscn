@@ -78,9 +78,9 @@ _data = {
 }
 point_count = 8
 
-[node name="Level2" type="Node2D"]
+[node name="montana1" type="Node2D"]
 
-[node name="mapa2" parent="." instance=ExtResource("1_5fc2a")]
+[node name="montana1" parent="." instance=ExtResource("1_5fc2a")]
 
 [node name="Pathfinding" type="Node" parent="."]
 script = ExtResource("2_abfbc")

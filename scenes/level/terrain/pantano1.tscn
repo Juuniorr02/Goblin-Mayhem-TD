@@ -58,9 +58,9 @@ _data = {
 }
 point_count = 3
 
-[node name="Pantano" type="Node2D"]
+[node name="pantano1" type="Node2D"]
 
-[node name="pantano" parent="." instance=ExtResource("1_mawj5")]
+[node name="pantano1" parent="." instance=ExtResource("1_mawj5")]
 
 [node name="Pathfinding" type="Node" parent="."]
 script = ExtResource("2_hl87u")

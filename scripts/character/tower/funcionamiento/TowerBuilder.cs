@@ -20,7 +20,7 @@ public partial class TowerBuilder : Node2D
         allLayers.Clear();
         towerButtons.Clear();
 
-        string[] mapNames = { "montana1", "islas1", "pantano", "level1", "tutorial" };
+        string[] mapNames = { "montana1", "islas1", "pantano1", "level1", "tutorial" };
         foreach (string name in mapNames)
         {
             Node mapRoot = GetTree().Root.FindChild(name, true, false);

@@ -1,6 +1,6 @@
 [gd_scene load_steps=27 format=3 uid="uid://bvj23ok4pqai6"]
 
-[ext_resource type="PackedScene" uid="uid://bxah54x2mw4ix" path="res://assets/level/Map/tutorial.tmx" id="1_obe7s"]
+[ext_resource type="PackedScene" uid="uid://bxah54x2mw4ix" path="res://assets/level/Map/level1.tmx" id="1_obe7s"]
 [ext_resource type="Script" uid="uid://cubvhlo0alqh1" path="res://scripts/level/terrain/Pathfinding.cs" id="2_d0a6p"]
 [ext_resource type="Script" uid="uid://ddtj2hn2hhtfd" path="res://scripts/character/enemy/EnemySpawner.cs" id="3_nvdl1"]
 [ext_resource type="Resource" uid="uid://7lteypp1glo" path="res://scripts/character/enemy/infoEnemy/golem.tres" id="4_8dopk"]
@@ -52,9 +52,9 @@ _data = {
 }
 point_count = 9
 
-[node name="Level1" type="Node2D"]
+[node name="level1" type="Node2D"]
 
-[node name="mapa1" parent="." instance=ExtResource("1_obe7s")]
+[node name="level1" parent="." instance=ExtResource("1_obe7s")]
 
 [node name="Pathfinding" type="Node" parent="."]
 script = ExtResource("2_d0a6p")

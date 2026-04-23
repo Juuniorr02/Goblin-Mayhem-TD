@@ -3,12 +3,12 @@
 importer="YATI"
 type="PackedScene"
 uid="uid://bxah54x2mw4ix"
-path="res://.godot/imported/tutorial.tmx-726d76a0b3a24b9b098c7237b188695d.tscn"
+path="res://.godot/imported/level1.tmx-14834a61ab56b7212c7fdbacf901ee05.tscn"
 
 [deps]
 
-source_file="res://assets/level/Map/tutorial.tmx"
-dest_files=["res://.godot/imported/tutorial.tmx-726d76a0b3a24b9b098c7237b188695d.tscn"]
+source_file="res://assets/level/Map/level1.tmx"
+dest_files=["res://.godot/imported/level1.tmx-14834a61ab56b7212c7fdbacf901ee05.tscn"]
 
 [params]
 

@@ -57,7 +57,7 @@ _data = {
 }
 point_count = 2
 
-[node name="Islas1" type="Node2D"]
+[node name="islas1" type="Node2D"]
 
 [node name="islas1" parent="." instance=ExtResource("1_rm5c3")]
 
