@@ -13,14 +13,14 @@ public partial class TowerBuilder : Node2D
     private string currentTowerName = "";
     private Node2D ghostInstance;
     private Dictionary<Vector2I, Node2D> occupiedTiles = new();
-    private List<TextureButton> towerButtons = new(); // Para rastrear los botones
+    private List<TextureButton> towerButtons = new();
 
     public override void _Ready()
     {
         allLayers.Clear();
         towerButtons.Clear();
 
-        string[] mapNames = { "mapa2", "islas1", "pantano" };
+        string[] mapNames = { "montana1", "islas1", "pantano1", "level1", "tutorial" };
         foreach (string name in mapNames)
         {
             Node mapRoot = GetTree().Root.FindChild(name, true, false);

@@ -1,0 +1,114 @@
+[gd_scene load_steps=27 format=3 uid="uid://bvj23ok4pqai6"]
+
+[ext_resource type="PackedScene" uid="uid://bxah54x2mw4ix" path="res://assets/level/Map/level1.tmx" id="1_obe7s"]
+[ext_resource type="Script" uid="uid://cubvhlo0alqh1" path="res://scripts/level/terrain/Pathfinding.cs" id="2_d0a6p"]
+[ext_resource type="Script" uid="uid://ddtj2hn2hhtfd" path="res://scripts/character/enemy/EnemySpawner.cs" id="3_nvdl1"]
+[ext_resource type="Resource" uid="uid://7lteypp1glo" path="res://scripts/character/enemy/infoEnemy/golem.tres" id="4_8dopk"]
+[ext_resource type="Script" uid="uid://dxi6h4dntdvec" path="res://scripts/character/enemy/EnemyGroup.cs" id="5_xjvah"]
+[ext_resource type="Script" uid="uid://b7rcgtrq61w48" path="res://scripts/character/enemy/WaveData.cs" id="6_ev6gv"]
+[ext_resource type="Script" uid="uid://dlfq6grfckhot" path="res://scripts/character/tower/funcionamiento/TowerBuilder.cs" id="7_vlvyd"]
+[ext_resource type="PackedScene" uid="uid://fwle2vth706y" path="res://scenes/tower/Construir/Martillo.tscn" id="8_pjnpp"]
+[ext_resource type="PackedScene" uid="uid://i7fnxkfidwjh" path="res://scenes/tower/ArcherTower/archerTower.tscn" id="9_sorvc"]
+[ext_resource type="PackedScene" uid="uid://ckc1i5qv6sle8" path="res://scenes/tower/Ballista/ballista.tscn" id="10_k421d"]
+[ext_resource type="PackedScene" uid="uid://ce0pn5jdtd7uu" path="res://scenes/tower/Globo/globo.tscn" id="11_m3lfk"]
+[ext_resource type="PackedScene" uid="uid://ieo0rfx4mn8y" path="res://scenes/tower/Cannon/Cannon.tscn" id="12_h1gti"]
+[ext_resource type="PackedScene" uid="uid://doxdk8ijaiqly" path="res://scenes/tower/Flamethrower/flamethrower.tscn" id="13_5yfeb"]
+[ext_resource type="PackedScene" uid="uid://bm2tdm7lsq5q3" path="res://scenes/tower/Mortero/mortero.tscn" id="14_5x7b4"]
+[ext_resource type="PackedScene" uid="uid://bv6xb2o3otqu3" path="res://scenes/tower/Grifo/GrffinTower.tscn" id="15_cu56y"]
+[ext_resource type="PackedScene" uid="uid://cuq0at3ylsro3" path="res://scenes/tower/MageTower/mage_tower.tscn" id="16_rrpdo"]
+[ext_resource type="PackedScene" uid="uid://ci612q8twcycd" path="res://scenes/ui/ui/iu.tscn" id="17_66yle"]
+[ext_resource type="Script" uid="uid://ccef7herjptu0" path="res://scripts/character/camera/CameraRig.cs" id="18_0t75c"]
+[ext_resource type="PackedScene" uid="uid://di2gid6004846" path="res://scenes/ui/menus/menu_derrota_tutorial.tscn" id="19_enutg"]
+[ext_resource type="PackedScene" uid="uid://cor65fcesxg0a" path="res://scenes/ui/menus/menu_pausa.tscn" id="20_j2s0a"]
+[ext_resource type="PackedScene" uid="uid://dgc77kp8vuy4p" path="res://scenes/ui/menus/options_pausa.tscn" id="21_uk6l5"]
+
+[sub_resource type="Resource" id="Resource_tqsr0"]
+script = ExtResource("5_xjvah")
+EnemyType = ExtResource("4_8dopk")
+Path = 1
+metadata/_custom_type_script = "uid://dxi6h4dntdvec"
+
+[sub_resource type="Resource" id="Resource_brejp"]
+script = ExtResource("6_ev6gv")
+WaveName = "1"
+Groups = Array[Object]([SubResource("Resource_tqsr0")])
+metadata/_custom_type_script = "uid://b7rcgtrq61w48"
+
+[sub_resource type="Curve2D" id="Curve2D_w02j3"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 10594, 4846, 0, 0, 0, 0, 8826, 4017, 0, 0, 0, 0, 6143, 2745, 0, 0, 0, 0, 5033, 2216)
+}
+point_count = 4
+
+[sub_resource type="Curve2D" id="Curve2D_q1drb"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 10591, 4844, 0, 0, 0, 0, 8824, 4001, 0, 0, 0, 0, 9602, 3619, 0, 0, 0, 0, 8228, 2993, 0, 0, 0, 0, 8099, 3013, 0, 0, 0, 0, 6830, 2416, 0, 0, 0, 0, 6166, 2769, 0, 0, 0, 0, 5028, 2217)
+}
+point_count = 8
+
+[sub_resource type="Curve2D" id="Curve2D_wpisc"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 13821, 3305, 0, 0, 0, 0, 10243, 3113, 0, 0, 0, 0, 9611, 2912, 0, 0, 0, 0, 9301, 2986, 0, 0, 0, 0, 8736, 2750, 0, 0, 0, 0, 7747, 2353, 0, 0, 0, 0, 6826, 2293, 0, 0, 0, 0, 5594, 2340, 0, 0, 0, 0, 5034, 2227)
+}
+point_count = 9
+
+[node name="level1" type="Node2D"]
+
+[node name="level1" parent="." instance=ExtResource("1_obe7s")]
+
+[node name="Pathfinding" type="Node" parent="."]
+script = ExtResource("2_d0a6p")
+
+[node name="EnemySpawner" type="Node" parent="." node_paths=PackedStringArray("CaminoA", "CaminoB", "CaminoVolador")]
+script = ExtResource("3_nvdl1")
+CaminoA = NodePath("CaminoA")
+CaminoB = NodePath("CaminoB")
+CaminoVolador = NodePath("CaminoVolador")
+Waves = Array[Object]([SubResource("Resource_brejp")])
+
+[node name="CaminoA" type="Path2D" parent="EnemySpawner" groups=["enemies"]]
+curve = SubResource("Curve2D_w02j3")
+
+[node name="CaminoB" type="Path2D" parent="EnemySpawner" groups=["enemies"]]
+curve = SubResource("Curve2D_q1drb")
+
+[node name="CaminoVolador" type="Path2D" parent="EnemySpawner" groups=["Volador"]]
+curve = SubResource("Curve2D_wpisc")
+
+[node name="EnemiesContainer" type="Node2D" parent="."]
+
+[node name="Towers" type="Node2D" parent="." node_paths=PackedStringArray("TowersParent", "EnemiesContainer")]
+script = ExtResource("7_vlvyd")
+TowersParent = NodePath(".")
+GhostTowerScene = ExtResource("8_pjnpp")
+EnemiesContainer = NodePath("../EnemiesContainer")
+TowersScenes = Dictionary[String, PackedScene]({
+"Archer": ExtResource("9_sorvc"),
+"Ballista": ExtResource("10_k421d"),
+"Bloon": ExtResource("11_m3lfk"),
+"Cannon": ExtResource("12_h1gti"),
+"Flame": ExtResource("13_5yfeb"),
+"Mortar": ExtResource("14_5x7b4"),
+"Nest": ExtResource("15_cu56y"),
+"Wizard": ExtResource("16_rrpdo")
+})
+
+[node name="IU" parent="." instance=ExtResource("17_66yle")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(7057, 1182)
+zoom = Vector2(0.485, 0.485)
+limit_left = -3000
+limit_top = -3000
+limit_right = 17000
+limit_bottom = 9750
+script = ExtResource("18_0t75c")
+MoveSpeed = 1400.0
+MinZoom = 0.23
+MaxZoom = 2.0
+
+[node name="menu_derrota_tutorial" parent="." instance=ExtResource("19_enutg")]
+
+[node name="menu_pausa" parent="." instance=ExtResource("20_j2s0a")]
+
+[node name="OptionsPausa" parent="." instance=ExtResource("21_uk6l5")]
