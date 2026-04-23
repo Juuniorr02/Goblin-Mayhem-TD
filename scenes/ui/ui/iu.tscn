@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bodlpu3irch0t" path="res://assets/ui/button/IconoOleada-Sheet.png" id="1_g0mth"]
 [ext_resource type="Texture2D" uid="uid://5sui3kk7ym6x" path="res://assets/ui/icon/cañon.png" id="1_t64rc"]
 [ext_resource type="Texture2D" uid="uid://blnmjnr4qmfkb" path="res://assets/ui/icon/Vidas.png" id="1_tyt0d"]
-[ext_resource type="Script" uid="uid://cs0vdio4tt68i" path="res://scripts/ui/Iu.cs" id="1_viny6"]
+[ext_resource type="Script" uid="uid://cs0vdio4tt68i" path="res://scripts/ui/ui/Iu.cs" id="1_viny6"]
 [ext_resource type="Texture2D" uid="uid://c6eovl815j15h" path="res://assets/ui/icon/Coin1.png" id="2_svasj"]
 [ext_resource type="Texture2D" uid="uid://crw7qp1kr00u0" path="res://assets/ui/icon/Maderas.png" id="3_viny6"]
 [ext_resource type="Texture2D" uid="uid://bonxvf3bnviti" path="res://assets/ui/icon/Piedras.png" id="4_rlfxr"]
@@ -90,7 +90,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"wave",
-"speed": 0.1
+"speed": 0.4
 }]
 
 [node name="IU" type="Control"]
