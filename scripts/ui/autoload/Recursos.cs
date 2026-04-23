@@ -12,10 +12,10 @@ public partial class Recursos : Node
     public int Stone;
     public int Iron;
 
-    public int BaseGold = 500;
-    public int BaseWood = 200;
-    public int BaseStone = 0;
-    public int BaseIron = 0;
+    public int BaseGold = 1000;
+    public int BaseWood = 1000;
+    public int BaseStone = 1000;
+    public int BaseIron = 1000;
 
     public int ProdGold { get; set; }
     public int ProdWood { get; set; }
@@ -52,6 +52,37 @@ public partial class Recursos : Node
         Wood = BaseWood + ProdWood;
         Stone = BaseStone + ProdStone;
         Iron = BaseIron + ProdIron;
+    }
+
+    public void FirstLevel()
+    {
+        Gold = 10000;
+        Wood = 10000;
+        Stone = 10000;
+        Iron = 10000;
+    }
+
+    public void FirstLevelEnd()
+    {
+        Gold = 0;
+        Wood = 0;
+        Stone = 0;
+        Iron = 0;
+    }
+
+    public void NewGame()
+    {
+        TotalGold = 0;
+        TotalWood = 0;
+        TotalStone = 0;
+        TotalIron = 0;
+
+        ProdGold = 100;
+        ProdWood = 50;
+        ProdStone = 0;
+        ProdIron = 0;
+
+        SaveData();
     }
 
     public void AddProduction()

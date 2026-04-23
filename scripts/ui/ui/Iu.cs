@@ -27,6 +27,8 @@ public partial class Iu : Control
 
     private string scenePath;
 
+    private int contador = 0;
+
     [Export] private EnemySpawner spawner;
 
     public override void _Ready()
@@ -103,16 +105,15 @@ public partial class Iu : Control
         if (Wave.Instance != null)
         {
             waveLabel.Text = Wave.Instance.CurrentWave.ToString();
-            if (Wave.Instance.CurrentWave == 0 && scenePath == "res://scenes/level/terrain/level1.tscn")
+            if (contador == 0 && scenePath == "res://scenes/level/terrain/level1.tscn")
             {
-                Recursos.Instance.Gold = 10000;
-                Recursos.Instance.Wood = 10000;
-                Recursos.Instance.Stone = 10000;
-                Recursos.Instance.Iron = 10000;
+                Recursos.Instance.FirstLevel();
+                contador ++;
             }
-            else if (Wave.Instance.CurrentWave == 0)
+            else if (contador == 0 && Wave.Instance.CurrentWave == 0)
             {
                 Recursos.Instance.StartLevel();
+                contador ++;
             }
         }
     }

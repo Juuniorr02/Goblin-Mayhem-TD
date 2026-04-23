@@ -2,8 +2,6 @@ using Godot;
 
 public partial class ArcherTower : BaseTower
 {
-    // Ajusta este valor si ves que las flechas se quedan cortas o vuelan muy alto
-    // 0.15f suele ser un buen punto de partida para una gravedad de 800
     [Export] public float GravityCompensation = 0.18f;
 
     public override void _Ready()
@@ -47,6 +45,26 @@ protected override void Shoot()
 
         arrow.Launch(direction, Damage);
     }
-}
+    }
 
+    public override void Build()
+    {
+        int amountGold = 0, amountWood = 0, amountStone = 0, amountIron = 0;
+        
+        amountGold = 100; amountWood = 50; amountStone = 0; amountIron = 0;
+
+        if (Recursos.Instance.Gold >= amountGold && Recursos.Instance.Wood >= amountWood && Recursos.Instance.Stone >= amountStone && Recursos.Instance.Iron >= amountIron)
+        {
+            Recursos.Instance.Gold -= amountGold;
+            Recursos.Instance.Wood -= amountWood;
+            Recursos.Instance.Stone -= amountStone;
+            Recursos.Instance.Iron -= amountIron;
+
+            CanBuild = true;
+        }
+        else
+        {
+            CanBuild = false;
+        }
+    }
 }

@@ -19,7 +19,8 @@ public abstract partial class BaseTower : Node2D
     protected Node2D currentTarget;
     protected Marker2D muzzle;
     protected Timer shootTimer;
-    protected Node2D rangeVisual; // Referencia al círculo visual
+    protected Node2D rangeVisual;
+    public bool CanBuild { get; protected set; } = false;
 
     public override void _Ready()
     {
@@ -83,6 +84,11 @@ public abstract partial class BaseTower : Node2D
             currentTarget = null;
             if (shootTimer != null) shootTimer.Stop();
         }
+    }
+
+    public virtual void Build()
+    {
+        CanBuild = true;
     }
 
     protected abstract void Shoot();
