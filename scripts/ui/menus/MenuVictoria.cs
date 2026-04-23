@@ -97,7 +97,7 @@ public partial class MenuVictoria : CanvasLayer
 
     	QuitarPausa();
     	Input.MouseMode = Input.MouseModeEnum.Visible;
-    	GetTree().ChangeSceneToFile("res://scenes/ui/Menu.tscn");
+    	GetTree().ChangeSceneToFile("res://scenes/ui/menus/menu.tscn");
 	}
 
 	private async void OnSiguiente()

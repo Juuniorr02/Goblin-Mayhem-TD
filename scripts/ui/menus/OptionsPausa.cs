@@ -213,7 +213,7 @@ public partial class OptionsPausa : CanvasLayer
 
         // Guardar configuración
         SaveConfig(width, height, mode, calidad, volume, sfx, musica, sensibilidad, invertirY);
-        GetTree().ChangeSceneToFile("res://scenes/ui/Menu.tscn");
+        GetTree().ChangeSceneToFile("res://scenes/ui/menus/Menu.tscn");
     }
 
     private void SaveConfig(int width, int height, string mode, string calidad, float volume, float sfx, float musica, float sensibilidad, bool invertirY)

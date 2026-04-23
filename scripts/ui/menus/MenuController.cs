@@ -95,7 +95,7 @@ public partial class MenuController : Node
 
     public void OnNewGame()
     {
-        GetTree().ChangeSceneToFile("res://scenes/level/tutorial.tscn");
+        GetTree().ChangeSceneToFile("res://scenes/level/terrain/tutorial.tscn");
     }
 
     public async void OnLoadGame()
@@ -111,7 +111,7 @@ public partial class MenuController : Node
 
     public void OnOptions()
     {
-        GetTree().ChangeSceneToFile("res://scenes/ui/options.tscn");
+        GetTree().ChangeSceneToFile("res://scenes/ui/menus/options.tscn");
     }
 
     public void OnQuit()

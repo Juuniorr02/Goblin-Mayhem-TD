@@ -1,34 +1,34 @@
 [gd_scene load_steps=13 format=3 uid="uid://ieo0rfx4mn8y"]
 
 [ext_resource type="Script" uid="uid://chhydj5v5lgvu" path="res://scripts/character/tower/cannon/Cannon.cs" id="1_b4w28"]
-[ext_resource type="Texture2D" uid="uid://bttr6f60xnl3s" path="res://assets/character/tower/Cannon/CanonAnim.png" id="2_1oupt"]
+[ext_resource type="Texture2D" uid="uid://bdnlajpbthyfs" path="res://assets/character/tower/Cannon/CanonAnim.png" id="2_1oupt"]
 [ext_resource type="PackedScene" uid="uid://bhkjyqx4q14ja" path="res://scenes/tower/Cannon/BulletCannon.tscn" id="2_6f5h2"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4vgca"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1oupt"]
 atlas = ExtResource("2_1oupt")
 region = Rect2(0, 0, 96, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vn23s"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_6f5h2"]
 atlas = ExtResource("2_1oupt")
 region = Rect2(96, 0, 96, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_x2yid"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_c6kbx"]
 atlas = ExtResource("2_1oupt")
 region = Rect2(192, 0, 96, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4cs8c"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_cw348"]
 atlas = ExtResource("2_1oupt")
 region = Rect2(288, 0, 96, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3gjal"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_d634a"]
 atlas = ExtResource("2_1oupt")
 region = Rect2(384, 0, 96, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_n30g3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_kmwau"]
 atlas = ExtResource("2_1oupt")
 region = Rect2(480, 0, 96, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cbf8g"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_quf7w"]
 atlas = ExtResource("2_1oupt")
 region = Rect2(576, 0, 96, 64)
 
@@ -36,25 +36,25 @@ region = Rect2(576, 0, 96, 64)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4vgca")
+"texture": SubResource("AtlasTexture_1oupt")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vn23s")
+"texture": SubResource("AtlasTexture_6f5h2")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_x2yid")
+"texture": SubResource("AtlasTexture_c6kbx")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4cs8c")
+"texture": SubResource("AtlasTexture_cw348")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3gjal")
+"texture": SubResource("AtlasTexture_d634a")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_n30g3")
+"texture": SubResource("AtlasTexture_kmwau")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_cbf8g")
+"texture": SubResource("AtlasTexture_quf7w")
 }],
 "loop": true,
 "name": &"default",
@@ -70,7 +70,8 @@ BulletScene = ExtResource("2_6f5h2")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_5l07i")
-frame_progress = 0.4960929
+frame = 5
+frame_progress = 0.33575562
 
 [node name="Muzzle" type="Marker2D" parent="."]
 position = Vector2(18, -2)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bhkjyqx4q14ja"]
 
-[ext_resource type="Texture2D" uid="uid://bhg3mri134xqo" path="res://assets/character/tower/Cannon/BulletCannon.png" id="1_bxw6y"]
-[ext_resource type="Script" uid="uid://bp4wpbik5u51w" path="res://scripts/character/tower/Bullet.cs" id="1_soxbb"]
+[ext_resource type="Texture2D" uid="uid://by8xa7ufiiaog" path="res://assets/character/tower/Cannon/BulletCannon.png" id="1_bxw6y"]
+[ext_resource type="Script" uid="uid://bp4wpbik5u51w" path="res://scripts/character/tower/funcionamiento/Bullet.cs" id="1_soxbb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b4w28"]
 

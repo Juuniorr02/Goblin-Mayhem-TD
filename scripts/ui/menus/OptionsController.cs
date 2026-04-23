@@ -88,7 +88,7 @@ public partial class OptionsController : Control
         {
             if (keyEvent.Keycode == Key.Escape)
             {
-                GetTree().ChangeSceneToFile("res://scenes/ui/Menu.tscn");
+                GetTree().ChangeSceneToFile("res://scenes/ui/menus/Menu.tscn");
             }
         }
     }
@@ -217,7 +217,7 @@ public partial class OptionsController : Control
 
     private void OnBack()
     {
-        GetTree().ChangeSceneToFile("res://scenes/ui/Menu.tscn");
+        GetTree().ChangeSceneToFile("res://scenes/ui/menus/Menu.tscn");
     }
 
     // Función auxiliar para convertir de 0..1 a decibelios

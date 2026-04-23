@@ -11,16 +11,16 @@ config_version=5
 [application]
 
 config/name="Goblin Mayhem TD"
-run/main_scene="res://scenes/ui/Menu.tscn"
+run/main_scene="uid://glkqem0qes2a"
 config/features=PackedStringArray("4.5", "C#", "Mobile")
 
 [autoload]
 
-GameSettings="*res://scripts/ui/GameSettings.cs"
-SaveSystem="*res://scripts/ui/SaveSystem.cs"
-Base="*res://scripts/character/base/Base.cs"
-Wave="*res://scripts/character/base/Wave.cs"
-Recursos="*res://scripts/ui/Recursos.cs"
+GameSettings="*res://scripts/ui/autoload/GameSettings.cs"
+SaveSystem="*res://scripts/ui/autoload/SaveSystem.cs"
+Base="*res://scripts/ui/autoload/Base.cs"
+Wave="*res://scripts/ui/autoload/Wave.cs"
+Recursos="*res://scripts/ui/autoload/Recursos.cs"
 
 [dotnet]
 
