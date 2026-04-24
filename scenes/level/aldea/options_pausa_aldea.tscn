@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bsnre104stsy0"]
+[gd_scene load_steps=3 format=3 uid="uid://bsnre104stsy0"]
 
 [ext_resource type="Script" uid="uid://drislhfmirkgg" path="res://scripts/level/aldea/OptionsPausaAldea.cs" id="1_1k712"]
+[ext_resource type="Theme" uid="uid://cbnlqd4jxwjcu" path="res://assets/ui/button/CheckBox.tres" id="2_ckoul"]
 
 [node name="OptionsPausaAldea" type="CanvasLayer"]
 script = ExtResource("1_1k712")
@@ -264,6 +265,7 @@ text = "Sensibilidad"
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_stretch_ratio = 0.4
+theme = ExtResource("2_ckoul")
 min_value = 1.0
 max_value = 10.0
 step = 0.1

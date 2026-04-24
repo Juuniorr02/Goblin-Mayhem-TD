@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bbedvtd2kryv7"]
+[gd_scene load_steps=3 format=3 uid="uid://bbedvtd2kryv7"]
 
 [ext_resource type="Script" uid="uid://cppmmme11e06n" path="res://scripts/level/aldea/menu_mina.cs" id="1_6o0io"]
+[ext_resource type="Theme" uid="uid://cklj4cqxl38aj" path="res://assets/ui/button/Boton.tres" id="2_8qq7r"]
 
 [node name="menu_mina" type="CanvasLayer"]
 script = ExtResource("1_6o0io")
@@ -53,6 +54,7 @@ vertical_alignment = 1
 [node name="Mejorar" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/PanelContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+theme = ExtResource("2_8qq7r")
 text = "Mejorar"
 
 [node name="Espacio3" type="MarginContainer" parent="CenterContainer/PanelContainer/MarginContainer/PanelContainer/VBoxContainer/VBoxContainer"]
@@ -65,6 +67,7 @@ theme_override_constants/margin_bottom = 5
 [node name="Volver" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/PanelContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+theme = ExtResource("2_8qq7r")
 text = "Volver"
 
 [node name="Espacio2" type="MarginContainer" parent="CenterContainer/PanelContainer/MarginContainer/PanelContainer/VBoxContainer/VBoxContainer"]
