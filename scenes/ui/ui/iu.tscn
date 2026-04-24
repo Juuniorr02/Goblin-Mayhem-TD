@@ -202,7 +202,7 @@ texture = ExtResource("2_svasj")
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-text = "500"
+text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -226,7 +226,7 @@ texture = ExtResource("3_viny6")
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-text = "100"
+text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -308,17 +308,20 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_vertical = 3
 
+[node name="HBoxContainer" type="HBoxContainer" parent="IU/IU/IU/Top/Wave/Wave"]
+layout_mode = 2
+size_flags_horizontal = 3
+
 [node name="Wave" type="VBoxContainer" parent="IU/IU/IU/Top/Wave/Wave"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.5
 alignment = 1
 
 [node name="WaveButton" type="TextureButton" parent="IU/IU/IU/Top/Wave/Wave/Wave"]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 6
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
 
 [node name="WaveLabel" type="Label" parent="IU/IU/IU/Top/Wave/Wave/Wave/WaveButton"]
 unique_name_in_owner = true
@@ -329,6 +332,7 @@ offset_right = 73.0
 offset_bottom = 69.0
 scale = Vector2(0.72179794, 0.8265525)
 theme = SubResource("Theme_tyt0d")
+text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -342,10 +346,6 @@ sprite_frames = SubResource("SpriteFrames_ify78")
 animation = &"wave"
 frame = 8
 frame_progress = 1.0
-
-[node name="Blank2" type="HBoxContainer" parent="IU/IU/IU/Top/Wave"]
-layout_mode = 2
-size_flags_vertical = 3
 
 [node name="Blank" type="HBoxContainer" parent="IU/IU/IU/Top/Wave"]
 layout_mode = 2
