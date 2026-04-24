@@ -11,9 +11,9 @@ public partial class TowerBuilder : Node2D
     [Export] public Vector2 GhostOffset = new Vector2(0, 0); 
 
     private string currentTowerName = "";
+    private bool isDeconstructing = false; 
     private Node2D ghostInstance;
     private Dictionary<Vector2I, Node2D> occupiedTiles = new();
-    private List<TextureButton> towerButtons = new();
 
     public override void _Ready()
     {
@@ -28,33 +28,33 @@ public partial class TowerBuilder : Node2D
         }
     }
 
-    // Busca automáticamente las capas de tiles en la escena actual
     private void RefreshMapLayers()
     {
         allLayers.Clear();
-        // Buscamos todos los nodos tipo TileMapLayer en la escena activa
         var nodes = GetTree().CurrentScene.FindChildren("*", "TileMapLayer", true, false);
         foreach (var node in nodes)
         {
-            if (node is TileMapLayer layer)
-            {
-                allLayers.Add(layer);
-                GD.Print("Capa de mapa detectada: " + layer.Name + " en " + layer.GetParent().Name);
-            }
+            if (node is TileMapLayer layer) allLayers.Add(layer);
         }
     }
 
     private void SetupButtons()
     {
-        towerButtons.Clear();
+        // Buscamos todos los botones en la escena que estén en el grupo "botones_torres"
         var botones = GetTree().GetNodesInGroup("botones_torres");
+        
         foreach (Node nodo in botones)
         {
-            if (nodo is TextureButton btn)
+            if (nodo is BaseButton btn) // BaseButton cubre Button y TextureButton
             {
-                btn.Pressed += () => SelectTower(btn.Name);
-                btn.MouseFilter = Control.MouseFilterEnum.Stop; 
-                towerButtons.Add(btn);
+                // Limpiamos conexiones previas para evitar duplicados
+                if (btn.IsConnected(BaseButton.SignalName.Pressed, Callable.From(() => SelectTower(btn.Name))))
+                    continue;
+
+                btn.Pressed += () => {
+                    GD.Print("Botón presionado: " + btn.Name); // Para depuración
+                    SelectTower(btn.Name);
+                };
             }
         }
     }
@@ -62,6 +62,9 @@ public partial class TowerBuilder : Node2D
     public void SelectTower(string towerName)
     {
         currentTowerName = towerName;
+        // Importante: Esto debe coincidir exactamente con el nombre del nodo en el Inspector
+        isDeconstructing = (towerName == "Borrar");
+
         if (ghostInstance == null) return;
 
         if (string.IsNullOrEmpty(towerName))
@@ -72,26 +75,27 @@ public partial class TowerBuilder : Node2D
 
         ghostInstance.Visible = true;
         
+        if (isDeconstructing)
+        {
+            GD.Print("Modo desmantelar activado");
+            if (ghostInstance.HasMethod("UpdateRangeVisual"))
+                ghostInstance.Call("UpdateRangeVisual", 0, 0);
+            return;
+        }
+
         if (TowersScenes.TryGetValue(towerName, out PackedScene towerScene))
         {
             var dummyTower = towerScene.Instantiate<Node2D>();
-            float rangeX = 0;
-            float rangeY = 0;
-
+            float rangeX = 0; float rangeY = 0;
             var area = dummyTower.GetNodeOrNull<Area2D>("DetectionRange") ?? dummyTower.GetNodeOrNull<Area2D>("detectionRange");
             var collision = area?.GetNodeOrNull<CollisionShape2D>("CollisionShape2D");
-            
             if (collision != null && collision.Shape is CircleShape2D circle) 
             {
                 rangeX = circle.Radius * collision.Scale.X * area.Scale.X;
                 rangeY = circle.Radius * collision.Scale.Y * area.Scale.Y;
             }
-
             if (ghostInstance.HasMethod("UpdateRangeVisual"))
-            {
                 ghostInstance.Call("UpdateRangeVisual", rangeX, rangeY);
-            }
-            
             dummyTower.QueueFree();
         }
     }
@@ -100,14 +104,25 @@ public partial class TowerBuilder : Node2D
     {
         if (ghostInstance == null || !ghostInstance.Visible || allLayers.Count == 0) return;
 
-        TileMapLayer currentLayer = GetLayerUnderMouse();
-        if (currentLayer == null) currentLayer = allLayers[0];
-
+        TileMapLayer currentLayer = GetLayerUnderMouse() ?? allLayers[0];
         Vector2I tilePos = GetTileUnderMouse(currentLayer);
         Vector2 localPos = currentLayer.MapToLocal(tilePos);
         
         ghostInstance.GlobalPosition = currentLayer.ToGlobal(localPos) + GhostOffset;
-        ghostInstance.Modulate = CanBuildOnTile(tilePos) && BuildTime.CanBuild ? new Color(0, 1, 0, 0.6f) : new Color(1, 0, 0, 0.6f);
+
+        if (isDeconstructing)
+        {
+            // Cambia el color del fantasma a rojo si detecta una torre en esa posición
+            ghostInstance.Modulate = occupiedTiles.ContainsKey(tilePos) 
+                ? new Color(1, 0, 0, 0.8f) 
+                : new Color(1, 1, 1, 0.4f);
+        }
+        else
+        {
+            ghostInstance.Modulate = CanBuildOnTile(tilePos) && BuildTime.CanBuild 
+                ? new Color(0, 1, 0, 0.6f) 
+                : new Color(1, 0, 0, 0.6f);
+        }
     }
 
     public override void _Input(InputEvent @event)
@@ -134,42 +149,44 @@ public partial class TowerBuilder : Node2D
 
     private void AttemptBuild()
     {
-        if (!BuildTime.CanBuild)
-            return;
-
         TileMapLayer targetLayer = GetLayerUnderMouse();
         if (targetLayer == null) return;
-
         Vector2I tilePos = GetTileUnderMouse(targetLayer);
 
-        if (!CanBuildOnTile(tilePos)) return;
+        if (isDeconstructing)
+        {
+            if (occupiedTiles.TryGetValue(tilePos, out Node2D towerToDestroy))
+            {
+                GD.Print("Borrando torre en " + tilePos);
+                towerToDestroy.QueueFree();
+                occupiedTiles.Remove(tilePos);
+            }
+            return;
+        }
+
+        if (!BuildTime.CanBuild || !CanBuildOnTile(tilePos)) return;
 
         if (TowersScenes.TryGetValue(currentTowerName, out PackedScene scene))
         {
             Node2D towerInstance = scene.Instantiate<Node2D>();
-
             if (towerInstance is BaseTower tower)
             {
                 tower.Build();
-
-                if (!tower.CanBuild)
-                {
-                    tower.QueueFree();
-                    return;
-                }
+                if (!tower.CanBuild) { tower.QueueFree(); return; }
             }
 
-        Vector2 localPos = targetLayer.MapToLocal(tilePos);
-        towerInstance.GlobalPosition = targetLayer.ToGlobal(localPos) + GhostOffset;
+            Vector2 localPos = targetLayer.MapToLocal(tilePos);
+            towerInstance.GlobalPosition = targetLayer.ToGlobal(localPos) + GhostOffset;
 
-        TowersParent.AddChild(towerInstance);
-        occupiedTiles[tilePos] = towerInstance;
+            TowersParent.AddChild(towerInstance);
+            occupiedTiles[tilePos] = towerInstance;
         }
     }
 
     private void CancelSelection()
     {
         currentTowerName = "";
+        isDeconstructing = false;
         if (ghostInstance != null) ghostInstance.Visible = false;
     }
 
