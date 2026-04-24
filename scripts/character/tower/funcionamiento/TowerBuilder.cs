@@ -100,16 +100,14 @@ public partial class TowerBuilder : Node2D
     {
         if (ghostInstance == null || !ghostInstance.Visible || allLayers.Count == 0) return;
 
-        // Buscamos en qué capa está el ratón para posicionar el fantasma correctamente
         TileMapLayer currentLayer = GetLayerUnderMouse();
         if (currentLayer == null) currentLayer = allLayers[0];
 
         Vector2I tilePos = GetTileUnderMouse(currentLayer);
         Vector2 localPos = currentLayer.MapToLocal(tilePos);
         
-        // Usamos ToGlobal de la capa específica para que la posición sea exacta
         ghostInstance.GlobalPosition = currentLayer.ToGlobal(localPos) + GhostOffset;
-        ghostInstance.Modulate = CanBuildOnTile(tilePos) ? new Color(0, 1, 0, 0.6f) : new Color(1, 0, 0, 0.6f);
+        ghostInstance.Modulate = CanBuildOnTile(tilePos) && BuildTime.CanBuild ? new Color(0, 1, 0, 0.6f) : new Color(1, 0, 0, 0.6f);
     }
 
     public override void _Input(InputEvent @event)
@@ -136,6 +134,9 @@ public partial class TowerBuilder : Node2D
 
     private void AttemptBuild()
     {
+        if (!BuildTime.CanBuild)
+            return;
+
         TileMapLayer targetLayer = GetLayerUnderMouse();
         if (targetLayer == null) return;
 
@@ -147,7 +148,6 @@ public partial class TowerBuilder : Node2D
         {
             Node2D towerInstance = scene.Instantiate<Node2D>();
 
-            // 👇 AQUÍ VA TU CÓDIGO
             if (towerInstance is BaseTower tower)
             {
                 tower.Build();
@@ -159,12 +159,11 @@ public partial class TowerBuilder : Node2D
                 }
             }
 
-            // 👇 SOLO SI SE PUEDE CONSTRUIR
-            Vector2 localPos = targetLayer.MapToLocal(tilePos);
-            towerInstance.GlobalPosition = targetLayer.ToGlobal(localPos) + GhostOffset;
+        Vector2 localPos = targetLayer.MapToLocal(tilePos);
+        towerInstance.GlobalPosition = targetLayer.ToGlobal(localPos) + GhostOffset;
 
-            TowersParent.AddChild(towerInstance);
-            occupiedTiles[tilePos] = towerInstance;
+        TowersParent.AddChild(towerInstance);
+        occupiedTiles[tilePos] = towerInstance;
         }
     }
 
@@ -176,7 +175,6 @@ public partial class TowerBuilder : Node2D
 
     private TileMapLayer GetLayerUnderMouse()
     {
-        // Buscamos de arriba hacia abajo qué capa tiene un tile donde apunta el ratón
         for (int i = allLayers.Count - 1; i >= 0; i--)
         {
             Vector2I tp = GetTileUnderMouse(allLayers[i]);

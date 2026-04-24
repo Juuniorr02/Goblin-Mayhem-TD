@@ -21,6 +21,7 @@ SaveSystem="*res://scripts/ui/autoload/SaveSystem.cs"
 Base="*res://scripts/ui/autoload/Base.cs"
 Wave="*res://scripts/ui/autoload/Wave.cs"
 Recursos="*res://scripts/ui/autoload/Recursos.cs"
+BuildTime="*res://scripts/ui/autoload/BuildTime.cs"
 
 [dotnet]
 

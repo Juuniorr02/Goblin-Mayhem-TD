@@ -11,8 +11,6 @@ public abstract partial class BaseTower : Node2D
     [Export] public bool CanTargetLand = true;
     [Export] public bool CanTargetAir = false;
     [Export] public bool CanTargetWater = false;
-
-    // Propiedad para activar el rango visual
     [Export] public bool IsGhost = false;
 
     protected List<Node2D> enemiesInRange = new();
@@ -20,7 +18,7 @@ public abstract partial class BaseTower : Node2D
     protected Marker2D muzzle;
     protected Timer shootTimer;
     protected Node2D rangeVisual;
-    public bool CanBuild { get; protected set; } = false;
+    public bool CanBuild { get; set; } = false;
 
     public override void _Ready()
     {
@@ -34,7 +32,6 @@ public abstract partial class BaseTower : Node2D
             shootTimer.Timeout += Shoot;
         }
 
-        // Si es fantasma, mostramos el rango. Si no, lo ocultamos.
         if (rangeVisual != null)
         {
             rangeVisual.Visible = IsGhost;

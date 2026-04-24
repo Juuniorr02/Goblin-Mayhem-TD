@@ -29,6 +29,8 @@ public partial class Iu : Control
 
     private int contador = 0;
 
+    private int constructionwave = 0;
+
     [Export] private EnemySpawner spawner;
 
     public override void _Ready()
@@ -120,6 +122,9 @@ public partial class Iu : Control
 
     private void OnWaveButtonPressed()
     {
+        if(constructionwave == 0)
+        {
+        BuildTime.CanBuild = false;
         MouseFilter = MouseFilterEnum.Stop;
         if (Wave.Instance == null) return;
 
@@ -135,6 +140,16 @@ public partial class Iu : Control
         waveButton.Disabled = true;
         cooldownTimer.Start();
         Recursos.Instance.AddProduction();
+        constructionwave++;
+        }
+
+        else if (constructionwave == 1)
+        {
+            BuildTime.CanBuild = true;
+            MouseFilter = MouseFilterEnum.Stop;
+            constructionwave --;
+        }
+        
     }
 
     private void OnCooldownFinished()

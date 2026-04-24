@@ -97,7 +97,8 @@ TowersScenes = Dictionary[String, PackedScene]({
 "Wizard": ExtResource("16_rrpdo")
 })
 
-[node name="IU" parent="." instance=ExtResource("17_66yle")]
+[node name="IU" parent="." node_paths=PackedStringArray("spawner") instance=ExtResource("17_66yle")]
+spawner = NodePath("../EnemySpawner")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(7057, 1182)
