@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://4266tkarwvws"]
+[gd_scene load_steps=41 format=3 uid="uid://4266tkarwvws"]
 
 [ext_resource type="PackedScene" uid="uid://cwqgddsegt212" path="res://assets/level/Map/tutorial.tmx" id="1_uh7en"]
 [ext_resource type="Script" uid="uid://cubvhlo0alqh1" path="res://scripts/level/terrain/Pathfinding.cs" id="2_i5iu6"]
@@ -26,6 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://dgc77kp8vuy4p" path="res://scenes/ui/menus/options_pausa.tscn" id="23_jasqh"]
 [ext_resource type="PackedScene" uid="uid://c6o5datpm682p" path="res://scenes/ui/menus/menu_victoria.tscn" id="25_4v7t1"]
 [ext_resource type="PackedScene" uid="uid://c387degtgk6i6" path="res://scenes/ui/menus/menu_derrota.tscn" id="26_rb3r2"]
+[ext_resource type="PackedScene" uid="uid://dyk56b112rm25" path="res://scenes/ui/ui/uiTutorial.tscn" id="27_rb3r2"]
 
 [sub_resource type="Resource" id="Resource_tqsr0"]
 script = ExtResource("5_rb3r2")
@@ -178,3 +179,5 @@ MaxZoom = 2.0
 WinningWave = 10
 
 [node name="menu_derrota" parent="." instance=ExtResource("26_rb3r2")]
+
+[node name="DialogueUi" parent="." instance=ExtResource("27_rb3r2")]
