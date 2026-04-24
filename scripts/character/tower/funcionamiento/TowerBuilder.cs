@@ -159,6 +159,7 @@ public partial class TowerBuilder : Node2D
             {
                 GD.Print("Borrando torre en " + tilePos);
                 towerToDestroy.QueueFree();
+                Recursos.Instance.DevolverRecuros();
                 occupiedTiles.Remove(tilePos);
             }
             return;
