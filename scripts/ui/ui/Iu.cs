@@ -21,6 +21,7 @@ public partial class Iu : Control
     public Button Nest;
     public Button Ship;
     public Button Atun;
+    public Button Borrar;
 
     private AnimatedSprite2D waveAnimation;
     private Timer cooldownTimer;
@@ -55,6 +56,7 @@ public partial class Iu : Control
         Nest = GetNodeOrNull<Button>("%Nest");
         Ship = GetNodeOrNull<Button>("%Ship");
         Atun = GetNodeOrNull<Button>("%Atun");
+        Borrar = GetNodeOrNull<Button>("%Borrar");
 
         ConfigurarBoton(Archer);
         ConfigurarBoton(Cannon);
@@ -66,6 +68,7 @@ public partial class Iu : Control
         ConfigurarBoton(Nest);
         ConfigurarBoton(Ship);
         ConfigurarBoton(Atun);
+        ConfigurarBoton(Borrar);
 
         waveAnimation = GetNode<AnimatedSprite2D>("%WaveSprite");
 

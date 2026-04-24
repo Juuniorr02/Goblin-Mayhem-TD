@@ -721,6 +721,22 @@ texture_normal = ExtResource("16_n0sti")
 layout_mode = 2
 size_flags_horizontal = 3
 
+[node name="Blank" type="VBoxContainer" parent="IU/IU/IU/Bottom/Right"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+
+[node name="Borrar" type="VBoxContainer" parent="IU/IU/IU/Bottom/Right"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Borrar" type="Button" parent="IU/IU/IU/Bottom/Right/Borrar"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Borrar"
+
 [connection signal="pressed" from="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Archer/Archer/Archer/Archer/Archer/Archer" to="." method="OnArcherPressed"]
 [connection signal="pressed" from="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Cannon/Cannon/Cannon/Cannon/Cannon/Cannon" to="." method="OnCannonPressed"]
 [connection signal="pressed" from="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Flame/Flame/Flame/Flame/Flame/Flame" to="." method="OnFlamePressed"]
