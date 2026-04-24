@@ -1,0 +1,138 @@
+[gd_scene load_steps=20 format=3 uid="uid://ctnlnh67cotib"]
+
+[ext_resource type="Script" uid="uid://djm0046nxvish" path="res://scripts/character/enemy/Enemy.cs" id="1_a6siw"]
+[ext_resource type="Script" uid="uid://dtfsd6sb6u7oe" path="res://scripts/character/enemy/EnemyData.cs" id="2_5v1cw"]
+[ext_resource type="Texture2D" uid="uid://cmwjmb8slpq0e" path="res://assets/character/enemy/BlancoVida.png" id="3_kou31"]
+[ext_resource type="Texture2D" uid="uid://4ub64at7p8fb" path="res://assets/character/enemy/Kraken/Kraken-Sheet.png" id="4_xnlbp"]
+
+[sub_resource type="Resource" id="Resource_m17yy"]
+script = ExtResource("2_5v1cw")
+EnemyName = "Goblin Tronco"
+IsAquatic = true
+metadata/_custom_type_script = "uid://dtfsd6sb6u7oe"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ygshw"]
+size = Vector2(43.333313, 51.42855)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rtnlo"]
+atlas = ExtResource("4_xnlbp")
+region = Rect2(5, 0, 63, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_35j68"]
+atlas = ExtResource("4_xnlbp")
+region = Rect2(68, 0, 63, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6exj5"]
+atlas = ExtResource("4_xnlbp")
+region = Rect2(131, 0, 63, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eoxg2"]
+atlas = ExtResource("4_xnlbp")
+region = Rect2(194, 0, 63, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2sewx"]
+atlas = ExtResource("4_xnlbp")
+region = Rect2(257, 0, 63, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5bjt"]
+atlas = ExtResource("4_xnlbp")
+region = Rect2(320, 0, 63, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hruxn"]
+atlas = ExtResource("4_xnlbp")
+region = Rect2(383, 0, 63, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vujkw"]
+atlas = ExtResource("4_xnlbp")
+region = Rect2(446, 0, 63, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l5prl"]
+atlas = ExtResource("4_xnlbp")
+region = Rect2(509, 0, 63, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rci47"]
+atlas = ExtResource("4_xnlbp")
+region = Rect2(572, 0, 63, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h4v70"]
+atlas = ExtResource("4_xnlbp")
+region = Rect2(635, 0, 63, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yslra"]
+atlas = ExtResource("4_xnlbp")
+region = Rect2(698, 0, 63, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_28poh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rtnlo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_35j68")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6exj5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eoxg2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2sewx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i5bjt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hruxn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vujkw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l5prl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rci47")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h4v70")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yslra")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Kraken" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "HealthBar") groups=["Acuatico", "enemies"]]
+scale = Vector2(2.1, 2.1)
+script = ExtResource("1_a6siw")
+sprite = NodePath("AnimatedSprite2D")
+Data = SubResource("Resource_m17yy")
+HealthBar = NodePath("TextureProgressBar")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+top_level = true
+z_index = 10
+offset_left = -15.000002
+offset_top = -60.0
+offset_right = 341.0
+offset_bottom = 124.0
+scale = Vector2(0.16, 0.05)
+nine_patch_stretch = true
+texture_progress = ExtResource("3_kou31")
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2.8571422, 3.8095233)
+scale = Vector2(1.0000006, 1.0000006)
+shape = SubResource("RectangleShape2D_ygshw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_28poh")
+autoplay = "default"
+frame_progress = 0.8684799
+flip_h = true

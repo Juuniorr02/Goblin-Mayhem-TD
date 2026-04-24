@@ -1,14 +1,15 @@
-[gd_scene load_steps=33 format=3 uid="uid://63n8ujelr0ty"]
+[gd_scene load_steps=35 format=3 uid="uid://dd1ml503ns506"]
 
 [ext_resource type="PackedScene" uid="uid://box8tpwtebkqj" path="res://assets/level/Map/montana1.tmx" id="1_5fc2a"]
 [ext_resource type="Script" uid="uid://cubvhlo0alqh1" path="res://scripts/level/terrain/Pathfinding.cs" id="2_abfbc"]
 [ext_resource type="Script" uid="uid://ddtj2hn2hhtfd" path="res://scripts/character/enemy/EnemySpawner.cs" id="3_wwvym"]
 [ext_resource type="Script" uid="uid://b7rcgtrq61w48" path="res://scripts/character/enemy/WaveData.cs" id="4_3pfqo"]
-[ext_resource type="Resource" path="res://scripts/character/enemy/infoEnemy/bebeWyern.tres" id="4_5r8ub"]
+[ext_resource type="Resource" uid="uid://d2510p56t5xsd" path="res://scripts/character/enemy/infoEnemy/bebeWyern.tres" id="4_5r8ub"]
 [ext_resource type="Resource" uid="uid://7lteypp1glo" path="res://scripts/character/enemy/infoEnemy/golem.tres" id="4_8k8u7"]
 [ext_resource type="Script" uid="uid://dxi6h4dntdvec" path="res://scripts/character/enemy/EnemyGroup.cs" id="5_hfw40"]
 [ext_resource type="PackedScene" uid="uid://ci612q8twcycd" path="res://scenes/ui/ui/iu.tscn" id="5_iwtdf"]
 [ext_resource type="Script" uid="uid://ccef7herjptu0" path="res://scripts/character/camera/CameraRig.cs" id="6_a1srb"]
+[ext_resource type="Resource" uid="uid://bdha8t6bcfd4l" path="res://scripts/character/enemy/infoEnemy/emperador.tres" id="6_qrxqc"]
 [ext_resource type="Resource" uid="uid://cigq0efht168k" path="res://scripts/character/enemy/infoEnemy/goblinVolador.tres" id="7_hfw40"]
 [ext_resource type="Script" uid="uid://dlfq6grfckhot" path="res://scripts/character/tower/funcionamiento/TowerBuilder.cs" id="7_wwvym"]
 [ext_resource type="PackedScene" uid="uid://ieo0rfx4mn8y" path="res://scenes/tower/Cannon/Cannon.tscn" id="8_8nqb7"]
@@ -32,10 +33,16 @@ Count = 20
 Path = 4
 metadata/_custom_type_script = "uid://dxi6h4dntdvec"
 
+[sub_resource type="Resource" id="Resource_01ffh"]
+script = ExtResource("5_hfw40")
+EnemyType = ExtResource("6_qrxqc")
+Count = 1
+metadata/_custom_type_script = "uid://dxi6h4dntdvec"
+
 [sub_resource type="Resource" id="Resource_h687j"]
 script = ExtResource("4_3pfqo")
 WaveName = "Oleada 1"
-Groups = Array[Object]([SubResource("Resource_dkogb")])
+Groups = Array[Object]([SubResource("Resource_dkogb"), SubResource("Resource_01ffh")])
 SpawnInterval = 0.5
 metadata/_custom_type_script = "uid://b7rcgtrq61w48"
 

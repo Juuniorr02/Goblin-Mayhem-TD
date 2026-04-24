@@ -98,4 +98,3 @@ texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_sqxm4")
 autoplay = "default"
 frame_progress = 0.6283636
-flip_h = true

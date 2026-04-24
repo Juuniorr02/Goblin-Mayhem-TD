@@ -8,6 +8,7 @@
 
 [node name="TunaHatchery" type="Node2D"]
 script = ExtResource("1_iltbc")
+RespawnCooldown = 5.0
 BulletScene = ExtResource("2_38rkd")
 CanTargetWater = true
 

@@ -12,7 +12,7 @@ IsAquatic = true
 metadata/_custom_type_script = "uid://dtfsd6sb6u7oe"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ygshw"]
-size = Vector2(44.047607, 28)
+size = Vector2(33.333313, 52.380928)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m17yy"]
 atlas = ExtResource("4_ypm4a")
@@ -116,6 +116,7 @@ offset_bottom = 124.0
 scale = Vector2(0.16, 0.05)
 nine_patch_stretch = true
 texture_progress = ExtResource("3_ypm4a")
+metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.47619057, 5.714286)
