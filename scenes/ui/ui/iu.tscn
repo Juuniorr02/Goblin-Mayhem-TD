@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://ci612q8twcycd"]
+[gd_scene load_steps=31 format=3 uid="uid://ci612q8twcycd"]
 
 [ext_resource type="Texture2D" uid="uid://bodlpu3irch0t" path="res://assets/ui/button/IconoOleada-Sheet.png" id="1_g0mth"]
 [ext_resource type="Texture2D" uid="uid://5sui3kk7ym6x" path="res://assets/ui/icon/cañon.png" id="1_t64rc"]
@@ -92,6 +92,8 @@ animations = [{
 "name": &"wave",
 "speed": 0.4
 }]
+
+[sub_resource type="Theme" id="Theme_pd0vv"]
 
 [node name="IU" type="Control"]
 layout_mode = 3
@@ -306,11 +308,6 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Blank" type="VBoxContainer" parent="IU/IU/IU/Top/Wave/Wave"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 1.5
-
 [node name="Wave" type="VBoxContainer" parent="IU/IU/IU/Top/Wave/Wave"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -320,7 +317,8 @@ alignment = 1
 [node name="WaveButton" type="TextureButton" parent="IU/IU/IU/Top/Wave/Wave/Wave"]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_horizontal = 4
+size_flags_vertical = 6
 
 [node name="WaveLabel" type="Label" parent="IU/IU/IU/Top/Wave/Wave/Wave/WaveButton"]
 unique_name_in_owner = true
@@ -735,6 +733,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme = SubResource("Theme_pd0vv")
 text = "Borrar"
 
 [connection signal="pressed" from="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Archer/Archer/Archer/Archer/Archer/Archer" to="." method="OnArcherPressed"]
