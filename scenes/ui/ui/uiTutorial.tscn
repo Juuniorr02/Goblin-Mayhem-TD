@@ -1,0 +1,88 @@
+[gd_scene load_steps=5 format=3 uid="uid://dyk56b112rm25"]
+
+[ext_resource type="Script" uid="uid://deqhjodx3dnr4" path="res://scripts/ui/ui/DialogueUI.cs" id="1_nvw71"]
+[ext_resource type="Texture2D" uid="uid://hslwtu7o6888" path="res://assets/character/hero/Personajetutorial-Sheet.png" id="2_pgeo8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o4ahw"]
+atlas = ExtResource("2_pgeo8")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cakc5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o4ahw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="DialogueUi" type="CanvasLayer" node_paths=PackedStringArray("textLabel", "nameLabel", "portrait")]
+layer = 11
+script = ExtResource("1_nvw71")
+textLabel = NodePath("MainContainer/TextBoxContainer/TextMargin/VBoxContainer/DialogueTextLabel")
+nameLabel = NodePath("MainContainer/TextBoxContainer/TextMargin/VBoxContainer/NameLabel")
+portrait = NodePath("MainContainer/CharacterAnchor/AnimatedSprite2D")
+
+[node name="MainContainer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CharacterAnchor" type="Control" parent="MainContainer"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 49.0
+offset_top = 56.0
+offset_right = 49.0
+offset_bottom = 56.0
+grow_vertical = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MainContainer/CharacterAnchor"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_cakc5")
+
+[node name="TextBoxContainer" type="MarginContainer" parent="MainContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -27.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="BoxBG" type="NinePatchRect" parent="MainContainer/TextBoxContainer"]
+layout_mode = 2
+
+[node name="TextMargin" type="MarginContainer" parent="MainContainer/TextBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainContainer/TextBoxContainer/TextMargin"]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="MainContainer/TextBoxContainer/TextMargin/VBoxContainer"]
+layout_mode = 2
+
+[node name="DialogueTextLabel" type="RichTextLabel" parent="MainContainer/TextBoxContainer/TextMargin/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "Me da pereza hacer esto"
+
+[node name="Indicator" type="TextureRect" parent="MainContainer/TextBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="TypeWriter" type="Timer" parent="MainContainer/TextBoxContainer"]

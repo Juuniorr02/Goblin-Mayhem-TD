@@ -103,6 +103,14 @@ public partial class Recursos : Node
         SaveData();
     }
 
+    public void DevolverRecuros()
+    {
+        Gold += 100;
+        Wood += 50;
+        Stone += 0;
+        Iron += 0;
+    }
+
     public void SaveData()
     {
         var data = new SaveDataStruct
