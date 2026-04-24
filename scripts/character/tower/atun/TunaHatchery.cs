@@ -4,62 +4,69 @@ using System.Linq;
 
 public partial class TunaHatchery : BaseTower
 {
+    private List<Tuna> _activeTunas = new();
+    
+    [ExportGroup("Hatchery Settings")]
     [Export] public int MaxTunas = 3;
-    [Export] public float SpawnCooldown = 10.0f;
-    [Export] public float ExplosionDamage = 25f;
-    [Export] public float ExplosionRadius = 80f;
-
-    private List<Node2D> _activeTunas = new();
-    private float _spawnTimer = 0f;
+    [Export] public float RespawnCooldown = 1.5f;
+    private float _respawnTimer = 0f;
 
     public override void _Ready()
     {
         base._Ready();
-        // Inicialmente spawneamos los que quepan
-        for(int i = 0; i < MaxTunas; i++) SpawnTuna();
     }
 
     public override void _Process(double delta)
     {
-        base._Process(delta);
+        // Limpiar tunas muertas
+        _activeTunas.RemoveAll(t => !IsInstanceValid(t));
 
-        // Timer manual de spawn
-        _spawnTimer += (float)delta;
-        if (_spawnTimer >= SpawnCooldown)
+        // Respawn
+        if (_activeTunas.Count < MaxTunas)
         {
-            _spawnTimer = 0f;
-            SpawnTuna();
+            _respawnTimer += (float)delta;
+            if (_respawnTimer >= RespawnCooldown)
+            {
+                SpawnTuna();
+                _respawnTimer = 0f;
+            }
         }
+
+        UpdateTarget();
     }
 
     private void SpawnTuna()
     {
-        _activeTunas.RemoveAll(t => !IsInstanceValid(t));
-
-        if (_activeTunas.Count < MaxTunas && BulletScene != null)
-        {
-            var tuna = BulletScene.Instantiate<Node2D>();
-            GetTree().CurrentScene.AddChild(tuna);
-            
-            tuna.GlobalPosition = GlobalPosition + new Vector2((float)GD.RandRange(-20, 20), (float)GD.RandRange(-20, 20));
-            
-            // Pasamos datos al atún (asumiendo que tiene script de Tuna)
-            if (tuna.HasMethod("SetupTuna"))
-                tuna.Call("SetupTuna", GlobalPosition, Damage, ExplosionRadius);
-
-            _activeTunas.Add(tuna);
-        }
+        if (BulletScene == null) return;
+        
+        var tuna = BulletScene.Instantiate<Tuna>();
+        GetTree().CurrentScene.AddChild(tuna); 
+        tuna.GlobalPosition = GlobalPosition + new Vector2((float)GD.RandRange(-20, 20), (float)GD.RandRange(-20, 20));
+        tuna.SetupTuna(GlobalPosition, Damage);
+        _activeTunas.Add(tuna);
     }
 
     protected override void UpdateTarget()
     {
-        base.UpdateTarget();
-        foreach (var t in _activeTunas)
+        enemiesInRange.RemoveAll(e => !IsInstanceValid(e) || !e.IsInsideTree());
+
+        if (enemiesInRange.Count == 0)
         {
-            if (IsInstanceValid(t))
-                t.Set("Target", currentTarget);
+            foreach (var t in _activeTunas) if (IsInstanceValid(t)) t.Target = null;
+            return;
+        }
+
+        // Ordenar por el que está más cerca de la torre
+        var targetEnemy = enemiesInRange.OrderBy(e => GlobalPosition.DistanceSquaredTo(e.GlobalPosition)).First();
+
+        foreach (var tuna in _activeTunas)
+        {
+            if (IsInstanceValid(tuna))
+            {
+                tuna.Target = targetEnemy;
+            }
         }
     }
 
-    protected override void Shoot() { /* Los atunes son el proyectil */ }
+    protected override void Shoot() { /* No hace nada manual */ }
 }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bvj23ok4pqai6"]
+[gd_scene load_steps=28 format=3 uid="uid://bvj23ok4pqai6"]
 
 [ext_resource type="PackedScene" uid="uid://bxah54x2mw4ix" path="res://assets/level/Map/level1.tmx" id="1_obe7s"]
 [ext_resource type="Script" uid="uid://cubvhlo0alqh1" path="res://scripts/level/terrain/Pathfinding.cs" id="2_d0a6p"]
@@ -17,10 +17,9 @@
 [ext_resource type="PackedScene" uid="uid://bv6xb2o3otqu3" path="res://scenes/tower/Grifo/GrffinTower.tscn" id="15_cu56y"]
 [ext_resource type="PackedScene" uid="uid://cuq0at3ylsro3" path="res://scenes/tower/MageTower/mage_tower.tscn" id="16_rrpdo"]
 [ext_resource type="PackedScene" uid="uid://ci612q8twcycd" path="res://scenes/ui/ui/iu.tscn" id="17_66yle"]
-[ext_resource type="PackedScene" uid="uid://b4kgd56vbuq80" path="res://scenes/tower/Ship/ship.tscn" id="17_d0a6p"]
+[ext_resource type="PackedScene" uid="uid://b4kgd56vbuq80" path="res://scenes/tower/ship/ship.tscn" id="17_d0a6p"]
 [ext_resource type="Script" uid="uid://ccef7herjptu0" path="res://scripts/character/camera/CameraRig.cs" id="18_0t75c"]
 [ext_resource type="PackedScene" uid="uid://dd15bvxn3ddsy" path="res://scenes/tower/Tuna/tuna_hatchery.tscn" id="18_nvdl1"]
-[ext_resource type="PackedScene" uid="uid://di2gid6004846" path="res://scenes/ui/menus/menu_derrota_tutorial.tscn" id="19_enutg"]
 [ext_resource type="PackedScene" uid="uid://cor65fcesxg0a" path="res://scenes/ui/menus/menu_pausa.tscn" id="20_j2s0a"]
 [ext_resource type="PackedScene" uid="uid://dgc77kp8vuy4p" path="res://scenes/ui/menus/options_pausa.tscn" id="21_uk6l5"]
 
@@ -111,8 +110,6 @@ script = ExtResource("18_0t75c")
 MoveSpeed = 1400.0
 MinZoom = 0.23
 MaxZoom = 2.0
-
-[node name="menu_derrota_tutorial" parent="." instance=ExtResource("19_enutg")]
 
 [node name="menu_pausa" parent="." instance=ExtResource("20_j2s0a")]
 

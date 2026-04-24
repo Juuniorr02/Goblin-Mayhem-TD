@@ -1,0 +1,116 @@
+[gd_scene load_steps=17 format=3 uid="uid://dk1crbqxqelpx"]
+
+[ext_resource type="Script" uid="uid://djm0046nxvish" path="res://scripts/character/enemy/Enemy.cs" id="1_mbc1y"]
+[ext_resource type="Script" uid="uid://dtfsd6sb6u7oe" path="res://scripts/character/enemy/EnemyData.cs" id="2_rtmh2"]
+[ext_resource type="Texture2D" uid="uid://cmwjmb8slpq0e" path="res://assets/character/enemy/BlancoVida.png" id="3_1bc0a"]
+[ext_resource type="Texture2D" uid="uid://la5a0nno1uq2" path="res://assets/character/enemy/Emperador/Emperador.png" id="4_2nfn2"]
+
+[sub_resource type="Resource" id="Resource_m17yy"]
+script = ExtResource("2_rtmh2")
+EnemyName = "Goblin Tronco"
+IsAquatic = true
+metadata/_custom_type_script = "uid://dtfsd6sb6u7oe"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ygshw"]
+size = Vector2(33.333313, 52.380928)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uhhu8"]
+atlas = ExtResource("4_2nfn2")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rsbih"]
+atlas = ExtResource("4_2nfn2")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x6jnx"]
+atlas = ExtResource("4_2nfn2")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fkh1r"]
+atlas = ExtResource("4_2nfn2")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mpncf"]
+atlas = ExtResource("4_2nfn2")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3064c"]
+atlas = ExtResource("4_2nfn2")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k1vru"]
+atlas = ExtResource("4_2nfn2")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tgkm8"]
+atlas = ExtResource("4_2nfn2")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ef7d6"]
+atlas = ExtResource("4_2nfn2")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gylpl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uhhu8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rsbih")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x6jnx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fkh1r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mpncf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3064c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k1vru")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tgkm8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ef7d6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="Emperador" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "HealthBar") groups=["Acuatico", "enemies"]]
+scale = Vector2(2.1, 2.1)
+script = ExtResource("1_mbc1y")
+sprite = NodePath("AnimatedSprite2D")
+Data = SubResource("Resource_m17yy")
+HealthBar = NodePath("TextureProgressBar")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+top_level = true
+z_index = 10
+offset_left = -15.000002
+offset_top = -60.0
+offset_right = 341.0
+offset_bottom = 124.0
+scale = Vector2(0.16, 0.05)
+nine_patch_stretch = true
+texture_progress = ExtResource("3_1bc0a")
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.47619033, 0.9523809)
+scale = Vector2(1.0000006, 1.0000006)
+shape = SubResource("RectangleShape2D_ygshw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_gylpl")
+autoplay = "default"
+frame_progress = 0.85683864

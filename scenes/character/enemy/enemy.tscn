@@ -65,6 +65,7 @@ size = Vector2(11, 28)
 [node name="Golem" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "HealthBar") groups=["enemies"]]
 scale = Vector2(2.1, 2.1)
 script = ExtResource("2_4gyqm")
+IsFacingLeftByDefault = true
 sprite = NodePath("AnimatedSprite2D")
 Data = SubResource("Resource_4kjq8")
 HealthBar = NodePath("TextureProgressBar")

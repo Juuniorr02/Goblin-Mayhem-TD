@@ -1,6 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://cku44kfv3cei4"]
+[gd_scene load_steps=10 format=3 uid="uid://cku44kfv3cei4"]
 
-[ext_resource type="Script" uid="uid://ckwinn0bimw25" path="res://scripts/character/tower/grifo/Griffin.cs" id="1_u51wi"]
+[ext_resource type="Script" uid="uid://cw18wpqics2e8" path="res://scripts/character/tower/atun/Tuna.cs" id="1_u51wi"]
 [ext_resource type="Texture2D" uid="uid://boedo440b4aob" path="res://assets/character/tower/Tuna/Atun-Sheet.png" id="2_ibtbg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3aaem"]
@@ -39,7 +39,11 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_u51wi"]
+radius = 27.00463
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b4w28"]
+size = Vector2(36, 13)
 
 [node name="Tuna" type="CharacterBody2D"]
 script = ExtResource("1_u51wi")
@@ -50,5 +54,14 @@ sprite_frames = SubResource("SpriteFrames_futsd")
 autoplay = "default"
 frame_progress = 0.19580641
 
+[node name="DetectionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+position = Vector2(0, -1.5)
+shape = SubResource("CircleShape2D_u51wi")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1.5)
 shape = SubResource("RectangleShape2D_b4w28")
+
+[connection signal="body_entered" from="DetectionArea" to="." method="OnDetectionAreaBodyEntered"]

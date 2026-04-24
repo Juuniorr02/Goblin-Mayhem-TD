@@ -1,7 +1,9 @@
 using Godot;
 
+
 public partial class Enemy : CharacterBody2D 
 {
+    [Export] public bool IsFacingLeftByDefault = false;
     [Export] public AnimatedSprite2D sprite;
     [Export] public EnemyData Data;
     [Export] public TextureProgressBar HealthBar; 
@@ -33,25 +35,30 @@ public partial class Enemy : CharacterBody2D
             ZIndex = Data.IsFlying ? 5 : 1;
     }
 
-    public override void _Process(double delta)
+public override void _Process(double delta)
+{
+    if (follow == null || path == null || finished || Data == null)
+        return;
+
+    follow.Progress += Data.Speed * (float)delta;
+
+    if (HealthBar != null && HealthBar.Visible)
     {
-        if (follow == null || path == null || finished || Data == null)
-            return;
-
-        follow.Progress += Data.Speed * (float)delta;
-
-        // Actualizamos la posición de la barra manualmente para que siga al enemigo
-        if (HealthBar != null && HealthBar.Visible)
-        {
-            HealthBar.GlobalPosition = GlobalPosition + HealthBarOffset;
-        }
-
-        Vector2 direccion = GetManualDirection(path, follow.Progress);
-        if (direccion.X > 0) sprite.FlipH = false;
-        else if (direccion.X < 0) sprite.FlipH = true;
-
-        QuitarVidaBase();
+        HealthBar.GlobalPosition = GlobalPosition + HealthBarOffset;
     }
+
+    Vector2 direccion = GetManualDirection(path, follow.Progress);
+    
+    // 2. Lógica de volteo ajustada
+    if (direccion.X != 0)
+    {
+        // Si el enemigo mira a la izquierda por defecto, invertimos la lógica del Flip
+        bool mirandoDerecha = direccion.X > 0;
+        sprite.FlipH = IsFacingLeftByDefault ? mirandoDerecha : !mirandoDerecha;
+    }
+
+    QuitarVidaBase();
+}
 
     public void TakeDamage(float amount)
     {
@@ -83,7 +90,7 @@ public partial class Enemy : CharacterBody2D
     public Vector2 GetManualDirection(Path2D path, float progress)
     {
         Curve2D curve = path.Curve;
-        return (curve.SampleBaked(progress + 1.0f) - curve.SampleBaked(progress)).Normalized();
+        return (curve.SampleBaked(progress - 1.0f) - curve.SampleBaked(progress)).Normalized();
     }
 
     private void EliminarEnemigo()

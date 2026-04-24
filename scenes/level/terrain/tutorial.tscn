@@ -1,0 +1,180 @@
+[gd_scene load_steps=40 format=3 uid="uid://4266tkarwvws"]
+
+[ext_resource type="PackedScene" uid="uid://cwqgddsegt212" path="res://assets/level/Map/tutorial.tmx" id="1_uh7en"]
+[ext_resource type="Script" uid="uid://cubvhlo0alqh1" path="res://scripts/level/terrain/Pathfinding.cs" id="2_i5iu6"]
+[ext_resource type="Script" uid="uid://ddtj2hn2hhtfd" path="res://scripts/character/enemy/EnemySpawner.cs" id="3_i0obx"]
+[ext_resource type="Resource" uid="uid://b2o41jjpwfncg" path="res://scripts/character/enemy/infoEnemy/goblinCorriente.tres" id="4_i0obx"]
+[ext_resource type="Script" uid="uid://dxi6h4dntdvec" path="res://scripts/character/enemy/EnemyGroup.cs" id="5_rb3r2"]
+[ext_resource type="Script" uid="uid://b7rcgtrq61w48" path="res://scripts/character/enemy/WaveData.cs" id="6_0fk4k"]
+[ext_resource type="Resource" uid="uid://dawwh4paoh1f2" path="res://scripts/character/enemy/infoEnemy/goblinTronco.tres" id="7_4v7t1"]
+[ext_resource type="Script" uid="uid://dlfq6grfckhot" path="res://scripts/character/tower/funcionamiento/TowerBuilder.cs" id="7_ghg0r"]
+[ext_resource type="PackedScene" uid="uid://fwle2vth706y" path="res://scenes/tower/Construir/Martillo.tscn" id="8_ae2rp"]
+[ext_resource type="Resource" uid="uid://cigq0efht168k" path="res://scripts/character/enemy/infoEnemy/goblinVolador.tres" id="8_rb3r2"]
+[ext_resource type="PackedScene" uid="uid://i7fnxkfidwjh" path="res://scenes/tower/ArcherTower/archerTower.tscn" id="9_s5e3p"]
+[ext_resource type="PackedScene" uid="uid://dd15bvxn3ddsy" path="res://scenes/tower/Tuna/tuna_hatchery.tscn" id="10_cs4yj"]
+[ext_resource type="PackedScene" uid="uid://ckc1i5qv6sle8" path="res://scenes/tower/Ballista/ballista.tscn" id="11_uqgr4"]
+[ext_resource type="PackedScene" uid="uid://ce0pn5jdtd7uu" path="res://scenes/tower/Globo/globo.tscn" id="12_bgyme"]
+[ext_resource type="PackedScene" uid="uid://ieo0rfx4mn8y" path="res://scenes/tower/Cannon/Cannon.tscn" id="13_ws8vo"]
+[ext_resource type="PackedScene" uid="uid://doxdk8ijaiqly" path="res://scenes/tower/Flamethrower/flamethrower.tscn" id="14_ud0qv"]
+[ext_resource type="PackedScene" uid="uid://bm2tdm7lsq5q3" path="res://scenes/tower/Mortero/mortero.tscn" id="15_esmyn"]
+[ext_resource type="PackedScene" uid="uid://bv6xb2o3otqu3" path="res://scenes/tower/Grifo/GrffinTower.tscn" id="16_npwsl"]
+[ext_resource type="PackedScene" uid="uid://b4kgd56vbuq80" path="res://scenes/tower/ship/ship.tscn" id="17_3d6ql"]
+[ext_resource type="PackedScene" uid="uid://cuq0at3ylsro3" path="res://scenes/tower/MageTower/mage_tower.tscn" id="18_lkiel"]
+[ext_resource type="PackedScene" uid="uid://ci612q8twcycd" path="res://scenes/ui/ui/iu.tscn" id="19_tfgrl"]
+[ext_resource type="Script" uid="uid://ccef7herjptu0" path="res://scripts/character/camera/CameraRig.cs" id="20_vak7w"]
+[ext_resource type="PackedScene" uid="uid://cor65fcesxg0a" path="res://scenes/ui/menus/menu_pausa.tscn" id="22_7ujbw"]
+[ext_resource type="PackedScene" uid="uid://dgc77kp8vuy4p" path="res://scenes/ui/menus/options_pausa.tscn" id="23_jasqh"]
+[ext_resource type="PackedScene" uid="uid://c6o5datpm682p" path="res://scenes/ui/menus/menu_victoria.tscn" id="25_4v7t1"]
+[ext_resource type="PackedScene" uid="uid://c387degtgk6i6" path="res://scenes/ui/menus/menu_derrota.tscn" id="26_rb3r2"]
+
+[sub_resource type="Resource" id="Resource_tqsr0"]
+script = ExtResource("5_rb3r2")
+EnemyType = ExtResource("4_i0obx")
+Count = 1
+Path = 1
+metadata/_custom_type_script = "uid://dxi6h4dntdvec"
+
+[sub_resource type="Resource" id="Resource_brejp"]
+script = ExtResource("6_0fk4k")
+WaveName = "1"
+Groups = Array[Object]([SubResource("Resource_tqsr0")])
+metadata/_custom_type_script = "uid://b7rcgtrq61w48"
+
+[sub_resource type="Resource" id="Resource_0fk4k"]
+script = ExtResource("5_rb3r2")
+EnemyType = ExtResource("7_4v7t1")
+Count = 1
+Path = 3
+metadata/_custom_type_script = "uid://dxi6h4dntdvec"
+
+[sub_resource type="Resource" id="Resource_ghg0r"]
+script = ExtResource("6_0fk4k")
+WaveName = "Oleada 2"
+Groups = Array[Object]([SubResource("Resource_0fk4k")])
+metadata/_custom_type_script = "uid://b7rcgtrq61w48"
+
+[sub_resource type="Resource" id="Resource_ae2rp"]
+script = ExtResource("5_rb3r2")
+EnemyType = ExtResource("8_rb3r2")
+Count = 1
+Path = 4
+metadata/_custom_type_script = "uid://dxi6h4dntdvec"
+
+[sub_resource type="Resource" id="Resource_s5e3p"]
+script = ExtResource("6_0fk4k")
+WaveName = "Oleada 3"
+Groups = Array[Object]([SubResource("Resource_ae2rp")])
+metadata/_custom_type_script = "uid://b7rcgtrq61w48"
+
+[sub_resource type="Resource" id="Resource_cs4yj"]
+script = ExtResource("5_rb3r2")
+EnemyType = ExtResource("4_i0obx")
+Count = 3
+Path = 1
+metadata/_custom_type_script = "uid://dxi6h4dntdvec"
+
+[sub_resource type="Resource" id="Resource_uqgr4"]
+script = ExtResource("5_rb3r2")
+EnemyType = ExtResource("8_rb3r2")
+Count = 3
+Path = 4
+metadata/_custom_type_script = "uid://dxi6h4dntdvec"
+
+[sub_resource type="Resource" id="Resource_bgyme"]
+script = ExtResource("5_rb3r2")
+EnemyType = ExtResource("7_4v7t1")
+Count = 3
+Path = 3
+metadata/_custom_type_script = "uid://dxi6h4dntdvec"
+
+[sub_resource type="Resource" id="Resource_ws8vo"]
+script = ExtResource("6_0fk4k")
+WaveName = "Oleada 4"
+Groups = Array[Object]([SubResource("Resource_cs4yj"), SubResource("Resource_uqgr4"), SubResource("Resource_bgyme")])
+metadata/_custom_type_script = "uid://b7rcgtrq61w48"
+
+[sub_resource type="Curve2D" id="Curve2D_gc8j5"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 8692, 3646, 0, 0, 0, 0, 6084, 2419)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_k4gji"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 9009, 3464, 0, 0, 0, 0, 6417, 2234)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_mbj1p"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 8335, 3800, 0, 0, 0, 0, 5736, 2570)
+}
+point_count = 2
+
+[node name="Tutorial" type="Node2D"]
+
+[node name="tutorial" parent="." instance=ExtResource("1_uh7en")]
+
+[node name="Pathfinding" type="Node" parent="."]
+script = ExtResource("2_i5iu6")
+
+[node name="EnemySpawner" type="Node" parent="." node_paths=PackedStringArray("CaminoA", "CaminoAcuatico", "CaminoVolador")]
+script = ExtResource("3_i0obx")
+CaminoA = NodePath("CaminoA")
+CaminoAcuatico = NodePath("CaminoAcuatico")
+CaminoVolador = NodePath("CaminoVolador")
+Waves = Array[Object]([SubResource("Resource_brejp"), SubResource("Resource_ghg0r"), SubResource("Resource_s5e3p"), SubResource("Resource_ws8vo")])
+
+[node name="CaminoA" type="Path2D" parent="EnemySpawner" groups=["enemies"]]
+curve = SubResource("Curve2D_gc8j5")
+
+[node name="CaminoAcuatico" type="Path2D" parent="EnemySpawner"]
+curve = SubResource("Curve2D_k4gji")
+
+[node name="CaminoVolador" type="Path2D" parent="EnemySpawner" groups=["Volador"]]
+curve = SubResource("Curve2D_mbj1p")
+
+[node name="EnemiesContainer" type="Node2D" parent="."]
+
+[node name="Towers" type="Node2D" parent="." node_paths=PackedStringArray("TowersParent", "EnemiesContainer")]
+script = ExtResource("7_ghg0r")
+TowersParent = NodePath(".")
+GhostTowerScene = ExtResource("8_ae2rp")
+EnemiesContainer = NodePath("../EnemiesContainer")
+TowersScenes = Dictionary[String, PackedScene]({
+"Archer": ExtResource("9_s5e3p"),
+"Atun": ExtResource("10_cs4yj"),
+"Ballista": ExtResource("11_uqgr4"),
+"Bloon": ExtResource("12_bgyme"),
+"Cannon": ExtResource("13_ws8vo"),
+"Flame": ExtResource("14_ud0qv"),
+"Mortar": ExtResource("15_esmyn"),
+"Nest": ExtResource("16_npwsl"),
+"Ship": ExtResource("17_3d6ql"),
+"Wizard": ExtResource("18_lkiel")
+})
+
+[node name="IU" parent="." node_paths=PackedStringArray("spawner") instance=ExtResource("19_tfgrl")]
+spawner = NodePath("../EnemySpawner")
+metadata/_edit_use_anchors_ = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(6763, 2515)
+zoom = Vector2(0.485, 0.485)
+limit_left = -3000
+limit_top = -3000
+limit_right = 17000
+limit_bottom = 9750
+script = ExtResource("20_vak7w")
+MoveSpeed = 1400.0
+MinZoom = 0.23
+MaxZoom = 2.0
+
+[node name="menu_pausa" parent="." instance=ExtResource("22_7ujbw")]
+
+[node name="OptionsPausa" parent="." instance=ExtResource("23_jasqh")]
+
+[node name="menu_victoria" parent="." instance=ExtResource("25_4v7t1")]
+WinningWave = 10
+
+[node name="menu_derrota" parent="." instance=ExtResource("26_rb3r2")]
