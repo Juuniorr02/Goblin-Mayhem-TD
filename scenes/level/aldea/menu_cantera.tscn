@@ -1,7 +1,8 @@
 [gd_scene load_steps=3 format=3 uid="uid://cvvcvjijhs273"]
 
 [ext_resource type="Script" uid="uid://dn4ap25p48ix" path="res://scripts/level/aldea/menu_cantera.cs" id="1_gq2m4"]
-[ext_resource type="Theme" uid="uid://cklj4cqxl38aj" path="res://assets/ui/button/Boton.tres" id="2_yl2wc"]
+
+[sub_resource type="Theme" id="Theme_2kqxc"]
 
 [node name="menu_cantera" type="CanvasLayer"]
 script = ExtResource("1_gq2m4")
@@ -42,6 +43,7 @@ theme_override_constants/margin_bottom = 5
 
 [node name="Nombre" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/PanelContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme = SubResource("Theme_2kqxc")
 text = "Cantera Nivel 1"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -54,7 +56,6 @@ vertical_alignment = 1
 [node name="Mejorar" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/PanelContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme = ExtResource("2_yl2wc")
 text = "Mejorar"
 
 [node name="Espacio3" type="MarginContainer" parent="CenterContainer/PanelContainer/MarginContainer/PanelContainer/VBoxContainer/VBoxContainer"]
@@ -67,7 +68,6 @@ theme_override_constants/margin_bottom = 5
 [node name="Volver" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/PanelContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme = ExtResource("2_yl2wc")
 text = "Volver"
 
 [node name="Espacio2" type="MarginContainer" parent="CenterContainer/PanelContainer/MarginContainer/PanelContainer/VBoxContainer/VBoxContainer"]

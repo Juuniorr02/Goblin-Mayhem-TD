@@ -15,6 +15,8 @@ public partial class MenuDerrotaTutorial : CanvasLayer
 
         ConfigurarBoton(btnSiguiente);
 
+        btnSiguiente.Pressed += OnSiguiente;
+
 		Visible = false;
     }
 
@@ -60,6 +62,8 @@ public partial class MenuDerrotaTutorial : CanvasLayer
 	{
 		QuitarPausa();
         Recursos.Instance.FirstLevelEnd();
+        Base.Instance.RepairBase();
+        Wave.Instance.ResetWaves();
     	GetTree().ChangeSceneToFile("res://scenes/level/aldea/mapa_mundi.tscn");
 	}
 }
