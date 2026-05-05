@@ -3,6 +3,8 @@ using System;
 
 public partial class mapa_mundi : Node2D
 {
+	public String nombreNivel;
+
 	private entrar_nivel entrar_nivel;
 
 	private Button btnTutorial;
@@ -17,7 +19,7 @@ public partial class mapa_mundi : Node2D
 
 		entrar_nivel.mapa_mundi = this;
 
-		btnTutorial = GetNodeOrNull<Button>("Botones/BotonTutorial");
+		btnTutorial = GetNodeOrNull<Button>("Botones/Tutorial");
 
 		ConfigurarBoton(btnTutorial);
 
@@ -33,17 +35,16 @@ public partial class mapa_mundi : Node2D
         b.MouseFilter = Control.MouseFilterEnum.Stop;
     }
 
-	private void OnTutorial()
+	public void OnTutorial()
 	{
-		GetTree().ChangeSceneToFile("res://scenes/level/terrain/tutorial.tscn");
+		if (menuAbierto) return;
+		nombreNivel = "Tutorial";
+        entrar_nivel?.Abrir();
+
+        menuAbierto = true;
 	}
 
-	private void AbrirMenu()
-	{
-		menuAbierto = true;
-	}
-
-	private void CerrarMenu()
+	public void CerrarMenu()
 	{
 		menuAbierto = false;
 	}

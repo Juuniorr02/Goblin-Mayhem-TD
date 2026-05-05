@@ -1,0 +1,24 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://cklj4cqxl38aj"]
+
+[ext_resource type="Texture2D" uid="uid://c3dpqhph6aylu" path="res://assets/ui/button/BotonHighlight.png" id="1_gic1a"]
+[ext_resource type="Texture2D" uid="uid://edsve3q4mljo" path="res://assets/ui/button/Boton-Sheet.png" id="2_k0oph"]
+[ext_resource type="Texture2D" uid="uid://c2vac87k0gacy" path="res://assets/ui/button/BotonPressedt.png" id="3_76hoq"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sj6fy"]
+texture = ExtResource("1_gic1a")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m1mpr"]
+texture = ExtResource("2_k0oph")
+expand_margin_left = 7.0
+expand_margin_right = 5.0
+expand_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uylgu"]
+texture = ExtResource("3_76hoq")
+
+[resource]
+Button/styles/hover = SubResource("StyleBoxTexture_sj6fy")
+Button/styles/normal = SubResource("StyleBoxTexture_m1mpr")
+Button/styles/pressed = SubResource("StyleBoxTexture_uylgu")
+CheckBox/icons/checked = null
+CheckBox/icons/unchecked = null
