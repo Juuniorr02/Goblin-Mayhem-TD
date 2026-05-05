@@ -40,19 +40,14 @@ public partial class TowerBuilder : Node2D
 
     private void SetupButtons()
     {
-        // Buscamos todos los botones en la escena que estén en el grupo "botones_torres"
         var botones = GetTree().GetNodesInGroup("botones_torres");
         
         foreach (Node nodo in botones)
         {
-            if (nodo is BaseButton btn) // BaseButton cubre Button y TextureButton
+            if (nodo is BaseButton btn)
             {
-                // Limpiamos conexiones previas para evitar duplicados
-                if (btn.IsConnected(BaseButton.SignalName.Pressed, Callable.From(() => SelectTower(btn.Name))))
-                    continue;
-
                 btn.Pressed += () => {
-                    GD.Print("Botón presionado: " + btn.Name); // Para depuración
+                    GD.Print("Botón presionado: " + btn.Name);
                     SelectTower(btn.Name);
                 };
             }
@@ -62,7 +57,6 @@ public partial class TowerBuilder : Node2D
     public void SelectTower(string towerName)
     {
         currentTowerName = towerName;
-        // Importante: Esto debe coincidir exactamente con el nombre del nodo en el Inspector
         isDeconstructing = (towerName == "Borrar");
 
         if (ghostInstance == null) return;
@@ -75,27 +69,43 @@ public partial class TowerBuilder : Node2D
 
         ghostInstance.Visible = true;
         
+        // Intentamos obtener el script de dibujo del rango en el Ghost
+        // Si tu nodo se llama de otra forma en la escena Ghost, cámbialo aquí
+        var visualRango = ghostInstance.GetNodeOrNull<Martillo>("Martillo") 
+                          ?? ghostInstance as Martillo;
+
         if (isDeconstructing)
         {
-            GD.Print("Modo desmantelar activado");
-            if (ghostInstance.HasMethod("UpdateRangeVisual"))
-                ghostInstance.Call("UpdateRangeVisual", 0, 0);
+            visualRango?.UpdateRangeVisual(0);
             return;
         }
 
         if (TowersScenes.TryGetValue(towerName, out PackedScene towerScene))
         {
             var dummyTower = towerScene.Instantiate<Node2D>();
-            float rangeX = 0; float rangeY = 0;
-            var area = dummyTower.GetNodeOrNull<Area2D>("DetectionRange") ?? dummyTower.GetNodeOrNull<Area2D>("detectionRange");
+            float finalRange = 0;
+
+            var area = dummyTower.GetNodeOrNull<Area2D>("DetectionRange") 
+                       ?? dummyTower.GetNodeOrNull<Area2D>("detectionRange");
+            
             var collision = area?.GetNodeOrNull<CollisionShape2D>("CollisionShape2D");
+
             if (collision != null && collision.Shape is CircleShape2D circle) 
             {
-                rangeX = circle.Radius * collision.Scale.X * area.Scale.X;
-                rangeY = circle.Radius * collision.Scale.Y * area.Scale.Y;
+                // Solo necesitamos el radio base, Martillo.cs hará el óvalo
+                finalRange = circle.Radius * collision.Scale.X * area.Scale.X;
             }
-            if (ghostInstance.HasMethod("UpdateRangeVisual"))
-                ghostInstance.Call("UpdateRangeVisual", rangeX, rangeY);
+
+            if (visualRango != null)
+            {
+                visualRango.UpdateRangeVisual(finalRange);
+            }
+            else
+            {
+                // Backup por si el script está en la raíz del Ghost
+                ghostInstance.Call("UpdateRangeVisual", finalRange);
+            }
+
             dummyTower.QueueFree();
         }
     }
@@ -112,7 +122,6 @@ public partial class TowerBuilder : Node2D
 
         if (isDeconstructing)
         {
-            // Cambia el color del fantasma a rojo si detecta una torre en esa posición
             ghostInstance.Modulate = occupiedTiles.ContainsKey(tilePos) 
                 ? new Color(1, 0, 0, 0.8f) 
                 : new Color(1, 1, 1, 0.4f);
@@ -157,7 +166,6 @@ public partial class TowerBuilder : Node2D
         {
             if (occupiedTiles.TryGetValue(tilePos, out Node2D towerToDestroy))
             {
-                GD.Print("Borrando torre en " + tilePos);
                 towerToDestroy.QueueFree();
                 Recursos.Instance.DevolverRecuros();
                 occupiedTiles.Remove(tilePos);

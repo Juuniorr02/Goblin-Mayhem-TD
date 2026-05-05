@@ -1,10 +1,11 @@
-[gd_scene load_steps=28 format=3 uid="uid://bvj23ok4pqai6"]
+[gd_scene load_steps=31 format=3 uid="uid://bvj23ok4pqai6"]
 
 [ext_resource type="PackedScene" uid="uid://bxah54x2mw4ix" path="res://assets/level/Map/level1.tmx" id="1_obe7s"]
 [ext_resource type="Script" uid="uid://cubvhlo0alqh1" path="res://scripts/level/terrain/Pathfinding.cs" id="2_d0a6p"]
 [ext_resource type="Script" uid="uid://ddtj2hn2hhtfd" path="res://scripts/character/enemy/EnemySpawner.cs" id="3_nvdl1"]
 [ext_resource type="Resource" uid="uid://7lteypp1glo" path="res://scripts/character/enemy/infoEnemy/golem.tres" id="4_8dopk"]
 [ext_resource type="Script" uid="uid://dxi6h4dntdvec" path="res://scripts/character/enemy/EnemyGroup.cs" id="5_xjvah"]
+[ext_resource type="Resource" uid="uid://cebfhs3cyuxe4" path="res://scripts/character/enemy/infoEnemy/wyvern.tres" id="6_8dopk"]
 [ext_resource type="Script" uid="uid://b7rcgtrq61w48" path="res://scripts/character/enemy/WaveData.cs" id="6_ev6gv"]
 [ext_resource type="Script" uid="uid://dlfq6grfckhot" path="res://scripts/character/tower/funcionamiento/TowerBuilder.cs" id="7_vlvyd"]
 [ext_resource type="PackedScene" uid="uid://fwle2vth706y" path="res://scenes/tower/Construir/Martillo.tscn" id="8_pjnpp"]
@@ -22,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://dd15bvxn3ddsy" path="res://scenes/tower/Tuna/tuna_hatchery.tscn" id="18_nvdl1"]
 [ext_resource type="PackedScene" uid="uid://cor65fcesxg0a" path="res://scenes/ui/menus/menu_pausa.tscn" id="20_j2s0a"]
 [ext_resource type="PackedScene" uid="uid://dgc77kp8vuy4p" path="res://scenes/ui/menus/options_pausa.tscn" id="21_uk6l5"]
+[ext_resource type="PackedScene" uid="uid://di2gid6004846" path="res://scenes/ui/menus/menu_derrota_tutorial.tscn" id="24_xjvah"]
 
 [sub_resource type="Resource" id="Resource_tqsr0"]
 script = ExtResource("5_xjvah")
@@ -29,10 +31,16 @@ EnemyType = ExtResource("4_8dopk")
 Path = 1
 metadata/_custom_type_script = "uid://dxi6h4dntdvec"
 
+[sub_resource type="Resource" id="Resource_ev6gv"]
+script = ExtResource("5_xjvah")
+EnemyType = ExtResource("6_8dopk")
+Count = 100
+metadata/_custom_type_script = "uid://dxi6h4dntdvec"
+
 [sub_resource type="Resource" id="Resource_brejp"]
 script = ExtResource("6_ev6gv")
 WaveName = "1"
-Groups = Array[Object]([SubResource("Resource_tqsr0")])
+Groups = Array[Object]([SubResource("Resource_tqsr0"), SubResource("Resource_ev6gv")])
 metadata/_custom_type_script = "uid://b7rcgtrq61w48"
 
 [sub_resource type="Curve2D" id="Curve2D_w02j3"]
@@ -114,3 +122,5 @@ MaxZoom = 2.0
 [node name="menu_pausa" parent="." instance=ExtResource("20_j2s0a")]
 
 [node name="OptionsPausa" parent="." instance=ExtResource("21_uk6l5")]
+
+[node name="menu_derrota_tutorial" parent="." instance=ExtResource("24_xjvah")]
