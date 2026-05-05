@@ -94,7 +94,7 @@ public partial class menu_pausa : CanvasLayer
     {
         QuitarPausa();
         Input.MouseMode = Input.MouseModeEnum.Visible;
-        GetTree().ChangeSceneToFile("res://scenes/ui/menus/menu.tscn");
+        GetTree().ChangeSceneToFile("res://scenes/level/aldea/mapa_mundi.tscn");
     }
 
     public void QuitarPausa()

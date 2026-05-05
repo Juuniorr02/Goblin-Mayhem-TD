@@ -25,6 +25,6 @@ public partial class Uimapa : Control
 
 	private void OnAldea()
 	{
-		GetTree().ChangeSceneToFile("res://scenes/level/aldea/Aldea.tscn");
+		GetTree().ChangeSceneToFile("res://scenes/level/aldea/aldea.tscn");
 	}
 }
