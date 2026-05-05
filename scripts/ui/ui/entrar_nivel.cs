@@ -53,6 +53,32 @@ public partial class entrar_nivel : CanvasLayer
 		{
 			Nombre.Text = "Tutorial";
 		}
+
+		if(mapa_mundi.nombreNivel == "Montana1")
+		{
+			Nombre.Text = "Montaña 1";
+		}
+
+		if(mapa_mundi.nombreNivel == "Pantano1")
+		{
+			Nombre.Text = "Pantano 1";
+		}
+
+		if(mapa_mundi.nombreNivel == "Pantano2")
+		{
+			Nombre.Text = " No implementado ";
+		}
+
+		if(mapa_mundi.nombreNivel == "Islas1")
+		{
+			Nombre.Text = "Islas 1";
+		}
+
+		if(mapa_mundi.nombreNivel == "Castillo Malvado")
+		{
+			Nombre.Text = "Castillo Malvado";
+		}
+
 		isPaused = true;
         GetTree().Paused = true;
         Visible = true;
@@ -64,11 +90,45 @@ public partial class entrar_nivel : CanvasLayer
         GetTree().Paused = false;
 		mapa_mundi.CerrarMenu();
         Visible = false;
-		GetTree().ChangeSceneToFile("res://scenes/level/terrain/tutorial.tscn");
+		if(mapa_mundi.nombreNivel == "Tutorial")
+		{
+			Recursos.Instance.StartLevel();
+			GetTree().ChangeSceneToFile("res://scenes/level/terrain/tutorial.tscn");
+		}
+
+		if(mapa_mundi.nombreNivel == "Montana1")
+		{
+			Recursos.Instance.StartLevel();
+			GetTree().ChangeSceneToFile("res://scenes/level/terrain/montana1.tscn");
+		}
+
+		if(mapa_mundi.nombreNivel == "Pantano1")
+		{
+			Recursos.Instance.StartLevel();
+			GetTree().ChangeSceneToFile("res://scenes/level/terrain/pantano1.tscn");
+		}
+
+		if(mapa_mundi.nombreNivel == "Pantano2")
+		{
+			btnEntrar.Disabled = true;
+		}
+
+		if(mapa_mundi.nombreNivel == "Islas1")
+		{
+			Recursos.Instance.StartLevel();
+			GetTree().ChangeSceneToFile("res://scenes/level/terrain/islas1.tscn");
+		}
+
+		if(mapa_mundi.nombreNivel == "Castillo Malvado")
+		{
+			Recursos.Instance.StartLevel();
+			GetTree().ChangeSceneToFile("res://scenes/level/terrain/castillo_malvado.tscn");
+		}
 	}
 
 	private void OnVolver()
 	{
+		btnEntrar.Disabled = false;
 		isPaused = false;
         GetTree().Paused = false;
 		mapa_mundi.CerrarMenu();

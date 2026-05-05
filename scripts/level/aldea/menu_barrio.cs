@@ -65,6 +65,6 @@ public partial class menu_barrio : CanvasLayer
 
 	public void OnMejorar()
 	{
-		GD.Print("Mejorar Ayuntamiento");
+		btnMejorar.Disabled = true;
 	}
 }

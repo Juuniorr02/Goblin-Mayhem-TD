@@ -12,10 +12,10 @@ public partial class Recursos : Node
     public int Stone;
     public int Iron;
 
-    public int BaseGold = 1000;
-    public int BaseWood = 1000;
-    public int BaseStone = 1000;
-    public int BaseIron = 1000;
+    public int BaseGold = 100;
+    public int BaseWood = 50;
+    public int BaseStone = 0;
+    public int BaseIron = 0;
 
     public int ProdGold { get; set; }
     public int ProdWood { get; set; }

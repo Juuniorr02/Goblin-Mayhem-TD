@@ -89,7 +89,7 @@ public partial class MenuDerrota : CanvasLayer
 
     	QuitarPausa();
     	Input.MouseMode = Input.MouseModeEnum.Visible;
-    	GetTree().ChangeSceneToFile("res://scenes/ui/menus/menu.tscn");
+    	GetTree().ChangeSceneToFile("res://scenes/level/aldea/mapa_mundi.tscn");
 	}
 
 	private async void OnCargar()
