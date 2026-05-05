@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://6wmhfodnhdx"]
+[gd_scene load_steps=2 format=3 uid="uid://6wmhfodnhdx"]
 
 [ext_resource type="Script" uid="uid://dgsgg6rxxb1qt" path="res://scripts/level/aldea/menu_pausa_aldea.cs" id="1_usgnm"]
-[ext_resource type="Theme" uid="uid://cklj4cqxl38aj" path="res://assets/ui/button/Boton.tres" id="2_30vgk"]
 
 [node name="menu_pausa_aldea" type="CanvasLayer"]
 script = ExtResource("1_usgnm")
@@ -22,29 +21,24 @@ theme_override_constants/separation = 20
 
 [node name="cargar" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("2_30vgk")
 text = "Cargar partida"
 
 [node name="guardar" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("2_30vgk")
 text = "Guardar partida"
 
 [node name="opciones" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("2_30vgk")
 text = "Opciones"
 
 [node name="salir" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("2_30vgk")
 text = "Volver"
 
 [node name="volver" type="Button" parent="CenterContainer/VBoxContainer"]
 z_index = 10
 texture_filter = 1
 layout_mode = 2
-theme = ExtResource("2_30vgk")
 action_mode = 0
 text = "Salir al menu"
 icon_alignment = 1

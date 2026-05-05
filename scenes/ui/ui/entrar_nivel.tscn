@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://21c5lfn8rh7"]
+[gd_scene load_steps=0 format=3 uid="uid://21c5lfn8rh7"]
 
 [node name="entrar_nivel" type="CanvasLayer"]
 

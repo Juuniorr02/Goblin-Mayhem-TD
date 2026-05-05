@@ -300,6 +300,7 @@ text = "Invertir Y"
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_stretch_ratio = 0.4
+theme = ExtResource("2_ckoul")
 
 [node name="Espacio3" type="MarginContainer" parent="CenterContainer/PanelContainer/MarginContainer/PanelContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2

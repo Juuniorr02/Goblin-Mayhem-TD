@@ -3,31 +3,39 @@ using Godot;
 public partial class Martillo : Sprite2D
 {
     private float _radiusX = 0f;
-    private float _radiusY = 0f;
+    private const float IsometricRatio = 0.5f;
 
-    // Ahora recibimos dos valores para el óvalo
-    public void UpdateRangeVisual(float rx, float ry)
+    // Aceptamos rx y ry para que TowerBuilder no de error, 
+    // pero calculamos el óvalo nosotros para que sea isométrico real.
+    public void UpdateRangeVisual(float rx, float ry = 0)
     {
         _radiusX = rx;
-        _radiusY = ry;
         QueueRedraw();
     }
 
     public override void _Draw()
     {
-        if (_radiusX > 0 && _radiusY > 0)
-        {
-            Color color = Modulate;
-            color.A = 0.3f;
+        if (_radiusX <= 0) return;
 
-            float ratio = _radiusY / _radiusX;
-            
-            DrawSetTransform(Vector2.Zero, 0, new Vector2(1.0f, ratio));
-            
-            DrawCircle(Vector2.Zero, _radiusX, color);
-            DrawArc(Vector2.Zero, _radiusX, 0, Mathf.Tau, 64, color, 2.0f / (1.0f/ratio), true);
-            
-            DrawSetTransform(Vector2.Zero, 0, Vector2.One);
+        Color fill = Modulate; fill.A = 0.3f;
+        Color line = Modulate; line.A = 0.7f;
+
+        int puntos = 64;
+        Vector2[] vertices = new Vector2[puntos];
+        
+        for (int i = 0; i < puntos; i++)
+        {
+            float angle = i * Mathf.Tau / puntos;
+            vertices[i] = new Vector2(
+                Mathf.Cos(angle) * _radiusX,
+                Mathf.Sin(angle) * (_radiusX * IsometricRatio)
+            );
+        }
+
+        DrawPolygon(vertices, new Color[] { fill });
+        for (int i = 0; i < puntos; i++)
+        {
+            DrawLine(vertices[i], vertices[(i + 1) % puntos], line, 2.0f, true);
         }
     }
 }
