@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dyk56b112rm25"]
+[gd_scene load_steps=6 format=3 uid="uid://dyk56b112rm25"]
 
 [ext_resource type="Script" uid="uid://deqhjodx3dnr4" path="res://scripts/ui/ui/DialogueUI.cs" id="1_nvw71"]
 [ext_resource type="Texture2D" uid="uid://hslwtu7o6888" path="res://assets/character/hero/Personajetutorial-Sheet.png" id="2_pgeo8"]
+[ext_resource type="Texture2D" uid="uid://c2vac87k0gacy" path="res://assets/ui/button/BotonPressedt.png" id="3_pgeo8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o4ahw"]
 atlas = ExtResource("2_pgeo8")
@@ -23,7 +24,7 @@ layer = 11
 script = ExtResource("1_nvw71")
 textLabel = NodePath("MainContainer/TextBoxContainer/TextMargin/VBoxContainer/DialogueTextLabel")
 nameLabel = NodePath("MainContainer/TextBoxContainer/TextMargin/VBoxContainer/NameLabel")
-portrait = NodePath("MainContainer/CharacterAnchor/AnimatedSprite2D")
+portrait = NodePath("MainContainer/TextBoxContainer/CharacterAnchor/AnimatedSprite2D")
 
 [node name="MainContainer" type="Control" parent="."]
 layout_mode = 3
@@ -33,21 +34,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CharacterAnchor" type="Control" parent="MainContainer"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 49.0
-offset_top = 56.0
-offset_right = 49.0
-offset_bottom = 56.0
-grow_vertical = 2
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MainContainer/CharacterAnchor"]
-texture_filter = 1
-sprite_frames = SubResource("SpriteFrames_cakc5")
-
 [node name="TextBoxContainer" type="MarginContainer" parent="MainContainer"]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 1
@@ -55,7 +41,7 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -27.0
+offset_top = -67.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/margin_left = 20
@@ -63,8 +49,20 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="BoxBG" type="NinePatchRect" parent="MainContainer/TextBoxContainer"]
+[node name="CharacterAnchor" type="Control" parent="MainContainer/TextBoxContainer"]
 layout_mode = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MainContainer/TextBoxContainer/CharacterAnchor"]
+texture_filter = 1
+position = Vector2(14.835, -8.615)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_cakc5")
+offset = Vector2(47, -43)
+
+[node name="BoxBG" type="NinePatchRect" parent="MainContainer/TextBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("3_pgeo8")
 
 [node name="TextMargin" type="MarginContainer" parent="MainContainer/TextBoxContainer"]
 layout_mode = 2
@@ -80,6 +78,7 @@ layout_mode = 2
 size_flags_vertical = 3
 bbcode_enabled = true
 text = "Me da pereza hacer esto"
+horizontal_alignment = 1
 
 [node name="Indicator" type="TextureRect" parent="MainContainer/TextBoxContainer"]
 layout_mode = 2
