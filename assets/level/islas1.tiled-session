@@ -1,8 +1,8 @@
 {
-    "activeFile": "Map/islas1.tmx",
+    "activeFile": "Map/mapa_mundi.tmx",
     "expandedProjectPaths": [
-        ".",
-        "Map"
+        "Map",
+        "."
     ],
     "file.lastUsedOpenFilter": "Todos los archivos (*)",
     "fileStates": {
@@ -60,11 +60,11 @@
             }
         },
         "Map/mapa_mundi.tmx": {
-            "scale": 0.0625,
-            "selectedLayer": 2,
+            "scale": 0.25,
+            "selectedLayer": 3,
             "viewCenter": {
-                "x": 7504,
-                "y": 3288
+                "x": 6898,
+                "y": 5836
             }
         },
         "Map/pantano.tmx": {
@@ -74,20 +74,27 @@
                 "x": 6964.522417153997,
                 "y": 3304.3794671864844
             }
+        },
+        "Map/tutorial.tmx": {
+            "scale": 0.08292025862068965,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 6964.522417153997,
+                "y": 3304.3794671864844
+            }
         }
     },
     "openFiles": [
-        "Map/mapa_mundi.tmx",
         "Map/Example.tsx",
-        "Map/islas1.tmx"
+        "Map/mapa_mundi.tmx"
     ],
     "project": "islas1.tiled-project",
     "property.type": "bool",
     "recentFiles": [
-        "Map/level1.tmx",
-        "Map/mapa_mundi.tmx",
-        "Map/islas1.tmx",
         "Map/Example.tsx",
+        "Map/mapa_mundi.tmx",
+        "Map/level1.tmx",
+        "Map/islas1.tmx",
         "Map/aldea - copia.tmx",
         "Map/pantano.tmx",
         "Map/mapa1.tmx",
