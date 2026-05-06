@@ -92,20 +92,40 @@ public partial class entrar_nivel : CanvasLayer
         Visible = false;
 		if(mapa_mundi.nombreNivel == "Tutorial")
 		{
+			btnEntrar.Disabled = false;
 			Recursos.Instance.StartLevel();
+			Wave.Instance.ResetWaves();
 			GetTree().ChangeSceneToFile("res://scenes/level/terrain/tutorial.tscn");
 		}
 
 		if(mapa_mundi.nombreNivel == "Montana1")
 		{
-			Recursos.Instance.StartLevel();
-			GetTree().ChangeSceneToFile("res://scenes/level/terrain/montana1.tscn");
+			if(GameData.Level2 == true)
+			{
+				btnEntrar.Disabled = false;
+				Recursos.Instance.StartLevel();
+				Wave.Instance.ResetWaves();
+				GetTree().ChangeSceneToFile("res://scenes/level/terrain/montana1.tscn");
+			}
+			else
+			{
+				btnEntrar.Disabled = true;
+			}
 		}
 
 		if(mapa_mundi.nombreNivel == "Pantano1")
 		{
-			Recursos.Instance.StartLevel();
-			GetTree().ChangeSceneToFile("res://scenes/level/terrain/pantano1.tscn");
+			if(GameData.Level3 == true)
+			{
+				btnEntrar.Disabled = false;
+				Recursos.Instance.StartLevel();
+				Wave.Instance.ResetWaves();
+				GetTree().ChangeSceneToFile("res://scenes/level/terrain/pantano1.tscn");
+			}
+			else
+			{
+				btnEntrar.Disabled = true;
+			}
 		}
 
 		if(mapa_mundi.nombreNivel == "Pantano2")
@@ -115,14 +135,32 @@ public partial class entrar_nivel : CanvasLayer
 
 		if(mapa_mundi.nombreNivel == "Islas1")
 		{
-			Recursos.Instance.StartLevel();
-			GetTree().ChangeSceneToFile("res://scenes/level/terrain/islas1.tscn");
+			if(GameData.Level4 == true)
+			{
+				btnEntrar.Disabled = false;
+				Recursos.Instance.StartLevel();
+				Wave.Instance.ResetWaves();
+				GetTree().ChangeSceneToFile("res://scenes/level/terrain/islas1.tscn");
+			}
+			else
+			{
+				btnEntrar.Disabled = true;
+			}		
 		}
 
 		if(mapa_mundi.nombreNivel == "Castillo Malvado")
 		{
-			Recursos.Instance.StartLevel();
-			GetTree().ChangeSceneToFile("res://scenes/level/terrain/castillo_malvado.tscn");
+			if(GameData.Level5 == true)
+			{
+				btnEntrar.Disabled = false;
+				Recursos.Instance.StartLevel();
+				Wave.Instance.ResetWaves();
+				GetTree().ChangeSceneToFile("res://scenes/level/terrain/castillo_malvado.tscn");
+			}
+			else
+			{
+				btnEntrar.Disabled = true;
+			}
 		}
 	}
 

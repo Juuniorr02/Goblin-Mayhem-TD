@@ -3,15 +3,18 @@ using System.Threading.Tasks;
 
 public partial class SaveSystem : Node
 {
+    public static SaveSystem Instance;
     private const string SavePath = "user://save.json";
 
     public void SaveGame()
     {
         var data = new Godot.Collections.Dictionary();
 
+        // Escena actual
         data["scene"] = GetTree().CurrentScene.SceneFilePath;
 
-        var cam = GetTree().GetFirstNodeInGroup("camera") as Node3D;
+        // Cámara
+        var cam = GetTree().GetFirstNodeInGroup("camera") as Camera3D;
         if (cam != null)
         {
             data["camera_pos"] = new Godot.Collections.Dictionary
@@ -20,32 +23,16 @@ public partial class SaveSystem : Node
                 { "y", cam.GlobalPosition.Y },
                 { "z", cam.GlobalPosition.Z }
             };
+
+            data["camera_zoom"] = cam.Size;
         }
 
-        var towersData = new Godot.Collections.Array();
-
-        var towersNode = GetTree().CurrentScene.GetNodeOrNull<Node>("Towers");
-
-        if (towersNode != null)
-        {
-            foreach (Node child in towersNode.GetChildren())
-            {
-                if (child is Node3D tower)
-                {
-                    var towerInfo = new Godot.Collections.Dictionary
-                    {
-                        { "scene", tower.SceneFilePath },
-                        { "x", tower.GlobalPosition.X },
-                        { "y", tower.GlobalPosition.Y },
-                        { "z", tower.GlobalPosition.Z }
-                    };
-
-                    towersData.Add(towerInfo);
-                }
-            }
-        }
-
-        data["towers"] = towersData;
+        // Progreso (booleanos)
+        data["level1"] = GameData.Level1;
+        data["level2"] = GameData.Level2;
+        data["level3"] = GameData.Level3;
+        data["level4"] = GameData.Level4;
+        data["level5"] = GameData.Level5;
 
         var json = Json.Stringify(data);
 
@@ -57,6 +44,8 @@ public partial class SaveSystem : Node
 
     public async Task LoadGame()
     {
+        Recursos.Instance.StartLevel();
+        Wave.Instance.ResetWaves();
         if (!FileAccess.FileExists(SavePath))
         {
             GD.Print("❌ no hay save");
@@ -67,7 +56,6 @@ public partial class SaveSystem : Node
         var json = file.GetAsText();
 
         var parser = new Json();
-
         if (parser.Parse(json) != Error.Ok)
         {
             GD.PrintErr("❌ save corrupto");
@@ -76,6 +64,7 @@ public partial class SaveSystem : Node
 
         var data = parser.Data.AsGodotDictionary();
 
+        // Cambiar escena
         string scene = data["scene"].AsString();
 
         if (GetTree().ChangeSceneToFile(scene) != Error.Ok)
@@ -86,7 +75,8 @@ public partial class SaveSystem : Node
 
         await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
 
-        var cam = GetTree().GetFirstNodeInGroup("camera") as Node3D;
+        // Restaurar cámara
+        var cam = GetTree().GetFirstNodeInGroup("camera") as Camera3D;
 
         if (cam != null && data.ContainsKey("camera_pos"))
         {
@@ -99,28 +89,31 @@ public partial class SaveSystem : Node
             );
         }
 
-        if (data.ContainsKey("towers"))
+        if (cam != null && data.ContainsKey("camera_zoom"))
         {
-            var towersNode = GetTree().CurrentScene.GetNodeOrNull<Node>("Towers");
-            var towers = data["towers"].AsGodotArray();
-
-            foreach (Godot.Collections.Dictionary tower in towers)
-            {
-                string scenePath = tower["scene"].AsString();
-
-                var packed = GD.Load<PackedScene>(scenePath);
-                var instance = packed.Instantiate<Node3D>();
-
-                instance.GlobalPosition = new Vector3(
-                    (float)tower["x"],
-                    (float)tower["y"],
-                    (float)tower["z"]
-                );
-
-                towersNode.AddChild(instance);
-            }
+            cam.Size = (float)data["camera_zoom"];
         }
 
+        // 🔥 Restaurar progreso (SOBREESCRIBE valores)
+        if (data.ContainsKey("level1"))
+            GameData.Level1 = (bool)data["level1"];
+
+        if (data.ContainsKey("level2"))
+            GameData.Level2 = (bool)data["level2"];
+
+        if (data.ContainsKey("level3"))
+            GameData.Level3 = (bool)data["level3"];
+
+        if (data.ContainsKey("level4"))
+            GameData.Level4 = (bool)data["level4"];
+
+        if (data.ContainsKey("level5"))
+            GameData.Level5 = (bool)data["level5"];
+
         GD.Print("✅ partida cargada");
+    }
+        public override void _Ready()
+    {
+        Instance = this;
     }
 }

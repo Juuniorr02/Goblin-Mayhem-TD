@@ -212,7 +212,7 @@ public partial class OptionsController : Control
 
         // Guardar configuración
         SaveConfig(width, height, mode, calidad, volume, sfx, musica, sensibilidad, invertirY);
-        GetTree().ChangeSceneToFile("res://scenes/ui/Menu.tscn");
+        GetTree().ChangeSceneToFile("res://scenes/ui/menus/Menu.tscn");
     }
 
     private void OnBack()

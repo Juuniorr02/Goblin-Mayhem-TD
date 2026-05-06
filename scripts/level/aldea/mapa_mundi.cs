@@ -14,7 +14,19 @@ public partial class mapa_mundi : Node2D
 	private Button btnIslas1;
 	private Button btnCastilloMalvado;
 
+	private AnimatedSprite2D spriteTutorial;
+	private AnimatedSprite2D spriteMontana1;
+	private AnimatedSprite2D spritePantano1;
+	private AnimatedSprite2D spritePantano2;
+	private AnimatedSprite2D spriteIslas1;
+	private AnimatedSprite2D spriteCastilloMalvado;
+
 	private bool menuAbierto = false;
+
+	public override void _Process(double delta)
+	{
+    	ActualizarMapa();
+	}
 	
 	public override void _Ready()
 	{
@@ -30,6 +42,13 @@ public partial class mapa_mundi : Node2D
 		btnPantano2 = GetNodeOrNull<Button>("Botones/Pantano2");
 		btnIslas1 = GetNodeOrNull<Button>("Botones/Islas1");
 		btnCastilloMalvado = GetNodeOrNull<Button>("Botones/Castillo Malvado");
+
+		spriteTutorial = GetNodeOrNull<AnimatedSprite2D>("Botones/Tutorial/Tutorial");
+		spriteMontana1 = GetNodeOrNull<AnimatedSprite2D>("Botones/Montana1/Montana1");
+		spritePantano1 = GetNodeOrNull<AnimatedSprite2D>("Botones/Pantano1/Pantano1");
+		spritePantano2 = GetNodeOrNull<AnimatedSprite2D>("Botones/Pantano2/Pantano2");
+		spriteIslas1 = GetNodeOrNull<AnimatedSprite2D>("Botones/Islas1/Islas1");
+		spriteCastilloMalvado = GetNodeOrNull<AnimatedSprite2D>("Botones/Castillo Malvado/Castillo Malvado");
 
 		ConfigurarBoton(btnTutorial);
 		ConfigurarBoton(btnMontana1);
@@ -123,4 +142,26 @@ public partial class mapa_mundi : Node2D
 	{
 		menuAbierto = false;
 	}
+
+	private void ActualizarMapa()
+	{
+    	if (GameData.Level1)
+		{
+    		spriteTutorial?.Play("completado");
+		}
+		else
+		{
+    		spriteTutorial?.Play("desbloqueado");
+		}
+
+    	spriteMontana1?.Play(GameData.Level2 ? (GameData.Level3 ? "completado" : "desbloqueado") : "bloqueado");
+
+    	spritePantano1?.Play(GameData.Level3 ? (GameData.Level4 ? "completado" : "desbloqueado") : "bloqueado");
+
+    	/*spritePantano2?.Play(GameData.Level3 ? (GameData.Level4 ? "completado" : "desbloqueado") : "bloqueado");*/
+
+    	spriteIslas1?.Play(GameData.Level4 ? (GameData.Level5 ? "completado" : "desbloqueado") : "bloqueado");
+
+    	spriteCastilloMalvado?.Play(GameData.Level5 ? "desbloqueado" : "bloqueado");
+}
 }

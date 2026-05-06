@@ -92,6 +92,8 @@ public partial class menu_pausa : CanvasLayer
 
 	private void Salir()
     {
+        Recursos.Instance.StartLevel();
+        Wave.Instance.ResetWaves();
         QuitarPausa();
         Input.MouseMode = Input.MouseModeEnum.Visible;
         GetTree().ChangeSceneToFile("res://scenes/level/aldea/mapa_mundi.tscn");
