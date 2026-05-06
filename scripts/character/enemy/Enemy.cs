@@ -1,25 +1,31 @@
 using Godot;
 
-
 public partial class Enemy : CharacterBody2D 
 {
     [Export] public bool IsFacingLeftByDefault = false;
     [Export] public AnimatedSprite2D sprite;
     [Export] public EnemyData Data;
     [Export] public TextureProgressBar HealthBar; 
-    [Export] public Vector2 HealthBarOffset = new Vector2(-50, -60); // Ajusta esto para centrarla
+    [Export] public Vector2 HealthBarOffset = new Vector2(-50, -60);
 
     private PathFollow2D follow;
     private Path2D path;
     private bool finished = false;
 
-    [Export] public float Health = 50f;
+    private float Health;
     private float maxHealth;
 
     public override void _Ready()
     {
         follow = GetParent<PathFollow2D>();
         path = follow?.GetParent<Path2D>();
+
+        if (Data != null)
+        {
+            Health = Data.Health;
+            ZIndex = Data.IsFlying ? 5 : 1;
+        }
+        
         maxHealth = Health;
 
         if (HealthBar != null)
@@ -27,38 +33,33 @@ public partial class Enemy : CharacterBody2D
             HealthBar.MaxValue = maxHealth;
             HealthBar.Value = Health;
             HealthBar.Visible = false;
-            HealthBar.TopLevel = true; // Forzamos que ignore escalas del padre
+            HealthBar.TopLevel = true; 
             HealthBar.ZIndex = 100;
         }
-
-        if (Data != null)
-            ZIndex = Data.IsFlying ? 5 : 1;
     }
 
-public override void _Process(double delta)
-{
-    if (follow == null || path == null || finished || Data == null)
-        return;
-
-    follow.Progress += Data.Speed * (float)delta;
-
-    if (HealthBar != null && HealthBar.Visible)
+    public override void _Process(double delta)
     {
-        HealthBar.GlobalPosition = GlobalPosition + HealthBarOffset;
-    }
+        if (follow == null || path == null || finished || Data == null)
+            return;
 
-    Vector2 direccion = GetManualDirection(path, follow.Progress);
-    
-    // 2. Lógica de volteo ajustada
-    if (direccion.X != 0)
-    {
-        // Si el enemigo mira a la izquierda por defecto, invertimos la lógica del Flip
-        bool mirandoDerecha = direccion.X > 0;
-        sprite.FlipH = IsFacingLeftByDefault ? mirandoDerecha : !mirandoDerecha;
-    }
+        follow.Progress += Data.Speed * (float)delta;
 
-    QuitarVidaBase();
-}
+        if (HealthBar != null && HealthBar.Visible)
+        {
+            HealthBar.GlobalPosition = GlobalPosition + HealthBarOffset;
+        }
+
+        Vector2 direccion = GetManualDirection(path, follow.Progress);
+        
+        if (direccion.X != 0)
+        {
+            bool mirandoDerecha = direccion.X > 0;
+            sprite.FlipH = IsFacingLeftByDefault ? mirandoDerecha : !mirandoDerecha;
+        }
+
+        QuitarVidaBase();
+    }
 
     public void TakeDamage(float amount)
     {

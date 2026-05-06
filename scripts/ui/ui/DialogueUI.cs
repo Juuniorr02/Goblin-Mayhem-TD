@@ -1,43 +1,81 @@
-using Godot;
+	using Godot;
+using System;
 
 public partial class DialogueUI : CanvasLayer
 {
-	[Export] public RichTextLabel textLabel;
-	[Export] public Label nameLabel;
-	[Export] public AnimatedSprite2D portrait;
+    [Export] public RichTextLabel textLabel;
+    [Export] public Label nameLabel;
+    [Export] public AnimatedSprite2D portrait;
 
-	// Variables para el diálogo inicial (puedes cambiarlas desde el Inspector)
-	[Export] public string InitialName = "Caballero Errante";
-	[Export] public string InitialText = "¡Hola! Bienvenido a esta escena.";
-	[Export] public string InitialAnim = "default";
+    [Export] public string[] dialogueLines = new string[] {
+        "¡Los goblins se acercan! Debemos proteger la aldea.",
+        "Necesitamos defensas. Mira ese camino, por ahí intentarán cruzar.",
+        "Selecciona una torre y colócala cerca del camino.",
+        "¡Aquí vienen! ¡No dejes que pasen!"
+    };
 
-	public override void _Ready()
-	{
-	GD.Print("Iniciando Diálogo...");
-	Visible = true; // Forzamos visibilidad del contenedor
-	ShowDialogue(InitialName, InitialText, InitialAnim);
-	}
+    private int _currentLine = 0;
+    private bool _isWriting = false;
+    private Tween _tween;
 
-	public void ShowDialogue(string characterName, string text, string animation = "default")
-	{
-		if (nameLabel != null) nameLabel.Text = characterName;
-		
-		if (textLabel != null)
-		{
-			textLabel.Text = text;
-			textLabel.VisibleRatio = 0; // Ocultamos el texto al inicio
-			
-			// Creamos el efecto de máquina de escribir
-			var tween = CreateTween();
-			// Calculamos la duración basada en el largo del texto (ej: 0.05s por letra)
-			float duration = text.Length * 0.05f; 
-			tween.TweenProperty(textLabel, "visible_ratio", 1.0f, duration);
-		}
+    public override void _Ready()
+    {
+        // Esto mantiene la UI proporcionada en pantalla completa
+        GetTree().Root.ContentScaleMode = Window.ContentScaleModeEnum.CanvasItems;
+        GetTree().Root.ContentScaleAspect = Window.ContentScaleAspectEnum.Keep;
 
-		// Si tienes el AnimatedSprite2D configurado, reproduce la animación
-		if (portrait != null && portrait.SpriteFrames.HasAnimation(animation))
-		{
-			portrait.Play(animation);
-		}
-	}
+        Visible = true;
+        StartDialogue();
+    }
+
+    public void StartDialogue()
+    {
+        _currentLine = 0;
+        ShowCurrentLine();
+    }
+
+    public override void _Input(InputEvent @event)
+    {
+        if (@event.IsActionPressed("ui_accept"))
+        {
+            if (_isWriting)
+            {
+                _tween?.Kill();
+                if (textLabel != null) textLabel.VisibleRatio = 1.0f;
+                _isWriting = false;
+            }
+            else
+            {
+                NextLine();
+            }
+        }
+    }
+
+    private void ShowCurrentLine()
+    {
+        if (textLabel != null && _currentLine < dialogueLines.Length)
+        {
+            _isWriting = true;
+            textLabel.Text = dialogueLines[_currentLine];
+            textLabel.VisibleRatio = 0;
+
+            _tween = CreateTween();
+            float duration = textLabel.Text.Length * 0.04f;
+            _tween.TweenProperty(textLabel, "visible_ratio", 1.0f, duration);
+            _tween.Finished += () => _isWriting = false;
+        }
+    }
+
+    private void NextLine()
+    {
+        _currentLine++;
+        if (_currentLine < dialogueLines.Length)
+        {
+            ShowCurrentLine();
+        }
+        else
+        {
+            Visible = false; // Cierra el diálogo al terminar
+        }
+    }
 }
