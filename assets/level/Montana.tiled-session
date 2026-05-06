@@ -13,12 +13,20 @@
             "scaleInDock": 0.25,
             "scaleInEditor": 0.5
         },
-        "Map/level1.tmx": {
-            "scale": 0.07172772988505746,
+        "Map/Final.tmx": {
+            "scale": 0.085308908045977,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 8351.02408733537,
-                "y": 3297.1906455005264
+                "x": 6962.93052631579,
+                "y": 3299.7726315789478
+            }
+        },
+        "Map/level1.tmx": {
+            "scale": 0.125,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 6952,
+                "y": 3716
             }
         },
         "Map/mapa2.tmx": {
