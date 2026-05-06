@@ -70,7 +70,7 @@ public partial class Recursos : Node
 
     public void FirstLevel()
     {
-        BaseVida = 100;
+        Vida = 100;
         Gold = 10000;
         Wood = 10000;
         Stone = 10000;
@@ -87,7 +87,7 @@ public partial class Recursos : Node
 
     public void NewGame()
     {
-        BaseVida = 100;
+        Vida = 100;
         TotalGold = 0;
         TotalWood = 0;
         TotalStone = 0;
