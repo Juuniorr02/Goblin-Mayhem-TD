@@ -196,7 +196,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_wyhkh")
 }],
 "loop": true,
-"name": &"bloquado",
+"name": &"bloqueado",
 "speed": 7.0
 }, {
 "frames": [{
@@ -311,7 +311,7 @@ layer = 8
 visible = false
 
 [node name="entrar_nivel" parent="." instance=ExtResource("6_bt43m")]
-layer = 8
+layer = 10
 visible = false
 script = ExtResource("8_7frjm")
 
@@ -334,9 +334,8 @@ flat = true
 [node name="Tutorial" type="AnimatedSprite2D" parent="Botones/Tutorial"]
 position = Vector2(42.345455, 15.175117)
 sprite_frames = SubResource("SpriteFrames_bkd8o")
-animation = &"bloquado"
-autoplay = "bloquado"
-frame_progress = 0.8176778
+animation = &"bloqueado"
+autoplay = "bloqueado"
 
 [node name="Montana1" type="Button" parent="Botones"]
 z_index = 3
@@ -353,9 +352,8 @@ flat = true
 [node name="Montana1" type="AnimatedSprite2D" parent="Botones/Montana1"]
 position = Vector2(42.345455, 15.175117)
 sprite_frames = SubResource("SpriteFrames_bkd8o")
-animation = &"bloquado"
-autoplay = "bloquado"
-frame_progress = 0.07916112
+animation = &"bloqueado"
+autoplay = "bloqueado"
 
 [node name="Pantano1" type="Button" parent="Botones"]
 z_index = 3
@@ -372,9 +370,8 @@ flat = true
 [node name="Pantano1" type="AnimatedSprite2D" parent="Botones/Pantano1"]
 position = Vector2(42.345455, 15.175117)
 sprite_frames = SubResource("SpriteFrames_bkd8o")
-animation = &"bloquado"
-autoplay = "bloquado"
-frame_progress = 0.3659655
+animation = &"bloqueado"
+autoplay = "bloqueado"
 
 [node name="Pantano2" type="Button" parent="Botones"]
 z_index = 3
@@ -391,9 +388,8 @@ flat = true
 [node name="Pantano2" type="AnimatedSprite2D" parent="Botones/Pantano2"]
 position = Vector2(42.345455, 15.175117)
 sprite_frames = SubResource("SpriteFrames_bkd8o")
-animation = &"bloquado"
-autoplay = "bloquado"
-frame_progress = 0.3659655
+animation = &"bloqueado"
+autoplay = "bloqueado"
 
 [node name="Islas1" type="Button" parent="Botones"]
 z_index = 3
@@ -410,9 +406,8 @@ flat = true
 [node name="Islas1" type="AnimatedSprite2D" parent="Botones/Islas1"]
 position = Vector2(42.345455, 15.175117)
 sprite_frames = SubResource("SpriteFrames_bkd8o")
-animation = &"bloquado"
-autoplay = "bloquado"
-frame_progress = 0.07916112
+animation = &"bloqueado"
+autoplay = "bloqueado"
 
 [node name="Castillo Malvado" type="Button" parent="Botones"]
 z_index = 3
@@ -429,6 +424,5 @@ flat = true
 [node name="Castillo Malvado" type="AnimatedSprite2D" parent="Botones/Castillo Malvado"]
 position = Vector2(42.345455, 15.175117)
 sprite_frames = SubResource("SpriteFrames_bkd8o")
-animation = &"bloquado"
-autoplay = "bloquado"
-frame_progress = 0.18570858
+animation = &"bloqueado"
+autoplay = "bloqueado"

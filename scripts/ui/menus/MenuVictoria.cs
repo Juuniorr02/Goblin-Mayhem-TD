@@ -1,3 +1,4 @@
+using System;
 using Godot;
 
 public partial class MenuVictoria : CanvasLayer
@@ -6,6 +7,8 @@ public partial class MenuVictoria : CanvasLayer
     private Button btnVolver;
     private Button btnReiniciar;
 	private int waveActual;
+
+    private String CurrentScene => GetTree().CurrentScene.SceneFilePath;
 
 	private int winningWave;
 
@@ -56,6 +59,28 @@ public partial class MenuVictoria : CanvasLayer
 		
 		if (Wave.Instance.CurrentWave == WinningWave)
 		{
+            if(CurrentScene == "res://scenes/level/terrain/tutorial.tscn")
+            {
+                GameData.Level1 = true;
+                GameData.Level2 = true;
+            }
+            else if(CurrentScene == "res://scenes/level/terrain/montana1.tscn")
+            {
+                GameData.Level3 = true;
+            }
+            else if(CurrentScene == "res://scenes/level/terrain/pantano1.tscn")
+            {
+                GameData.Level4 = true;
+            }
+            else if(CurrentScene == "res://scenes/level/terrain/islas1.tscn")
+            {
+                GameData.Level5 = true;
+            }
+            else
+            {
+                GD.Print("Vaya pringao esta jugando el primer nivel o el ultimo.");
+            }
+            SaveSystem.Instance.SaveGame();
 			isPaused = true;
         	GetTree().Paused = true;
         	Visible = true;
@@ -89,6 +114,8 @@ public partial class MenuVictoria : CanvasLayer
 
 	private void OnGuardarSalir()
 	{
+        Recursos.Instance.StartLevel();
+        Wave.Instance.ResetWaves();
 		QuitarPausa();
     	GD.Print("Guardar y salir");
 
@@ -105,6 +132,8 @@ public partial class MenuVictoria : CanvasLayer
         Recursos.Instance.EndLevel();
 		Input.MouseMode = Input.MouseModeEnum.Visible;
         QuitarPausa();
+        Recursos.Instance.StartLevel();
+        Wave.Instance.ResetWaves();
     	GetTree().ChangeSceneToFile("res://scenes/level/aldea/mapa_mundi.tscn");
 	}
 }

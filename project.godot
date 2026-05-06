@@ -18,6 +18,7 @@ config/features=PackedStringArray("4.5", "C#", "Mobile")
 
 GameSettings="*res://scripts/ui/autoload/GameSettings.cs"
 SaveSystem="*res://scripts/ui/autoload/SaveSystem.cs"
+GameData="*res://scripts/ui/autoload/GameData.cs"
 Wave="*res://scripts/ui/autoload/Wave.cs"
 Recursos="*res://scripts/ui/autoload/Recursos.cs"
 BuildTime="*res://scripts/ui/autoload/BuildTime.cs"
