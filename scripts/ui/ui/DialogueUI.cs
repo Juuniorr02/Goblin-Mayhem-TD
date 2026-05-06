@@ -1,4 +1,4 @@
-	using Godot;
+using Godot;
 using System;
 
 public partial class DialogueUI : CanvasLayer
@@ -7,35 +7,38 @@ public partial class DialogueUI : CanvasLayer
     [Export] public Label nameLabel;
     [Export] public AnimatedSprite2D portrait;
 
-    [Export] public string[] dialogueLines = new string[] {
-        "¡Los goblins se acercan! Debemos proteger la aldea.",
-        "Necesitamos defensas. Mira ese camino, por ahí intentarán cruzar.",
-        "Selecciona una torre y colócala cerca del camino.",
-        "¡Aquí vienen! ¡No dejes que pasen!"
-    };
-
+    private string[] _currentDialogueSet; // Almacena las frases actuales
     private int _currentLine = 0;
     private bool _isWriting = false;
     private Tween _tween;
 
     public override void _Ready()
     {
-        // Esto mantiene la UI proporcionada en pantalla completa
         GetTree().Root.ContentScaleMode = Window.ContentScaleModeEnum.CanvasItems;
         GetTree().Root.ContentScaleAspect = Window.ContentScaleAspectEnum.Keep;
-
-        Visible = true;
-        StartDialogue();
+        
+        Visible = false; // Empieza oculto hasta que alguien lo llame
     }
 
-    public void StartDialogue()
+    // MÉTODO CLAVE: Llama a esto desde otra clase
+    public void TriggerDialogue(string[] lines)
     {
+        _currentDialogueSet = lines;
         _currentLine = 0;
+        Visible = true;
         ShowCurrentLine();
+    }
+
+    // Sobrecarga por si solo quieres pasar una frase suelta
+    public void TriggerDialogue(string singleLine)
+    {
+        TriggerDialogue(new string[] { singleLine });
     }
 
     public override void _Input(InputEvent @event)
     {
+        if (!Visible) return;
+
         if (@event.IsActionPressed("ui_accept"))
         {
             if (_isWriting)
@@ -53,10 +56,10 @@ public partial class DialogueUI : CanvasLayer
 
     private void ShowCurrentLine()
     {
-        if (textLabel != null && _currentLine < dialogueLines.Length)
+        if (textLabel != null && _currentLine < _currentDialogueSet.Length)
         {
             _isWriting = true;
-            textLabel.Text = dialogueLines[_currentLine];
+            textLabel.Text = _currentDialogueSet[_currentLine];
             textLabel.VisibleRatio = 0;
 
             _tween = CreateTween();
@@ -69,13 +72,13 @@ public partial class DialogueUI : CanvasLayer
     private void NextLine()
     {
         _currentLine++;
-        if (_currentLine < dialogueLines.Length)
+        if (_currentLine < _currentDialogueSet.Length)
         {
             ShowCurrentLine();
         }
         else
         {
-            Visible = false; // Cierra el diálogo al terminar
+            Visible = false;
         }
     }
 }
