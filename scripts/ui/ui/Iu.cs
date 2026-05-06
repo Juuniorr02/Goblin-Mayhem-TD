@@ -11,6 +11,8 @@ public partial class Iu : Control
     private Label woodLabel;
     private Label stoneLabel;
 
+    private TextureRect Martillito;
+
     public Button Archer;
     public Button Cannon;
     public Button Mortar;
@@ -39,6 +41,8 @@ public partial class Iu : Control
         scenePath = GetTree().CurrentScene.SceneFilePath;
         waveButton = GetNode<TextureButton>("%WaveButton");
         waveLabel = GetNode<Label>("%WaveLabel");
+
+        Martillito = GetNode<TextureRect>("%Martillito");
 
         goldLabel = GetNode<Label>("%GoldLabel");
         healthLabel = GetNode<Label>("%HealthLabel");
@@ -127,6 +131,8 @@ public partial class Iu : Control
     {
         if(constructionwave == 0)
         {
+        waveLabel.Visible = true;
+        Martillito.Visible = false;
         BuildTime.CanBuild = false;
         MouseFilter = MouseFilterEnum.Stop;
         if (Wave.Instance == null) return;
@@ -147,7 +153,9 @@ public partial class Iu : Control
         }
 
         else if (constructionwave == 1)
-        {
+        {   
+            waveLabel.Visible = false;
+            Martillito.Visible = true;
             BuildTime.CanBuild = true;
             MouseFilter = MouseFilterEnum.Stop;
             constructionwave --;
