@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b0rk6ct0lsega"]
+[gd_scene load_steps=14 format=3 uid="uid://cfbm5welkb4dq"]
 
 [ext_resource type="Script" uid="uid://dlkmwoujs2ffa" path="res://scripts/level/aldea/Aldea.cs" id="1_xy8tv"]
 [ext_resource type="PackedScene" uid="uid://db3gopv2d5x4p" path="res://assets/level/Map/aldea.tmx" id="2_r5q8b"]

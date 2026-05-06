@@ -83,7 +83,7 @@ public partial class Enemy : CharacterBody2D
         if (follow.Progress >= pathLength)
         {
             finished = true;
-            if (Base.Instance != null) Base.Instance.Health -= Data.DamageToBase;
+            if (Recursos.Instance != null) Recursos.Instance.Vida -= Data.DamageToBase;
             EliminarEnemigo();
         }
     }
