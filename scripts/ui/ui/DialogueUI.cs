@@ -7,20 +7,34 @@ public partial class DialogueUI : CanvasLayer
     [Export] public Label nameLabel;
     [Export] public AnimatedSprite2D portrait;
 
-    private string[] _currentDialogueSet; // Almacena las frases actuales
+    // Ahora puedes escribir las frases iniciales directamente en el Inspector de Godot
+    [Export] public string[] defaultDialogueLines = new string[] {
+        "¡Los goblins se acercan! Debemos proteger la aldea.",
+        "Selecciona una torre y colócala cerca del camino."
+    };
+
+    private string[] _currentDialogueSet;
     private int _currentLine = 0;
     private bool _isWriting = false;
     private Tween _tween;
 
     public override void _Ready()
     {
+        // Nota: Si el zoom falla, recuerda borrar estas dos líneas y configurar en Project Settings
         GetTree().Root.ContentScaleMode = Window.ContentScaleModeEnum.CanvasItems;
         GetTree().Root.ContentScaleAspect = Window.ContentScaleAspectEnum.Keep;
-        
-        Visible = false; // Empieza oculto hasta que alguien lo llame
+
+        // Al empezar, cargamos las frases que pusiste en el Export
+        if (defaultDialogueLines != null && defaultDialogueLines.Length > 0)
+        {
+            TriggerDialogue(defaultDialogueLines);
+        }
+        else
+        {
+            Visible = false;
+        }
     }
 
-    // MÉTODO CLAVE: Llama a esto desde otra clase
     public void TriggerDialogue(string[] lines)
     {
         _currentDialogueSet = lines;
@@ -29,7 +43,6 @@ public partial class DialogueUI : CanvasLayer
         ShowCurrentLine();
     }
 
-    // Sobrecarga por si solo quieres pasar una frase suelta
     public void TriggerDialogue(string singleLine)
     {
         TriggerDialogue(new string[] { singleLine });
@@ -39,10 +52,14 @@ public partial class DialogueUI : CanvasLayer
     {
         if (!Visible) return;
 
-        if (@event.IsActionPressed("ui_accept"))
+        // Detecta tanto la tecla "Aceptar" (Espacio/Enter) como el Click Izquierdo del ratón
+        bool pressedClick = @event is InputEventMouseButton mouseEvent && mouseEvent.Pressed && mouseEvent.ButtonIndex == MouseButton.Left;
+
+        if (pressedClick)
         {
             if (_isWriting)
             {
+                // Salta la animación y muestra todo el texto de golpe
                 _tween?.Kill();
                 if (textLabel != null) textLabel.VisibleRatio = 1.0f;
                 _isWriting = false;
