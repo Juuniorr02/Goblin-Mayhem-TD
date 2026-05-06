@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://ci612q8twcycd"]
+[gd_scene load_steps=32 format=3 uid="uid://ci612q8twcycd"]
 
 [ext_resource type="Texture2D" uid="uid://bodlpu3irch0t" path="res://assets/ui/button/IconoOleada-Sheet.png" id="1_g0mth"]
 [ext_resource type="Texture2D" uid="uid://5sui3kk7ym6x" path="res://assets/ui/icon/cañon.png" id="1_t64rc"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://crw7qp1kr00u0" path="res://assets/ui/icon/Maderas.png" id="3_viny6"]
 [ext_resource type="Texture2D" uid="uid://bonxvf3bnviti" path="res://assets/ui/icon/Piedras.png" id="4_rlfxr"]
 [ext_resource type="Texture2D" uid="uid://d4aohjas4nc4o" path="res://assets/ui/icon/Hierro.png" id="5_ud8xl"]
+[ext_resource type="Texture2D" uid="uid://bovqloc0sr8xj" path="res://assets/character/tower/Construir/Martillito-Sheet.png" id="8_1j10k"]
 [ext_resource type="Texture2D" uid="uid://22thccdtcdp4" path="res://assets/ui/icon/TorrearqueroIcono.png" id="8_rlfxr"]
 [ext_resource type="Texture2D" uid="uid://7prl0kc2ksyg" path="res://assets/ui/icon/lanzallamas.png" id="8_svasj"]
 [ext_resource type="Texture2D" uid="uid://dgrfope32f46" path="res://assets/ui/icon/IconoMortero-Sheet.png" id="10_17ct8"]
@@ -319,9 +320,11 @@ alignment = 1
 
 [node name="WaveButton" type="TextureButton" parent="IU/IU/IU/Top/Wave/Wave/Wave"]
 unique_name_in_owner = true
+texture_filter = 1
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.5
+stretch_mode = 3
 
 [node name="WaveLabel" type="Label" parent="IU/IU/IU/Top/Wave/Wave/Wave/WaveButton"]
 unique_name_in_owner = true
@@ -346,6 +349,16 @@ sprite_frames = SubResource("SpriteFrames_ify78")
 animation = &"wave"
 frame = 8
 frame_progress = 1.0
+
+[node name="Martillito" type="TextureRect" parent="IU/IU/IU/Top/Wave/Wave/Wave/WaveButton/WaveSprite"]
+unique_name_in_owner = true
+z_index = 2
+offset_left = -54.59613
+offset_top = -45.0
+offset_right = -14.59613
+offset_bottom = -5.0
+scale = Vector2(3, 3)
+texture = ExtResource("8_1j10k")
 
 [node name="Blank" type="HBoxContainer" parent="IU/IU/IU/Top/Wave"]
 layout_mode = 2
