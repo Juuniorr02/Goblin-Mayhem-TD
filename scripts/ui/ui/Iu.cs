@@ -98,10 +98,10 @@ public partial class Iu : Control
 
     private void UpdateIU()
     {
-        if (Base.Instance != null || Recursos.Instance != null)
+        if (Recursos.Instance != null)
         {
             goldLabel.Text = Recursos.Instance.Gold.ToString();
-            healthLabel.Text = Base.Instance.Health.ToString();
+            healthLabel.Text = Recursos.Instance.Vida.ToString();
             ironLabel.Text = Recursos.Instance.Iron.ToString();
             woodLabel.Text = Recursos.Instance.Wood.ToString();
             stoneLabel.Text = Recursos.Instance.Stone.ToString();

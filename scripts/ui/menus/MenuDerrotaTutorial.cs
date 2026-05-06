@@ -35,9 +35,9 @@ public partial class MenuDerrotaTutorial : CanvasLayer
 
     public void UpdateMenuDerrota()
 	{
-		healthActual = Base.Instance.Health;
+		healthActual = Recursos.Instance.Vida;
 
-		if (Base.Instance.Health <= 0)
+		if (Recursos.Instance.Vida <= 0)
 		{
 			Pausar();
 		}
@@ -62,7 +62,7 @@ public partial class MenuDerrotaTutorial : CanvasLayer
 	{
 		QuitarPausa();
         Recursos.Instance.FirstLevelEnd();
-        Base.Instance.RepairBase();
+        Recursos.Instance.RepairBase();
         Wave.Instance.ResetWaves();
     	GetTree().ChangeSceneToFile("res://scenes/level/aldea/mapa_mundi.tscn");
 	}

@@ -81,7 +81,7 @@ public partial class MenuVictoria : CanvasLayer
     private void OnReiniciar()
 	{
 		QuitarPausa();
-        Base.Instance.RepairBase();
+        Recursos.Instance.RepairBase();
         Wave.Instance.ResetWaves();
     	GD.Print("Reiniciar partida");
     	GetTree().ReloadCurrentScene();

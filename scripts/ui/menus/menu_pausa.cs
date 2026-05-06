@@ -126,7 +126,7 @@ public partial class menu_pausa : CanvasLayer
 	{
 		QuitarPausa();
         Input.MouseMode = Input.MouseModeEnum.Visible;
-        Base.Instance.RepairBase();
+        Recursos.Instance.RepairBase();
         Wave.Instance.ResetWaves();
     	GD.Print("Reiniciar partida");
     	GetTree().ReloadCurrentScene();

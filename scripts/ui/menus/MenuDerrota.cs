@@ -47,9 +47,9 @@ public partial class MenuDerrota : CanvasLayer
 
     public void UpdateMenuDerrota()
 	{
-		healthActual = Base.Instance.Health;
+		healthActual = Recursos.Instance.Vida;
 
-		if (Base.Instance.Health <= 0)
+		if (Recursos.Instance.Vida <= 0)
 		{
 			Pausar();
 		}
@@ -73,7 +73,7 @@ public partial class MenuDerrota : CanvasLayer
     private void OnReiniciar()
 	{
 		QuitarPausa();
-        Base.Instance.RepairBase();
+        Recursos.Instance.RepairBase();
         Wave.Instance.ResetWaves();
     	GD.Print("Reiniciar partida");
     	GetTree().ReloadCurrentScene();

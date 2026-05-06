@@ -7,15 +7,21 @@ public partial class Recursos : Node
 
     private const string PATH = "user://recursos.json";
 
+    public int Vida;
+
     public int Gold;
     public int Wood;
     public int Stone;
     public int Iron;
 
+    public int BaseVida = 100;
+
     public int BaseGold = 100;
     public int BaseWood = 50;
     public int BaseStone = 0;
     public int BaseIron = 0;
+
+    public int ProdVida { get; set; }
 
     public int ProdGold { get; set; }
     public int ProdWood { get; set; }
@@ -29,11 +35,13 @@ public partial class Recursos : Node
 
     private class SaveDataStruct
     {
+        public int BaseVida { get; set; }
         public int TotalGold { get; set; }
         public int TotalWood { get; set; }
         public int TotalStone { get; set; }
         public int TotalIron { get; set; }
 
+        public int ProdVida { get; set; }
         public int ProdGold { get; set; }
         public int ProdWood { get; set; }
         public int ProdStone { get; set; }
@@ -46,8 +54,14 @@ public partial class Recursos : Node
         LoadData();
     }
 
+    public void RepairBase()
+    {
+        Vida = BaseVida + ProdVida;
+    }
+
     public void StartLevel()
     {
+        Vida = BaseVida + ProdVida;
         Gold = BaseGold + ProdGold;
         Wood = BaseWood + ProdWood;
         Stone = BaseStone + ProdStone;
@@ -56,6 +70,7 @@ public partial class Recursos : Node
 
     public void FirstLevel()
     {
+        BaseVida = 100;
         Gold = 10000;
         Wood = 10000;
         Stone = 10000;
@@ -72,11 +87,13 @@ public partial class Recursos : Node
 
     public void NewGame()
     {
+        BaseVida = 100;
         TotalGold = 0;
         TotalWood = 0;
         TotalStone = 0;
         TotalIron = 0;
 
+        ProdVida = 0;
         ProdGold = 100;
         ProdWood = 50;
         ProdStone = 0;
@@ -120,6 +137,7 @@ public partial class Recursos : Node
             TotalStone = TotalStone,
             TotalIron = TotalIron,
 
+            ProdVida = ProdVida,
             ProdGold = ProdGold,
             ProdWood = ProdWood,
             ProdStone = ProdStone,
@@ -164,6 +182,7 @@ public partial class Recursos : Node
     	TotalStone = data.TotalStone;
     	TotalIron = data.TotalIron;
 
+        ProdVida = data.ProdVida;
     	ProdGold = data.ProdGold;
     	ProdWood = data.ProdWood;
     	ProdStone = data.ProdStone;
