@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bvj23ok4pqai6"]
+[gd_scene load_steps=31 format=3 uid="uid://bvj23ok4pqai6"]
 
 [ext_resource type="PackedScene" uid="uid://bxah54x2mw4ix" path="res://assets/level/Map/level1.tmx" id="1_obe7s"]
 [ext_resource type="Script" uid="uid://cubvhlo0alqh1" path="res://scripts/level/terrain/Pathfinding.cs" id="2_d0a6p"]
@@ -24,60 +24,6 @@
 [ext_resource type="PackedScene" uid="uid://dgc77kp8vuy4p" path="res://scenes/ui/menus/options_pausa.tscn" id="21_uk6l5"]
 [ext_resource type="PackedScene" uid="uid://0hu00p8f0uvx" path="res://scenes/ui/menus/menu_pausa_level_1.tscn" id="24_8dopk"]
 [ext_resource type="PackedScene" uid="uid://di2gid6004846" path="res://scenes/ui/menus/menu_derrota_tutorial.tscn" id="24_xjvah"]
-
-[sub_resource type="CSharpScript" id="CSharpScript_8dopk"]
-script/source = "using Godot;
-using System;
-
-public partial class Level1 : Node
-{
-	[Export] public DialogueUI Dialogue; 
-	private float lastHealth;
-    private bool initialized = false;
-
-	public override void _Ready()
-	{
-        GD.Print(\"Script Level1 cargado correctamente\");
-        
-        if (Dialogue == null) 
-            Dialogue = GetTree().Root.FindChild(\"uiTutorial\", true, false) as DialogueUI;
-            
-        if (Dialogue == null)
-            GD.PrintErr(\"ADVERTENCIA: No se encontró uiTutorial en el árbol de escenas\");
-	}
-
-	public override void _Process(double delta)
-	{
-		if (Recursos.Instance == null) 
-        {
-            // Este print solo saldrá una vez si falla la instancia
-            GD.PrintErr(\"Recursos.Instance es nulo\");
-            return;
-        }
-
-        if (!initialized)
-        {
-            lastHealth = Recursos.Instance.BaseVida;
-            initialized = true;
-            GD.Print(\"Vida inicial registrada: \" + lastHealth);
-            return;
-        }
-
-		// Si esto no imprime nada cuando te golpean, es que Recursos.Instance.BaseVida NO está bajando
-		if (Recursos.Instance.BaseVida < lastHealth)
-		{
-            GD.Print(\"¡GOLPE DETECTADO! Nueva vida: \" + Recursos.Instance.BaseVida);
-            
-            if (Dialogue != null)
-            {
-			    Dialogue.TriggerDialogue(\"¡Atención! ¡Están dañando la base!\");
-            }
-			
-			lastHealth = Recursos.Instance.BaseVida;
-		}
-	}
-}
-"
 
 [sub_resource type="Resource" id="Resource_tqsr0"]
 script = ExtResource("5_xjvah")
@@ -116,8 +62,6 @@ _data = {
 point_count = 9
 
 [node name="level1" type="Node2D"]
-script = SubResource("CSharpScript_8dopk")
-Dialogue = null
 
 [node name="level1" parent="." instance=ExtResource("1_obe7s")]
 
