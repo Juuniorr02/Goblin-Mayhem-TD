@@ -68,5 +68,26 @@ public partial class TunaHatchery : BaseTower
         }
     }
 
+    public override void Build()
+    {
+        int amountGold = 0, amountWood = 0, amountStone = 0, amountIron = 0;
+        
+        amountGold = 300; amountWood = 175; amountStone = 125; amountIron = 75;
+
+        if (Recursos.Instance.Gold >= amountGold && Recursos.Instance.Wood >= amountWood && Recursos.Instance.Stone >= amountStone && Recursos.Instance.Iron >= amountIron)
+        {
+            Recursos.Instance.Gold -= amountGold;
+            Recursos.Instance.Wood -= amountWood;
+            Recursos.Instance.Stone -= amountStone;
+            Recursos.Instance.Iron -= amountIron;
+
+            CanBuild = true;
+        }
+        else
+        {
+            CanBuild = false;
+        }
+    }
+
     protected override void Shoot() { /* No hace nada manual */ }
 }
