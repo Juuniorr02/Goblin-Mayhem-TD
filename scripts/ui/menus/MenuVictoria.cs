@@ -140,6 +140,10 @@ public partial class MenuVictoria : CanvasLayer
         {
             GetTree().ChangeSceneToFile("res://scenes/ui/menus/creditos.tscn");
         }
+    	else if(CurrentScene == "res://scenes/level/terrain/tutorial.tscn")
+        {
+            GetTree().ChangeSceneToFile("res://scenes/level/aldea/aldea.tscn");
+        }
     	else
         {
             GetTree().ChangeSceneToFile("res://scenes/level/aldea/mapa_mundi.tscn");

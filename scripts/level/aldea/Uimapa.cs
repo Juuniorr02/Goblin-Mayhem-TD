@@ -25,6 +25,10 @@ public partial class Uimapa : Control
 
 	private void OnAldea()
 	{
+		if (GameData.Level1 == true)
+			btnAldea.Disabled = false;
+		else
+			btnAldea.Disabled = true;
 		GetTree().ChangeSceneToFile("res://scenes/level/aldea/aldea.tscn");
 	}
 }
