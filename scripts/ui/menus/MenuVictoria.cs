@@ -76,6 +76,10 @@ public partial class MenuVictoria : CanvasLayer
             {
                 GameData.Level5 = true;
             }
+            if(CurrentScene == "res://scenes/level/terrain/castilloMalvado.tscn")
+            {
+                GameData.Level6 = true;
+            }
             else
             {
                 GD.Print("Vaya pringao esta jugando el primer nivel o el ultimo.");
@@ -90,6 +94,9 @@ public partial class MenuVictoria : CanvasLayer
 
     private void Pausar()
     {
+        var save = GetNode<SaveSystem>("/root/SaveSystem");
+    	save.SaveGame();
+        BuildTime.CanBuild = true;
         isPaused = true;
         GetTree().Paused = true;
         Visible = true;
@@ -105,10 +112,10 @@ public partial class MenuVictoria : CanvasLayer
 
     private void OnReiniciar()
 	{
-		QuitarPausa();
+        BuildTime.CanBuild = true;
         Recursos.Instance.RepairBase();
         Wave.Instance.ResetWaves();
-    	GD.Print("Reiniciar partida");
+        QuitarPausa();
     	GetTree().ReloadCurrentScene();
 	}
 
@@ -117,23 +124,25 @@ public partial class MenuVictoria : CanvasLayer
         Recursos.Instance.StartLevel();
         Wave.Instance.ResetWaves();
 		QuitarPausa();
-    	GD.Print("Guardar y salir");
-
-		var save = GetNode<SaveSystem>("/root/SaveSystem");
-    	save.SaveGame();
-
-    	QuitarPausa();
     	Input.MouseMode = Input.MouseModeEnum.Visible;
     	GetTree().ChangeSceneToFile("res://scenes/level/aldea/mapa_mundi.tscn");
 	}
 
 	private void OnSiguiente()
 	{
+
         Recursos.Instance.EndLevel();
 		Input.MouseMode = Input.MouseModeEnum.Visible;
         QuitarPausa();
         Recursos.Instance.StartLevel();
         Wave.Instance.ResetWaves();
-    	GetTree().ChangeSceneToFile("res://scenes/level/aldea/mapa_mundi.tscn");
-	}
+        if(CurrentScene == "res://scenes/level/terrain/castilloMalvado.tscn")
+        {
+            GetTree().ChangeSceneToFile("res://scenes/ui/menus/creditos.tscn");
+        }
+    	else
+        {
+            GetTree().ChangeSceneToFile("res://scenes/level/aldea/mapa_mundi.tscn");
+	    }
+    }
 }
