@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnd13a0gujs1t"
-valid=false
+uid="uid://c3k2q2hh7s6e5"
+path="res://.godot/imported/pepin.png-0c1551327ff9d486e1374d0a0617983e.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_file="res://assets/ui/background/duende.png"
+source_file="res://assets/character/enemy/Pepin/pepin.png"
+dest_files=["res://.godot/imported/pepin.png-0c1551327ff9d486e1374d0a0617983e.ctex"]
 
 [params]
 

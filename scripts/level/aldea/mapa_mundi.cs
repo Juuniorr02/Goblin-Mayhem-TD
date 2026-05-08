@@ -34,6 +34,8 @@ public partial class mapa_mundi : Node2D
 
 		SaveSystem.Instance.SaveGame();
 
+		BuildTime.CanBuild = true;
+
 		entrar_nivel = GetNodeOrNull<entrar_nivel>("entrar_nivel");
 
 		entrar_nivel.mapa_mundi = this;
