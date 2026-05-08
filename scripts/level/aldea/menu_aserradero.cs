@@ -8,7 +8,7 @@ public partial class menu_aserradero : CanvasLayer
 	public Label labelNombre;
 	public Button btnMejorar;
 	public Button btnVolver;
-	public int Madera = 100;
+	public int Madera;
 	private bool isPaused = false;
 
 	public override void _Ready()
@@ -52,23 +52,23 @@ public partial class menu_aserradero : CanvasLayer
 	{
 		if (labelNombre.Text == "Aserradero Nivel 1")
 		{
-			labelInfo.Text = "  Producción: 100 de madera por ronda  " + "\n  Coste mejora: 1000 de oro  ";
+			labelInfo.Text = "  Producción: 50 de madera por ronda  " + "\n  Coste mejora: 500 de oro  ";
 		}
 		else if (labelNombre.Text == "Aserradero Nivel 2")
 		{
-			labelInfo.Text = "  Producción: 200 de madera por ronda  " + "\n  Coste mejora: 2000 de oro, 100 de madera  ";
+			labelInfo.Text = "  Producción: 100 de madera por ronda  " + "\n  Coste mejora: 650 de oro, 60 de madera  ";
 		}
 		else if (labelNombre.Text == "Aserradero Nivel 3")
 		{
-			labelInfo.Text = "  Producción: 300 de madera por ronda  " + "\n  Coste mejora: 3000 de oro, 200 de madera, 100 de piedra  ";
+			labelInfo.Text = "  Producción: 150 de madera por ronda  " + "\n  Coste mejora: 750 de oro, 120 de madera, 40 de piedra  ";
 		}
 		else if (labelNombre.Text == "Aserradero Nivel 4")
 		{
-			labelInfo.Text = "  Producción: 400 de madera por ronda  " + "\n  Coste mejora: 4000 de oro, 400 de madera, 200 de piedra, 100 de hierro  ";
+			labelInfo.Text = "  Producción: 200 de madera por ronda  " + "\n  Coste mejora: 1000 de oro, 220 de madera, 120 de piedra, 40 de hierro  ";
 		}
 		else if (labelNombre.Text == "Aserradero Nivel 5")
 		{
-			labelInfo.Text = "  Producción: 500 de madera por ronda  ";
+			labelInfo.Text = "  Producción: 300 de madera por ronda  ";
 			btnMejorar.Disabled = true;
 		}
         isPaused = true;
@@ -91,7 +91,7 @@ public partial class menu_aserradero : CanvasLayer
 
 		if(labelNombre.Text == "Aserradero Nivel 1")
 		{
-			amountGold = 1000; amountWood = 0; amountStone = 0; amountIron = 0;
+			amountGold = 500; amountWood = 0; amountStone = 0; amountIron = 0;
 			if(Recursos.Instance.TotalGold >= amountGold && Recursos.Instance.TotalWood >= amountWood && Recursos.Instance.TotalStone >= amountStone && Recursos.Instance.TotalIron >= amountIron)
 			{
 				Recursos.Instance.TotalGold -= amountGold;
@@ -99,10 +99,10 @@ public partial class menu_aserradero : CanvasLayer
 				Recursos.Instance.TotalStone -= amountStone;
 				Recursos.Instance.TotalIron -= amountIron;
 				labelNombre.Text = "Aserradero Nivel 2";
-				Madera = 200;
+				Madera = 100;
 				Recursos.Instance.ProdWood = Madera;
 				Recursos.Instance.SaveData();
-				labelInfo.Text = "  Producción: 200 de madera por ronda  " + "\n  Coste mejora: 2000 de oro, 100 de madera  ";
+				labelInfo.Text = "  Producción: 100 de madera por ronda  " + "\n  Coste mejora: 650 de oro, 60 de madera  ";
 			}
 			else
 			{
@@ -113,7 +113,7 @@ public partial class menu_aserradero : CanvasLayer
 		}
 		else if(labelNombre.Text == "Aserradero Nivel 2")
 		{
-			amountGold = 2000; amountWood = 100; amountStone = 0; amountIron = 0;
+			amountGold = 650; amountWood = 60; amountStone = 0; amountIron = 0;
 			if(Recursos.Instance.TotalGold >= amountGold && Recursos.Instance.TotalWood >= amountWood && Recursos.Instance.TotalStone >= amountStone && Recursos.Instance.TotalIron >= amountIron)
 			{
 				Recursos.Instance.TotalGold -= amountGold;
@@ -121,10 +121,10 @@ public partial class menu_aserradero : CanvasLayer
 				Recursos.Instance.TotalStone -= amountStone;
 				Recursos.Instance.TotalIron -= amountIron;
 				labelNombre.Text = "Aserradero Nivel 3";
-				Madera = 300;
+				Madera = 150;
 				Recursos.Instance.ProdWood = Madera;
 				Recursos.Instance.SaveData();
-				labelInfo.Text = "  Producción: 300 de madera por ronda  " + "\n  Coste mejora: 3000 de oro, 200 de madera, 100 de piedra  ";
+				labelInfo.Text = "  Producción: 150 de madera por ronda  " + "\n  Coste mejora: 750 de oro, 120 de madera, 40 de piedra  ";
 			}
 			else
 			{
@@ -133,7 +133,7 @@ public partial class menu_aserradero : CanvasLayer
 		}
 		else if(labelNombre.Text == "Aserradero Nivel 3")
 		{
-			amountGold = 3000; amountWood = 200; amountStone = 100; amountIron = 0;
+			amountGold = 750; amountWood = 120; amountStone = 40; amountIron = 0;
 			if(Recursos.Instance.TotalGold >= amountGold && Recursos.Instance.TotalWood >= amountWood && Recursos.Instance.TotalStone >= amountStone && Recursos.Instance.TotalIron >= amountIron)
 			{
 				Recursos.Instance.TotalGold -= amountGold;
@@ -141,10 +141,10 @@ public partial class menu_aserradero : CanvasLayer
 				Recursos.Instance.TotalStone -= amountStone;
 				Recursos.Instance.TotalIron -= amountIron;
 				labelNombre.Text = "Aserradero Nivel 4";
-				Madera = 400;
+				Madera = 200;
 				Recursos.Instance.ProdWood = Madera;
 				Recursos.Instance.SaveData();
-				labelInfo.Text = "  Producción: 400 de madera por ronda  " + "\n  Coste mejora: 4000 de oro, 400 de madera, 200 de piedra, 100 de madera  ";
+				labelInfo.Text = "  Producción: 200 de madera por ronda  " + "\n  Coste mejora: 1000 de oro, 220 de madera, 120 de piedra, 40 de hierro  ";
 			}
 			else
 			{
@@ -153,7 +153,7 @@ public partial class menu_aserradero : CanvasLayer
 		}
 		else if(labelNombre.Text == "Aserradero Nivel 4")
 		{
-			amountGold = 4000; amountWood = 400; amountStone = 200; amountIron = 100;
+			amountGold = 1000; amountWood = 220; amountStone = 120; amountIron = 40;
 			if(Recursos.Instance.TotalGold >= amountGold && Recursos.Instance.TotalWood >= amountWood && Recursos.Instance.TotalStone >= amountStone && Recursos.Instance.TotalIron >= amountIron)
 			{
 				Recursos.Instance.TotalGold -= amountGold;
@@ -161,10 +161,10 @@ public partial class menu_aserradero : CanvasLayer
 				Recursos.Instance.TotalStone -= amountStone;
 				Recursos.Instance.TotalIron -= amountIron;
 				labelNombre.Text = "Aserradero Nivel 5";
-				Madera = 500;
+				Madera = 300;
 				Recursos.Instance.ProdWood = Madera;
 				Recursos.Instance.SaveData();
-				labelInfo.Text = "  Producción: 500 de madera por ronda  ";
+				labelInfo.Text = "  Producción: 300 de madera por ronda  ";
 				btnMejorar.Disabled = true;
 			}
 			else

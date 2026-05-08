@@ -8,7 +8,7 @@ public partial class menu_ayuntamiento : CanvasLayer
 	public Label labelNombre;
 	public Button btnMejorar;
 	public Button btnVolver;
-	public int Oro = 100;
+	public int Oro;
 
 	private bool isPaused = false;
 
@@ -54,19 +54,19 @@ public partial class menu_ayuntamiento : CanvasLayer
 	{
 		if (labelNombre.Text == "Ayuntamiento Nivel 1")
 		{
-			labelInfo.Text = "  Producción: 100 de oro por ronda  " + "\n  Coste mejora: 1000 de oro  ";
+			labelInfo.Text = "  Producción: 100 de oro por ronda  " + "\n  Coste mejora: 400 de oro  ";
 		}
 		else if (labelNombre.Text == "Ayuntamiento Nivel 2")
 		{
-			labelInfo.Text = "  Producción: 200 de oro por ronda  " + "\n  Coste mejora: 2000 de oro, 100 de madera  ";
+			labelInfo.Text = "  Producción: 200 de oro por ronda  " + "\n  Coste mejora: 500 de oro, 50 de madera  ";
 		}
 		else if (labelNombre.Text == "Ayuntamiento Nivel 3")
 		{
-			labelInfo.Text = "  Producción: 300 de oro por ronda  " + "\n  Coste mejora: 3000 de oro, 200 de madera, 100 de piedra  ";
+			labelInfo.Text = "  Producción: 300 de oro por ronda  " + "\n  Coste mejora: 700 de oro, 100 de madera, 25 de piedra  ";
 		}
 		else if (labelNombre.Text == "Ayuntamiento Nivel 4")
 		{
-			labelInfo.Text = "  Producción: 400 de oro por ronda  " + "\n  Coste mejora: 4000 de oro, 400 de madera, 200 de piedra, 100 de hierro  ";
+			labelInfo.Text = "  Producción: 400 de oro por ronda  " + "\n  Coste mejora: 1000 de oro, 200 de madera, 100 de piedra, 25 de hierro  ";
 		}
 		else if (labelNombre.Text == "Ayuntamiento Nivel 5")
 		{
@@ -94,7 +94,7 @@ public partial class menu_ayuntamiento : CanvasLayer
 
 		if(labelNombre.Text == "Ayuntamiento Nivel 1")
 		{
-			amountGold = 1000; amountWood = 0; amountStone = 0; amountIron = 0;
+			amountGold = 400; amountWood = 0; amountStone = 0; amountIron = 0;
 			if(Recursos.Instance.TotalGold >= amountGold && Recursos.Instance.TotalWood >= amountWood && Recursos.Instance.TotalStone >= amountStone && Recursos.Instance.TotalIron >= amountIron)
 			{
 				Recursos.Instance.TotalGold -= amountGold;
@@ -105,7 +105,7 @@ public partial class menu_ayuntamiento : CanvasLayer
 				Oro = 200;
 				Recursos.Instance.ProdGold = Oro;
 				Recursos.Instance.SaveData();
-				labelInfo.Text = "  Producción: 200 de oro por ronda  " + "\n  Coste mejora: 2000 de oro, 100 de madera  ";
+				labelInfo.Text = "  Producción: 200 de oro por ronda  " + "\n  Coste mejora: 500 de oro, 50 de madera  ";
 			}
 			else
 			{
@@ -116,7 +116,7 @@ public partial class menu_ayuntamiento : CanvasLayer
 		}
 		else if(labelNombre.Text == "Ayuntamiento Nivel 2")
 		{
-			amountGold = 2000; amountWood = 100; amountStone = 0; amountIron = 0;
+			amountGold = 500; amountWood = 50; amountStone = 0; amountIron = 0;
 			if(Recursos.Instance.TotalGold >= amountGold && Recursos.Instance.TotalWood >= amountWood && Recursos.Instance.TotalStone >= amountStone && Recursos.Instance.TotalIron >= amountIron)
 			{
 				Recursos.Instance.TotalGold -= amountGold;
@@ -127,7 +127,7 @@ public partial class menu_ayuntamiento : CanvasLayer
 				Oro = 300;
 				Recursos.Instance.ProdGold = Oro;
 				Recursos.Instance.SaveData();
-				labelInfo.Text = "  Producción: 300 de oro por ronda  " + "\n  Coste mejora: 3000 de oro, 200 de madera, 100 de piedra  ";
+				labelInfo.Text = "  Producción: 300 de oro por ronda  " + "\n  Coste mejora: 700 de oro, 100 de madera, 25 de piedra  ";
 			}
 			else
 			{
@@ -136,7 +136,7 @@ public partial class menu_ayuntamiento : CanvasLayer
 		}
 		else if(labelNombre.Text == "Ayuntamiento Nivel 3")
 		{
-			amountGold = 3000; amountWood = 200; amountStone = 100; amountIron = 0;
+			amountGold = 700; amountWood = 100; amountStone = 25; amountIron = 0;
 			if(Recursos.Instance.TotalGold >= amountGold && Recursos.Instance.TotalWood >= amountWood && Recursos.Instance.TotalStone >= amountStone && Recursos.Instance.TotalIron >= amountIron)
 			{
 				Recursos.Instance.TotalGold -= amountGold;
@@ -147,7 +147,7 @@ public partial class menu_ayuntamiento : CanvasLayer
 				Oro = 400;
 				Recursos.Instance.ProdGold = Oro;
 				Recursos.Instance.SaveData();
-				labelInfo.Text = "  Producción: 400 de oro por ronda  " + "\n  Coste mejora: 4000 de oro, 400 de madera, 200 de piedra, 100 de hierro  ";
+				labelInfo.Text = "  Producción: 400 de oro por ronda  " + "\n  Coste mejora: 1000 de oro, 200 de madera, 100 de piedra, 25 de hierro  ";
 			}
 			else
 			{
@@ -156,7 +156,7 @@ public partial class menu_ayuntamiento : CanvasLayer
 		}
 		else if(labelNombre.Text == "Ayuntamiento Nivel 4")
 		{
-			amountGold = 4000; amountWood = 400; amountStone = 200; amountIron = 100;
+			amountGold = 1000; amountWood = 200; amountStone = 100; amountIron = 25;
 			if(Recursos.Instance.TotalGold >= amountGold && Recursos.Instance.TotalWood >= amountWood && Recursos.Instance.TotalStone >= amountStone && Recursos.Instance.TotalIron >= amountIron)
 			{
 				Recursos.Instance.TotalGold -= amountGold;

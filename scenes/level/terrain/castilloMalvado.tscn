@@ -109,8 +109,8 @@ TowersScenes = Dictionary[String, PackedScene]({
 spawner = NodePath("../EnemySpawner")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(7057, 1182)
-zoom = Vector2(0.485, 0.485)
+position = Vector2(7426, 3387)
+zoom = Vector2(0.23, 0.23)
 limit_left = -3000
 limit_top = -3000
 limit_right = 17000

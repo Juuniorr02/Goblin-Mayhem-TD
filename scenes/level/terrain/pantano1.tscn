@@ -100,17 +100,9 @@ TowersScenes = Dictionary[String, PackedScene]({
 "Wizard": ExtResource("12_uileq")
 })
 
-[node name="IU" parent="." node_paths=PackedStringArray("spawner") instance=ExtResource("10_v8yas")]
-offset_left = -2106.0
-offset_top = -525.0
-offset_right = -2106.0
-offset_bottom = -525.0
-spawner = NodePath("../EnemySpawner")
-metadata/_edit_use_anchors_ = true
-
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(7057, 1182)
-zoom = Vector2(0.485, 0.485)
+position = Vector2(6765, 3289)
+zoom = Vector2(0.23, 0.23)
 limit_left = -3000
 limit_top = -3000
 limit_right = 17000
@@ -119,6 +111,14 @@ script = ExtResource("11_rt8em")
 MoveSpeed = 1400.0
 MinZoom = 0.23
 MaxZoom = 2.0
+
+[node name="IU" parent="." node_paths=PackedStringArray("spawner") instance=ExtResource("10_v8yas")]
+offset_left = -2106.0
+offset_top = -525.0
+offset_right = -2106.0
+offset_bottom = -525.0
+spawner = NodePath("../EnemySpawner")
+metadata/_edit_use_anchors_ = true
 
 [node name="menu_pausa" parent="." instance=ExtResource("12_y753q")]
 

@@ -8,7 +8,7 @@ public partial class menu_barrio : CanvasLayer
 	public Label labelNombre;
 	public Button btnMejorar;
 	public Button btnVolver;
-	public int Vida = 0;
+	public int Vida;
 	private bool isPaused = false;
 
 	public override void _Ready()
@@ -52,23 +52,23 @@ public partial class menu_barrio : CanvasLayer
 	{
 		if (labelNombre.Text == "Barrio Nivel 1")
 		{
-			labelInfo.Text = "  Vida Maxima: 100  " + "\n  Coste mejora: 1000 de oro  ";
+			labelInfo.Text = "  Vida Maxima: 100  " + "\n  Coste mejora: 500 de oro  ";
 		}
 		else if (labelNombre.Text == "Barrio Nivel 2")
 		{
-			labelInfo.Text = "  Vida Maxima: 125  " + "\n  Coste mejora: 2000 de oro, 100 de madera  ";
+			labelInfo.Text = "  Vida Maxima: 125  " + "\n  Coste mejora: 600 de oro, 50 de madera  ";
 		}
 		else if (labelNombre.Text == "Barrio Nivel 3")
 		{
-			labelInfo.Text = "  Vida Maxima: 150  " + "\n  Coste mejora: 3000 de oro, 200 de madera, 100 de piedra  ";
+			labelInfo.Text = "  Vida Maxima: 150  " + "\n  Coste mejora: 800 de oro, 100 de madera, 50 de piedra  ";
 		}
 		else if (labelNombre.Text == "Barrio Nivel 4")
 		{
-			labelInfo.Text = "  Vida Maxima: 175  " + "\n  Coste mejora: 4000 de oro, 400 de madera, 200 de piedra, 100 de hierro  ";
+			labelInfo.Text = "  Vida Maxima: 175  " + "\n  Coste mejora: 1000 de oro, 150 de madera, 100 de piedra, 25 de hierro  ";
 		}
 		else if (labelNombre.Text == "Barrio Nivel 5")
 		{
-			labelInfo.Text = "  Vida Maxima: 200  " + "\n  Coste mejora: 5000 de oro, 500 de madera, 250 de piedra, 125 de hierro  ";
+			labelInfo.Text = "  Vida Maxima: 200  ";
 			btnMejorar.Disabled = true;
 		}
         isPaused = true;
@@ -91,7 +91,7 @@ public partial class menu_barrio : CanvasLayer
 
 		if(labelNombre.Text == "Barrio Nivel 1")
 		{
-			amountGold = 1000; amountWood = 0; amountStone = 0; amountIron = 0;
+			amountGold = 500; amountWood = 0; amountStone = 0; amountIron = 0;
 			if(Recursos.Instance.TotalGold >= amountGold && Recursos.Instance.TotalWood >= amountWood && Recursos.Instance.TotalStone >= amountStone && Recursos.Instance.TotalIron >= amountIron)
 			{
 				Recursos.Instance.TotalGold -= amountGold;
@@ -102,7 +102,7 @@ public partial class menu_barrio : CanvasLayer
 				Vida = 25;
 				Recursos.Instance.ProdStone = Vida;
 				Recursos.Instance.SaveData();
-				labelInfo.Text = "  Vida Maxima: 125  " + "\n  Coste mejora: 2000 de oro, 100 de madera  ";
+				labelInfo.Text = "  Vida Maxima: 125  " + "\n  Coste mejora: 600 de oro, 50 de madera  ";
 			}
 			else
 			{
@@ -113,7 +113,7 @@ public partial class menu_barrio : CanvasLayer
 		}
 		else if(labelNombre.Text == "Barrio Nivel 2")
 		{
-			amountGold = 2000; amountWood = 100; amountStone = 0; amountIron = 0;
+			amountGold = 600; amountWood = 50; amountStone = 0; amountIron = 0;
 			if(Recursos.Instance.TotalGold >= amountGold && Recursos.Instance.TotalWood >= amountWood && Recursos.Instance.TotalStone >= amountStone && Recursos.Instance.TotalIron >= amountIron)
 			{
 				Recursos.Instance.TotalGold -= amountGold;
@@ -124,7 +124,7 @@ public partial class menu_barrio : CanvasLayer
 				Vida = 50;
 				Recursos.Instance.ProdVida = Vida;
 				Recursos.Instance.SaveData();
-				labelInfo.Text = "  Vida Maxima: 150  " + "\n  Coste mejora: 3000 de oro, 200 de madera, 100 de piedra  ";
+				labelInfo.Text = "  Vida Maxima: 150  " + "\n  Coste mejora: 800 de oro, 100 de madera, 50 de piedra  ";
 			}
 			else
 			{
@@ -133,7 +133,7 @@ public partial class menu_barrio : CanvasLayer
 		}
 		else if(labelNombre.Text == "Barrio Nivel 3")
 		{
-			amountGold = 3000; amountWood = 200; amountStone = 100; amountIron = 0;
+			amountGold = 800; amountWood = 100; amountStone = 50; amountIron = 0;
 
 			if(Recursos.Instance.TotalGold >= amountGold && Recursos.Instance.TotalWood >= amountWood && Recursos.Instance.TotalStone >= amountStone && Recursos.Instance.TotalIron >= amountIron)
 			{
@@ -145,7 +145,7 @@ public partial class menu_barrio : CanvasLayer
 				Vida = 75;
 				Recursos.Instance.Vida = Vida;
 				Recursos.Instance.SaveData();
-				labelInfo.Text = "  Vida Maxima: 175  " + "\n  Coste mejora: 4000 de oro, 400 de madera, 200 de piedra, 100 de hierro  ";
+				labelInfo.Text = "  Vida Maxima: 175  " + "\n  Coste mejora: 1000 de oro, 150 de madera, 100 de piedra, 25 de hierro  ";
 			}
 			else
 			{
@@ -154,7 +154,7 @@ public partial class menu_barrio : CanvasLayer
 		}
 		else if(labelNombre.Text == "Barrio Nivel 4")
 		{
-			amountGold = 4000; amountWood = 400; amountStone = 200; amountIron = 100;
+			amountGold = 1000; amountWood = 150; amountStone = 100; amountIron = 25;
 			if(Recursos.Instance.TotalGold >= amountGold && Recursos.Instance.TotalWood >= amountWood && Recursos.Instance.TotalStone >= amountStone && Recursos.Instance.TotalIron >= amountIron)
 			{
 				Recursos.Instance.TotalGold -= amountGold;

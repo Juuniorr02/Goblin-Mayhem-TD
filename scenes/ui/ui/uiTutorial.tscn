@@ -55,7 +55,7 @@ layout_mode = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MainContainer/TextBoxContainer/CharacterAnchor"]
 texture_filter = 1
-position = Vector2(14.835, -8.615)
+position = Vector2(50, 0)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_cakc5")
 offset = Vector2(47, -43)

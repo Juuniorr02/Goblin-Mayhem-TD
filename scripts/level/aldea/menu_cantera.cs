@@ -8,7 +8,7 @@ public partial class menu_cantera : CanvasLayer
 	public Label labelNombre;
 	public Button btnMejorar;
 	public Button btnVolver;
-	public int Piedra = 100;
+	public int Piedra;
 	private bool isPaused = false;
 
 	public override void _Ready()
@@ -50,25 +50,29 @@ public partial class menu_cantera : CanvasLayer
 
 	public void Abrir()
 	{
-		if (labelNombre.Text == "Cantera Nivel 1")
+		if (labelNombre.Text == "Cantera Nivel 0")
 		{
-			labelInfo.Text = "  Producción: 100 de piedra por ronda  " + "\n  Coste mejora: 1000 de oro  ";
+			labelInfo.Text = "  Producción: 0 de piedra por ronda  " + "\n  Coste mejora: 100 de oro  ";
+		}
+		else if (labelNombre.Text == "Cantera Nivel 1")
+		{
+			labelInfo.Text = "  Producción: 25 de piedra por ronda  " + "\n  Coste mejora: 300 de oro  ";
 		}
 		else if (labelNombre.Text == "Cantera Nivel 2")
 		{
-			labelInfo.Text = "  Producción: 200 de piedra por ronda  " + "\n  Coste mejora: 2000 de oro, 100 de madera  ";
+			labelInfo.Text = "  Producción: 50 de piedra por ronda  " + "\n  Coste mejora: 600 de oro, 75 de madera  ";
 		}
 		else if (labelNombre.Text == "Cantera Nivel 3")
 		{
-			labelInfo.Text = "  Producción: 300 de piedra por ronda  " + "\n  Coste mejora: 3000 de oro, 200 de madera, 100 de piedra  ";
+			labelInfo.Text = "  Producción: 100 de piedra por ronda  " + "\n  Coste mejora: 750 de oro, 150 de madera, 50 de piedra  ";
 		}
 		else if (labelNombre.Text == "Cantera Nivel 4")
 		{
-			labelInfo.Text = "  Producción: 400 de piedra por ronda  " + "\n  Coste mejora: 4000 de oro, 400 de madera, 200 de piedra, 100 de hierro  ";
+			labelInfo.Text = "  Producción: 150 de piedra por ronda  " + "\n  Coste mejora: 1000 de oro, 230 de madera, 125 de piedra, 50 de hierro  ";
 		}
 		else if (labelNombre.Text == "Cantera Nivel 5")
 		{
-			labelInfo.Text = "  Producción: 500 de piedra por ronda  ";
+			labelInfo.Text = "  Producción: 200 de piedra por ronda  ";
 			btnMejorar.Disabled = true;
 		}
         isPaused = true;
@@ -89,9 +93,31 @@ public partial class menu_cantera : CanvasLayer
 	{
 		int amountGold, amountWood, amountStone, amountIron;
 
+		if(labelNombre.Text == "Cantera Nivel 0")
+		{
+			amountGold = 100; amountWood = 0; amountStone = 0; amountIron = 0;
+			if(Recursos.Instance.TotalGold >= amountGold && Recursos.Instance.TotalWood >= amountWood && Recursos.Instance.TotalStone >= amountStone && Recursos.Instance.TotalIron >= amountIron)
+			{
+				Recursos.Instance.TotalGold -= amountGold;
+				Recursos.Instance.TotalWood -= amountWood;
+				Recursos.Instance.TotalStone -= amountStone;
+				Recursos.Instance.TotalIron -= amountIron;
+				labelNombre.Text = "Cantera Nivel 1";
+				Piedra = 25;
+				Recursos.Instance.ProdStone = Piedra;
+				Recursos.Instance.SaveData();
+				labelInfo.Text = "  Producción: 25 de piedra por ronda  " + "\n  Coste mejora: 300 de oro  ";
+			}
+			else
+			{
+				GD.Print(Recursos.Instance.TotalGold, " ", Recursos.Instance.TotalWood, " ", Recursos.Instance.TotalStone, " ", Recursos.Instance.TotalIron);
+				labelInfo.Text = "  No tienes suficientes recursos.  ";
+			}
+
+		}
 		if(labelNombre.Text == "Cantera Nivel 1")
 		{
-			amountGold = 1000; amountWood = 0; amountStone = 0; amountIron = 0;
+			amountGold = 300; amountWood = 0; amountStone = 0; amountIron = 0;
 			if(Recursos.Instance.TotalGold >= amountGold && Recursos.Instance.TotalWood >= amountWood && Recursos.Instance.TotalStone >= amountStone && Recursos.Instance.TotalIron >= amountIron)
 			{
 				Recursos.Instance.TotalGold -= amountGold;
@@ -99,10 +125,10 @@ public partial class menu_cantera : CanvasLayer
 				Recursos.Instance.TotalStone -= amountStone;
 				Recursos.Instance.TotalIron -= amountIron;
 				labelNombre.Text = "Cantera Nivel 2";
-				Piedra = 200;
+				Piedra = 50;
 				Recursos.Instance.ProdStone = Piedra;
 				Recursos.Instance.SaveData();
-				labelInfo.Text = "  Producción: 200 de piedra por ronda  " + "\n  Coste mejora: 2000 de oro, 100 de madera  ";
+				labelInfo.Text = "  Producción: 50 de piedra por ronda  " + "\n  Coste mejora: 600 de oro, 75 de madera  ";
 			}
 			else
 			{
@@ -113,7 +139,7 @@ public partial class menu_cantera : CanvasLayer
 		}
 		else if(labelNombre.Text == "Cantera Nivel 2")
 		{
-			amountGold = 2000; amountWood = 100; amountStone = 0; amountIron = 0;
+			amountGold = 600; amountWood = 75; amountStone = 0; amountIron = 0;
 			if(Recursos.Instance.TotalGold >= amountGold && Recursos.Instance.TotalWood >= amountWood && Recursos.Instance.TotalStone >= amountStone && Recursos.Instance.TotalIron >= amountIron)
 			{
 				Recursos.Instance.TotalGold -= amountGold;
@@ -121,10 +147,10 @@ public partial class menu_cantera : CanvasLayer
 				Recursos.Instance.TotalStone -= amountStone;
 				Recursos.Instance.TotalIron -= amountIron;
 				labelNombre.Text = "Cantera Nivel 3";
-				Piedra = 300;
+				Piedra = 100;
 				Recursos.Instance.ProdStone = Piedra;
 				Recursos.Instance.SaveData();
-				labelInfo.Text = "  Producción: 300 de piedra por ronda  " + "\n  Coste mejora: 3000 de oro, 200 de madera, 100 de piedra  ";
+				labelInfo.Text = "  Producción: 100 de piedra por ronda  " + "\n  Coste mejora: 750 de oro, 150 de madera, 50 de piedra  ";
 			}
 			else
 			{
@@ -133,7 +159,7 @@ public partial class menu_cantera : CanvasLayer
 		}
 		else if(labelNombre.Text == "Cantera Nivel 3")
 		{
-			amountGold = 3000; amountWood = 200; amountStone = 100; amountIron = 0;
+			amountGold = 750; amountWood = 150; amountStone = 50; amountIron = 0;
 			if(Recursos.Instance.TotalGold >= amountGold && Recursos.Instance.TotalWood >= amountWood && Recursos.Instance.TotalStone >= amountStone && Recursos.Instance.TotalIron >= amountIron)
 			{
 				Recursos.Instance.TotalGold -= amountGold;
@@ -141,10 +167,10 @@ public partial class menu_cantera : CanvasLayer
 				Recursos.Instance.TotalStone -= amountStone;
 				Recursos.Instance.TotalIron -= amountIron;
 				labelNombre.Text = "Cantera Nivel 4";
-				Piedra = 400;
+				Piedra = 150;
 				Recursos.Instance.ProdStone = Piedra;
 				Recursos.Instance.SaveData();
-				labelInfo.Text = "  Producción: 400 de piedra por ronda  " + "\n  Coste mejora: 4000 de oro, 400 de madera, 200 de piedra, 100 de hierro  ";
+				labelInfo.Text = "  Producción: 150 de piedra por ronda  " + "\n  Coste mejora: 1000 de oro, 230 de madera, 125 de piedra, 50 de hierro  ";
 			}
 			else
 			{
@@ -153,7 +179,7 @@ public partial class menu_cantera : CanvasLayer
 		}
 		else if(labelNombre.Text == "Cantera Nivel 4")
 		{
-			amountGold = 4000; amountWood = 400; amountStone = 200; amountIron = 100;
+			amountGold = 1000; amountWood = 230; amountStone = 125; amountIron = 50;
 			if(Recursos.Instance.TotalGold >= amountGold && Recursos.Instance.TotalWood >= amountWood && Recursos.Instance.TotalStone >= amountStone && Recursos.Instance.TotalIron >= amountIron)
 			{
 				Recursos.Instance.TotalGold -= amountGold;
@@ -161,10 +187,10 @@ public partial class menu_cantera : CanvasLayer
 				Recursos.Instance.TotalStone -= amountStone;
 				Recursos.Instance.TotalIron -= amountIron;
 				labelNombre.Text = "Cantera Nivel 5";
-				Piedra = 500;
+				Piedra = 200;
 				Recursos.Instance.ProdStone = Piedra;
 				Recursos.Instance.SaveData();
-				labelInfo.Text = "  Producción: 500 de piedra por ronda  ";
+				labelInfo.Text = "  Producción: 200 de piedra por ronda  ";
 				btnMejorar.Disabled = true;
 			}
 			else
