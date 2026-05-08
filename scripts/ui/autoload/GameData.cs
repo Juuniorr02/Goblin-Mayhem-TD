@@ -10,6 +10,8 @@ public partial class GameData : Node
     public static bool Level5 = false;
     public static bool Level6 = false;
 
+    public static bool AldeaVisitada = false;
+
 
     public static GameData Instance;
 

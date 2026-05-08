@@ -184,6 +184,7 @@ public partial class Aldea : Node2D
 
 	private void OnMapa()
 	{
+        GameData.AldeaVisitada = true;
 		if (menuAbierto) return;
 
 		CerrarTodosLosMenus();

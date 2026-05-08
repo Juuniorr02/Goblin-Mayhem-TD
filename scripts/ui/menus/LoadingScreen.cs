@@ -46,7 +46,7 @@ public partial class LoadingScreen : Control
         realProgress = (float)progress[0] * 100;
 
         // 🔥 suavizado
-        visualProgress = Mathf.Lerp(visualProgress, realProgress, 5f * (float)delta);
+        visualProgress = Mathf.Lerp(visualProgress, realProgress, 1f * (float)delta);
 
         progressBar.Value = visualProgress;
 

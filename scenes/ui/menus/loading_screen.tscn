@@ -34,5 +34,6 @@ offset_bottom = 25.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 size_flags_stretch_ratio = 0.0
+max_value = 55.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
