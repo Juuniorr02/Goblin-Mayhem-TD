@@ -12,7 +12,7 @@ public partial class ConsoleCommands : Node
 
     public string help()
     {
-        return "Comandos: restart, recursos, win, godmode";
+        return "Comandos: restart, recursos, win, godmode, speed X";
     }
 
     public string restart()
