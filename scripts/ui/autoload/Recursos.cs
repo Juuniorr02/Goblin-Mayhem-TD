@@ -77,6 +77,19 @@ public partial class Recursos : Node
         Iron = 10000;
     }
 
+    public void MuchoDinero()
+    {
+        Gold = 1000000;
+        Wood = 1000000;
+        Stone = 1000000;
+        Iron = 1000000;
+    }
+
+    public void VidaInfinita()
+    {
+        Vida = 999999999;
+    }
+
     public void FirstLevelEnd()
     {
         Gold = 0;
