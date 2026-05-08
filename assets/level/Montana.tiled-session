@@ -23,10 +23,10 @@
         },
         "Map/level1.tmx": {
             "scale": 0.125,
-            "selectedLayer": 0,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 6952,
-                "y": 3716
+                "x": 5552,
+                "y": 2852
             }
         },
         "Map/mapa2.tmx": {
@@ -60,13 +60,15 @@
     "openFiles": [
         "Map/Example.tsx",
         "Map/montana1.tmx",
-        "Map/level1.tmx"
+        "Map/level1.tmx",
+        "Map/Final.tmx"
     ],
     "project": "Montana.tiled-project",
     "property.type": "bool",
     "recentFiles": [
         "Map/Example.tsx",
         "Map/montana1.tmx",
+        "Map/Final.tmx",
         "Map/level1.tmx",
         "Map/mapa2.tmx",
         "Map/mapa2/mapa2.tmx"
