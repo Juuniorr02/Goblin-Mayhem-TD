@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bk48w8h6j0uyb"]
+[gd_scene load_steps=4 format=3 uid="uid://bk48w8h6j0uyb"]
 
 [ext_resource type="Script" uid="uid://djicxvpihl7x5" path="res://scripts/ui/menus/LoadingScreen.cs" id="1_evij1"]
 [ext_resource type="Texture2D" uid="uid://ti4vfjow0a2v" path="res://assets/ui/background/27230.jpg" id="2_olvb8"]
+[ext_resource type="Texture2D" uid="uid://dnd13a0gujs1t" path="res://assets/ui/background/duende.png" id="3_olvb8"]
 
 [node name="LoadingScreen" type="Control"]
 layout_mode = 3
@@ -35,5 +36,14 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 size_flags_stretch_ratio = 0.0
 max_value = 55.0
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_left = -65.0
+offset_top = 91.0
+offset_right = 182.0
+offset_bottom = 393.0
+scale = Vector2(0.5, 0.5)
+texture_under = ExtResource("3_olvb8")
 
 [node name="Camera2D" type="Camera2D" parent="."]
