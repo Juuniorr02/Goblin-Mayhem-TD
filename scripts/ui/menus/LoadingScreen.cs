@@ -9,6 +9,9 @@ public partial class LoadingScreen : Control
     public static string NextScenePath;
     public static bool IsLoadingFromSave = false;
 
+    private float visualProgress = 0f;
+    private float realProgress = 0f;
+
     private SaveSystem save;
 
     public override void _Ready()
@@ -40,12 +43,22 @@ public partial class LoadingScreen : Control
         var progress = new Godot.Collections.Array { 0f };
         var status = ResourceLoader.LoadThreadedGetStatus(sceneToLoad, progress);
 
-        progressBar.Value = (float)progress[0] * 100;
+        realProgress = (float)progress[0] * 100;
 
+        // 🔥 suavizado
+        visualProgress = Mathf.Lerp(visualProgress, realProgress, 5f * (float)delta);
+
+        progressBar.Value = visualProgress;
+
+        // cuando termina realmente
         if (status == ResourceLoader.ThreadLoadStatus.Loaded)
         {
-            var scene = ResourceLoader.LoadThreadedGet(sceneToLoad);
-            GetTree().ChangeSceneToPacked(scene as PackedScene);
+        // 🔥 esperar a que llegue a 100 visualmente
+            if (visualProgress >= 99f)
+            {
+                var scene = ResourceLoader.LoadThreadedGet(sceneToLoad);
+                GetTree().ChangeSceneToPacked(scene as PackedScene);
+            }
         }
     }
 

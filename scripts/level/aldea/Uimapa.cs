@@ -10,8 +10,6 @@ public partial class Uimapa : Control
 
 		btnAldea = GetNodeOrNull<Button>("%Aldea");
 
-		btnAldea.Disabled = true;
-
 		ConfigurarBoton(btnAldea);
 
 		if (btnAldea != null)
