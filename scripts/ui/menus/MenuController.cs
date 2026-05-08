@@ -96,6 +96,7 @@ public partial class MenuController : Node
     public void OnNewGame()
     {
         Recursos.Instance.NewGame();
+        GameData.Instance.Reset();
         GetTree().ChangeSceneToFile("res://scenes/level/terrain/level1.tscn");
     }
 
