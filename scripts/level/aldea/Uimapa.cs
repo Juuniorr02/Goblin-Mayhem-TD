@@ -6,8 +6,11 @@ public partial class Uimapa : Control
 	public override void _Ready()
 	{
 		ProcessMode = ProcessModeEnum.Always;
+		
 
 		btnAldea = GetNodeOrNull<Button>("%Aldea");
+
+		btnAldea.Disabled = true;
 
 		ConfigurarBoton(btnAldea);
 
@@ -28,7 +31,8 @@ public partial class Uimapa : Control
 		if (GameData.Level1 == true)
 			btnAldea.Disabled = false;
 		else
-			btnAldea.Disabled = true;
-		GetTree().ChangeSceneToFile("res://scenes/level/aldea/aldea.tscn");
+		{
+			GetTree().ChangeSceneToFile("res://scenes/level/aldea/aldea.tscn");
+		}
 	}
 }
