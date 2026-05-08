@@ -57,6 +57,7 @@ public partial class MenuDerrota : CanvasLayer
 
     private void Pausar()
     {
+        BuildTime.CanBuild = true;
         isPaused = true;
         GetTree().Paused = true;
         Visible = true;

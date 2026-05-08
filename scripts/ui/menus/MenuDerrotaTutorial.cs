@@ -45,6 +45,9 @@ public partial class MenuDerrotaTutorial : CanvasLayer
 
     private void Pausar()
     {
+        var save = GetNode<SaveSystem>("/root/SaveSystem");
+    	save.SaveGame();
+        BuildTime.CanBuild = true;
         isPaused = true;
         GetTree().Paused = true;
         Visible = true;
