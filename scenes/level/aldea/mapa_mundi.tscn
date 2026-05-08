@@ -297,8 +297,7 @@ limit_right = 1145
 limit_bottom = 555
 script = ExtResource("2_bt43m")
 MoveSpeed = 1400.0
-MinZoom = 0.1
-MaxZoom = 1.0
+MaxZoom = 0.2
 
 [node name="uimapa" parent="." instance=ExtResource("3_bmao8")]
 
