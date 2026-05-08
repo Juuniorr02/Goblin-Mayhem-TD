@@ -97,10 +97,14 @@ public partial class MenuController : Node
     {
         Recursos.Instance.NewGame();
         GameData.Instance.Reset();
-        GetTree().ChangeSceneToFile("res://scenes/level/terrain/level1.tscn");
+
+        LoadingScreen.NextScenePath = "res://scenes/level/terrain/level1.tscn";
+        LoadingScreen.IsLoadingFromSave = false;
+
+        GetTree().ChangeSceneToFile("res://scenes/ui/menus/loading_screen.tscn");
     }
 
-    public async void OnLoadGame()
+    public void OnLoadGame()
     {
         if (!FileAccess.FileExists("user://save.json"))
         {
@@ -108,7 +112,9 @@ public partial class MenuController : Node
             return;
         }
 
-        await save.LoadGame();
+        LoadingScreen.IsLoadingFromSave = true;
+
+        GetTree().ChangeSceneToFile("res://scenes/ui/menus/loading_screen.tscn");
     }
 
     public void OnOptions()
