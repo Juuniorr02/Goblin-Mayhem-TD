@@ -163,4 +163,4 @@ scale = Vector2(57.86167, 40.06142)
 flat = true
 
 [node name="DialogueUi" parent="." instance=ExtResource("14_o7wln")]
-defaultDialogueLines = PackedStringArray("")
+defaultDialogueLines = PackedStringArray("Felicidades por ser tan malo y pasarte el tutorial.", "Te presento tu aldea.", "Cada edificio que es es funcional, Ayuntamiento,Aserradero, Mina,Cantera, Barrio y Herreria.", "Cada una hace una cosa.", "Ayuntamiento: Da dinero, por cada oleda dentro de los niveles.", "El Aserradero: Da  madera, por cada oleda dentro de los niveles.", "La Cantera: Da piedra, por cada oleda dentro de los niveles.", "La Mina: Da Metal, por cada oleda dentro de los niveles.", "El Barrio: No me acuerdo", "La Herreria: Mejora las Torres(No Implementado)", "Todos los edificios se pueden mejorar para mas produccion.", "La puerta de la aldea te lleva al Mapamundi, donde estan todos los niveles.")
