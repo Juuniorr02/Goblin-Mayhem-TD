@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://djicxvpihl7x5" path="res://scripts/ui/menus/LoadingScreen.cs" id="1_evij1"]
 [ext_resource type="Texture2D" uid="uid://ti4vfjow0a2v" path="res://assets/ui/background/27230.jpg" id="2_olvb8"]
-[ext_resource type="Texture2D" uid="uid://dnd13a0gujs1t" path="res://assets/ui/background/duende.png" id="3_olvb8"]
+[ext_resource type="Texture2D" uid="uid://c3k2q2hh7s6e5" path="res://assets/character/enemy/Pepin/pepin.png" id="3_olvb8"]
 
 [node name="LoadingScreen" type="Control"]
 layout_mode = 3

@@ -63,32 +63,53 @@ public partial class MenuVictoria : CanvasLayer
             {
                 GameData.Level1 = true;
                 GameData.Level2 = true;
+                SaveSystem.Instance.SaveGame();
+			    isPaused = true;
+        	    GetTree().Paused = true;
+        	    Visible = true;
+        	    Input.MouseMode = Input.MouseModeEnum.Visible;
             }
             else if(CurrentScene == "res://scenes/level/terrain/montana1.tscn")
             {
                 GameData.Level3 = true;
+                SaveSystem.Instance.SaveGame();
+			    isPaused = true;
+        	    GetTree().Paused = true;
+        	    Visible = true;
+        	    Input.MouseMode = Input.MouseModeEnum.Visible;
             }
             else if(CurrentScene == "res://scenes/level/terrain/pantano1.tscn")
             {
                 GameData.Level4 = true;
+                SaveSystem.Instance.SaveGame();
+			    isPaused = true;
+        	    GetTree().Paused = true;
+        	    Visible = true;
+        	    Input.MouseMode = Input.MouseModeEnum.Visible;
             }
             else if(CurrentScene == "res://scenes/level/terrain/islas1.tscn")
             {
                 GameData.Level5 = true;
+                SaveSystem.Instance.SaveGame();
+			    isPaused = true;
+        	    GetTree().Paused = true;
+        	    Visible = true;
+        	    Input.MouseMode = Input.MouseModeEnum.Visible;
             }
             if(CurrentScene == "res://scenes/level/terrain/castilloMalvado.tscn")
             {
                 GameData.Level6 = true;
+                SaveSystem.Instance.SaveGame();
+			    isPaused = true;
+        	    GetTree().Paused = true;
+        	    Visible = true;
+        	    Input.MouseMode = Input.MouseModeEnum.Visible;
             }
             else
             {
-                GD.Print("Vaya pringao esta jugando el primer nivel o el ultimo.");
+                GD.Print("Sk se enfada");
             }
-            SaveSystem.Instance.SaveGame();
-			isPaused = true;
-        	GetTree().Paused = true;
-        	Visible = true;
-        	Input.MouseMode = Input.MouseModeEnum.Visible;
+
 		}
 	}
 

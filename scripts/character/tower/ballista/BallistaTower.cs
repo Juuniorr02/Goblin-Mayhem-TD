@@ -21,7 +21,7 @@ public partial class BallistaTower : BaseTower
     {
         int amountGold = 0, amountWood = 0, amountStone = 0, amountIron = 0;
         
-        amountGold = 100; amountWood = 50; amountStone = 0; amountIron = 0;
+        amountGold = 150; amountWood = 75; amountStone = 0; amountIron = 0;
 
         if (Recursos.Instance.Gold >= amountGold && Recursos.Instance.Wood >= amountWood && Recursos.Instance.Stone >= amountStone && Recursos.Instance.Iron >= amountIron)
         {

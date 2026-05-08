@@ -60,7 +60,7 @@ public partial class Globo : BaseTower
     {
         int amountGold = 0, amountWood = 0, amountStone = 0, amountIron = 0;
         
-        amountGold = 100; amountWood = 50; amountStone = 0; amountIron = 0;
+        amountGold = 300; amountWood = 125; amountStone = 75; amountIron = 50;
 
         if (Recursos.Instance.Gold >= amountGold && Recursos.Instance.Wood >= amountWood && Recursos.Instance.Stone >= amountStone && Recursos.Instance.Iron >= amountIron)
         {
