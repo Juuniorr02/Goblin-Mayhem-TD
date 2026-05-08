@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://oa4nbsxo4u5j"]
+
+[ext_resource type="Script" uid="uid://cmlsqpvd1wih5" path="res://scripts/ui/ui/DevConsole.cs" id="1_v7mvt"]
+[ext_resource type="Script" uid="uid://vddy5ltbbgib" path="res://scripts/ui/ui/ConsoleCommands.cs" id="2_57sc8"]
+
+[node name="CanvasLayer" type="CanvasLayer" node_paths=PackedStringArray("consolePanel", "historyLabel", "inputField", "commandsNode")]
+process_mode = 3
+layer = 751
+script = ExtResource("1_v7mvt")
+consolePanel = NodePath("PanelContainer")
+historyLabel = NodePath("PanelContainer/VBoxContainer/RichTextLabel")
+inputField = NodePath("PanelContainer/VBoxContainer/LineEdit")
+commandsNode = NodePath("Commands")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 70.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 286.765)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LineEdit" type="LineEdit" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+placeholder_text = "Introduce un comando"
+
+[node name="Commands" type="Node" parent="."]
+script = ExtResource("2_57sc8")
