@@ -100,7 +100,7 @@ public partial class menu_barrio : CanvasLayer
 				Recursos.Instance.TotalIron -= amountIron;
 				labelNombre.Text = "Barrio Nivel 2";
 				Vida = 25;
-				Recursos.Instance.ProdStone = Vida;
+				Recursos.Instance.ProdVida = Vida;
 				Recursos.Instance.SaveData();
 				SaveSystem.Instance.SaveGame();
 				labelInfo.Text = "  Vida Maxima: 125  " + "\n  Coste mejora: 600 de oro, 50 de madera  ";
@@ -145,7 +145,7 @@ public partial class menu_barrio : CanvasLayer
 				Recursos.Instance.TotalIron -= amountIron;
 				labelNombre.Text = "Barrio Nivel 4";
 				Vida = 75;
-				Recursos.Instance.Vida = Vida;
+				Recursos.Instance.ProdVida = Vida;
 				Recursos.Instance.SaveData();
 				SaveSystem.Instance.SaveGame();
 				labelInfo.Text = "  Vida Maxima: 175  " + "\n  Coste mejora: 1000 de oro, 150 de madera, 100 de piedra, 25 de hierro  ";

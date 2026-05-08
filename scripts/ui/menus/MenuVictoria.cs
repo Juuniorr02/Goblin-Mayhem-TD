@@ -94,6 +94,7 @@ public partial class MenuVictoria : CanvasLayer
 
     private void Pausar()
     {
+        Recursos.Instance.EndLevel();
         var save = GetNode<SaveSystem>("/root/SaveSystem");
     	save.SaveGame();
         BuildTime.CanBuild = true;
@@ -130,8 +131,6 @@ public partial class MenuVictoria : CanvasLayer
 
 	private void OnSiguiente()
 	{
-
-        Recursos.Instance.EndLevel();
 		Input.MouseMode = Input.MouseModeEnum.Visible;
         QuitarPausa();
         Recursos.Instance.StartLevel();
