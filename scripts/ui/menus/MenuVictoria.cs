@@ -94,9 +94,6 @@ public partial class MenuVictoria : CanvasLayer
 
     private void Pausar()
     {
-        Recursos.Instance.EndLevel();
-        var save = GetNode<SaveSystem>("/root/SaveSystem");
-    	save.SaveGame();
         BuildTime.CanBuild = true;
         isPaused = true;
         GetTree().Paused = true;
@@ -113,6 +110,9 @@ public partial class MenuVictoria : CanvasLayer
 
     private void OnReiniciar()
 	{
+        Recursos.Instance.EndLevel();
+        var save = GetNode<SaveSystem>("/root/SaveSystem");
+    	save.SaveGame();
         BuildTime.CanBuild = true;
         Recursos.Instance.RepairBase();
         Wave.Instance.ResetWaves();
@@ -122,6 +122,9 @@ public partial class MenuVictoria : CanvasLayer
 
 	private void OnGuardarSalir()
 	{
+        Recursos.Instance.EndLevel();
+        var save = GetNode<SaveSystem>("/root/SaveSystem");
+    	save.SaveGame();
         Recursos.Instance.StartLevel();
         Wave.Instance.ResetWaves();
 		QuitarPausa();
@@ -131,6 +134,9 @@ public partial class MenuVictoria : CanvasLayer
 
 	private void OnSiguiente()
 	{
+        Recursos.Instance.EndLevel();
+        var save = GetNode<SaveSystem>("/root/SaveSystem");
+    	save.SaveGame();
 		Input.MouseMode = Input.MouseModeEnum.Visible;
         QuitarPausa();
         Recursos.Instance.StartLevel();
