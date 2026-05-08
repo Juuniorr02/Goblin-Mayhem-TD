@@ -7,7 +7,6 @@ public partial class DialogueUI : CanvasLayer
     [Export] public Label nameLabel;
     [Export] public AnimatedSprite2D portrait;
 
-    // Ahora puedes escribir las frases iniciales directamente en el Inspector de Godot
     [Export] public string[] defaultDialogueLines = new string[] {
         "¡Los goblins se acercan! Debemos proteger la aldea.",
         "Selecciona una torre y colócala cerca del camino."
@@ -20,14 +19,18 @@ public partial class DialogueUI : CanvasLayer
 
     public override void _Ready()
     {
-        // Nota: Si el zoom falla, recuerda borrar estas dos líneas y configurar en Project Settings
+        // Configuraciones de escala
         GetTree().Root.ContentScaleMode = Window.ContentScaleModeEnum.CanvasItems;
         GetTree().Root.ContentScaleAspect = Window.ContentScaleAspectEnum.Keep;
 
-        // Al empezar, cargamos las frases que pusiste en el Export
-        if (defaultDialogueLines != null && defaultDialogueLines.Length > 0)
+        // Accedemos al Autoload para ver si ya se mostró antes
+        var GameData = GetNode<GameData>("/root/GameData");
+
+        if (!GameData.AldeaVisitada && defaultDialogueLines != null && defaultDialogueLines.Length > 0)
         {
             TriggerDialogue(defaultDialogueLines);
+            // Marcamos como visto para que no se repita
+            GameData.AldeaVisitada = true; 
         }
         else
         {
@@ -43,23 +46,18 @@ public partial class DialogueUI : CanvasLayer
         ShowCurrentLine();
     }
 
-    public void TriggerDialogue(string singleLine)
-    {
-        TriggerDialogue(new string[] { singleLine });
-    }
-
     public override void _Input(InputEvent @event)
     {
         if (!Visible) return;
 
-        // Detecta tanto la tecla "Aceptar" (Espacio/Enter) como el Click Izquierdo del ratón
         bool pressedClick = @event is InputEventMouseButton mouseEvent && mouseEvent.Pressed && mouseEvent.ButtonIndex == MouseButton.Left;
+        // También incluimos la acción "ui_accept" (Enter/Espacio) por comodidad
+        bool pressedKey = @event.IsActionPressed("ui_accept");
 
-        if (pressedClick)
+        if (pressedClick || pressedKey)
         {
             if (_isWriting)
             {
-                // Salta la animación y muestra todo el texto de golpe
                 _tween?.Kill();
                 if (textLabel != null) textLabel.VisibleRatio = 1.0f;
                 _isWriting = false;
