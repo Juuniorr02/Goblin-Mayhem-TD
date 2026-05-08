@@ -18,7 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://bv6xb2o3otqu3" path="res://scenes/tower/Grifo/GrffinTower.tscn" id="15_cu56y"]
 [ext_resource type="PackedScene" uid="uid://cuq0at3ylsro3" path="res://scenes/tower/MageTower/mage_tower.tscn" id="16_rrpdo"]
 [ext_resource type="PackedScene" uid="uid://ci612q8twcycd" path="res://scenes/ui/ui/iu.tscn" id="17_66yle"]
-[ext_resource type="PackedScene" uid="uid://b4kgd56vbuq80" path="res://scenes/tower/Ship/ship.tscn" id="17_d0a6p"]
+[ext_resource type="PackedScene" uid="uid://b4kgd56vbuq80" path="res://scenes/tower/ship/ship.tscn" id="17_d0a6p"]
 [ext_resource type="Script" uid="uid://ccef7herjptu0" path="res://scripts/character/camera/CameraRig.cs" id="18_0t75c"]
 [ext_resource type="PackedScene" uid="uid://dd15bvxn3ddsy" path="res://scenes/tower/Tuna/tuna_hatchery.tscn" id="18_nvdl1"]
 [ext_resource type="PackedScene" uid="uid://dgc77kp8vuy4p" path="res://scenes/ui/menus/options_pausa.tscn" id="21_uk6l5"]
@@ -76,9 +76,13 @@ CaminoVolador = NodePath("CaminoVolador")
 Waves = Array[Object]([SubResource("Resource_brejp")])
 
 [node name="CaminoA" type="Path2D" parent="EnemySpawner" groups=["enemies"]]
+position = Vector2(231.69408, 80.88785)
+scale = Vector2(0.95396507, 0.96349823)
 curve = SubResource("Curve2D_w02j3")
 
 [node name="CaminoB" type="Path2D" parent="EnemySpawner" groups=["enemies"]]
+position = Vector2(229.57309, 85.236115)
+scale = Vector2(0.9543411, 0.9615533)
 curve = SubResource("Curve2D_q1drb")
 
 [node name="CaminoVolador" type="Path2D" parent="EnemySpawner" groups=["Volador"]]
