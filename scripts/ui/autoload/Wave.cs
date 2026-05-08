@@ -20,4 +20,9 @@ public partial class Wave : Node
     {
         CurrentWave = 0;
     }
+
+    public void Skip()
+    {
+        CurrentWave = 100;
+    }
 }

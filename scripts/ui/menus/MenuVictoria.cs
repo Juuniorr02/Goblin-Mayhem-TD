@@ -63,7 +63,6 @@ public partial class MenuVictoria : CanvasLayer
             {
                 GameData.Level1 = true;
                 GameData.Level2 = true;
-                SaveSystem.Instance.SaveGame();
 			    isPaused = true;
         	    GetTree().Paused = true;
         	    Visible = true;
@@ -72,7 +71,6 @@ public partial class MenuVictoria : CanvasLayer
             else if(CurrentScene == "res://scenes/level/terrain/montana1.tscn")
             {
                 GameData.Level3 = true;
-                SaveSystem.Instance.SaveGame();
 			    isPaused = true;
         	    GetTree().Paused = true;
         	    Visible = true;
@@ -81,7 +79,6 @@ public partial class MenuVictoria : CanvasLayer
             else if(CurrentScene == "res://scenes/level/terrain/pantano1.tscn")
             {
                 GameData.Level4 = true;
-                SaveSystem.Instance.SaveGame();
 			    isPaused = true;
         	    GetTree().Paused = true;
         	    Visible = true;
@@ -90,7 +87,6 @@ public partial class MenuVictoria : CanvasLayer
             else if(CurrentScene == "res://scenes/level/terrain/islas1.tscn")
             {
                 GameData.Level5 = true;
-                SaveSystem.Instance.SaveGame();
 			    isPaused = true;
         	    GetTree().Paused = true;
         	    Visible = true;
@@ -99,7 +95,6 @@ public partial class MenuVictoria : CanvasLayer
             if(CurrentScene == "res://scenes/level/terrain/castilloMalvado.tscn")
             {
                 GameData.Level6 = true;
-                SaveSystem.Instance.SaveGame();
 			    isPaused = true;
         	    GetTree().Paused = true;
         	    Visible = true;
@@ -132,11 +127,12 @@ public partial class MenuVictoria : CanvasLayer
     private void OnReiniciar()
 	{
         Recursos.Instance.EndLevel();
-        var save = GetNode<SaveSystem>("/root/SaveSystem");
-    	save.SaveGame();
+
         BuildTime.CanBuild = true;
         Recursos.Instance.RepairBase();
         Wave.Instance.ResetWaves();
+        var save = GetNode<SaveSystem>("/root/SaveSystem");
+    	save.SaveGame();
         QuitarPausa();
     	GetTree().ReloadCurrentScene();
 	}
