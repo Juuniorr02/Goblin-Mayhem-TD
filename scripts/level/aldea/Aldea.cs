@@ -22,6 +22,7 @@ public partial class Aldea : Node2D
     public override void _Ready()
     {
         ProcessMode = ProcessModeEnum.Always;
+        SaveSystem.Instance.SaveGame();
 
         menu_ayuntamiento = GetNodeOrNull<menu_ayuntamiento>("Botones/BotonAyuntamiento/menu_ayuntamiento");
         menu_cantera = GetNodeOrNull<menu_cantera>("Botones/BotonCantera/menu_cantera");

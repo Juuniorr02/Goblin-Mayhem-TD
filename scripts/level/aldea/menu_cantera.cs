@@ -106,6 +106,7 @@ public partial class menu_cantera : CanvasLayer
 				Piedra = 25;
 				Recursos.Instance.ProdStone = Piedra;
 				Recursos.Instance.SaveData();
+				SaveSystem.Instance.SaveGame();
 				labelInfo.Text = "  Producción: 25 de piedra por ronda  " + "\n  Coste mejora: 300 de oro  ";
 			}
 			else
@@ -128,6 +129,7 @@ public partial class menu_cantera : CanvasLayer
 				Piedra = 50;
 				Recursos.Instance.ProdStone = Piedra;
 				Recursos.Instance.SaveData();
+				SaveSystem.Instance.SaveGame();
 				labelInfo.Text = "  Producción: 50 de piedra por ronda  " + "\n  Coste mejora: 600 de oro, 75 de madera  ";
 			}
 			else
@@ -150,6 +152,7 @@ public partial class menu_cantera : CanvasLayer
 				Piedra = 100;
 				Recursos.Instance.ProdStone = Piedra;
 				Recursos.Instance.SaveData();
+				SaveSystem.Instance.SaveGame();
 				labelInfo.Text = "  Producción: 100 de piedra por ronda  " + "\n  Coste mejora: 750 de oro, 150 de madera, 50 de piedra  ";
 			}
 			else
@@ -170,6 +173,7 @@ public partial class menu_cantera : CanvasLayer
 				Piedra = 150;
 				Recursos.Instance.ProdStone = Piedra;
 				Recursos.Instance.SaveData();
+				SaveSystem.Instance.SaveGame();
 				labelInfo.Text = "  Producción: 150 de piedra por ronda  " + "\n  Coste mejora: 1000 de oro, 230 de madera, 125 de piedra, 50 de hierro  ";
 			}
 			else
@@ -190,6 +194,7 @@ public partial class menu_cantera : CanvasLayer
 				Piedra = 200;
 				Recursos.Instance.ProdStone = Piedra;
 				Recursos.Instance.SaveData();
+				SaveSystem.Instance.SaveGame();
 				labelInfo.Text = "  Producción: 200 de piedra por ronda  ";
 				btnMejorar.Disabled = true;
 			}

@@ -10,7 +10,6 @@ public partial class SaveSystem : Node
     {
         var data = new Godot.Collections.Dictionary();
 
-        // Escena actual
         data["scene"] = GetTree().CurrentScene.SceneFilePath;
 
         // Cámara
@@ -39,12 +38,15 @@ public partial class SaveSystem : Node
         using var file = FileAccess.Open(SavePath, FileAccess.ModeFlags.Write);
         file.StoreString(json);
 
+        Recursos.Instance.SaveData();
+
         GD.Print("✅ partida guardada");
     }
 
     public async Task LoadGame()
     {
         Recursos.Instance.StartLevel();
+        Recursos.Instance.LoadData();
         Wave.Instance.ResetWaves();
         if (!FileAccess.FileExists(SavePath))
         {

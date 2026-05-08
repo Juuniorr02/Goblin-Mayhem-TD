@@ -102,6 +102,7 @@ public partial class menu_aserradero : CanvasLayer
 				Madera = 100;
 				Recursos.Instance.ProdWood = Madera;
 				Recursos.Instance.SaveData();
+				SaveSystem.Instance.SaveGame();
 				labelInfo.Text = "  Producción: 100 de madera por ronda  " + "\n  Coste mejora: 650 de oro, 60 de madera  ";
 			}
 			else
@@ -124,6 +125,7 @@ public partial class menu_aserradero : CanvasLayer
 				Madera = 150;
 				Recursos.Instance.ProdWood = Madera;
 				Recursos.Instance.SaveData();
+				SaveSystem.Instance.SaveGame();
 				labelInfo.Text = "  Producción: 150 de madera por ronda  " + "\n  Coste mejora: 750 de oro, 120 de madera, 40 de piedra  ";
 			}
 			else
@@ -144,6 +146,7 @@ public partial class menu_aserradero : CanvasLayer
 				Madera = 200;
 				Recursos.Instance.ProdWood = Madera;
 				Recursos.Instance.SaveData();
+				SaveSystem.Instance.SaveGame();
 				labelInfo.Text = "  Producción: 200 de madera por ronda  " + "\n  Coste mejora: 1000 de oro, 220 de madera, 120 de piedra, 40 de hierro  ";
 			}
 			else
@@ -164,6 +167,7 @@ public partial class menu_aserradero : CanvasLayer
 				Madera = 300;
 				Recursos.Instance.ProdWood = Madera;
 				Recursos.Instance.SaveData();
+				SaveSystem.Instance.SaveGame();
 				labelInfo.Text = "  Producción: 300 de madera por ronda  ";
 				btnMejorar.Disabled = true;
 			}

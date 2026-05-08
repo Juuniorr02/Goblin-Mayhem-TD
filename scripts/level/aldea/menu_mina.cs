@@ -106,6 +106,7 @@ public partial class menu_mina : CanvasLayer
 				Hierro = 25;
 				Recursos.Instance.ProdIron = Hierro;
 				Recursos.Instance.SaveData();
+				SaveSystem.Instance.SaveGame();
 				labelInfo.Text = "  Producción: 25 de hierro por ronda  " + "\n  Coste mejora: 400 de oro  ";
 			}
 			else
@@ -128,6 +129,7 @@ public partial class menu_mina : CanvasLayer
 				Hierro = 50;
 				Recursos.Instance.ProdIron = Hierro;
 				Recursos.Instance.SaveData();
+				SaveSystem.Instance.SaveGame();
 				labelInfo.Text = "  Producción: 50 de hierro por ronda  " + "\n  Coste mejora: 700 de oro, 100 de madera  ";
 			}
 			else
@@ -150,6 +152,7 @@ public partial class menu_mina : CanvasLayer
 				Hierro = 75;
 				Recursos.Instance.ProdIron = Hierro;
 				Recursos.Instance.SaveData();
+				SaveSystem.Instance.SaveGame();
 				labelInfo.Text = "  Producción: 75 de hierro por ronda  " + "\n  Coste mejora: 900 de oro, 180 de madera, 70 de piedra  ";
 			}
 			else
@@ -170,6 +173,7 @@ public partial class menu_mina : CanvasLayer
 				Hierro = 100;
 				Recursos.Instance.ProdIron = Hierro;
 				Recursos.Instance.SaveData();
+				SaveSystem.Instance.SaveGame();
 				labelInfo.Text = "  Producción: 100 de hierro por ronda  " + "\n  Coste mejora: 1200 de oro, 250 de madera, 140 de piedra, 70 de hierro  ";
 			}
 			else
@@ -190,6 +194,7 @@ public partial class menu_mina : CanvasLayer
 				Hierro = 150;
 				Recursos.Instance.ProdIron = Hierro;
 				Recursos.Instance.SaveData();
+				SaveSystem.Instance.SaveGame();
 				labelInfo.Text = "  Producción: 150 de hierro por ronda  ";
 				btnMejorar.Disabled = true;
 			}

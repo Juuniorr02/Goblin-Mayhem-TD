@@ -144,7 +144,6 @@ public partial class Recursos : Node
             ProdStone = ProdStone,
             ProdIron = ProdIron
         };
-
         string json = JsonSerializer.Serialize(data);
 
         using var file = FileAccess.Open(PATH, FileAccess.ModeFlags.Write);

@@ -105,6 +105,7 @@ public partial class menu_ayuntamiento : CanvasLayer
 				Oro = 200;
 				Recursos.Instance.ProdGold = Oro;
 				Recursos.Instance.SaveData();
+				SaveSystem.Instance.SaveGame();
 				labelInfo.Text = "  Producción: 200 de oro por ronda  " + "\n  Coste mejora: 500 de oro, 50 de madera  ";
 			}
 			else
@@ -127,6 +128,7 @@ public partial class menu_ayuntamiento : CanvasLayer
 				Oro = 300;
 				Recursos.Instance.ProdGold = Oro;
 				Recursos.Instance.SaveData();
+				SaveSystem.Instance.SaveGame();
 				labelInfo.Text = "  Producción: 300 de oro por ronda  " + "\n  Coste mejora: 700 de oro, 100 de madera, 25 de piedra  ";
 			}
 			else
@@ -147,6 +149,7 @@ public partial class menu_ayuntamiento : CanvasLayer
 				Oro = 400;
 				Recursos.Instance.ProdGold = Oro;
 				Recursos.Instance.SaveData();
+				SaveSystem.Instance.SaveGame();
 				labelInfo.Text = "  Producción: 400 de oro por ronda  " + "\n  Coste mejora: 1000 de oro, 200 de madera, 100 de piedra, 25 de hierro  ";
 			}
 			else
@@ -167,6 +170,7 @@ public partial class menu_ayuntamiento : CanvasLayer
 				Oro = 500;
 				Recursos.Instance.ProdGold = Oro;
 				Recursos.Instance.SaveData();
+				SaveSystem.Instance.SaveGame();
 				labelInfo.Text = "  Producción: 500 de oro por ronda  ";
 				btnMejorar.Disabled = true;
 			}

@@ -32,6 +32,8 @@ public partial class mapa_mundi : Node2D
 	{
 		ProcessMode = ProcessModeEnum.Always;
 
+		SaveSystem.Instance.SaveGame();
+
 		entrar_nivel = GetNodeOrNull<entrar_nivel>("entrar_nivel");
 
 		entrar_nivel.mapa_mundi = this;

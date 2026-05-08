@@ -102,6 +102,7 @@ public partial class menu_barrio : CanvasLayer
 				Vida = 25;
 				Recursos.Instance.ProdStone = Vida;
 				Recursos.Instance.SaveData();
+				SaveSystem.Instance.SaveGame();
 				labelInfo.Text = "  Vida Maxima: 125  " + "\n  Coste mejora: 600 de oro, 50 de madera  ";
 			}
 			else
@@ -124,6 +125,7 @@ public partial class menu_barrio : CanvasLayer
 				Vida = 50;
 				Recursos.Instance.ProdVida = Vida;
 				Recursos.Instance.SaveData();
+				SaveSystem.Instance.SaveGame();
 				labelInfo.Text = "  Vida Maxima: 150  " + "\n  Coste mejora: 800 de oro, 100 de madera, 50 de piedra  ";
 			}
 			else
@@ -145,6 +147,7 @@ public partial class menu_barrio : CanvasLayer
 				Vida = 75;
 				Recursos.Instance.Vida = Vida;
 				Recursos.Instance.SaveData();
+				SaveSystem.Instance.SaveGame();
 				labelInfo.Text = "  Vida Maxima: 175  " + "\n  Coste mejora: 1000 de oro, 150 de madera, 100 de piedra, 25 de hierro  ";
 			}
 			else
@@ -165,6 +168,7 @@ public partial class menu_barrio : CanvasLayer
 				Vida = 100;
 				Recursos.Instance.ProdVida = Vida;
 				Recursos.Instance.SaveData();
+				SaveSystem.Instance.SaveGame();
 				labelInfo.Text = "  Vida Maxima: 200  ";
 				btnMejorar.Disabled = true;
 			}
