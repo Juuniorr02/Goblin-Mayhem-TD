@@ -25,6 +25,7 @@ script = ExtResource("1_nvw71")
 textLabel = NodePath("MainContainer/TextBoxContainer/TextMargin/VBoxContainer/DialogueTextLabel")
 nameLabel = NodePath("MainContainer/TextBoxContainer/TextMargin/VBoxContainer/NameLabel")
 portrait = NodePath("MainContainer/TextBoxContainer/CharacterAnchor/AnimatedSprite2D")
+defaultDialogueLines = PackedStringArray()
 
 [node name="MainContainer" type="Control" parent="."]
 layout_mode = 3
