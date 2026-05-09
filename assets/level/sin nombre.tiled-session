@@ -3,10 +3,10 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "Map/mapa1.tmx",
+    "activeFile": "Map/montana1.tmx",
     "expandedProjectPaths": [
-        "Map",
-        "."
+        ".",
+        "Map"
     ],
     "file.lastUsedOpenFilter": "Todos los archivos (*)",
     "fileStates": {
@@ -43,7 +43,7 @@
             "scaleInDock": 1
         },
         "Map/Example.tsx": {
-            "scaleInDock": 1
+            "scaleInDock": 0.125
         },
         "Map/Path.tsx": {
             "dynamicWrapping": false,
@@ -71,6 +71,14 @@
             "viewCenter": {
                 "x": 6872,
                 "y": 2856
+            }
+        },
+        "Map/montana1.tmx": {
+            "scale": 0.125,
+            "selectedLayer": 3,
+            "viewCenter": {
+                "x": 7840,
+                "y": 3496
             }
         },
         "Path.tsx": {
@@ -103,11 +111,11 @@
     "map.tileWidth": 16,
     "map.width": 40,
     "openFiles": [
-        "Map/map_tiles.png",
-        "Map/mapa1.tmx"
+        "Map/montana1.tmx"
     ],
     "project": "sin nombre.tiled-project",
     "recentFiles": [
+        "Map/montana1.tmx",
         "Map/map_tiles.png",
         "Map/mapa1.tmx",
         "C:/Users/droch/AppData/Local/Temp/Rar$DRa11240.37589.rartemp/Map/map_empty.tmx",

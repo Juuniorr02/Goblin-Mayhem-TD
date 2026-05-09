@@ -61,6 +61,8 @@ scale = Vector2(1.5, 1.5)
 script = ExtResource("1_kwryj")
 MyAnimation = NodePath("AnimatedSprite2D")
 BulletScene = ExtResource("2_kwryj")
+Damage = 15.0
+FireRate = 1.5
 CanTargetAir = true
 CanTargetWater = true
 
