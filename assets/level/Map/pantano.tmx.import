@@ -2,13 +2,13 @@
 
 importer="YATI"
 type="PackedScene"
-uid="uid://bboh74w07n6xi"
-path="res://.godot/imported/pantano.tmx-c61b483599b853eeba5b65724de731bf.tscn"
+uid="uid://dk54r23q4ar54"
+path="res://.godot/imported/Pantano.tmx-096955b66075d26215b7983ff92deaae.tscn"
 
 [deps]
 
-source_file="res://assets/level/Map/pantano.tmx"
-dest_files=["res://.godot/imported/pantano.tmx-c61b483599b853eeba5b65724de731bf.tscn"]
+source_file="res://assets/level/Map/Pantano.tmx"
+dest_files=["res://.godot/imported/Pantano.tmx-096955b66075d26215b7983ff92deaae.tscn"]
 
 [params]
 
