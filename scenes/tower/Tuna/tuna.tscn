@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://cku44kfv3cei4"]
+[gd_scene load_steps=11 format=3 uid="uid://cku44kfv3cei4"]
 
 [ext_resource type="Script" uid="uid://cw18wpqics2e8" path="res://scripts/character/tower/atun/Tuna.cs" id="1_u51wi"]
+[ext_resource type="PackedScene" uid="uid://cmbsecxsq7ho3" path="res://scenes/tower/Mortero/explosion.tscn" id="2_3aaem"]
 [ext_resource type="Texture2D" uid="uid://boedo440b4aob" path="res://assets/character/tower/Tuna/Atun-Sheet.png" id="2_ibtbg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3aaem"]
@@ -45,9 +46,11 @@ radius = 27.00463
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b4w28"]
 size = Vector2(36, 13)
 
-[node name="Tuna" type="CharacterBody2D"]
+[node name="Tuna" type="CharacterBody2D" node_paths=PackedStringArray("MyAnimation")]
 scale = Vector2(2, 2)
 script = ExtResource("1_u51wi")
+ExplosionScene = ExtResource("2_3aaem")
+MyAnimation = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

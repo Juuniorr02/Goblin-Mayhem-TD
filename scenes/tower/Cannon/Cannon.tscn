@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ieo0rfx4mn8y"]
+[gd_scene load_steps=13 format=3 uid="uid://ieo0rfx4mn8y"]
 
 [ext_resource type="Script" uid="uid://chhydj5v5lgvu" path="res://scripts/character/tower/cannon/Cannon.cs" id="1_b4w28"]
 [ext_resource type="Texture2D" uid="uid://bdnlajpbthyfs" path="res://assets/character/tower/Cannon/CanonAnim.png" id="2_1oupt"]
@@ -8,22 +8,68 @@
 atlas = ExtResource("2_1oupt")
 region = Rect2(0, 0, 96, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_6f5h2"]
+atlas = ExtResource("2_1oupt")
+region = Rect2(96, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c6kbx"]
+atlas = ExtResource("2_1oupt")
+region = Rect2(192, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cw348"]
+atlas = ExtResource("2_1oupt")
+region = Rect2(288, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d634a"]
+atlas = ExtResource("2_1oupt")
+region = Rect2(384, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kmwau"]
+atlas = ExtResource("2_1oupt")
+region = Rect2(480, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_quf7w"]
+atlas = ExtResource("2_1oupt")
+region = Rect2(576, 0, 96, 64)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_5l07i"]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1oupt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6f5h2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c6kbx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cw348")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d634a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kmwau")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_quf7w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1oupt")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
-"speed": 5.0
+"speed": 11.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1oupt"]
 
-[node name="cannon" type="Node2D"]
+[node name="cannon" type="Node2D" node_paths=PackedStringArray("MyAnimation")]
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_b4w28")
+MyAnimation = NodePath("AnimatedSprite2D")
 BulletScene = ExtResource("2_6f5h2")
 Damage = 12.0
 

@@ -51,6 +51,7 @@ size = Vector2(11, 23.999996)
 [node name="goblinCorriente" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "HealthBar") groups=["enemies"]]
 scale = Vector2(2.5, 2.5)
 script = ExtResource("1_84caw")
+IsFacingLeftByDefault = true
 sprite = NodePath("Sprite2D")
 Data = SubResource("Resource_lsg1d")
 HealthBar = NodePath("TextureProgressBar")

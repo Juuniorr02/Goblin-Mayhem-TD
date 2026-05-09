@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 public partial class TowerBuilder : Node2D
 {
+    // SEÑAL para avisar a la UI
+    [Signal] public delegate void OnCancelSelectionEventHandler();
+
     private List<TileMapLayer> allLayers = new();
     [Export] public Node2D TowersParent;              
     [Export] public PackedScene GhostTowerScene;       
@@ -41,15 +44,11 @@ public partial class TowerBuilder : Node2D
     private void SetupButtons()
     {
         var botones = GetTree().GetNodesInGroup("botones_torres");
-        
         foreach (Node nodo in botones)
         {
             if (nodo is BaseButton btn)
             {
-                btn.Pressed += () => {
-                    GD.Print("Botón presionado: " + btn.Name);
-                    SelectTower(btn.Name);
-                };
+                btn.Pressed += () => { SelectTower(btn.Name); };
             }
         }
     }
@@ -58,54 +57,22 @@ public partial class TowerBuilder : Node2D
     {
         currentTowerName = towerName;
         isDeconstructing = (towerName == "Borrar");
-
         if (ghostInstance == null) return;
-
-        if (string.IsNullOrEmpty(towerName))
-        {
-            ghostInstance.Visible = false;
-            return;
-        }
-
+        if (string.IsNullOrEmpty(towerName)) { ghostInstance.Visible = false; return; }
         ghostInstance.Visible = true;
         
-        // Intentamos obtener el script de dibujo del rango en el Ghost
-        // Si tu nodo se llama de otra forma en la escena Ghost, cámbialo aquí
-        var visualRango = ghostInstance.GetNodeOrNull<Martillo>("Martillo") 
-                          ?? ghostInstance as Martillo;
-
-        if (isDeconstructing)
-        {
-            visualRango?.UpdateRangeVisual(0);
-            return;
-        }
+        var visualRango = ghostInstance.GetNodeOrNull<Martillo>("Martillo") ?? ghostInstance as Martillo;
+        if (isDeconstructing) { visualRango?.UpdateRangeVisual(0); return; }
 
         if (TowersScenes.TryGetValue(towerName, out PackedScene towerScene))
         {
             var dummyTower = towerScene.Instantiate<Node2D>();
             float finalRange = 0;
-
-            var area = dummyTower.GetNodeOrNull<Area2D>("DetectionRange") 
-                       ?? dummyTower.GetNodeOrNull<Area2D>("detectionRange");
-            
+            var area = dummyTower.GetNodeOrNull<Area2D>("DetectionRange") ?? dummyTower.GetNodeOrNull<Area2D>("detectionRange");
             var collision = area?.GetNodeOrNull<CollisionShape2D>("CollisionShape2D");
-
             if (collision != null && collision.Shape is CircleShape2D circle) 
-            {
-                // Solo necesitamos el radio base, Martillo.cs hará el óvalo
                 finalRange = circle.Radius * collision.Scale.X * area.Scale.X;
-            }
-
-            if (visualRango != null)
-            {
-                visualRango.UpdateRangeVisual(finalRange);
-            }
-            else
-            {
-                // Backup por si el script está en la raíz del Ghost
-                ghostInstance.Call("UpdateRangeVisual", finalRange);
-            }
-
+            visualRango?.UpdateRangeVisual(finalRange);
             dummyTower.QueueFree();
         }
     }
@@ -113,25 +80,15 @@ public partial class TowerBuilder : Node2D
     public override void _Process(double delta)
     {
         if (ghostInstance == null || !ghostInstance.Visible || allLayers.Count == 0) return;
-
         TileMapLayer currentLayer = GetLayerUnderMouse() ?? allLayers[0];
         Vector2I tilePos = GetTileUnderMouse(currentLayer);
         Vector2 localPos = currentLayer.MapToLocal(tilePos);
-        
         ghostInstance.GlobalPosition = currentLayer.ToGlobal(localPos) + GhostOffset;
 
         if (isDeconstructing)
-        {
-            ghostInstance.Modulate = occupiedTiles.ContainsKey(tilePos) 
-                ? new Color(1, 0, 0, 0.8f) 
-                : new Color(1, 1, 1, 0.4f);
-        }
+            ghostInstance.Modulate = occupiedTiles.ContainsKey(tilePos) ? new Color(1, 0, 0, 0.8f) : new Color(1, 1, 1, 0.4f);
         else
-        {
-            ghostInstance.Modulate = CanBuildOnTile(tilePos) && BuildTime.CanBuild 
-                ? new Color(0, 1, 0, 0.6f) 
-                : new Color(1, 0, 0, 0.6f);
-        }
+            ghostInstance.Modulate = CanBuildOnTile(tilePos) && BuildTime.CanBuild ? new Color(0, 1, 0, 0.6f) : new Color(1, 0, 0, 0.6f);
     }
 
     public override void _Input(InputEvent @event)
@@ -169,6 +126,7 @@ public partial class TowerBuilder : Node2D
                 towerToDestroy.QueueFree();
                 Recursos.Instance.DevolverRecuros();
                 occupiedTiles.Remove(tilePos);
+                EmitSignal(SignalName.OnCancelSelection); // Ocultar panel al borrar
             }
             return;
         }
@@ -183,12 +141,13 @@ public partial class TowerBuilder : Node2D
                 tower.Build();
                 if (!tower.CanBuild) { tower.QueueFree(); return; }
             }
-
             Vector2 localPos = targetLayer.MapToLocal(tilePos);
             towerInstance.GlobalPosition = targetLayer.ToGlobal(localPos) + GhostOffset;
-
             TowersParent.AddChild(towerInstance);
             occupiedTiles[tilePos] = towerInstance;
+            
+            EmitSignal(SignalName.OnCancelSelection); // Ocultar panel tras construir
+            CancelSelection(); 
         }
     }
 
@@ -197,6 +156,7 @@ public partial class TowerBuilder : Node2D
         currentTowerName = "";
         isDeconstructing = false;
         if (ghostInstance != null) ghostInstance.Visible = false;
+        EmitSignal(SignalName.OnCancelSelection); // Avisar a la IU
     }
 
     private TileMapLayer GetLayerUnderMouse()
@@ -219,18 +179,11 @@ public partial class TowerBuilder : Node2D
     private bool CanBuildOnTile(Vector2I tilePos)
     {
         if (occupiedTiles.ContainsKey(tilePos)) return false;
-
         foreach (TileMapLayer layer in allLayers)
         {
             TileData data = layer.GetCellTileData(tilePos);
             if (data == null) continue;
-
-            string prop = currentTowerName switch { 
-                "Ship" => "can_build_boat", 
-                "Atun" => "can_build_atun", 
-                _ => "can_build" 
-            };
-
+            string prop = currentTowerName switch { "Ship" => "can_build_boat", "Atun" => "can_build_atun", _ => "can_build" };
             Variant buildData = data.GetCustomData(prop);
             if (buildData.VariantType != Variant.Type.Nil && buildData.AsBool()) return true;
         }

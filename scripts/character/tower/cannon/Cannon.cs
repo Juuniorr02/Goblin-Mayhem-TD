@@ -2,20 +2,31 @@ using Godot;
 
 public partial class Cannon : BaseTower
 {
+    [Export] public AnimatedSprite2D MyAnimation;
+
+    public override void _Ready()
+    {
+        base._Ready();
+        // Si no se asigna en el inspector, busca el nodo automáticamente
+        if (MyAnimation == null)
+            MyAnimation = GetNodeOrNull<AnimatedSprite2D>("AnimatedSprite2D");
+    }
+
     protected override void Shoot()
     {
         if (!IsInstanceValid(currentTarget) || BulletScene == null || muzzle == null)
             return;
 
+        // --- REPRODUCIR ANIMACIÓN ---
+        MyAnimation?.Play("default");
+
         var bulletNode = BulletScene.Instantiate();
         GetTree().CurrentScene.AddChild(bulletNode);
         
-        // Usamos GlobalPosition directamente en el nodo
         if (bulletNode is Node2D bullet2D)
         {
             bullet2D.GlobalPosition = muzzle.GlobalPosition;
             
-            // Intentamos configurar las propiedades si el script existe
             if (bulletNode is Bullet bulletScript)
             {
                 Vector2 direction = (currentTarget.GlobalPosition - muzzle.GlobalPosition).Normalized();
@@ -30,11 +41,10 @@ public partial class Cannon : BaseTower
     
     public override void Build()
     {
-        int amountGold = 0, amountWood = 0, amountStone = 0, amountIron = 0;
-        
-        amountGold = 150; amountWood = 25; amountStone = 0; amountIron = 0;
+        int amountGold = 150, amountWood = 25, amountStone = 0, amountIron = 0;
 
-        if (Recursos.Instance.Gold >= amountGold && Recursos.Instance.Wood >= amountWood && Recursos.Instance.Stone >= amountStone && Recursos.Instance.Iron >= amountIron)
+        if (Recursos.Instance.Gold >= amountGold && Recursos.Instance.Wood >= amountWood && 
+            Recursos.Instance.Stone >= amountStone && Recursos.Instance.Iron >= amountIron)
         {
             Recursos.Instance.Gold -= amountGold;
             Recursos.Instance.Wood -= amountWood;

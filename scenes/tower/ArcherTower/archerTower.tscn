@@ -49,16 +49,17 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_l8txj")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
 "speed": 5.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kwryj"]
 
-[node name="archer" type="Node2D"]
+[node name="archer" type="Node2D" node_paths=PackedStringArray("MyAnimation")]
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_kwryj")
+MyAnimation = NodePath("AnimatedSprite2D")
 BulletScene = ExtResource("2_kwryj")
 CanTargetAir = true
 CanTargetWater = true

@@ -3,10 +3,13 @@ using Godot;
 public partial class Globo : BaseTower
 {
     [ExportGroup("Movimiento del Globo")]
-    [Export] public float FloatAmplitude = 10.0f; // Arriba/Abajo
+    [Export] public float FloatAmplitude = 10.0f;
     [Export] public float FloatSpeed = 2.0f;
-    [Export] public float DriftRadius = 15.0f;   // Radio máximo de movimiento lateral
-    [Export] public float DriftSpeed = 0.5f;    // Velocidad del vaivén lateral
+    [Export] public float DriftRadius = 15.0f;
+    [Export] public float DriftSpeed = 0.5f;
+
+    [ExportGroup("Animaciones")]
+    [Export] public AnimatedSprite2D MyAnimation;
 
     private Vector2 _anchorPosition;
     private float _timePassed = 0.0f;
@@ -14,9 +17,11 @@ public partial class Globo : BaseTower
     public override void _Ready()
     {
         base._Ready();
-        // Guardamos la posición exacta donde lo colocaste como centro
         _anchorPosition = Position;
         
+        if (MyAnimation == null)
+            MyAnimation = GetNodeOrNull<AnimatedSprite2D>("AnimatedSprite2D");
+
         CanTargetLand = true;
         CanTargetAir = false; 
     }
@@ -26,15 +31,10 @@ public partial class Globo : BaseTower
         base._Process(delta);
         _timePassed += (float)delta;
 
-        // 1. Calculamos el movimiento lateral (Eje X e Y de forma circular/aleatoria)
-        // Usamos Sin y Cos con diferentes velocidades para que no sea un círculo perfecto
         float driftX = Mathf.Sin(_timePassed * DriftSpeed) * DriftRadius;
         float driftY = Mathf.Cos(_timePassed * DriftSpeed * 0.7f) * (DriftRadius * 0.5f);
-
-        // 2. Calculamos el balanceo vertical (Flotar)
         float floatY = Mathf.Sin(_timePassed * FloatSpeed) * FloatAmplitude;
 
-        // 3. Aplicamos la posición final relativa al anclaje
         Position = new Vector2(
             _anchorPosition.X + driftX,
             _anchorPosition.Y + driftY + floatY
@@ -44,6 +44,10 @@ public partial class Globo : BaseTower
     protected override void Shoot()
     {
         if (!IsInstanceValid(currentTarget) || BulletScene == null) return;
+
+        // --- REPRODUCIR ANIMACIÓN ---
+        // Al soltar la bomba, activamos la animación "default"
+        MyAnimation?.Play("default");
 
         var bombNode = BulletScene.Instantiate();
         GetTree().CurrentScene.AddChild(bombNode);
@@ -57,11 +61,10 @@ public partial class Globo : BaseTower
     
     public override void Build()
     {
-        int amountGold = 0, amountWood = 0, amountStone = 0, amountIron = 0;
-        
-        amountGold = 300; amountWood = 125; amountStone = 75; amountIron = 50;
+        int amountGold = 300, amountWood = 125, amountStone = 75, amountIron = 50;
 
-        if (Recursos.Instance.Gold >= amountGold && Recursos.Instance.Wood >= amountWood && Recursos.Instance.Stone >= amountStone && Recursos.Instance.Iron >= amountIron)
+        if (Recursos.Instance.Gold >= amountGold && Recursos.Instance.Wood >= amountWood && 
+            Recursos.Instance.Stone >= amountStone && Recursos.Instance.Iron >= amountIron)
         {
             Recursos.Instance.Gold -= amountGold;
             Recursos.Instance.Wood -= amountWood;

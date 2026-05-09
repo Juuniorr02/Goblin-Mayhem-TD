@@ -2,9 +2,15 @@ using Godot;
 
 public partial class MorteroTower : BaseTower
 {
+    [Export] public AnimatedSprite2D MyAnimation;
+
     public override void _Ready()
     {
         base._Ready(); // IMPORTANTE: Llama al padre para configurar señales
+        
+        if (MyAnimation == null)
+            MyAnimation = GetNodeOrNull<AnimatedSprite2D>("AnimatedSprite2D");
+
         CanTargetLand = true;
         CanTargetAir = false; // El mortero normalmente no apunta a aire
     }
@@ -13,6 +19,9 @@ public partial class MorteroTower : BaseTower
     {
         // Si no hay objetivo o escena, abortamos
         if (!IsInstanceValid(currentTarget) || BulletScene == null) return;
+
+        // --- REPRODUCIR ANIMACIÓN ---
+        MyAnimation?.Play("default");
 
         var shotNode = BulletScene.Instantiate();
         GetTree().CurrentScene.AddChild(shotNode);
@@ -30,11 +39,10 @@ public partial class MorteroTower : BaseTower
 
     public override void Build()
     {
-        int amountGold = 0, amountWood = 0, amountStone = 0, amountIron = 0;
-        
-        amountGold = 200; amountWood = 100; amountStone = 25; amountIron = 0;
+        int amountGold = 200, amountWood = 100, amountStone = 25, amountIron = 0;
 
-        if (Recursos.Instance.Gold >= amountGold && Recursos.Instance.Wood >= amountWood && Recursos.Instance.Stone >= amountStone && Recursos.Instance.Iron >= amountIron)
+        if (Recursos.Instance.Gold >= amountGold && Recursos.Instance.Wood >= amountWood && 
+            Recursos.Instance.Stone >= amountStone && Recursos.Instance.Iron >= amountIron)
         {
             Recursos.Instance.Gold -= amountGold;
             Recursos.Instance.Wood -= amountWood;

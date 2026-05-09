@@ -49,16 +49,17 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_vbby3")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
 "speed": 5.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kwryj"]
 
-[node name="ballista" type="Node2D"]
+[node name="ballista" type="Node2D" node_paths=PackedStringArray("MyAnimation")]
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_13gvo")
+MyAnimation = NodePath("AnimatedSprite2D")
 BulletScene = ExtResource("2_c1b5q")
 Damage = 15.0
 FireRate = 0.5

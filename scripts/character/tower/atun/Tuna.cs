@@ -4,7 +4,8 @@ using System;
 public partial class Tuna : CharacterBody2D
 {
     [ExportGroup("Visuals")]
-    [Export] public PackedScene ExplosionScene; // Arrastra aquí tu ExplosionEffect.tscn
+    [Export] public PackedScene ExplosionScene;
+    [Export] public AnimatedSprite2D MyAnimation; // Referencia al sprite
 
     [ExportGroup("Settings")]
     [Export] public float Speed = 350f;
@@ -21,6 +22,13 @@ public partial class Tuna : CharacterBody2D
         HomePosition = pos;
         _damage = damage;
         _isReady = true;
+
+        // Buscamos el nodo de animación al nacer
+        if (MyAnimation == null)
+            MyAnimation = GetNodeOrNull<AnimatedSprite2D>("AnimatedSprite2D");
+        
+        // Iniciamos la animación de nado
+        MyAnimation?.Play("default");
     }
 
     private void OnDetectionAreaBodyEntered(Node2D body)
@@ -45,24 +53,35 @@ public partial class Tuna : CharacterBody2D
 
         Velocity = velocity;
         MoveAndSlide();
+
+        // --- LÓGICA VISUAL ---
+        if (Velocity.Length() > 0.1f)
+        {
+            // Girar el sprite según la dirección (opcional, si tus sprites miran a la derecha)
+            // Rotation = Velocity.Angle(); 
+            
+            // O simplemente hacer FlipH si prefieres que solo mire izquierda/derecha
+            if (MyAnimation != null)
+                MyAnimation.FlipH = Velocity.X < 0;
+            
+            // Asegurarnos de que siempre esté nadando (default)
+            if (MyAnimation?.IsPlaying() == false || MyAnimation?.Animation != "default")
+                MyAnimation?.Play("default");
+        }
     }
 
     private void Explode()
     {
-        // 1. INSTANCIAR EL EFECTO VISUAL
         if (ExplosionScene != null)
         {
             var effect = ExplosionScene.Instantiate<Node2D>();
-            // Lo añadimos a la escena principal, no a la tuna (porque la tuna va a morir)
             GetTree().CurrentScene.AddChild(effect);
             effect.GlobalPosition = GlobalPosition;
         }
 
-        // 2. DAÑO EN ÁREA
         var spaceState = GetWorld2D().DirectSpaceState;
         var query = new PhysicsShapeQueryParameters2D();
-        var circle = new CircleShape2D();
-        circle.Radius = ExplosionRadius;
+        var circle = new CircleShape2D { Radius = ExplosionRadius };
         query.Shape = circle;
         query.Transform = GlobalTransform;
         query.CollisionMask = _enemyMask != 0 ? _enemyMask : (uint)2;

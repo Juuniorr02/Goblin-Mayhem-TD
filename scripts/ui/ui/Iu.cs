@@ -5,52 +5,23 @@ public partial class Iu : Control
 {
     private TextureButton waveButton;
     private Label waveLabel;
-    private Label goldLabel;
-    private Label healthLabel;
-    private Label ironLabel;
-    private Label woodLabel;
-    private Label stoneLabel;
-
+    private Label goldLabel, healthLabel, ironLabel, woodLabel, stoneLabel;
+    private PanelContainer infoPanel; 
     private TextureRect Martillito;
 
-    public TextureButton Archer;
-    public TextureButton Cannon;
-    public TextureButton Mortar;
-    public TextureButton Flame;
-    public TextureButton Ballista;
-    public TextureButton Wizard;
-    public TextureButton Bloon;
-    public TextureButton Nest;
-    public TextureButton Ship;
-    public TextureButton Atun;
+    public TextureButton Archer, Cannon, Mortar, Flame, Ballista, Wizard, Bloon, Nest, Ship, Atun;
     public Button Borrar;
 
     private TextureRect icon;
-    private Label nameLabel;
-    private Label costLabel;
+    private Label nameLabel, costLabel;
 
-    [Export] public TowerData CannonData;
-    [Export] public TowerData ArcherData;
-    [Export] public TowerData MortarData;
-    [Export] public TowerData FlameData;
-    [Export] public TowerData BallistaData;
-    [Export] public TowerData WizardData;
-    [Export] public TowerData BloonData;
-    [Export] public TowerData NestData;
-    [Export] public TowerData ShipData;
-    [Export] public TowerData AtunData;
+    [Export] public TowerData CannonData, ArcherData, MortarData, FlameData, BallistaData, WizardData, BloonData, NestData, ShipData, AtunData;
 
     private AnimatedSprite2D waveAnimation;
     private Timer cooldownTimer;
-
     private string scenePath;
-
-    private int contador = 0;
-
-    private int constructionwave = 0;
-
+    private int contador = 0, constructionwave = 0;
     private MenuVictoria menuVictoria;
-
     [Export] private EnemySpawner spawner;
 
     public override void _Ready()
@@ -58,14 +29,14 @@ public partial class Iu : Control
         scenePath = GetTree().CurrentScene.SceneFilePath;
         waveButton = GetNode<TextureButton>("%WaveButton");
         waveLabel = GetNode<Label>("%WaveLabel");
-
         Martillito = GetNode<TextureRect>("%Martillito");
-
         goldLabel = GetNode<Label>("%GoldLabel");
         healthLabel = GetNode<Label>("%HealthLabel");
         ironLabel = GetNode<Label>("%IronLabel");
         woodLabel = GetNode<Label>("%WoodLabel");
         stoneLabel = GetNode<Label>("%StoneLabel");
+
+        infoPanel = GetNodeOrNull<PanelContainer>("%InfoPanel");
 
         Archer = GetNodeOrNull<TextureButton>("%Archer");
         Cannon = GetNodeOrNull<TextureButton>("%Cannon");
@@ -85,62 +56,50 @@ public partial class Iu : Control
 
         menuVictoria = GetTree().GetFirstNodeInGroup("victory") as MenuVictoria;
 
-        ConfigurarTextureBoton(Archer);
-        ConfigurarTextureBoton(Cannon);
-        ConfigurarTextureBoton(Mortar);
-        ConfigurarTextureBoton(Flame);
-        ConfigurarTextureBoton(Ballista);
-        ConfigurarTextureBoton(Wizard);
-        ConfigurarTextureBoton(Bloon);
-        ConfigurarTextureBoton(Nest);
-        ConfigurarTextureBoton(Ship);
-        ConfigurarTextureBoton(Atun);
-        ConfigurarBoton(Borrar);
+        // CONEXIÓN CON EL NODO TOWERS
+        var towersNode = GetTree().CurrentScene.FindChild("Towers", true, false);
+        if (towersNode != null)
+        {
+            towersNode.Connect("OnCancelSelection", Callable.From(() => {
+                if (infoPanel != null) infoPanel.Visible = false;
+            }));
+        }
+
+        ConfigurarTextureBoton(Archer); ConfigurarTextureBoton(Cannon); ConfigurarTextureBoton(Mortar);
+        ConfigurarTextureBoton(Flame); ConfigurarTextureBoton(Ballista); ConfigurarTextureBoton(Wizard);
+        ConfigurarTextureBoton(Bloon); ConfigurarTextureBoton(Nest); ConfigurarTextureBoton(Ship);
+        ConfigurarTextureBoton(Atun); ConfigurarBoton(Borrar);
 
         waveAnimation = GetNode<AnimatedSprite2D>("%WaveSprite");
+        if (infoPanel != null) infoPanel.Visible = false;
 
         cooldownTimer = new Timer();
         cooldownTimer.WaitTime = 20;
         cooldownTimer.OneShot = true;
         AddChild(cooldownTimer);
-
         cooldownTimer.Timeout += OnCooldownFinished;
         waveButton.Pressed += OnWaveButtonPressed;
 
-            Cannon.Pressed += () => OnTowerPressed(CannonData);
-            Archer.Pressed += () => OnTowerPressed(ArcherData);
-            Mortar.Pressed += () => OnTowerPressed(MortarData);
-            Flame.Pressed += () => OnTowerPressed(FlameData);
-            Ballista.Pressed += () => OnTowerPressed(BallistaData);
-            Wizard.Pressed += () => OnTowerPressed(WizardData);
-            Bloon.Pressed += () => OnTowerPressed(BloonData);
-            Nest.Pressed += () => OnTowerPressed(NestData);
-            Ship.Pressed += () => OnTowerPressed(ShipData);
-            Atun.Pressed += () => OnTowerPressed(AtunData);
+        Cannon.Pressed += () => OnTowerPressed(CannonData);
+        Archer.Pressed += () => OnTowerPressed(ArcherData);
+        Mortar.Pressed += () => OnTowerPressed(MortarData);
+        Flame.Pressed += () => OnTowerPressed(FlameData);
+        Ballista.Pressed += () => OnTowerPressed(BallistaData);
+        Wizard.Pressed += () => OnTowerPressed(WizardData);
+        Bloon.Pressed += () => OnTowerPressed(BloonData);
+        Nest.Pressed += () => OnTowerPressed(NestData);
+        Ship.Pressed += () => OnTowerPressed(ShipData);
+        Atun.Pressed += () => OnTowerPressed(AtunData);
+
+        if (Borrar != null) Borrar.Pressed += () => { if (infoPanel != null) infoPanel.Visible = false; };
 
         UpdateIU();
     }
-    
-    private void ConfigurarTextureBoton(TextureButton b)
-    {
-        if (b == null) return;
 
-        b.ProcessMode = ProcessModeEnum.Always;
-        b.MouseFilter = MouseFilterEnum.Stop;
-    }
+    private void ConfigurarTextureBoton(TextureButton b) { if (b != null) { b.ProcessMode = ProcessModeEnum.Always; b.MouseFilter = MouseFilterEnum.Stop; } }
+    private void ConfigurarBoton(Button b) { if (b != null) { b.ProcessMode = ProcessModeEnum.Always; b.MouseFilter = MouseFilterEnum.Stop; } }
 
-    private void ConfigurarBoton(Button b)
-    {
-        if (b == null) return;
-
-        b.ProcessMode = ProcessModeEnum.Always;
-        b.MouseFilter = MouseFilterEnum.Stop;
-    }
-
-    public override void _Process(double delta)
-    {
-        UpdateIU();
-    }
+    public override void _Process(double delta) { UpdateIU(); }
 
     private void UpdateIU()
     {
@@ -156,15 +115,17 @@ public partial class Iu : Control
         if (Wave.Instance != null)
         {
             waveLabel.Text = Wave.Instance.CurrentWave.ToString();
+            
+            // --- RECUPERADA LÓGICA DE INICIO ---
             if (contador == 0 && scenePath == "res://scenes/level/terrain/level1.tscn")
             {
                 Recursos.Instance.FirstLevel();
-                contador ++;
+                contador++;
             }
             else if (contador == 0 && Wave.Instance.CurrentWave == 0)
             {
                 Recursos.Instance.StartLevel();
-                contador ++;
+                contador++;
             }
         }
     }
@@ -173,58 +134,29 @@ public partial class Iu : Control
     {
         if(constructionwave == 0)
         {
-        waveLabel.Visible = true;
-        Martillito.Visible = false;
-        BuildTime.CanBuild = false;
-        MouseFilter = MouseFilterEnum.Stop;
-        if (Wave.Instance == null) return;
-
-        Wave.Instance.StartNextWave();
-
-        waveAnimation.Stop();
-        waveAnimation.Frame = 0;
-        waveAnimation.Play("wave");
-
-        int targetIndex = Wave.Instance.CurrentWave - 1;
-        spawner?.StartWave(targetIndex);
-
-        waveButton.Disabled = true;
-        cooldownTimer.Start();
-        Recursos.Instance.AddProduction();
-        constructionwave++;
+            waveLabel.Visible = true; Martillito.Visible = false; BuildTime.CanBuild = false;
+            if (Wave.Instance == null) return;
+            Wave.Instance.StartNextWave();
+            waveAnimation.Play("wave");
+            spawner?.StartWave(Wave.Instance.CurrentWave - 1);
+            waveButton.Disabled = true; cooldownTimer.Start();
+            Recursos.Instance.AddProduction(); constructionwave++;
         }
-
-        else if (constructionwave == 1)
+        else
         {   
-            waveLabel.Visible = false;
-            Martillito.Visible = true;
-            BuildTime.CanBuild = true;
-            MouseFilter = MouseFilterEnum.Stop;
+            waveLabel.Visible = false; Martillito.Visible = true; BuildTime.CanBuild = true;
             constructionwave --;
         }
-        
     }
 
-    private void OnCooldownFinished()
-    {
-        if (Wave.Instance == null || menuVictoria == null)
-            return;
-
-        waveButton.Disabled = Wave.Instance.CurrentWave >= menuVictoria.WinningWave;
-    }
+    private void OnCooldownFinished() { if (Wave.Instance != null && menuVictoria != null) waveButton.Disabled = Wave.Instance.CurrentWave >= menuVictoria.WinningWave; }
 
     private void ShowTowerInfo(TowerData data)
     {
-        if (data == null) return;
-
-        icon.Texture = data.Icon;
-        nameLabel.Text = data.Name;
-        costLabel.Text = data.Cost.ToString();
+        if (data == null) { if (infoPanel != null) infoPanel.Visible = false; return; }
+        if (infoPanel != null) infoPanel.Visible = true;
+        icon.Texture = data.Icon; nameLabel.Text = data.Name; costLabel.Text = data.Cost.ToString();
     }
 
-    private void OnTowerPressed(TowerData data)
-    {
-        GD.Print("CLICK TOWER: " + data);
-        ShowTowerInfo(data);
-    }
+    private void OnTowerPressed(TowerData data) { ShowTowerInfo(data); }
 }

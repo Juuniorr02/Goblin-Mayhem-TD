@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://ce0pn5jdtd7uu"]
 
-[ext_resource type="Script" uid="uid://b46a3ygrb7b6u" path="res://scripts/character/tower/globo/Globo.cs" id="1_24atd"]
+[ext_resource type="Script" uid="uid://b46a3ygrb7b6u" path="res://scripts/character/tower/Globo/Globo.cs" id="1_24atd"]
 [ext_resource type="PackedScene" uid="uid://4mvv8wmaaava" path="res://scenes/tower/Globo/GloboBomba.tscn" id="2_2jfil"]
 [ext_resource type="Texture2D" uid="uid://bk7uhd3g002vy" path="res://assets/character/tower/Globo/Globo-Sheet.png" id="2_s1ere"]
 
@@ -70,24 +70,30 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2p7ll")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
 "speed": 5.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kwryj"]
 
-[node name="Globo" type="Node2D"]
+[node name="Globo" type="Node2D" node_paths=PackedStringArray("MyAnimation")]
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_24atd")
+FloatAmplitude = 150.0
+FloatSpeed = 0.0
+DriftRadius = 100.0
+DriftSpeed = 0.2
+MyAnimation = NodePath("AnimatedSprite2D")
 BulletScene = ExtResource("2_2jfil")
+CanTargetWater = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_b4i4u")
 
 [node name="Muzzle" type="Marker2D" parent="."]
-position = Vector2(1, -2)
+position = Vector2(0, 38.666668)
 
 [node name="ShootTimer" type="Timer" parent="."]
 

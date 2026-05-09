@@ -2,9 +2,22 @@ using Godot;
 
 public partial class BallistaTower : BaseTower
 {
+    [Export] public AnimatedSprite2D MyAnimation;
+
+    public override void _Ready()
+    {
+        base._Ready();
+        // Intenta buscar el nodo si no se asignó en el inspector
+        if (MyAnimation == null)
+            MyAnimation = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+    }
+
     protected override void Shoot()
     {
         if (!IsInstanceValid(currentTarget) || BulletScene == null) return;
+
+        // --- REPRODUCIR ANIMACIÓN ---
+        MyAnimation?.Play("default");
 
         var shotNode = BulletScene.Instantiate();
         GetTree().CurrentScene.AddChild(shotNode);
@@ -19,11 +32,10 @@ public partial class BallistaTower : BaseTower
 
     public override void Build()
     {
-        int amountGold = 0, amountWood = 0, amountStone = 0, amountIron = 0;
-        
-        amountGold = 150; amountWood = 75; amountStone = 0; amountIron = 0;
+        int amountGold = 150, amountWood = 75, amountStone = 0, amountIron = 0;
 
-        if (Recursos.Instance.Gold >= amountGold && Recursos.Instance.Wood >= amountWood && Recursos.Instance.Stone >= amountStone && Recursos.Instance.Iron >= amountIron)
+        if (Recursos.Instance.Gold >= amountGold && Recursos.Instance.Wood >= amountWood && 
+            Recursos.Instance.Stone >= amountStone && Recursos.Instance.Iron >= amountIron)
         {
             Recursos.Instance.Gold -= amountGold;
             Recursos.Instance.Wood -= amountWood;
