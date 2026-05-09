@@ -8,6 +8,7 @@ script = ExtResource("1_4vo2c")
 EnemyName = "Goblin Tronco"
 Speed = 50.0
 DamageToBase = 2
+Health = 75
 IsAquatic = true
 EnemyScene = ExtResource("1_o4cq3")
 metadata/_custom_type_script = "uid://dtfsd6sb6u7oe"

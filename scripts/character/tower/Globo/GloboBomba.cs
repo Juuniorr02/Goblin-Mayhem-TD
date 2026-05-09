@@ -1,6 +1,6 @@
 using Godot;
 
-public partial class GloboBomba : Node2D
+public partial class GloboBomba : Area2D
 {
     [Export] public float FallSpeed = 400.0f;
     [Export] public float ExplosionRadius = 100.0f;

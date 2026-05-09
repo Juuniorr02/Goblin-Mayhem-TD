@@ -42,6 +42,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b4w28"]
 
 [node name="Griffin" type="CharacterBody2D"]
+scale = Vector2(2, 2)
 script = ExtResource("1_j6f3f")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

@@ -6,6 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b4w28"]
 
 [node name="BulletCannon" type="Area2D"]
+scale = Vector2(1.5, 1.5)
 script = ExtResource("1_soxbb")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

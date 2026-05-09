@@ -1,17 +1,27 @@
-[gd_scene load_steps=32 format=3 uid="uid://ci612q8twcycd"]
+[gd_scene load_steps=42 format=3 uid="uid://ci612q8twcycd"]
 
 [ext_resource type="Texture2D" uid="uid://bodlpu3irch0t" path="res://assets/ui/button/IconoOleada-Sheet.png" id="1_g0mth"]
 [ext_resource type="Texture2D" uid="uid://5sui3kk7ym6x" path="res://assets/ui/icon/cañon.png" id="1_t64rc"]
 [ext_resource type="Texture2D" uid="uid://blnmjnr4qmfkb" path="res://assets/ui/icon/Vidas.png" id="1_tyt0d"]
 [ext_resource type="Script" uid="uid://cs0vdio4tt68i" path="res://scripts/ui/ui/Iu.cs" id="1_viny6"]
+[ext_resource type="Resource" uid="uid://msh0ymvr16su" path="res://scripts/character/tower/towerData/cannon.tres" id="2_iqgry"]
 [ext_resource type="Texture2D" uid="uid://c6eovl815j15h" path="res://assets/ui/icon/Coin1.png" id="2_svasj"]
+[ext_resource type="Resource" uid="uid://ba5hawld21nug" path="res://scripts/character/tower/towerData/archer.tres" id="3_opg7r"]
 [ext_resource type="Texture2D" uid="uid://crw7qp1kr00u0" path="res://assets/ui/icon/Maderas.png" id="3_viny6"]
+[ext_resource type="Resource" uid="uid://cbpx480yejyr1" path="res://scripts/character/tower/towerData/mortar.tres" id="4_iagby"]
 [ext_resource type="Texture2D" uid="uid://bonxvf3bnviti" path="res://assets/ui/icon/Piedras.png" id="4_rlfxr"]
+[ext_resource type="Resource" uid="uid://b4ywx3fvqqxuv" path="res://scripts/character/tower/towerData/flame.tres" id="5_g3sm5"]
 [ext_resource type="Texture2D" uid="uid://d4aohjas4nc4o" path="res://assets/ui/icon/Hierro.png" id="5_ud8xl"]
+[ext_resource type="Resource" uid="uid://bd6t5rktjtldp" path="res://scripts/character/tower/towerData/ballista.tres" id="6_qk2tp"]
+[ext_resource type="Resource" uid="uid://1gfeiqoiw3db" path="res://scripts/character/tower/towerData/wizard.tres" id="7_r14ap"]
 [ext_resource type="Texture2D" uid="uid://bovqloc0sr8xj" path="res://assets/character/tower/Construir/Martillito-Sheet.png" id="8_1j10k"]
+[ext_resource type="Resource" uid="uid://5j5onuysyxxm" path="res://scripts/character/tower/towerData/globo.tres" id="8_kcqbr"]
 [ext_resource type="Texture2D" uid="uid://22thccdtcdp4" path="res://assets/ui/icon/TorrearqueroIcono.png" id="8_rlfxr"]
 [ext_resource type="Texture2D" uid="uid://7prl0kc2ksyg" path="res://assets/ui/icon/lanzallamas.png" id="8_svasj"]
+[ext_resource type="Resource" uid="uid://cktb131ql3ifg" path="res://scripts/character/tower/towerData/nest.tres" id="9_hinth"]
+[ext_resource type="Resource" uid="uid://df5k6gnj0teoc" path="res://scripts/character/tower/towerData/ship.tres" id="10_7udoo"]
 [ext_resource type="Texture2D" uid="uid://dgrfope32f46" path="res://assets/ui/icon/IconoMortero-Sheet.png" id="10_17ct8"]
+[ext_resource type="Resource" uid="uid://d0maygicy4avw" path="res://scripts/character/tower/towerData/atun.tres" id="11_h3iwi"]
 [ext_resource type="Texture2D" uid="uid://b02vvm3raqbr4" path="res://assets/ui/icon/IconoBalista.png" id="11_ud8xl"]
 [ext_resource type="Texture2D" uid="uid://gv17j7r8f06e" path="res://assets/ui/icon/Iconotorredemago.png" id="12_akgsa"]
 [ext_resource type="Texture2D" uid="uid://chkxwk7jk6i04" path="res://assets/ui/icon/Iconoglobo.png" id="13_2dtyk"]
@@ -104,6 +114,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_viny6")
+CannonData = ExtResource("2_iqgry")
+ArcherData = ExtResource("3_opg7r")
+MortarData = ExtResource("4_iagby")
+FlameData = ExtResource("5_g3sm5")
+BallistaData = ExtResource("6_qk2tp")
+WizardData = ExtResource("7_r14ap")
+BloonData = ExtResource("8_kcqbr")
+NestData = ExtResource("9_hinth")
+ShipData = ExtResource("10_7udoo")
+AtunData = ExtResource("11_h3iwi")
 
 [node name="IU" type="CanvasLayer" parent="."]
 
@@ -368,9 +388,76 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Left" type="VBoxContainer" parent="IU/IU/IU/Bottom"]
+[node name="Info" type="VBoxContainer" parent="IU/IU/IU/Bottom"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="Blank" type="HBoxContainer" parent="IU/IU/IU/Bottom/Info"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Info" type="HBoxContainer" parent="IU/IU/IU/Bottom/Info"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Blank" type="HBoxContainer" parent="IU/IU/IU/Bottom/Info/Info"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Info" type="PanelContainer" parent="IU/IU/IU/Bottom/Info/Info"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 4.0
+
+[node name="Info" type="MarginContainer" parent="IU/IU/IU/Bottom/Info/Info/Info"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Info" type="PanelContainer" parent="IU/IU/IU/Bottom/Info/Info/Info/Info"]
+layout_mode = 2
+
+[node name="Info" type="MarginContainer" parent="IU/IU/IU/Bottom/Info/Info/Info/Info/Info"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="IU/IU/IU/Bottom/Info/Info/Info/Info/Info/Info"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="IU/IU/IU/Bottom/Info/Info/Info/Info/Info/Info/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Icon" type="TextureRect" parent="IU/IU/IU/Bottom/Info/Info/Info/Info/Info/Info/VBoxContainer"]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Cost" type="Label" parent="IU/IU/IU/Bottom/Info/Info/Info/Info/Info/Info/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Blank3" type="HBoxContainer" parent="IU/IU/IU/Bottom/Info/Info"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="Towers" type="VBoxContainer" parent="IU/IU/IU/Bottom"]
 layout_mode = 2
@@ -432,6 +519,7 @@ theme_override_constants/margin_bottom = 5
 layout_mode = 2
 
 [node name="Archer" type="TextureButton" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Archer/Archer/Archer/Archer/Archer" groups=["botones_torres"]]
+unique_name_in_owner = true
 texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 4
@@ -465,6 +553,7 @@ theme_override_constants/margin_bottom = 5
 layout_mode = 2
 
 [node name="Cannon" type="TextureButton" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Cannon/Cannon/Cannon/Cannon/Cannon" groups=["botones_torres"]]
+unique_name_in_owner = true
 texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 4
@@ -530,6 +619,7 @@ theme_override_constants/margin_bottom = 5
 layout_mode = 2
 
 [node name="Flame" type="TextureButton" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Flame/Flame/Flame/Flame/Flame" groups=["botones_torres"]]
+unique_name_in_owner = true
 texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 4
@@ -562,6 +652,7 @@ theme_override_constants/margin_bottom = 5
 layout_mode = 2
 
 [node name="Ballista" type="TextureButton" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Ballista/Ballista/Ballista/Ballista/Ballista" groups=["botones_torres"]]
+unique_name_in_owner = true
 texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 4
@@ -594,6 +685,7 @@ theme_override_constants/margin_bottom = 5
 layout_mode = 2
 
 [node name="Wizard" type="TextureButton" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Wizard/Wizard/Wizard/Wizard/Wizard" groups=["botones_torres"]]
+unique_name_in_owner = true
 texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 4
@@ -626,6 +718,7 @@ theme_override_constants/margin_bottom = 5
 layout_mode = 2
 
 [node name="Bloon" type="TextureButton" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Bloon/Bloon/Bloon/Bloon/Bloon" groups=["botones_torres"]]
+unique_name_in_owner = true
 texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 4
@@ -658,6 +751,7 @@ theme_override_constants/margin_bottom = 5
 layout_mode = 2
 
 [node name="Nest" type="TextureButton" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Nest/Nest/Nest/Nest/Nest" groups=["botones_torres"]]
+unique_name_in_owner = true
 texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 4
@@ -690,6 +784,7 @@ theme_override_constants/margin_bottom = 5
 layout_mode = 2
 
 [node name="Ship" type="TextureButton" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Ship/Ship/Ship/Ship/Ship" groups=["botones_torres"]]
+unique_name_in_owner = true
 texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 4
@@ -722,6 +817,7 @@ theme_override_constants/margin_bottom = 5
 layout_mode = 2
 
 [node name="Atun" type="TextureButton" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Atun/Atun/Atun/Atun/Atun" groups=["botones_torres"]]
+unique_name_in_owner = true
 texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 4

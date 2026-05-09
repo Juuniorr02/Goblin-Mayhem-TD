@@ -7,6 +7,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gu0w7"]
 
 [node name="MorteroShot" type="Area2D"]
+scale = Vector2(1.5, 1.5)
 script = ExtResource("1_2n7cv")
 ExplosionEffect = ExtResource("2_0kss6")
 

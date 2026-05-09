@@ -57,6 +57,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_kwryj"]
 
 [node name="archer" type="Node2D"]
+scale = Vector2(1.5, 1.5)
 script = ExtResource("1_kwryj")
 BulletScene = ExtResource("2_kwryj")
 CanTargetAir = true

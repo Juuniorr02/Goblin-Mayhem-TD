@@ -1,5 +1,4 @@
 using Godot;
-using System.Threading.Tasks;
 
 public partial class LoadingScreen : Control
 {
@@ -7,26 +6,16 @@ public partial class LoadingScreen : Control
     private ProgressBar progressBar;
 
     public static string NextScenePath;
-    public static bool IsLoadingFromSave = false;
 
     private float visualProgress = 0f;
     private float realProgress = 0f;
 
-    private SaveSystem save;
-
     public override void _Ready()
     {
         progressBar = GetNode<ProgressBar>("%ProgressBar");
-        save = GetNode<SaveSystem>("/root/SaveSystem");
 
-        if (IsLoadingFromSave)
-        {
-            LoadFromSave();
-        }
-        else
-        {
-            LoadScene(NextScenePath);
-        }
+        // 👉 SOLO NUEVA PARTIDA
+        LoadScene(NextScenePath);
     }
 
     public void LoadScene(string path)
@@ -45,25 +34,18 @@ public partial class LoadingScreen : Control
 
         realProgress = (float)progress[0] * 100;
 
-        // 🔥 suavizado
+        // suavizado (puedes ajustar velocidad si quieres)
         visualProgress = Mathf.Lerp(visualProgress, realProgress, 1f * (float)delta);
 
         progressBar.Value = visualProgress;
 
-        // cuando termina realmente
         if (status == ResourceLoader.ThreadLoadStatus.Loaded)
         {
-        // 🔥 esperar a que llegue a 100 visualmente
             if (visualProgress >= 99f)
             {
                 var scene = ResourceLoader.LoadThreadedGet(sceneToLoad);
                 GetTree().ChangeSceneToPacked(scene as PackedScene);
             }
         }
-    }
-
-    private async void LoadFromSave()
-    {
-        await save.LoadGame();
     }
 }

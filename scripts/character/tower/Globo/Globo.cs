@@ -52,7 +52,6 @@ public partial class Globo : BaseTower
         {
             bomb.GlobalPosition = muzzle?.GlobalPosition ?? GlobalPosition;
             bomb.Launch(currentTarget.GlobalPosition, Damage);
-            GD.Print("[GLOBO] Bomba soltada desde posición a la deriva.");
         }
     }
     

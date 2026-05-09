@@ -70,12 +70,11 @@ animations = [{
 }]
 
 [node name="BebeWyvern" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "HealthBar") groups=["Volador", "enemies"]]
-scale = Vector2(1.5, 1.5)
+scale = Vector2(1.8, 1.8)
 script = ExtResource("1_o34ak")
 sprite = NodePath("AnimatedSprite2D")
 Data = SubResource("Resource_bgsfn")
 HealthBar = NodePath("TextureProgressBar")
-Health = 10.0
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]
 top_level = true

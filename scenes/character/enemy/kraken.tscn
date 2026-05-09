@@ -107,7 +107,7 @@ animations = [{
 }]
 
 [node name="Kraken" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "HealthBar") groups=["Acuatico", "enemies"]]
-scale = Vector2(2.1, 2.1)
+scale = Vector2(2.5, 2.5)
 script = ExtResource("1_a6siw")
 sprite = NodePath("AnimatedSprite2D")
 Data = SubResource("Resource_m17yy")

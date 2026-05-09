@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://i745c3evo8ho"]
+[gd_scene load_steps=15 format=3 uid="uid://t575mxddhn7y"]
 
 [ext_resource type="Script" uid="uid://djm0046nxvish" path="res://scripts/character/enemy/Enemy.cs" id="1_eju4t"]
 [ext_resource type="Script" uid="uid://dtfsd6sb6u7oe" path="res://scripts/character/enemy/EnemyData.cs" id="2_8104f"]
@@ -70,11 +70,11 @@ animations = [{
 }]
 
 [node name="Wyvern" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "HealthBar") groups=["Volador", "enemies"]]
+scale = Vector2(2, 2)
 script = ExtResource("1_eju4t")
 sprite = NodePath("AnimatedSprite2D")
 Data = SubResource("Resource_bgsfn")
 HealthBar = NodePath("TextureProgressBar")
-Health = 10.0
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]
 top_level = true

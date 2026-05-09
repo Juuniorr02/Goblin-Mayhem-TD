@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="TowerData" load_steps=3 format=3 uid="uid://ba5hawld21nug"]
+
+[ext_resource type="Script" uid="uid://c7ixjxejko62n" path="res://scripts/ui/ui/TowerData.cs" id="1_1iu81"]
+[ext_resource type="Texture2D" uid="uid://22thccdtcdp4" path="res://assets/ui/icon/TorrearqueroIcono.png" id="1_e8myy"]
+
+[resource]
+script = ExtResource("1_1iu81")
+Name = "Torre de Arqueras"
+Cost = "100 de oro, 50 de madera"
+Icon = ExtResource("1_e8myy")
+metadata/_custom_type_script = "uid://c7ixjxejko62n"

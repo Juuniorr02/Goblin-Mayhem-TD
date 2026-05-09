@@ -5,8 +5,8 @@
 
 [resource]
 script = ExtResource("1_l66tv")
-DamageToBase = 100
-Health = 99999999999
+DamageToBase = 9999999999999
+Health = 9999999999999
 IsFlying = true
 IsAquatic = true
 EnemyScene = ExtResource("1_p2jnl")

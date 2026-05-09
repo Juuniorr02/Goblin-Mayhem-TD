@@ -13,17 +13,32 @@ public partial class Iu : Control
 
     private TextureRect Martillito;
 
-    public Button Archer;
-    public Button Cannon;
-    public Button Mortar;
-    public Button Flame;
-    public Button Ballista;
-    public Button Wizard;
-    public Button Bloon;
-    public Button Nest;
-    public Button Ship;
-    public Button Atun;
+    public TextureButton Archer;
+    public TextureButton Cannon;
+    public TextureButton Mortar;
+    public TextureButton Flame;
+    public TextureButton Ballista;
+    public TextureButton Wizard;
+    public TextureButton Bloon;
+    public TextureButton Nest;
+    public TextureButton Ship;
+    public TextureButton Atun;
     public Button Borrar;
+
+    private TextureRect icon;
+    private Label nameLabel;
+    private Label costLabel;
+
+    [Export] public TowerData CannonData;
+    [Export] public TowerData ArcherData;
+    [Export] public TowerData MortarData;
+    [Export] public TowerData FlameData;
+    [Export] public TowerData BallistaData;
+    [Export] public TowerData WizardData;
+    [Export] public TowerData BloonData;
+    [Export] public TowerData NestData;
+    [Export] public TowerData ShipData;
+    [Export] public TowerData AtunData;
 
     private AnimatedSprite2D waveAnimation;
     private Timer cooldownTimer;
@@ -33,6 +48,8 @@ public partial class Iu : Control
     private int contador = 0;
 
     private int constructionwave = 0;
+
+    private MenuVictoria menuVictoria;
 
     [Export] private EnemySpawner spawner;
 
@@ -50,28 +67,34 @@ public partial class Iu : Control
         woodLabel = GetNode<Label>("%WoodLabel");
         stoneLabel = GetNode<Label>("%StoneLabel");
 
-        Archer = GetNodeOrNull<Button>("%Archer");
-        Cannon = GetNodeOrNull<Button>("%Cannon");
-        Mortar = GetNodeOrNull<Button>("%Mortar");
-        Flame = GetNodeOrNull<Button>("%Flame");
-        Ballista = GetNodeOrNull<Button>("%Ballista");
-        Wizard = GetNodeOrNull<Button>("%Wizard");
-        Bloon = GetNodeOrNull<Button>("%Bloon");
-        Nest = GetNodeOrNull<Button>("%Nest");
-        Ship = GetNodeOrNull<Button>("%Ship");
-        Atun = GetNodeOrNull<Button>("%Atun");
+        Archer = GetNodeOrNull<TextureButton>("%Archer");
+        Cannon = GetNodeOrNull<TextureButton>("%Cannon");
+        Mortar = GetNodeOrNull<TextureButton>("%Mortar");
+        Flame = GetNodeOrNull<TextureButton>("%Flame");
+        Ballista = GetNodeOrNull<TextureButton>("%Ballista");
+        Wizard = GetNodeOrNull<TextureButton>("%Wizard");
+        Bloon = GetNodeOrNull<TextureButton>("%Bloon");
+        Nest = GetNodeOrNull<TextureButton>("%Nest");
+        Ship = GetNodeOrNull<TextureButton>("%Ship");
+        Atun = GetNodeOrNull<TextureButton>("%Atun");
         Borrar = GetNodeOrNull<Button>("%Borrar");
 
-        ConfigurarBoton(Archer);
-        ConfigurarBoton(Cannon);
-        ConfigurarBoton(Mortar);
-        ConfigurarBoton(Flame);
-        ConfigurarBoton(Ballista);
-        ConfigurarBoton(Wizard);
-        ConfigurarBoton(Bloon);
-        ConfigurarBoton(Nest);
-        ConfigurarBoton(Ship);
-        ConfigurarBoton(Atun);
+        icon = GetNode<TextureRect>("%Icon");
+        nameLabel = GetNode<Label>("%Name");
+        costLabel = GetNode<Label>("%Cost");
+
+        menuVictoria = GetTree().GetFirstNodeInGroup("victory") as MenuVictoria;
+
+        ConfigurarTextureBoton(Archer);
+        ConfigurarTextureBoton(Cannon);
+        ConfigurarTextureBoton(Mortar);
+        ConfigurarTextureBoton(Flame);
+        ConfigurarTextureBoton(Ballista);
+        ConfigurarTextureBoton(Wizard);
+        ConfigurarTextureBoton(Bloon);
+        ConfigurarTextureBoton(Nest);
+        ConfigurarTextureBoton(Ship);
+        ConfigurarTextureBoton(Atun);
         ConfigurarBoton(Borrar);
 
         waveAnimation = GetNode<AnimatedSprite2D>("%WaveSprite");
@@ -84,9 +107,28 @@ public partial class Iu : Control
         cooldownTimer.Timeout += OnCooldownFinished;
         waveButton.Pressed += OnWaveButtonPressed;
 
+            Cannon.Pressed += () => OnTowerPressed(CannonData);
+            Archer.Pressed += () => OnTowerPressed(ArcherData);
+            Mortar.Pressed += () => OnTowerPressed(MortarData);
+            Flame.Pressed += () => OnTowerPressed(FlameData);
+            Ballista.Pressed += () => OnTowerPressed(BallistaData);
+            Wizard.Pressed += () => OnTowerPressed(WizardData);
+            Bloon.Pressed += () => OnTowerPressed(BloonData);
+            Nest.Pressed += () => OnTowerPressed(NestData);
+            Ship.Pressed += () => OnTowerPressed(ShipData);
+            Atun.Pressed += () => OnTowerPressed(AtunData);
+
         UpdateIU();
     }
     
+    private void ConfigurarTextureBoton(TextureButton b)
+    {
+        if (b == null) return;
+
+        b.ProcessMode = ProcessModeEnum.Always;
+        b.MouseFilter = MouseFilterEnum.Stop;
+    }
+
     private void ConfigurarBoton(Button b)
     {
         if (b == null) return;
@@ -165,6 +207,24 @@ public partial class Iu : Control
 
     private void OnCooldownFinished()
     {
-        waveButton.Disabled = false;
+        if (Wave.Instance == null || menuVictoria == null)
+            return;
+
+        waveButton.Disabled = Wave.Instance.CurrentWave >= menuVictoria.WinningWave;
+    }
+
+    private void ShowTowerInfo(TowerData data)
+    {
+        if (data == null) return;
+
+        icon.Texture = data.Icon;
+        nameLabel.Text = data.Name;
+        costLabel.Text = data.Cost.ToString();
+    }
+
+    private void OnTowerPressed(TowerData data)
+    {
+        GD.Print("CLICK TOWER: " + data);
+        ShowTowerInfo(data);
     }
 }

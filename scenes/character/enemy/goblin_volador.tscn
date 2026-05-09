@@ -63,11 +63,11 @@ animations = [{
 }]
 
 [node name="GoblinVolador" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "HealthBar") groups=["Volador", "enemies"]]
+scale = Vector2(1.5, 1.5)
 script = ExtResource("1_4d1o2")
 sprite = NodePath("AnimatedSprite2D")
 Data = SubResource("Resource_bgsfn")
 HealthBar = NodePath("TextureProgressBar")
-Health = 10.0
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]
 top_level = true

@@ -49,7 +49,7 @@ animations = [{
 size = Vector2(11, 23.999996)
 
 [node name="goblinCorriente" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "HealthBar") groups=["enemies"]]
-scale = Vector2(1.25, 1.25)
+scale = Vector2(2.5, 2.5)
 script = ExtResource("1_84caw")
 sprite = NodePath("Sprite2D")
 Data = SubResource("Resource_lsg1d")

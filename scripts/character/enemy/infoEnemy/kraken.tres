@@ -7,6 +7,8 @@
 script = ExtResource("1_rwfju")
 EnemyName = "Kraken"
 Speed = 60.0
+DamageToBase = 40
+Health = 500
 IsAquatic = true
 EnemyScene = ExtResource("1_8rrxu")
 metadata/_custom_type_script = "uid://dtfsd6sb6u7oe"

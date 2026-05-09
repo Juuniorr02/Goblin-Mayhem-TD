@@ -76,13 +76,13 @@ CaminoB = NodePath("CaminoB")
 CaminoVolador = NodePath("CaminoVolador")
 Waves = Array[Object]([SubResource("Resource_brejp")])
 
-[node name="CaminoA" type="Path2D" parent="EnemySpawner" groups=["enemies"]]
+[node name="CaminoA" type="Path2D" parent="EnemySpawner"]
 curve = SubResource("Curve2D_w02j3")
 
-[node name="CaminoB" type="Path2D" parent="EnemySpawner" groups=["enemies"]]
+[node name="CaminoB" type="Path2D" parent="EnemySpawner"]
 curve = SubResource("Curve2D_q1drb")
 
-[node name="CaminoVolador" type="Path2D" parent="EnemySpawner" groups=["Volador"]]
+[node name="CaminoVolador" type="Path2D" parent="EnemySpawner"]
 curve = SubResource("Curve2D_wpisc")
 
 [node name="EnemiesContainer" type="Node2D" parent="."]

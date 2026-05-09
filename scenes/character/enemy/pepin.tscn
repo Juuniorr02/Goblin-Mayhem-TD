@@ -1,8 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://b0b285liubkgk"]
+[gd_scene load_steps=8 format=3 uid="uid://b0b285liubkgk"]
 
 [ext_resource type="Script" uid="uid://djm0046nxvish" path="res://scripts/character/enemy/Enemy.cs" id="1_fjijl"]
 [ext_resource type="Texture2D" uid="uid://cmwjmb8slpq0e" path="res://assets/character/enemy/BlancoVida.png" id="1_wct5h"]
+[ext_resource type="Script" uid="uid://dtfsd6sb6u7oe" path="res://scripts/character/enemy/EnemyData.cs" id="2_ntm2q"]
 [ext_resource type="Texture2D" uid="uid://c3k2q2hh7s6e5" path="res://assets/character/enemy/Pepin/pepin.png" id="2_wct5h"]
+
+[sub_resource type="Resource" id="Resource_ekvvp"]
+script = ExtResource("2_ntm2q")
+Speed = 100.0
+DamageToBase = 99999999999
+Health = 99999999999
+IsFlying = true
+IsAquatic = true
+metadata/_custom_type_script = "uid://dtfsd6sb6u7oe"
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ntm2q"]
 animations = [{
@@ -18,8 +28,12 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ekvvp"]
 size = Vector2(11, 23.999996)
 
-[node name="pepin" type="CharacterBody2D" groups=["enemies"]]
+[node name="pepin" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "HealthBar") groups=["Acuatico", "Volador", "enemies"]]
+scale = Vector2(1.5, 1.5)
 script = ExtResource("1_fjijl")
+sprite = NodePath("Sprite2D")
+Data = SubResource("Resource_ekvvp")
+HealthBar = NodePath("TextureProgressBar")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]
 top_level = true

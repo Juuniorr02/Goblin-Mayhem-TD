@@ -57,6 +57,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_kwryj"]
 
 [node name="ballista" type="Node2D"]
+scale = Vector2(1.5, 1.5)
 script = ExtResource("1_13gvo")
 BulletScene = ExtResource("2_c1b5q")
 Damage = 15.0

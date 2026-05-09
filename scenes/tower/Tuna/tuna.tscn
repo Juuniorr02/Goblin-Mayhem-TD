@@ -46,6 +46,7 @@ radius = 27.00463
 size = Vector2(36, 13)
 
 [node name="Tuna" type="CharacterBody2D"]
+scale = Vector2(2, 2)
 script = ExtResource("1_u51wi")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

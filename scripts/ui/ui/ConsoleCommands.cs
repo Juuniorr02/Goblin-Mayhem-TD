@@ -44,4 +44,10 @@ public partial class ConsoleCommands : Node
 		Recursos.Instance.VidaInfinita();
         return "GOD MODE ACTIVATED";
     }
+
+    public string kill()
+    {
+        Recursos.Instance.KillBase();
+        return "Has muerto!";
+    }
 }

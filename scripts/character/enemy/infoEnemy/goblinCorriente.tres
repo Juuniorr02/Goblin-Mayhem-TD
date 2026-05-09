@@ -7,5 +7,6 @@
 script = ExtResource("1_0u41p")
 EnemyName = "Goblin Corriente"
 Speed = 90.0
+DamageToBase = 2
 EnemyScene = ExtResource("1_noy4o")
 metadata/_custom_type_script = "uid://dtfsd6sb6u7oe"

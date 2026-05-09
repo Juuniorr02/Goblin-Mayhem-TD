@@ -134,6 +134,11 @@ public partial class Recursos : Node
         SaveData();
     }
 
+    public void KillBase()
+    {
+        Vida = 0;
+    }
+
     public void DevolverRecuros()
     {
         Gold += 100;
