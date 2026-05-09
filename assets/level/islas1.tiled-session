@@ -1,29 +1,107 @@
 {
-    "activeFile": "Map/islas1.tmx",
+    "activeFile": "Map/level1.tmx",
     "expandedProjectPaths": [
-        ".",
-        "Map"
+        "Map",
+        "."
     ],
     "file.lastUsedOpenFilter": "Todos los archivos (*)",
     "fileStates": {
+        "Map/Aldea.tmx": {
+            "scale": 0.08292025862068965,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 6964.522417153997,
+                "y": 3304.3794671864844
+            }
+        },
         "Map/Example.tsx": {
             "dynamicWrapping": true,
-            "scaleInDock": 0.25
+            "scaleInDock": 0.125,
+            "scaleInEditor": 0.33
+        },
+        "Map/aldea - copia.tmx": {
+            "scale": 0.08292025862068965,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 6964.522417153997,
+                "y": 3304.3794671864844
+            }
         },
         "Map/islas1.tmx": {
             "scale": 0.125,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 10524,
+                "y": 4696
+            }
+        },
+        "Map/level1.tmx": {
+            "scale": 0.015625,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": -1248,
+                "y": 3264
+            }
+        },
+        "Map/mapa1.tmx": {
+            "scale": 0.08292025862068965,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 6964.522417153997,
+                "y": 3304.3794671864844
+            }
+        },
+        "Map/mapa2.tmx": {
+            "scale": 0.08292025862068965,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 6964.522417153997,
+                "y": 3304.3794671864844
+            }
+        },
+        "Map/mapa_mundi.tmx": {
+            "scale": 0.25,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 6644,
-                "y": 2856
+                "x": 6898,
+                "y": 5836
+            }
+        },
+        "Map/pantano.tmx": {
+            "scale": 0.08292025862068965,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 6964.522417153997,
+                "y": 3304.3794671864844
+            }
+        },
+        "Map/tutorial.tmx": {
+            "scale": 0.08292025862068965,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 6964.522417153997,
+                "y": 3304.3794671864844
             }
         }
     },
     "openFiles": [
-        "Map/islas1.tmx"
+        "Map/Example.tsx",
+        "Map/mapa_mundi.tmx",
+        "Map/tutorial.tmx",
+        "Map/level1.tmx"
     ],
     "project": "islas1.tiled-project",
+    "property.type": "bool",
     "recentFiles": [
-        "Map/islas1.tmx"
+        "Map/Example.tsx",
+        "Map/mapa_mundi.tmx",
+        "Map/tutorial.tmx",
+        "Map/level1.tmx",
+        "Map/islas1.tmx",
+        "Map/aldea - copia.tmx",
+        "Map/pantano.tmx",
+        "Map/mapa1.tmx",
+        "Map/Aldea.tmx",
+        "Map/mapa2.tmx"
     ]
 }

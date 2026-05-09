@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="TowerData" load_steps=3 format=3 uid="uid://cktb131ql3ifg"]
+
+[ext_resource type="Script" uid="uid://c7ixjxejko62n" path="res://scripts/ui/ui/TowerData.cs" id="1_ca4hr"]
+[ext_resource type="Texture2D" uid="uid://c4uh2xppu58k3" path="res://assets/ui/icon/Icononido-Sheet.png" id="1_vg868"]
+
+[resource]
+script = ExtResource("1_ca4hr")
+Name = "Nido de Grifos"
+Cost = "250 de oro, 100 de madera, 50 de piedra, 25 de metal"
+Icon = ExtResource("1_vg868")
+metadata/_custom_type_script = "uid://c7ixjxejko62n"

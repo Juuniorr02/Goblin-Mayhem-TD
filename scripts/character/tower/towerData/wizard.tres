@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="TowerData" load_steps=3 format=3 uid="uid://1gfeiqoiw3db"]
+
+[ext_resource type="Texture2D" uid="uid://gv17j7r8f06e" path="res://assets/ui/icon/Iconotorredemago.png" id="1_7fcj5"]
+[ext_resource type="Script" uid="uid://c7ixjxejko62n" path="res://scripts/ui/ui/TowerData.cs" id="1_q4np3"]
+
+[resource]
+script = ExtResource("1_q4np3")
+Name = "Torre de Mago"
+Cost = "250 de oro, 150 de madera, 100 de piedra, 50 de metal"
+Icon = ExtResource("1_7fcj5")
+metadata/_custom_type_script = "uid://c7ixjxejko62n"

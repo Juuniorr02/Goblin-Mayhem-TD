@@ -2,51 +2,73 @@ using Godot;
 
 public partial class ArcherTower : BaseTower
 {
-    // Ajusta este valor si ves que las flechas se quedan cortas o vuelan muy alto
-    // 0.15f suele ser un buen punto de partida para una gravedad de 800
     [Export] public float GravityCompensation = 0.18f;
+    // Referencia al nodo de animación (ajústalo si usas AnimationPlayer)
+    [Export] public AnimatedSprite2D MyAnimation; 
 
     public override void _Ready()
     {
         base._Ready();
-        // Según tu tabla: Terrestres, Aéreos y Acuáticos
         CanTargetLand = true;
         CanTargetAir = true;
         CanTargetWater = true;
+
+        // Si no lo asignas en el inspector, intenta buscarlo automáticamente
+        if (MyAnimation == null)
+            MyAnimation = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
     }
 
-protected override void Shoot()
-{
-    if (!IsInstanceValid(currentTarget) || BulletScene == null || muzzle == null)
-        return;
-
-    var arrowNode = BulletScene.Instantiate();
-    if (arrowNode is Arrow arrow)
+    protected override void Shoot()
     {
-        GetTree().CurrentScene.AddChild(arrow);
-        arrow.GlobalPosition = muzzle.GlobalPosition;
+        if (!IsInstanceValid(currentTarget) || BulletScene == null || muzzle == null)
+            return;
 
-        Vector2 targetPos = currentTarget.GlobalPosition;
-        
-        // --- LÓGICA DE PREDICCIÓN ---
-        if (currentTarget is CharacterBody2D enemyBody)
+        // --- REPRODUCIR ANIMACIÓN ---
+        if (MyAnimation != null)
         {
-            float distance = muzzle.GlobalPosition.DistanceTo(targetPos);
-            // Estimamos cuánto tarda la flecha en llegar (distancia / velocidad)
-            float timeToReach = distance / arrow.Speed;
-            
-            // Sumamos a la posición actual: velocidad_enemigo * tiempo_vuelo
-            targetPos += enemyBody.Velocity * timeToReach;
+            MyAnimation.Play("default");
         }
 
-        // --- CÁLCULO DE DIRECCIÓN CON PARÁBOLA ---
-        Vector2 toTarget = targetPos - muzzle.GlobalPosition;
-        float dist = toTarget.Length();
-        Vector2 offset = new Vector2(0, -dist * GravityCompensation);
-        Vector2 direction = (toTarget + offset).Normalized();
+        var arrowNode = BulletScene.Instantiate();
+        if (arrowNode is Arrow arrow)
+        {
+            GetTree().CurrentScene.AddChild(arrow);
+            arrow.GlobalPosition = muzzle.GlobalPosition;
 
-        arrow.Launch(direction, Damage);
+            Vector2 targetPos = currentTarget.GlobalPosition;
+            
+            if (currentTarget is CharacterBody2D enemyBody)
+            {
+                float distance = muzzle.GlobalPosition.DistanceTo(targetPos);
+                float timeToReach = distance / arrow.Speed;
+                targetPos += enemyBody.Velocity * timeToReach;
+            }
+
+            Vector2 toTarget = targetPos - muzzle.GlobalPosition;
+            float dist = toTarget.Length();
+            Vector2 offset = new Vector2(0, -dist * GravityCompensation);
+            Vector2 direction = (toTarget + offset).Normalized();
+
+            arrow.Launch(direction, Damage);
+        }
     }
-}
 
+    public override void Build()
+    {
+        int amountGold = 100, amountWood = 50, amountStone = 0, amountIron = 0;
+
+        if (Recursos.Instance.Gold >= amountGold && Recursos.Instance.Wood >= amountWood && 
+            Recursos.Instance.Stone >= amountStone && Recursos.Instance.Iron >= amountIron)
+        {
+            Recursos.Instance.Gold -= amountGold;
+            Recursos.Instance.Wood -= amountWood;
+            Recursos.Instance.Stone -= amountStone;
+            Recursos.Instance.Iron -= amountIron;
+            CanBuild = true;
+        }
+        else
+        {
+            CanBuild = false;
+        }
+    }
 }

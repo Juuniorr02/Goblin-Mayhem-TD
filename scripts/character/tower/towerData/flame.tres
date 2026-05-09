@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="TowerData" load_steps=3 format=3 uid="uid://b4ywx3fvqqxuv"]
+
+[ext_resource type="Texture2D" uid="uid://7prl0kc2ksyg" path="res://assets/ui/icon/lanzallamas.png" id="1_flg7h"]
+[ext_resource type="Script" uid="uid://c7ixjxejko62n" path="res://scripts/ui/ui/TowerData.cs" id="1_wd547"]
+
+[resource]
+script = ExtResource("1_wd547")
+Name = "Lanzallamas"
+Cost = "200 de oro, 100 de madera, 50 de piedra, 25 de metal"
+Icon = ExtResource("1_flg7h")
+metadata/_custom_type_script = "uid://c7ixjxejko62n"

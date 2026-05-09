@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="TowerData" load_steps=3 format=3 uid="uid://msh0ymvr16su"]
+
+[ext_resource type="Script" uid="uid://c7ixjxejko62n" path="res://scripts/ui/ui/TowerData.cs" id="1_kkbn2"]
+[ext_resource type="Texture2D" uid="uid://5sui3kk7ym6x" path="res://assets/ui/icon/cañon.png" id="1_vlmqp"]
+
+[resource]
+script = ExtResource("1_kkbn2")
+Name = "Cañon"
+Cost = "150 de oro, 25 de madera"
+Icon = ExtResource("1_vlmqp")
+metadata/_custom_type_script = "uid://c7ixjxejko62n"

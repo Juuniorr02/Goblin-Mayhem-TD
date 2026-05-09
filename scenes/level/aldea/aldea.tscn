@@ -1,0 +1,166 @@
+[gd_scene load_steps=15 format=3 uid="uid://cfbm5welkb4dq"]
+
+[ext_resource type="Script" uid="uid://dlkmwoujs2ffa" path="res://scripts/level/aldea/Aldea.cs" id="1_xy8tv"]
+[ext_resource type="PackedScene" uid="uid://db3gopv2d5x4p" path="res://assets/level/Map/aldea.tmx" id="2_r5q8b"]
+[ext_resource type="PackedScene" uid="uid://cga8wa1itf7t7" path="res://scenes/level/aldea/uialdea.tscn" id="3_bq6bm"]
+[ext_resource type="Script" uid="uid://0yfmp0uplcf0" path="res://scripts/level/aldea/Uialdea.cs" id="4_ib1id"]
+[ext_resource type="Script" uid="uid://ccef7herjptu0" path="res://scripts/character/camera/CameraRig.cs" id="4_yay4l"]
+[ext_resource type="PackedScene" uid="uid://6wmhfodnhdx" path="res://scenes/level/aldea/menu_pausa_aldea.tscn" id="6_ib1id"]
+[ext_resource type="PackedScene" uid="uid://bsnre104stsy0" path="res://scenes/level/aldea/options_pausa_aldea.tscn" id="7_o7wln"]
+[ext_resource type="PackedScene" uid="uid://cxr58qt2snegv" path="res://scenes/level/aldea/menu_aserradero.tscn" id="8_8mv7s"]
+[ext_resource type="PackedScene" uid="uid://b72e5tx45ydxw" path="res://scenes/level/aldea/menu_ayuntamiento.tscn" id="9_vy6mu"]
+[ext_resource type="PackedScene" uid="uid://m6j2062p6kiy" path="res://scenes/level/aldea/menu_barrio.tscn" id="10_0jmeu"]
+[ext_resource type="PackedScene" uid="uid://cvvcvjijhs273" path="res://scenes/level/aldea/menu_cantera.tscn" id="11_fx5rj"]
+[ext_resource type="PackedScene" uid="uid://di7opanmbhxda" path="res://scenes/level/aldea/menu_herreria.tscn" id="12_splcq"]
+[ext_resource type="PackedScene" uid="uid://bbedvtd2kryv7" path="res://scenes/level/aldea/menu_mina.tscn" id="13_tilys"]
+[ext_resource type="PackedScene" uid="uid://dyk56b112rm25" path="res://scenes/ui/ui/uiTutorial.tscn" id="14_o7wln"]
+
+[node name="Aldea" type="Node2D"]
+script = ExtResource("1_xy8tv")
+
+[node name="Aldea" parent="." instance=ExtResource("2_r5q8b")]
+position = Vector2(-430, 217)
+
+[node name="UIAldea" parent="." instance=ExtResource("3_bq6bm")]
+script = ExtResource("4_ib1id")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(6535, 2914)
+zoom = Vector2(0.17, 0.17)
+limit_enabled = false
+limit_left = 0
+limit_top = 0
+limit_right = 1145
+limit_bottom = 555
+script = ExtResource("4_yay4l")
+MoveSpeed = 0.0
+MinZoom = 0.17
+MaxZoom = 0.17
+
+[node name="menu_pausa_aldea" parent="." instance=ExtResource("6_ib1id")]
+layer = 7
+visible = false
+
+[node name="OptionsPausaAldea" parent="." instance=ExtResource("7_o7wln")]
+layer = 8
+visible = false
+
+[node name="Botones" type="CanvasLayer" parent="."]
+layer = 10
+follow_viewport_enabled = true
+
+[node name="BotonAyuntamiento" type="Button" parent="Botones"]
+z_index = 3
+z_as_relative = false
+texture_filter = 1
+custom_minimum_size = Vector2(8, 8)
+offset_left = 5921.0005
+offset_top = 1257.0
+offset_right = 5929.0005
+offset_bottom = 1265.0
+scale = Vector2(155.79207, 120.26515)
+flat = true
+
+[node name="menu_ayuntamiento" parent="Botones/BotonAyuntamiento" instance=ExtResource("9_vy6mu")]
+layer = 6
+visible = false
+offset = Vector2(5750, 2250)
+scale = Vector2(4, 4)
+transform = Transform2D(4, 0, 0, 4, 5750, 2250)
+follow_viewport_enabled = true
+
+[node name="BotonCantera" type="Button" parent="Botones"]
+z_index = 3
+offset_left = 7306.9995
+offset_top = 3015.0
+offset_right = 7314.9995
+offset_bottom = 3023.0
+scale = Vector2(91.89639, 64.59721)
+flat = true
+
+[node name="menu_cantera" parent="Botones/BotonCantera" instance=ExtResource("11_fx5rj")]
+layer = 6
+visible = false
+offset = Vector2(5750, 2250)
+scale = Vector2(4, 4)
+transform = Transform2D(4, 0, 0, 4, 5750, 2250)
+follow_viewport_enabled = true
+
+[node name="BotonMina" type="Button" parent="Botones"]
+z_index = 3
+offset_left = 8576.001
+offset_top = 2033.0
+offset_right = 8584.001
+offset_bottom = 2041.0
+scale = Vector2(-61.062122, 95.93618)
+flat = true
+metadata/_edit_use_anchors_ = true
+
+[node name="menu_mina" parent="Botones/BotonMina" instance=ExtResource("13_tilys")]
+visible = false
+offset = Vector2(5750, 2250)
+scale = Vector2(4, 4)
+transform = Transform2D(4, 0, 0, 4, 5750, 2250)
+follow_viewport_enabled = true
+
+[node name="BotonAserradero" type="Button" parent="Botones"]
+z_index = 3
+offset_left = 3825.0
+offset_top = 3039.0
+offset_right = 3833.0
+offset_bottom = 3047.0
+scale = Vector2(93.6691, -49.20361)
+flat = true
+metadata/_edit_use_anchors_ = true
+
+[node name="menu_aserradero" parent="Botones/BotonAserradero" instance=ExtResource("8_8mv7s")]
+visible = false
+offset = Vector2(5750, 2250)
+scale = Vector2(4, 4)
+transform = Transform2D(4, 0, 0, 4, 5750, 2250)
+follow_viewport_enabled = true
+
+[node name="BotonBarrio" type="Button" parent="Botones"]
+z_index = 3
+offset_left = 6259.0005
+offset_top = 2112.0002
+offset_right = 6267.0005
+offset_bottom = 2120.0002
+rotation = -1.1257482
+scale = Vector2(-79.010574, 133.04248)
+flat = true
+
+[node name="menu_barrio" parent="Botones/BotonBarrio" instance=ExtResource("10_0jmeu")]
+visible = false
+offset = Vector2(5750, 2250)
+scale = Vector2(4, 4)
+transform = Transform2D(4, 0, 0, 4, 5750, 2250)
+follow_viewport_enabled = true
+
+[node name="BotonHerreria" type="Button" parent="Botones"]
+z_index = 3
+offset_left = 5816.0
+offset_top = 3386.0
+offset_right = 5824.0
+offset_bottom = 3394.0
+scale = Vector2(80.92591, 66.97712)
+flat = true
+
+[node name="menu_herreria" parent="Botones/BotonHerreria" instance=ExtResource("12_splcq")]
+visible = false
+offset = Vector2(5750, 2250)
+scale = Vector2(4, 4)
+transform = Transform2D(4, 0, 0, 4, 5750, 2250)
+follow_viewport_enabled = true
+
+[node name="BotonMapa" type="Button" parent="Botones"]
+z_index = 3
+offset_left = 4606.0
+offset_top = 3636.0
+offset_right = 4614.0
+offset_bottom = 3644.0
+scale = Vector2(57.86167, 40.06142)
+flat = true
+
+[node name="DialogueUi" parent="." instance=ExtResource("14_o7wln")]
+defaultDialogueLines = PackedStringArray("Bienvenido a su aldea, aqui podras mejorar tus estadisticas y descasnsar despues de las arduas batallas.", "Cada edificio que ves es funcional, Ayuntamiento,Aserradero, Mina,Cantera, Barrio y Herreria.", "Cada una hace una cosa distinta.", "El Ayuntamiento produce oro, el Aserradero madera, la Cantera piedra y la Mina metal.", "Aunque tambien esta el barrio y la herreria, pero de esta ultima hablaremos mas tarde.", "El Barrio puede mejorar la vida todal de tu base, algo muy util cuando uno de esos malditos duendes consigue llegar a tu base.", "Todos los edificios se pueden mejorar para augmentar su produccion, pero es caro no siempre podras mejorarlo.", "Ves que ariba a la izquierda aparecen tus recursos, esos son los recursos sobrantes de tus partidas anteriores.", "Cada vez que completes un nivel todos los recursos sobrantes se sumaran al total de tu aldea.", "La puerta de la aldea te lleva al Mapamundi, donde estan todos los niveles.", "Pero primero...", "Que tal si te das una vuelta por la aldea, quien sabe alomejor haces amiguitas.")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7rdimph5fqua"
-path="res://.godot/imported/Mortero-Sheet.png-2421d8fe656ca6315142b61b0804447b.ctex"
+uid="uid://b3sdyubuafrfe"
+path="res://.godot/imported/mortero-Sheet.png-0f99feddc221dc97959107d9aa0f6873.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/character/tower/Mortero/Mortero-Sheet.png"
-dest_files=["res://.godot/imported/Mortero-Sheet.png-2421d8fe656ca6315142b61b0804447b.ctex"]
+source_file="res://assets/character/tower/Mortero/mortero-Sheet.png"
+dest_files=["res://.godot/imported/mortero-Sheet.png-0f99feddc221dc97959107d9aa0f6873.ctex"]
 
 [params]
 

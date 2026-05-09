@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="TowerData" load_steps=3 format=3 uid="uid://df5k6gnj0teoc"]
+
+[ext_resource type="Texture2D" uid="uid://cng1ixd27b0v8" path="res://assets/ui/icon/IconoBarco-Sheet.png" id="1_h6mfg"]
+[ext_resource type="Script" uid="uid://c7ixjxejko62n" path="res://scripts/ui/ui/TowerData.cs" id="1_pcjys"]
+
+[resource]
+script = ExtResource("1_pcjys")
+Name = "Barco"
+Cost = "150 de oro, 100 de madera"
+Icon = ExtResource("1_h6mfg")
+metadata/_custom_type_script = "uid://c7ixjxejko62n"

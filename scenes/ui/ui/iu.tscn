@@ -1,0 +1,856 @@
+[gd_scene load_steps=42 format=3 uid="uid://ci612q8twcycd"]
+
+[ext_resource type="Texture2D" uid="uid://bodlpu3irch0t" path="res://assets/ui/button/IconoOleada-Sheet.png" id="1_g0mth"]
+[ext_resource type="Texture2D" uid="uid://5sui3kk7ym6x" path="res://assets/ui/icon/cañon.png" id="1_t64rc"]
+[ext_resource type="Texture2D" uid="uid://blnmjnr4qmfkb" path="res://assets/ui/icon/Vidas.png" id="1_tyt0d"]
+[ext_resource type="Script" uid="uid://cs0vdio4tt68i" path="res://scripts/ui/ui/Iu.cs" id="1_viny6"]
+[ext_resource type="Resource" uid="uid://msh0ymvr16su" path="res://scripts/character/tower/towerData/cannon.tres" id="2_iqgry"]
+[ext_resource type="Texture2D" uid="uid://c6eovl815j15h" path="res://assets/ui/icon/Coin1.png" id="2_svasj"]
+[ext_resource type="Resource" uid="uid://ba5hawld21nug" path="res://scripts/character/tower/towerData/archer.tres" id="3_opg7r"]
+[ext_resource type="Texture2D" uid="uid://crw7qp1kr00u0" path="res://assets/ui/icon/Maderas.png" id="3_viny6"]
+[ext_resource type="Resource" uid="uid://cbpx480yejyr1" path="res://scripts/character/tower/towerData/mortar.tres" id="4_iagby"]
+[ext_resource type="Texture2D" uid="uid://bonxvf3bnviti" path="res://assets/ui/icon/Piedras.png" id="4_rlfxr"]
+[ext_resource type="Resource" uid="uid://b4ywx3fvqqxuv" path="res://scripts/character/tower/towerData/flame.tres" id="5_g3sm5"]
+[ext_resource type="Texture2D" uid="uid://d4aohjas4nc4o" path="res://assets/ui/icon/Hierro.png" id="5_ud8xl"]
+[ext_resource type="Resource" uid="uid://bd6t5rktjtldp" path="res://scripts/character/tower/towerData/ballista.tres" id="6_qk2tp"]
+[ext_resource type="Resource" uid="uid://1gfeiqoiw3db" path="res://scripts/character/tower/towerData/wizard.tres" id="7_r14ap"]
+[ext_resource type="Texture2D" uid="uid://bovqloc0sr8xj" path="res://assets/character/tower/Construir/Martillito-Sheet.png" id="8_1j10k"]
+[ext_resource type="Resource" uid="uid://5j5onuysyxxm" path="res://scripts/character/tower/towerData/globo.tres" id="8_kcqbr"]
+[ext_resource type="Texture2D" uid="uid://22thccdtcdp4" path="res://assets/ui/icon/TorrearqueroIcono.png" id="8_rlfxr"]
+[ext_resource type="Texture2D" uid="uid://7prl0kc2ksyg" path="res://assets/ui/icon/lanzallamas.png" id="8_svasj"]
+[ext_resource type="Resource" uid="uid://cktb131ql3ifg" path="res://scripts/character/tower/towerData/nest.tres" id="9_hinth"]
+[ext_resource type="Resource" uid="uid://df5k6gnj0teoc" path="res://scripts/character/tower/towerData/ship.tres" id="10_7udoo"]
+[ext_resource type="Texture2D" uid="uid://dgrfope32f46" path="res://assets/ui/icon/IconoMortero-Sheet.png" id="10_17ct8"]
+[ext_resource type="Resource" uid="uid://d0maygicy4avw" path="res://scripts/character/tower/towerData/atun.tres" id="11_h3iwi"]
+[ext_resource type="Texture2D" uid="uid://b02vvm3raqbr4" path="res://assets/ui/icon/IconoBalista.png" id="11_ud8xl"]
+[ext_resource type="Texture2D" uid="uid://gv17j7r8f06e" path="res://assets/ui/icon/Iconotorredemago.png" id="12_akgsa"]
+[ext_resource type="Texture2D" uid="uid://chkxwk7jk6i04" path="res://assets/ui/icon/Iconoglobo.png" id="13_2dtyk"]
+[ext_resource type="Texture2D" uid="uid://c4uh2xppu58k3" path="res://assets/ui/icon/Icononido-Sheet.png" id="14_ify78"]
+[ext_resource type="Texture2D" uid="uid://cng1ixd27b0v8" path="res://assets/ui/icon/IconoBarco-Sheet.png" id="15_bjwdg"]
+[ext_resource type="Texture2D" uid="uid://duy2srishpoac" path="res://assets/ui/icon/IconoPiscifactoria-Sheet.png" id="16_n0sti"]
+
+[sub_resource type="Theme" id="Theme_1nckr"]
+
+[sub_resource type="Theme" id="Theme_tyt0d"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s01qv"]
+atlas = ExtResource("1_g0mth")
+region = Rect2(0, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oogvd"]
+atlas = ExtResource("1_g0mth")
+region = Rect2(400, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tyt0d"]
+atlas = ExtResource("1_g0mth")
+region = Rect2(800, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_svasj"]
+atlas = ExtResource("1_g0mth")
+region = Rect2(1200, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_viny6"]
+atlas = ExtResource("1_g0mth")
+region = Rect2(1600, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rlfxr"]
+atlas = ExtResource("1_g0mth")
+region = Rect2(2000, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ud8xl"]
+atlas = ExtResource("1_g0mth")
+region = Rect2(2400, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_akgsa"]
+atlas = ExtResource("1_g0mth")
+region = Rect2(2800, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2dtyk"]
+atlas = ExtResource("1_g0mth")
+region = Rect2(3200, 0, 400, 400)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ify78"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s01qv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oogvd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tyt0d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_svasj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_viny6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rlfxr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ud8xl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_akgsa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2dtyk")
+}],
+"loop": false,
+"name": &"wave",
+"speed": 0.4
+}]
+
+[sub_resource type="Theme" id="Theme_pd0vv"]
+
+[node name="IU" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_viny6")
+CannonData = ExtResource("2_iqgry")
+ArcherData = ExtResource("3_opg7r")
+MortarData = ExtResource("4_iagby")
+FlameData = ExtResource("5_g3sm5")
+BallistaData = ExtResource("6_qk2tp")
+WizardData = ExtResource("7_r14ap")
+BloonData = ExtResource("8_kcqbr")
+NestData = ExtResource("9_hinth")
+ShipData = ExtResource("10_7udoo")
+AtunData = ExtResource("11_h3iwi")
+
+[node name="IU" type="CanvasLayer" parent="."]
+
+[node name="IU" type="PanelContainer" parent="IU"]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_1nckr")
+
+[node name="IU" type="VBoxContainer" parent="IU/IU"]
+layout_mode = 2
+
+[node name="Top" type="HBoxContainer" parent="IU/IU/IU"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Stats" type="HBoxContainer" parent="IU/IU/IU/Top"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Stats" type="VBoxContainer" parent="IU/IU/IU/Top/Stats"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Stats" type="PanelContainer" parent="IU/IU/IU/Top/Stats/Stats"]
+self_modulate = Color(1, 1, 1, 0.47058824)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Stats" type="MarginContainer" parent="IU/IU/IU/Top/Stats/Stats/Stats"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Stats" type="PanelContainer" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats"]
+layout_mode = 2
+
+[node name="Stats" type="MarginContainer" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Stats" type="CenterContainer" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats"]
+layout_mode = 2
+
+[node name="Stats" type="VBoxContainer" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats"]
+layout_mode = 2
+
+[node name="Separation" type="MarginContainer" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Stats"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Health" type="HBoxContainer" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Stats"]
+layout_mode = 2
+
+[node name="Health" type="TextureRect" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Health"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.25
+texture = ExtResource("1_tyt0d")
+
+[node name="HealthLabel" type="Label" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Health"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Separation2" type="MarginContainer" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Stats"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Gold" type="HBoxContainer" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Stats"]
+layout_mode = 2
+
+[node name="Gold" type="TextureRect" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Gold"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.25
+texture = ExtResource("2_svasj")
+
+[node name="GoldLabel" type="Label" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Gold"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Separation3" type="MarginContainer" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Stats"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Wood" type="HBoxContainer" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Stats"]
+layout_mode = 2
+
+[node name="Wood" type="TextureRect" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Wood"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.25
+texture = ExtResource("3_viny6")
+
+[node name="WoodLabel" type="Label" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Wood"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Separation4" type="MarginContainer" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Stats"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Stone" type="HBoxContainer" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Stats"]
+layout_mode = 2
+
+[node name="Stone" type="TextureRect" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Stone"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.25
+texture = ExtResource("4_rlfxr")
+
+[node name="StoneLabel" type="Label" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Stone"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Separation5" type="MarginContainer" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Stats"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Iron" type="HBoxContainer" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Stats"]
+layout_mode = 2
+
+[node name="Iron" type="TextureRect" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Iron"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.25
+texture = ExtResource("5_ud8xl")
+
+[node name="IronLabel" type="Label" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Iron"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Separation6" type="MarginContainer" parent="IU/IU/IU/Top/Stats/Stats/Stats/Stats/Stats/Stats/Stats/Stats"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Blank" type="VBoxContainer" parent="IU/IU/IU/Top/Stats/Stats"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
+
+[node name="Blank" type="VBoxContainer" parent="IU/IU/IU/Top/Stats"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="Center" type="VBoxContainer" parent="IU/IU/IU/Top"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="Wave" type="VBoxContainer" parent="IU/IU/IU/Top"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Wave" type="HBoxContainer" parent="IU/IU/IU/Top/Wave"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="IU/IU/IU/Top/Wave/Wave"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Wave" type="VBoxContainer" parent="IU/IU/IU/Top/Wave/Wave"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="WaveButton" type="TextureButton" parent="IU/IU/IU/Top/Wave/Wave/Wave"]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+stretch_mode = 3
+
+[node name="WaveLabel" type="Label" parent="IU/IU/IU/Top/Wave/Wave/Wave/WaveButton"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 45.0
+offset_top = 46.0
+offset_right = 73.0
+offset_bottom = 69.0
+scale = Vector2(0.72179794, 0.8265525)
+theme = SubResource("Theme_tyt0d")
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WaveSprite" type="AnimatedSprite2D" parent="IU/IU/IU/Top/Wave/Wave/Wave/WaveButton"]
+unique_name_in_owner = true
+z_index = -1
+texture_filter = 1
+position = Vector2(55, 54)
+scale = Vector2(0.40295896, 0.4)
+sprite_frames = SubResource("SpriteFrames_ify78")
+animation = &"wave"
+frame = 8
+frame_progress = 1.0
+
+[node name="Martillito" type="TextureRect" parent="IU/IU/IU/Top/Wave/Wave/Wave/WaveButton/WaveSprite"]
+unique_name_in_owner = true
+z_index = 2
+offset_left = -54.59613
+offset_top = -45.0
+offset_right = -14.59613
+offset_bottom = -5.0
+scale = Vector2(3, 3)
+texture = ExtResource("8_1j10k")
+
+[node name="Blank" type="HBoxContainer" parent="IU/IU/IU/Top/Wave"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Bottom" type="HBoxContainer" parent="IU/IU/IU"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Info" type="VBoxContainer" parent="IU/IU/IU/Bottom"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Blank" type="HBoxContainer" parent="IU/IU/IU/Bottom/Info"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Info" type="HBoxContainer" parent="IU/IU/IU/Bottom/Info"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Blank" type="HBoxContainer" parent="IU/IU/IU/Bottom/Info/Info"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Info" type="PanelContainer" parent="IU/IU/IU/Bottom/Info/Info"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 4.0
+
+[node name="Info" type="MarginContainer" parent="IU/IU/IU/Bottom/Info/Info/Info"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Info" type="PanelContainer" parent="IU/IU/IU/Bottom/Info/Info/Info/Info"]
+layout_mode = 2
+
+[node name="Info" type="MarginContainer" parent="IU/IU/IU/Bottom/Info/Info/Info/Info/Info"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="IU/IU/IU/Bottom/Info/Info/Info/Info/Info/Info"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="IU/IU/IU/Bottom/Info/Info/Info/Info/Info/Info/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Icon" type="TextureRect" parent="IU/IU/IU/Bottom/Info/Info/Info/Info/Info/Info/VBoxContainer"]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Cost" type="Label" parent="IU/IU/IU/Bottom/Info/Info/Info/Info/Info/Info/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Blank3" type="HBoxContainer" parent="IU/IU/IU/Bottom/Info/Info"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Towers" type="VBoxContainer" parent="IU/IU/IU/Bottom"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="Blank" type="HBoxContainer" parent="IU/IU/IU/Bottom/Towers"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Blank2" type="HBoxContainer" parent="IU/IU/IU/Bottom/Towers"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Towers" type="HBoxContainer" parent="IU/IU/IU/Bottom/Towers"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="Towers" type="PanelContainer" parent="IU/IU/IU/Bottom/Towers/Towers"]
+self_modulate = Color(1, 1, 1, 0)
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Towers" type="MarginContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Towers" type="HBoxContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers"]
+layout_mode = 2
+
+[node name="Archer" type="HBoxContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Archer" type="MarginContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Archer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Archer" type="PanelContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Archer/Archer"]
+layout_mode = 2
+
+[node name="Archer" type="MarginContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Archer/Archer/Archer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Archer" type="PanelContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Archer/Archer/Archer/Archer"]
+layout_mode = 2
+
+[node name="Archer" type="TextureButton" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Archer/Archer/Archer/Archer/Archer" groups=["botones_torres"]]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 2.0
+texture_normal = ExtResource("8_rlfxr")
+
+[node name="Cannon" type="HBoxContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Cannon" type="MarginContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Cannon"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Cannon" type="PanelContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Cannon/Cannon"]
+layout_mode = 2
+
+[node name="Cannon" type="MarginContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Cannon/Cannon/Cannon"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Cannon" type="PanelContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Cannon/Cannon/Cannon/Cannon"]
+layout_mode = 2
+
+[node name="Cannon" type="TextureButton" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Cannon/Cannon/Cannon/Cannon/Cannon" groups=["botones_torres"]]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("1_t64rc")
+
+[node name="Mortar" type="HBoxContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Mortar" type="MarginContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Mortar"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Mortar" type="PanelContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Mortar/Mortar"]
+layout_mode = 2
+
+[node name="Mortar" type="MarginContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Mortar/Mortar/Mortar"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Mortar" type="PanelContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Mortar/Mortar/Mortar/Mortar"]
+layout_mode = 2
+
+[node name="Mortar" type="TextureButton" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Mortar/Mortar/Mortar/Mortar/Mortar" groups=["botones_torres"]]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("10_17ct8")
+
+[node name="Flame" type="HBoxContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Flame" type="MarginContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Flame"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Flame" type="PanelContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Flame/Flame"]
+layout_mode = 2
+
+[node name="Flame" type="MarginContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Flame/Flame/Flame"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Flame" type="PanelContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Flame/Flame/Flame/Flame"]
+layout_mode = 2
+
+[node name="Flame" type="TextureButton" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Flame/Flame/Flame/Flame/Flame" groups=["botones_torres"]]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("8_svasj")
+
+[node name="Ballista" type="HBoxContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Ballista" type="MarginContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Ballista"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Ballista" type="PanelContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Ballista/Ballista"]
+layout_mode = 2
+
+[node name="Ballista" type="MarginContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Ballista/Ballista/Ballista"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Ballista" type="PanelContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Ballista/Ballista/Ballista/Ballista"]
+layout_mode = 2
+
+[node name="Ballista" type="TextureButton" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Ballista/Ballista/Ballista/Ballista/Ballista" groups=["botones_torres"]]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("11_ud8xl")
+
+[node name="Wizard" type="HBoxContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Wizard" type="MarginContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Wizard"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Wizard" type="PanelContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Wizard/Wizard"]
+layout_mode = 2
+
+[node name="Wizard" type="MarginContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Wizard/Wizard/Wizard"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Wizard" type="PanelContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Wizard/Wizard/Wizard/Wizard"]
+layout_mode = 2
+
+[node name="Wizard" type="TextureButton" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Wizard/Wizard/Wizard/Wizard/Wizard" groups=["botones_torres"]]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("12_akgsa")
+
+[node name="Bloon" type="HBoxContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Bloon" type="MarginContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Bloon"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Bloon" type="PanelContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Bloon/Bloon"]
+layout_mode = 2
+
+[node name="Bloon" type="MarginContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Bloon/Bloon/Bloon"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Bloon" type="PanelContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Bloon/Bloon/Bloon/Bloon"]
+layout_mode = 2
+
+[node name="Bloon" type="TextureButton" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Bloon/Bloon/Bloon/Bloon/Bloon" groups=["botones_torres"]]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("13_2dtyk")
+
+[node name="Nest" type="HBoxContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Nest" type="MarginContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Nest"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Nest" type="PanelContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Nest/Nest"]
+layout_mode = 2
+
+[node name="Nest" type="MarginContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Nest/Nest/Nest"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Nest" type="PanelContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Nest/Nest/Nest/Nest"]
+layout_mode = 2
+
+[node name="Nest" type="TextureButton" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Nest/Nest/Nest/Nest/Nest" groups=["botones_torres"]]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("14_ify78")
+
+[node name="Ship" type="HBoxContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Ship" type="MarginContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Ship"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Ship" type="PanelContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Ship/Ship"]
+layout_mode = 2
+
+[node name="Ship" type="MarginContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Ship/Ship/Ship"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Ship" type="PanelContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Ship/Ship/Ship/Ship"]
+layout_mode = 2
+
+[node name="Ship" type="TextureButton" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Ship/Ship/Ship/Ship/Ship" groups=["botones_torres"]]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("15_bjwdg")
+
+[node name="Atun" type="HBoxContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Atun" type="MarginContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Atun"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Atun" type="PanelContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Atun/Atun"]
+layout_mode = 2
+
+[node name="Atun" type="MarginContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Atun/Atun/Atun"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Atun" type="PanelContainer" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Atun/Atun/Atun/Atun"]
+layout_mode = 2
+
+[node name="Atun" type="TextureButton" parent="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Atun/Atun/Atun/Atun/Atun" groups=["botones_torres"]]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("16_n0sti")
+
+[node name="Right" type="VBoxContainer" parent="IU/IU/IU/Bottom"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Blank" type="VBoxContainer" parent="IU/IU/IU/Bottom/Right"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+
+[node name="Borrar" type="VBoxContainer" parent="IU/IU/IU/Bottom/Right"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Borrar" type="Button" parent="IU/IU/IU/Bottom/Right/Borrar" groups=["botones_torres"]]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = SubResource("Theme_pd0vv")
+text = "Borrar"
+
+[connection signal="pressed" from="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Archer/Archer/Archer/Archer/Archer/Archer" to="." method="OnArcherPressed"]
+[connection signal="pressed" from="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Cannon/Cannon/Cannon/Cannon/Cannon/Cannon" to="." method="OnCannonPressed"]
+[connection signal="pressed" from="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Flame/Flame/Flame/Flame/Flame/Flame" to="." method="OnFlamePressed"]
+[connection signal="pressed" from="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Ballista/Ballista/Ballista/Ballista/Ballista/Ballista" to="." method="OnBallistaPressed"]
+[connection signal="pressed" from="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Wizard/Wizard/Wizard/Wizard/Wizard/Wizard" to="." method="OnWizardPressed"]
+[connection signal="pressed" from="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Bloon/Bloon/Bloon/Bloon/Bloon/Bloon" to="." method="OnBloonPressed"]
+[connection signal="pressed" from="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Nest/Nest/Nest/Nest/Nest/Nest" to="." method="OnNestPressed"]
+[connection signal="pressed" from="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Ship/Ship/Ship/Ship/Ship/Ship" to="." method="OnShipPressed"]
+[connection signal="pressed" from="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Atun/Atun/Atun/Atun/Atun/Atun" to="." method="OnAtunPressed"]

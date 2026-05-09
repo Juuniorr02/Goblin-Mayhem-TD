@@ -1,0 +1,109 @@
+[gd_scene load_steps=16 format=3 uid="uid://cd6ykpa5p5qtf"]
+
+[ext_resource type="Script" uid="uid://djm0046nxvish" path="res://scripts/character/enemy/Enemy.cs" id="1_tepsv"]
+[ext_resource type="Script" uid="uid://dtfsd6sb6u7oe" path="res://scripts/character/enemy/EnemyData.cs" id="2_8jdx8"]
+[ext_resource type="Texture2D" uid="uid://cmwjmb8slpq0e" path="res://assets/character/enemy/BlancoVida.png" id="3_7rbuv"]
+[ext_resource type="Texture2D" uid="uid://c8cyiamkro6op" path="res://assets/character/enemy/GoblinTiburon/GoblinTiburon.png" id="4_6h54m"]
+
+[sub_resource type="Resource" id="Resource_m17yy"]
+script = ExtResource("2_8jdx8")
+EnemyName = "Goblin Tronco"
+IsAquatic = true
+metadata/_custom_type_script = "uid://dtfsd6sb6u7oe"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ygshw"]
+size = Vector2(44.047607, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_reeud"]
+atlas = ExtResource("4_6h54m")
+region = Rect2(0, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8g51q"]
+atlas = ExtResource("4_6h54m")
+region = Rect2(96, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_acrc2"]
+atlas = ExtResource("4_6h54m")
+region = Rect2(192, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r2ms3"]
+atlas = ExtResource("4_6h54m")
+region = Rect2(288, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t7r3i"]
+atlas = ExtResource("4_6h54m")
+region = Rect2(384, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rqe3r"]
+atlas = ExtResource("4_6h54m")
+region = Rect2(480, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3jy77"]
+atlas = ExtResource("4_6h54m")
+region = Rect2(576, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fsvru"]
+atlas = ExtResource("4_6h54m")
+region = Rect2(672, 0, 96, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kbph2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_reeud")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8g51q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_acrc2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r2ms3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t7r3i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rqe3r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3jy77")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fsvru")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="GoblinTiburon" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "HealthBar") groups=["Acuatico", "enemies"]]
+scale = Vector2(2.1, 2.1)
+script = ExtResource("1_tepsv")
+sprite = NodePath("AnimatedSprite2D")
+Data = SubResource("Resource_m17yy")
+HealthBar = NodePath("TextureProgressBar")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+top_level = true
+z_index = 10
+offset_left = -15.000002
+offset_top = -60.0
+offset_right = 341.0
+offset_bottom = 124.0
+scale = Vector2(0.16, 0.05)
+nine_patch_stretch = true
+texture_progress = ExtResource("3_7rbuv")
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.47619057, 5.714286)
+scale = Vector2(1.0000005, 1.0000005)
+shape = SubResource("RectangleShape2D_ygshw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_kbph2")
+autoplay = "default"
+flip_h = true

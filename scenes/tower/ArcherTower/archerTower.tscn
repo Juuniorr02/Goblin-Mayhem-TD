@@ -54,10 +54,10 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1oupt"]
-size = Vector2(543, 512.75)
+[sub_resource type="CircleShape2D" id="CircleShape2D_kwryj"]
 
 [node name="archer" type="Node2D"]
+scale = Vector2(1.5, 1.5)
 script = ExtResource("1_kwryj")
 BulletScene = ExtResource("2_kwryj")
 CanTargetAir = true
@@ -76,5 +76,7 @@ position = Vector2(19, -37)
 [node name="DetectionRange" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
+z_index = 1
 position = Vector2(-2, 1)
-shape = SubResource("RectangleShape2D_1oupt")
+scale = Vector2(40, 40)
+shape = SubResource("CircleShape2D_kwryj")

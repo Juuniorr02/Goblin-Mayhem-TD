@@ -1,81 +1,131 @@
-[gd_scene load_steps=13 format=3 uid="uid://cq4w56mk4nxmm"]
+[gd_scene load_steps=19 format=3 uid="uid://cq4w56mk4nxmm"]
 
 [ext_resource type="Script" uid="uid://djm0046nxvish" path="res://scripts/character/enemy/Enemy.cs" id="1_uqbeg"]
-[ext_resource type="Texture2D" uid="uid://bbvi61e0beacf" path="res://assets/character/enemy/Golem.png" id="2_0kgeq"]
 [ext_resource type="Script" uid="uid://dtfsd6sb6u7oe" path="res://scripts/character/enemy/EnemyData.cs" id="2_ypm4a"]
+[ext_resource type="Texture2D" uid="uid://cmwjmb8slpq0e" path="res://assets/character/enemy/BlancoVida.png" id="3_ypm4a"]
+[ext_resource type="Texture2D" uid="uid://cuqhawrbgg2x2" path="res://assets/character/enemy/GoblinTronco/GoblinTronco.png" id="4_ypm4a"]
 
 [sub_resource type="Resource" id="Resource_m17yy"]
 script = ExtResource("2_ypm4a")
+EnemyName = "Goblin Tronco"
+IsAquatic = true
 metadata/_custom_type_script = "uid://dtfsd6sb6u7oe"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ygshw"]
-size = Vector2(11, 28)
+size = Vector2(33.333313, 52.380928)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_735o0"]
-atlas = ExtResource("2_0kgeq")
-region = Rect2(0, 0, 56, 56)
+[sub_resource type="AtlasTexture" id="AtlasTexture_m17yy"]
+atlas = ExtResource("4_ypm4a")
+region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4kjq8"]
-atlas = ExtResource("2_0kgeq")
-region = Rect2(56, 0, 56, 56)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ltgbk"]
+atlas = ExtResource("4_ypm4a")
+region = Rect2(64, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bnw2t"]
-atlas = ExtResource("2_0kgeq")
-region = Rect2(112, 0, 56, 56)
+[sub_resource type="AtlasTexture" id="AtlasTexture_60ohc"]
+atlas = ExtResource("4_ypm4a")
+region = Rect2(128, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_uscpi"]
-atlas = ExtResource("2_0kgeq")
-region = Rect2(168, 0, 56, 56)
+[sub_resource type="AtlasTexture" id="AtlasTexture_rpufh"]
+atlas = ExtResource("4_ypm4a")
+region = Rect2(192, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0fbgq"]
-atlas = ExtResource("2_0kgeq")
-region = Rect2(224, 0, 56, 56)
+[sub_resource type="AtlasTexture" id="AtlasTexture_fovs4"]
+atlas = ExtResource("4_ypm4a")
+region = Rect2(256, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ygshw"]
-atlas = ExtResource("2_0kgeq")
-region = Rect2(280, 0, 56, 56)
+[sub_resource type="AtlasTexture" id="AtlasTexture_gvtus"]
+atlas = ExtResource("4_ypm4a")
+region = Rect2(320, 0, 64, 64)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_0fbgq"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_5mxiv"]
+atlas = ExtResource("4_ypm4a")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i8koa"]
+atlas = ExtResource("4_ypm4a")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_it5qu"]
+atlas = ExtResource("4_ypm4a")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n5uj2"]
+atlas = ExtResource("4_ypm4a")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l0b2g"]
+atlas = ExtResource("4_ypm4a")
+region = Rect2(640, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gklym"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_735o0")
+"texture": SubResource("AtlasTexture_m17yy")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4kjq8")
+"texture": SubResource("AtlasTexture_ltgbk")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bnw2t")
+"texture": SubResource("AtlasTexture_60ohc")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_uscpi")
+"texture": SubResource("AtlasTexture_rpufh")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0fbgq")
+"texture": SubResource("AtlasTexture_fovs4")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ygshw")
+"texture": SubResource("AtlasTexture_gvtus")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5mxiv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i8koa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_it5qu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n5uj2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l0b2g")
 }],
 "loop": true,
-"name": &"walk",
-"speed": 7.0
+"name": &"default",
+"speed": 5.0
 }]
 
-[node name="GoblinTronco" type="CharacterBody2D" node_paths=PackedStringArray("sprite") groups=["Acuatico"]]
+[node name="GoblinTronco" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "HealthBar") groups=["Acuatico", "enemies"]]
 scale = Vector2(2.1, 2.1)
 script = ExtResource("1_uqbeg")
 sprite = NodePath("AnimatedSprite2D")
 Data = SubResource("Resource_m17yy")
+HealthBar = NodePath("TextureProgressBar")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+top_level = true
+z_index = 10
+offset_left = -15.000002
+offset_top = -60.0
+offset_right = 341.0
+offset_bottom = 124.0
+scale = Vector2(0.16, 0.05)
+nine_patch_stretch = true
+texture_progress = ExtResource("3_ypm4a")
+metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2.0000002)
-scale = Vector2(1.0000001, 1.0000001)
+position = Vector2(0.47619057, 5.714286)
+scale = Vector2(1.0000005, 1.0000005)
 shape = SubResource("RectangleShape2D_ygshw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-sprite_frames = SubResource("SpriteFrames_0fbgq")
-animation = &"walk"
-autoplay = "walk"
-frame_progress = 0.4266486
+sprite_frames = SubResource("SpriteFrames_gklym")
+autoplay = "default"
+frame_progress = 0.18477647
 flip_h = true

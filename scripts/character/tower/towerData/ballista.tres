@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="TowerData" load_steps=3 format=3 uid="uid://bd6t5rktjtldp"]
+
+[ext_resource type="Texture2D" uid="uid://b02vvm3raqbr4" path="res://assets/ui/icon/IconoBalista.png" id="1_3vv1s"]
+[ext_resource type="Script" uid="uid://c7ixjxejko62n" path="res://scripts/ui/ui/TowerData.cs" id="1_vx23t"]
+
+[resource]
+script = ExtResource("1_vx23t")
+Name = "Ballesta"
+Cost = "150 de oro, 75 de madera"
+Icon = ExtResource("1_3vv1s")
+metadata/_custom_type_script = "uid://c7ixjxejko62n"

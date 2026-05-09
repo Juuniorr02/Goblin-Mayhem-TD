@@ -1,0 +1,95 @@
+[gd_scene load_steps=14 format=3 uid="uid://dbeqdm5gepyap"]
+
+[ext_resource type="Script" uid="uid://djm0046nxvish" path="res://scripts/character/enemy/Enemy.cs" id="2_4gyqm"]
+[ext_resource type="Script" uid="uid://dtfsd6sb6u7oe" path="res://scripts/character/enemy/EnemyData.cs" id="2_735o0"]
+[ext_resource type="Texture2D" uid="uid://bbvi61e0beacf" path="res://assets/character/enemy/Golem/Golem.png" id="2_lk0iw"]
+[ext_resource type="Texture2D" uid="uid://cmwjmb8slpq0e" path="res://assets/character/enemy/BlancoVida.png" id="4_4kjq8"]
+
+[sub_resource type="Resource" id="Resource_4kjq8"]
+script = ExtResource("2_735o0")
+metadata/_custom_type_script = "uid://dtfsd6sb6u7oe"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_735o0"]
+atlas = ExtResource("2_lk0iw")
+region = Rect2(0, 0, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4kjq8"]
+atlas = ExtResource("2_lk0iw")
+region = Rect2(56, 0, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bnw2t"]
+atlas = ExtResource("2_lk0iw")
+region = Rect2(112, 0, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uscpi"]
+atlas = ExtResource("2_lk0iw")
+region = Rect2(168, 0, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0fbgq"]
+atlas = ExtResource("2_lk0iw")
+region = Rect2(224, 0, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ygshw"]
+atlas = ExtResource("2_lk0iw")
+region = Rect2(280, 0, 56, 56)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0fbgq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_735o0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4kjq8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bnw2t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uscpi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0fbgq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ygshw")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 7.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ygshw"]
+size = Vector2(11, 28)
+
+[node name="Golem" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "HealthBar") groups=["enemies"]]
+scale = Vector2(2.1, 2.1)
+script = ExtResource("2_4gyqm")
+IsFacingLeftByDefault = true
+sprite = NodePath("AnimatedSprite2D")
+Data = SubResource("Resource_4kjq8")
+HealthBar = NodePath("TextureProgressBar")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+top_level = true
+z_index = 10
+offset_left = -15.000002
+offset_top = -60.0
+offset_right = 341.0
+offset_bottom = 124.0
+scale = Vector2(0.16, 0.05)
+nine_patch_stretch = true
+texture_progress = ExtResource("4_4kjq8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_0fbgq")
+animation = &"walk"
+autoplay = "walk"
+frame_progress = 0.4266486
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2.0000005)
+scale = Vector2(1.0000002, 1.0000002)
+shape = SubResource("RectangleShape2D_ygshw")

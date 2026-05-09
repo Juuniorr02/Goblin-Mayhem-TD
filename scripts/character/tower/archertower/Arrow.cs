@@ -4,7 +4,7 @@ using Godot;
 public partial class Arrow : Area2D
 {
     [Export] public float Speed = 600.0f;
-    [Export] public float Gravity = 800.0f; 
+    [Export] public float GravityForce = 800.0f; 
     [Export] public float LifeTimeAfterStop = 2.0f; // Tiempo antes de desaparecer tras frenar
     [Export] public float MaxFlightTime = 1.0f;    // Tiempo máximo de vuelo
 

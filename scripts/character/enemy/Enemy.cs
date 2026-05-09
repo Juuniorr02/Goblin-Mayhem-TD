@@ -2,21 +2,40 @@ using Godot;
 
 public partial class Enemy : CharacterBody2D 
 {
+    [Export] public bool IsFacingLeftByDefault = false;
     [Export] public AnimatedSprite2D sprite;
     [Export] public EnemyData Data;
+    [Export] public TextureProgressBar HealthBar; 
+    [Export] public Vector2 HealthBarOffset = new Vector2(-50, -60);
 
     private PathFollow2D follow;
     private Path2D path;
     private bool finished = false;
 
-    [Export] public float Health = 50f;
+    private float Health;
+    private float maxHealth;
+
     public override void _Ready()
     {
         follow = GetParent<PathFollow2D>();
         path = follow?.GetParent<Path2D>();
 
         if (Data != null)
+        {
+            Health = Data.Health;
             ZIndex = Data.IsFlying ? 5 : 1;
+        }
+        
+        maxHealth = Health;
+
+        if (HealthBar != null)
+        {
+            HealthBar.MaxValue = maxHealth;
+            HealthBar.Value = Health;
+            HealthBar.Visible = false;
+            HealthBar.TopLevel = true; 
+            HealthBar.ZIndex = 100;
+        }
     }
 
     public override void _Process(double delta)
@@ -26,50 +45,58 @@ public partial class Enemy : CharacterBody2D
 
         follow.Progress += Data.Speed * (float)delta;
 
-        Vector2 direccion = GetManualDirection(path, follow.Progress);
+        if (HealthBar != null && HealthBar.Visible)
+        {
+            HealthBar.GlobalPosition = GlobalPosition + HealthBarOffset;
+        }
 
-        if (direccion.X > 0)
-            sprite.FlipH = false;
-        else if (direccion.X < 0)
-            sprite.FlipH = true;
+        Vector2 direccion = GetManualDirection(path, follow.Progress);
+        
+        if (direccion.X != 0)
+        {
+            bool mirandoDerecha = direccion.X > 0;
+            sprite.FlipH = IsFacingLeftByDefault ? mirandoDerecha : !mirandoDerecha;
+        }
 
         QuitarVidaBase();
+    }
+
+    public void TakeDamage(float amount)
+    {
+        Health -= amount;
+        
+        if (HealthBar != null)
+        {
+            HealthBar.Visible = true;
+            HealthBar.Value = Health;
+
+            float healthPercent = Mathf.Clamp(Health / maxHealth, 0, 1);
+            HealthBar.TintProgress = new Color(1 - healthPercent, healthPercent, 0);
+        }
+        
+        if (Health <= 0) EliminarEnemigo();
     }
 
     public void QuitarVidaBase()
     {
         float pathLength = path.Curve.GetBakedLength();
-
         if (follow.Progress >= pathLength)
         {
             finished = true;
-
-            GD.Print(Data.EnemyName + " llegó a la base y quitó " + Data.DamageToBase);
-            Base.Instance.Health -= Data.DamageToBase;
-            follow.QueueFree();
-            QueueFree();
+            if (Recursos.Instance != null) Recursos.Instance.Vida -= Data.DamageToBase;
+            EliminarEnemigo();
         }
     }
 
     public Vector2 GetManualDirection(Path2D path, float progress)
     {
         Curve2D curve = path.Curve;
-
-        Vector2 posActual = curve.SampleBaked(progress);
-        Vector2 posSiguiente = curve.SampleBaked(progress + 1.0f);
-
-        return (posSiguiente - posActual).Normalized();
+        return (curve.SampleBaked(progress - 1.0f) - curve.SampleBaked(progress)).Normalized();
     }
-        public void TakeDamage(float amount)
+
+    private void EliminarEnemigo()
     {
-        Health -= amount;
-        GD.Print($"{Data.EnemyName} recibió daño. Vida restante: {Health}");
-        
-        if (Health <= 0)
-        {
-            // Lógica de muerte
-            follow.QueueFree(); // Eliminamos el seguidor del camino también
-            QueueFree();
-        }
+        if (follow != null) follow.QueueFree();
+        QueueFree();
     }
 }

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=3 format=3 uid="uid://lbiebqt20kjf"]
+
+[ext_resource type="Script" uid="uid://dtfsd6sb6u7oe" path="res://scripts/character/enemy/EnemyData.cs" id="1_l66tv"]
+[ext_resource type="PackedScene" uid="uid://b0b285liubkgk" path="res://scenes/character/enemy/pepin.tscn" id="1_p2jnl"]
+
+[resource]
+script = ExtResource("1_l66tv")
+DamageToBase = 9999999999999
+Health = 9999999999999
+IsFlying = true
+IsAquatic = true
+EnemyScene = ExtResource("1_p2jnl")
+metadata/_custom_type_script = "uid://dtfsd6sb6u7oe"
