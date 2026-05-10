@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://bvj23ok4pqai6"]
+[gd_scene load_steps=58 format=3 uid="uid://bvj23ok4pqai6"]
 
 [ext_resource type="PackedScene" uid="uid://bxah54x2mw4ix" path="res://assets/level/Map/level1.tmx" id="1_obe7s"]
 [ext_resource type="Script" uid="uid://cubvhlo0alqh1" path="res://scripts/level/terrain/Pathfinding.cs" id="2_d0a6p"]
@@ -23,12 +23,13 @@
 [ext_resource type="PackedScene" uid="uid://bv6xb2o3otqu3" path="res://scenes/tower/Grifo/GrffinTower.tscn" id="15_cu56y"]
 [ext_resource type="PackedScene" uid="uid://cuq0at3ylsro3" path="res://scenes/tower/MageTower/mage_tower.tscn" id="16_rrpdo"]
 [ext_resource type="PackedScene" uid="uid://ci612q8twcycd" path="res://scenes/ui/ui/iu.tscn" id="17_66yle"]
-[ext_resource type="PackedScene" uid="uid://b4kgd56vbuq80" path="res://scenes/tower/ship/ship.tscn" id="17_d0a6p"]
+[ext_resource type="PackedScene" uid="uid://b4kgd56vbuq80" path="res://scenes/tower/Ship/ship.tscn" id="17_d0a6p"]
 [ext_resource type="Script" uid="uid://ccef7herjptu0" path="res://scripts/character/camera/CameraRig.cs" id="18_0t75c"]
 [ext_resource type="PackedScene" uid="uid://dd15bvxn3ddsy" path="res://scenes/tower/Tuna/tuna_hatchery.tscn" id="18_nvdl1"]
 [ext_resource type="PackedScene" uid="uid://dgc77kp8vuy4p" path="res://scenes/ui/menus/options_pausa.tscn" id="21_uk6l5"]
 [ext_resource type="PackedScene" uid="uid://0hu00p8f0uvx" path="res://scenes/ui/menus/menu_pausa_level_1.tscn" id="24_8dopk"]
 [ext_resource type="PackedScene" uid="uid://di2gid6004846" path="res://scenes/ui/menus/menu_derrota_tutorial.tscn" id="24_xjvah"]
+[ext_resource type="PackedScene" uid="uid://c6o5datpm682p" path="res://scenes/ui/menus/menu_victoria.tscn" id="30_k421d"]
 
 [sub_resource type="Resource" id="Resource_tqsr0"]
 script = ExtResource("5_xjvah")
@@ -198,7 +199,7 @@ point_count = 4
 
 [sub_resource type="Curve2D" id="Curve2D_q1drb"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 10591, 4844, 0, 0, 0, 0, 8975.226, 4099.3716, 0, 0, 0, 0, 9795.687, 3698.9773, 0, 0, 0, 0, 8379.003, 3030.2676, 0, 0, 0, 0, 8251.166, 3074.987, 0, 0, 0, 0, 6943.4575, 2452.0366, 0, 0, 0, 0, 6194.2495, 2782.7515, 0, 0, 0, 0, 5028, 2217)
+"points": PackedVector2Array(0, 0, 0, 0, 10591, 4844, 0, 0, 0, 0, 8964.747, 4087.9314, 0, 0, 0, 0, 9849.728, 3683.6233, 0, 0, 0, 0, 8374.364, 2989.9539, 0, 0, 0, 0, 8249.671, 3045.073, 0, 0, 0, 0, 6925.197, 2422.1226, 0, 0, 0, 0, 6186.4673, 2766.3572, 0, 0, 0, 0, 5028, 2217)
 }
 point_count = 8
 
@@ -228,7 +229,7 @@ scale = Vector2(0.95396507, 0.96349823)
 curve = SubResource("Curve2D_w02j3")
 
 [node name="CaminoB" type="Path2D" parent="EnemySpawner"]
-position = Vector2(229.57309, 85.236115)
+position = Vector2(225.99998, 73)
 scale = Vector2(0.9543411, 0.9615533)
 curve = SubResource("Curve2D_q1drb")
 
@@ -267,8 +268,9 @@ MoveSpeed = 1400.0
 MinZoom = 0.23
 MaxZoom = 2.0
 
-[node name="IU" parent="." node_paths=PackedStringArray("spawner") instance=ExtResource("17_66yle")]
+[node name="IU" parent="." node_paths=PackedStringArray("spawner", "menuVictoria") instance=ExtResource("17_66yle")]
 spawner = NodePath("../EnemySpawner")
+menuVictoria = NodePath("../menu_victoria")
 
 [node name="OptionsPausa" parent="." instance=ExtResource("21_uk6l5")]
 
@@ -276,3 +278,6 @@ spawner = NodePath("../EnemySpawner")
 layer = 5
 
 [node name="menu_pausa_level1" parent="." instance=ExtResource("24_8dopk")]
+
+[node name="menu_victoria" parent="." instance=ExtResource("30_k421d")]
+WinningWave = 5

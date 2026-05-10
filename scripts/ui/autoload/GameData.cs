@@ -28,5 +28,7 @@ public partial class GameData : Node
         Level4 = false;
         Level5 = false;
         Level6 = false;
+
+        AldeaVisitada = false;
     }
 }

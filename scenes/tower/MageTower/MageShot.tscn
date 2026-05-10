@@ -15,7 +15,6 @@ ExplosionEffect = ExtResource("2_0lkts")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_gf3nl")
-script = ExtResource("2_6jt1b")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1

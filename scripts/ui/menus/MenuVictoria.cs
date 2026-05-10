@@ -103,6 +103,10 @@ public partial class MenuVictoria : CanvasLayer
         {
             GameData.Level6 = true;
         }
+        else
+        {
+            return;
+        }
 
         Pausar();
     }

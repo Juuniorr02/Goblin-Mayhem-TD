@@ -89,5 +89,18 @@ public partial class TunaHatchery : BaseTower
         }
     }
 
+    public override void _ExitTree()
+    {
+        base._ExitTree();
+
+        foreach (var t in _activeTunas)
+        {
+            if (IsInstanceValid(t))
+                t.QueueFree();
+        }
+
+        _activeTunas.Clear();
+    }   
+
     protected override void Shoot() { /* No hace nada manual */ }
 }

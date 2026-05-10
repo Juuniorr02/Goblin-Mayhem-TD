@@ -112,4 +112,17 @@ public partial class GriffinTower : BaseTower
             CanBuild = false;
         }
     }
+
+    public override void _ExitTree()
+    {
+        base._ExitTree();
+
+        foreach (var g in _griffins)
+        {
+            if (IsInstanceValid(g))
+                g.QueueFree();
+        }
+
+        _griffins.Clear();
+    }
 }

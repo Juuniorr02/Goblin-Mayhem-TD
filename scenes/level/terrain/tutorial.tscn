@@ -167,8 +167,9 @@ MoveSpeed = 1400.0
 MinZoom = 0.23
 MaxZoom = 2.0
 
-[node name="IU" parent="." node_paths=PackedStringArray("spawner") instance=ExtResource("19_tfgrl")]
+[node name="IU" parent="." node_paths=PackedStringArray("spawner", "menuVictoria") instance=ExtResource("19_tfgrl")]
 spawner = NodePath("../EnemySpawner")
+menuVictoria = NodePath("../menu_victoria")
 metadata/_edit_use_anchors_ = true
 
 [node name="menu_pausa" parent="." instance=ExtResource("22_7ujbw")]

@@ -1,12 +1,13 @@
-[gd_scene load_steps=32 format=3 uid="uid://cpauy6cybdjfh"]
+[gd_scene load_steps=45 format=3 uid="uid://cpauy6cybdjfh"]
 
-[ext_resource type="PackedScene" uid="uid://c40xf8w0irkep" path="res://assets/level/Map/Final.tmx" id="1_gdtbm"]
+[ext_resource type="PackedScene" uid="uid://c40xf8w0irkep" path="res://assets/level/Map/final.tmx" id="1_gdtbm"]
 [ext_resource type="Script" uid="uid://cubvhlo0alqh1" path="res://scripts/level/terrain/Pathfinding.cs" id="2_gdtbm"]
 [ext_resource type="Script" uid="uid://ddtj2hn2hhtfd" path="res://scripts/character/enemy/EnemySpawner.cs" id="3_38357"]
-[ext_resource type="Resource" uid="uid://7lteypp1glo" path="res://scripts/character/enemy/infoEnemy/golem.tres" id="4_wfif0"]
+[ext_resource type="Resource" uid="uid://b2o41jjpwfncg" path="res://scripts/character/enemy/infoEnemy/goblinCorriente.tres" id="4_38357"]
 [ext_resource type="Script" uid="uid://dxi6h4dntdvec" path="res://scripts/character/enemy/EnemyGroup.cs" id="5_td7d0"]
-[ext_resource type="Resource" uid="uid://cebfhs3cyuxe4" path="res://scripts/character/enemy/infoEnemy/wyvern.tres" id="6_hc0pb"]
+[ext_resource type="Resource" uid="uid://dawwh4paoh1f2" path="res://scripts/character/enemy/infoEnemy/goblinTronco.tres" id="6_wfif0"]
 [ext_resource type="Script" uid="uid://b7rcgtrq61w48" path="res://scripts/character/enemy/WaveData.cs" id="7_bppdq"]
+[ext_resource type="Resource" uid="uid://cigq0efht168k" path="res://scripts/character/enemy/infoEnemy/goblinVolador.tres" id="7_td7d0"]
 [ext_resource type="Script" uid="uid://dlfq6grfckhot" path="res://scripts/character/tower/funcionamiento/TowerBuilder.cs" id="8_plhmu"]
 [ext_resource type="PackedScene" uid="uid://fwle2vth706y" path="res://scenes/tower/Construir/Martillo.tscn" id="9_0jfwx"]
 [ext_resource type="PackedScene" uid="uid://i7fnxkfidwjh" path="res://scenes/tower/ArcherTower/archerTower.tscn" id="10_8jf7b"]
@@ -26,22 +27,106 @@
 [ext_resource type="PackedScene" uid="uid://cor65fcesxg0a" path="res://scenes/ui/menus/menu_pausa.tscn" id="24_wfif0"]
 [ext_resource type="PackedScene" uid="uid://c387degtgk6i6" path="res://scenes/ui/menus/menu_derrota.tscn" id="25_td7d0"]
 
-[sub_resource type="Resource" id="Resource_tqsr0"]
+[sub_resource type="Resource" id="Resource_w7i6f"]
 script = ExtResource("5_td7d0")
-EnemyType = ExtResource("4_wfif0")
+EnemyType = ExtResource("4_38357")
 Path = 1
 metadata/_custom_type_script = "uid://dxi6h4dntdvec"
 
-[sub_resource type="Resource" id="Resource_ev6gv"]
+[sub_resource type="Resource" id="Resource_eoogh"]
 script = ExtResource("5_td7d0")
-EnemyType = ExtResource("6_hc0pb")
-Count = 100
+EnemyType = ExtResource("6_wfif0")
+Path = 3
 metadata/_custom_type_script = "uid://dxi6h4dntdvec"
 
-[sub_resource type="Resource" id="Resource_brejp"]
+[sub_resource type="Resource" id="Resource_76esb"]
+script = ExtResource("5_td7d0")
+EnemyType = ExtResource("7_td7d0")
+Path = 4
+metadata/_custom_type_script = "uid://dxi6h4dntdvec"
+
+[sub_resource type="Resource" id="Resource_hc0pb"]
 script = ExtResource("7_bppdq")
-WaveName = "1"
-Groups = Array[Object]([SubResource("Resource_tqsr0"), SubResource("Resource_ev6gv")])
+WaveName = "Prueba"
+Groups = Array[Object]([SubResource("Resource_w7i6f"), SubResource("Resource_eoogh"), SubResource("Resource_76esb")])
+SpawnInterval = 0.5
+metadata/_custom_type_script = "uid://b7rcgtrq61w48"
+
+[sub_resource type="Resource" id="Resource_bppdq"]
+script = ExtResource("7_bppdq")
+WaveName = "Prueba"
+Groups = Array[Object]([SubResource("Resource_w7i6f"), SubResource("Resource_eoogh"), SubResource("Resource_76esb")])
+SpawnInterval = 0.5
+metadata/_custom_type_script = "uid://b7rcgtrq61w48"
+
+[sub_resource type="Resource" id="Resource_plhmu"]
+script = ExtResource("7_bppdq")
+WaveName = "Prueba"
+Groups = Array[Object]([SubResource("Resource_w7i6f"), SubResource("Resource_eoogh"), SubResource("Resource_76esb")])
+SpawnInterval = 0.5
+metadata/_custom_type_script = "uid://b7rcgtrq61w48"
+
+[sub_resource type="Resource" id="Resource_0jfwx"]
+script = ExtResource("7_bppdq")
+WaveName = "Prueba"
+Groups = Array[Object]([SubResource("Resource_w7i6f"), SubResource("Resource_eoogh"), SubResource("Resource_76esb")])
+SpawnInterval = 0.5
+metadata/_custom_type_script = "uid://b7rcgtrq61w48"
+
+[sub_resource type="Resource" id="Resource_8jf7b"]
+script = ExtResource("7_bppdq")
+WaveName = "Prueba"
+Groups = Array[Object]([SubResource("Resource_w7i6f"), SubResource("Resource_eoogh"), SubResource("Resource_76esb")])
+SpawnInterval = 0.5
+metadata/_custom_type_script = "uid://b7rcgtrq61w48"
+
+[sub_resource type="Resource" id="Resource_ujt6g"]
+script = ExtResource("7_bppdq")
+WaveName = "Prueba"
+Groups = Array[Object]([SubResource("Resource_w7i6f"), SubResource("Resource_eoogh"), SubResource("Resource_76esb")])
+SpawnInterval = 0.5
+metadata/_custom_type_script = "uid://b7rcgtrq61w48"
+
+[sub_resource type="Resource" id="Resource_bpjxi"]
+script = ExtResource("7_bppdq")
+WaveName = "Prueba"
+Groups = Array[Object]([SubResource("Resource_w7i6f"), SubResource("Resource_eoogh"), SubResource("Resource_76esb")])
+SpawnInterval = 0.5
+metadata/_custom_type_script = "uid://b7rcgtrq61w48"
+
+[sub_resource type="Resource" id="Resource_fwwuw"]
+script = ExtResource("7_bppdq")
+WaveName = "Prueba"
+Groups = Array[Object]([SubResource("Resource_w7i6f"), SubResource("Resource_eoogh"), SubResource("Resource_76esb")])
+SpawnInterval = 0.5
+metadata/_custom_type_script = "uid://b7rcgtrq61w48"
+
+[sub_resource type="Resource" id="Resource_a06a2"]
+script = ExtResource("7_bppdq")
+WaveName = "Prueba"
+Groups = Array[Object]([SubResource("Resource_w7i6f"), SubResource("Resource_eoogh"), SubResource("Resource_76esb")])
+SpawnInterval = 0.5
+metadata/_custom_type_script = "uid://b7rcgtrq61w48"
+
+[sub_resource type="Resource" id="Resource_rxh3h"]
+script = ExtResource("7_bppdq")
+WaveName = "Prueba"
+Groups = Array[Object]([SubResource("Resource_w7i6f"), SubResource("Resource_eoogh"), SubResource("Resource_76esb")])
+SpawnInterval = 0.5
+metadata/_custom_type_script = "uid://b7rcgtrq61w48"
+
+[sub_resource type="Resource" id="Resource_2fapj"]
+script = ExtResource("7_bppdq")
+WaveName = "Prueba"
+Groups = Array[Object]([SubResource("Resource_w7i6f"), SubResource("Resource_eoogh"), SubResource("Resource_76esb")])
+SpawnInterval = 0.5
+metadata/_custom_type_script = "uid://b7rcgtrq61w48"
+
+[sub_resource type="Resource" id="Resource_0y1fo"]
+script = ExtResource("7_bppdq")
+WaveName = "Prueba"
+Groups = Array[Object]([SubResource("Resource_w7i6f"), SubResource("Resource_eoogh"), SubResource("Resource_76esb")])
+SpawnInterval = 0.5
 metadata/_custom_type_script = "uid://b7rcgtrq61w48"
 
 [sub_resource type="Curve2D" id="Curve2D_w02j3"]
@@ -52,7 +137,7 @@ point_count = 4
 
 [sub_resource type="Curve2D" id="Curve2D_q1drb"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 10591, 4844, 0, 0, 0, 0, 8824, 4001, 0, 0, 0, 0, 9602, 3619, 0, 0, 0, 0, 8228, 2993, 0, 0, 0, 0, 8099, 3013, 0, 0, 0, 0, 6830, 2416, 0, 0, 0, 0, 6166, 2769, 0, 0, 0, 0, 5028, 2217)
+"points": PackedVector2Array(0, 0, 0, 0, 10591, 4844, 0, 0, 0, 0, 8818, 3996, 0, 0, 0, 0, 9605, 3612, 0, 0, 0, 0, 8220, 2958, 0, 0, 0, 0, 8115, 3013, 0, 0, 0, 0, 6831, 2409, 0, 0, 0, 0, 6138, 2739, 0, 0, 0, 0, 5028, 2217)
 }
 point_count = 8
 
@@ -74,7 +159,7 @@ script = ExtResource("3_38357")
 CaminoA = NodePath("CaminoA")
 CaminoB = NodePath("CaminoB")
 CaminoVolador = NodePath("CaminoVolador")
-Waves = Array[Object]([SubResource("Resource_brejp")])
+Waves = Array[Object]([SubResource("Resource_hc0pb"), SubResource("Resource_bppdq"), SubResource("Resource_plhmu"), SubResource("Resource_0jfwx"), SubResource("Resource_8jf7b"), SubResource("Resource_ujt6g"), SubResource("Resource_bpjxi"), SubResource("Resource_fwwuw"), SubResource("Resource_a06a2"), SubResource("Resource_rxh3h"), SubResource("Resource_2fapj"), SubResource("Resource_0y1fo")])
 
 [node name="CaminoA" type="Path2D" parent="EnemySpawner"]
 curve = SubResource("Curve2D_w02j3")
@@ -105,8 +190,9 @@ TowersScenes = Dictionary[String, PackedScene]({
 "Wizard": ExtResource("19_4i8lh")
 })
 
-[node name="IU" parent="." node_paths=PackedStringArray("spawner") instance=ExtResource("20_y8n7e")]
+[node name="IU" parent="." node_paths=PackedStringArray("spawner", "menuVictoria") instance=ExtResource("20_y8n7e")]
 spawner = NodePath("../EnemySpawner")
+menuVictoria = NodePath("../menu_victoria")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(7426, 3387)
@@ -123,6 +209,7 @@ MaxZoom = 2.0
 [node name="OptionsPausa" parent="." instance=ExtResource("22_558ut")]
 
 [node name="menu_victoria" parent="." instance=ExtResource("23_38357")]
+WinningWave = 12
 
 [node name="menu_pausa" parent="." instance=ExtResource("24_wfif0")]
 

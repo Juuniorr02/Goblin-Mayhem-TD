@@ -69,7 +69,7 @@ public partial class menu_pausa : CanvasLayer
 
             if (lastPressTime > 0 && currentTime - lastPressTime <= doublePressThreshold)
             {
-                if (isPaused) QuitarPausa();
+                if (isPaused == true) QuitarPausa();
                 else Pausar();
 
                 lastPressTime = -1f;
@@ -104,6 +104,7 @@ public partial class menu_pausa : CanvasLayer
         isPaused = false;
         GetTree().Paused = false;
         Visible = false;
+        Input.MouseMode = Input.MouseModeEnum.Visible;
     }
 
     private void OnGuardar()

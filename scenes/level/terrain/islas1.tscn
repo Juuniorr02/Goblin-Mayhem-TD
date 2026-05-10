@@ -1,15 +1,16 @@
-[gd_scene load_steps=32 format=3 uid="uid://b44omdoch37bo"]
+[gd_scene load_steps=34 format=3 uid="uid://b44omdoch37bo"]
 
 [ext_resource type="PackedScene" uid="uid://dbpo1475xjqsm" path="res://assets/level/Map/islas1.tmx" id="1_rm5c3"]
 [ext_resource type="Script" uid="uid://cubvhlo0alqh1" path="res://scripts/level/terrain/Pathfinding.cs" id="2_ruufv"]
 [ext_resource type="Script" uid="uid://ddtj2hn2hhtfd" path="res://scripts/character/enemy/EnemySpawner.cs" id="3_5oaqd"]
-[ext_resource type="Resource" uid="uid://culsvx4rue1df" path="res://scripts/character/enemy/infoEnemy/kraken.tres" id="4_jkp11"]
+[ext_resource type="Resource" uid="uid://b2o41jjpwfncg" path="res://scripts/character/enemy/infoEnemy/goblinCorriente.tres" id="4_w7i6f"]
 [ext_resource type="Script" uid="uid://dxi6h4dntdvec" path="res://scripts/character/enemy/EnemyGroup.cs" id="5_5awaq"]
 [ext_resource type="PackedScene" uid="uid://ci612q8twcycd" path="res://scenes/ui/ui/iu.tscn" id="5_xakld"]
 [ext_resource type="Script" uid="uid://ccef7herjptu0" path="res://scripts/character/camera/CameraRig.cs" id="6_gxakk"]
 [ext_resource type="Script" uid="uid://b7rcgtrq61w48" path="res://scripts/character/enemy/WaveData.cs" id="6_lkcam"]
 [ext_resource type="PackedScene" uid="uid://cor65fcesxg0a" path="res://scenes/ui/menus/menu_pausa.tscn" id="7_icjwj"]
 [ext_resource type="Resource" uid="uid://dawwh4paoh1f2" path="res://scripts/character/enemy/infoEnemy/goblinTronco.tres" id="7_j2psb"]
+[ext_resource type="Resource" uid="uid://cigq0efht168k" path="res://scripts/character/enemy/infoEnemy/goblinVolador.tres" id="7_w4dmu"]
 [ext_resource type="PackedScene" uid="uid://b4kgd56vbuq80" path="res://scenes/tower/Ship/ship.tscn" id="8_0uf55"]
 [ext_resource type="PackedScene" uid="uid://fwle2vth706y" path="res://scenes/tower/Construir/Martillo.tscn" id="8_2iprc"]
 [ext_resource type="Script" uid="uid://dlfq6grfckhot" path="res://scripts/character/tower/funcionamiento/TowerBuilder.cs" id="8_gxakk"]
@@ -28,34 +29,38 @@
 
 [sub_resource type="Resource" id="Resource_w7i6f"]
 script = ExtResource("5_5awaq")
-EnemyType = ExtResource("4_jkp11")
-Count = 1
-Path = 3
+EnemyType = ExtResource("4_w7i6f")
+Path = 1
 metadata/_custom_type_script = "uid://dxi6h4dntdvec"
 
 [sub_resource type="Resource" id="Resource_eoogh"]
 script = ExtResource("5_5awaq")
 EnemyType = ExtResource("7_j2psb")
-Count = 10
 Path = 3
+metadata/_custom_type_script = "uid://dxi6h4dntdvec"
+
+[sub_resource type="Resource" id="Resource_76esb"]
+script = ExtResource("5_5awaq")
+EnemyType = ExtResource("7_w4dmu")
+Path = 4
 metadata/_custom_type_script = "uid://dxi6h4dntdvec"
 
 [sub_resource type="Resource" id="Resource_rq80n"]
 script = ExtResource("6_lkcam")
 WaveName = "Prueba"
-Groups = Array[Object]([SubResource("Resource_w7i6f"), SubResource("Resource_eoogh")])
+Groups = Array[Object]([SubResource("Resource_w7i6f"), SubResource("Resource_eoogh"), SubResource("Resource_76esb")])
 SpawnInterval = 0.5
 metadata/_custom_type_script = "uid://b7rcgtrq61w48"
 
 [sub_resource type="Curve2D" id="Curve2D_rm5c3"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 10126, 5094, 0, 0, 0, 0, 9152, 4632, 0, 0, 0, 0, 6948, 5675, 0, 0, 0, 0, 3587, 4083, 0, 0, 0, 0, 8686, 1665, 0, 0, 0, 0, 8344, 1492, 0, 0, 0, 0, 8677, 1331, 0, 0, 0, 0, 7334, 690)
+"points": PackedVector2Array(0, 0, 0, 0, 10143, 5085, 0, 0, 0, 0, 9152, 4632, 0, 0, 0, 0, 6947, 5668, 0, 0, 0, 0, 3574, 4073, 0, 0, 0, 0, 8686, 1652, 0, 0, 0, 0, 8342, 1480, 0, 0, 0, 0, 8684, 1319, 0, 0, 0, 0, 7345, 682)
 }
 point_count = 8
 
 [sub_resource type="Curve2D" id="Curve2D_ruufv"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 11632, 4385, 0, 0, 0, 0, 9617, 3422, 0, 0, 0, 0, 8571, 3919, 0, 0, 0, 0, 6964, 3162, 0, 0, 0, 0, 7529, 2880, 0, 0, 0, 0, 5098, 1722, 0, 0, 0, 0, 5823, 1379, 0, 0, 0, 0, 6228, 857, 0, 0, 0, 0, 6553, 669)
+"points": PackedVector2Array(0, 0, 0, 0, 11632, 4385, 0, 0, 0, 0, 9617, 3422, 0, 0, 0, 0, 8571, 3919, 0, 0, 0, 0, 6964, 3162, 0, 0, 0, 0, 7529, 2880, 0, 0, 0, 0, 5098, 1722, 0, 0, 0, 0, 5773, 1332, 0, 0, 0, 0, 6110, 819, 0, 0, 0, 0, 6551, 611)
 }
 point_count = 9
 
@@ -77,12 +82,14 @@ script = ExtResource("3_5oaqd")
 CaminoA = NodePath("CaminoA")
 CaminoAcuatico = NodePath("CaminoAcuatico")
 CaminoVolador = NodePath("CaminoVolador")
-Waves = Array[Object]([SubResource("Resource_rq80n")])
+Waves = Array[Object]([SubResource("Resource_rq80n"), SubResource("Resource_rq80n"), SubResource("Resource_rq80n"), SubResource("Resource_rq80n"), SubResource("Resource_rq80n"), SubResource("Resource_rq80n"), SubResource("Resource_rq80n"), SubResource("Resource_rq80n"), SubResource("Resource_rq80n"), SubResource("Resource_rq80n")])
 
 [node name="CaminoA" type="Path2D" parent="EnemySpawner"]
+position = Vector2(0, -18)
 curve = SubResource("Curve2D_rm5c3")
 
 [node name="CaminoAcuatico" type="Path2D" parent="EnemySpawner"]
+position = Vector2(38, 31)
 curve = SubResource("Curve2D_ruufv")
 
 [node name="CaminoVolador" type="Path2D" parent="EnemySpawner"]
@@ -120,14 +127,15 @@ MoveSpeed = 1400.0
 MinZoom = 0.23
 MaxZoom = 2.0
 
-[node name="IU" parent="." node_paths=PackedStringArray("spawner") instance=ExtResource("5_xakld")]
+[node name="IU" parent="." node_paths=PackedStringArray("spawner", "menuVictoria") instance=ExtResource("5_xakld")]
 spawner = NodePath("../EnemySpawner")
+menuVictoria = NodePath("../menu_victoria")
 metadata/_edit_use_anchors_ = true
 
 [node name="menu_pausa" parent="." instance=ExtResource("7_icjwj")]
 
 [node name="menu_victoria" parent="." instance=ExtResource("13_coh8c")]
-WinningWave = 6
+WinningWave = 10
 
 [node name="menu_derrota" parent="." instance=ExtResource("15_muthk")]
 

@@ -7,6 +7,8 @@ public partial class DialogueUI : CanvasLayer
     [Export] public Label nameLabel;
     [Export] public AnimatedSprite2D portrait;
 
+    private string CurrentScene => GetTree().CurrentScene.SceneFilePath;
+
     [Export] public string[] defaultDialogueLines = new string[] {
         "¡Los goblins se acercan! Debemos proteger la aldea.",
         "Selecciona una torre y colócala cerca del camino."
@@ -22,7 +24,6 @@ public partial class DialogueUI : CanvasLayer
         // Configuraciones de escala
         GetTree().Root.ContentScaleMode = Window.ContentScaleModeEnum.CanvasItems;
         GetTree().Root.ContentScaleAspect = Window.ContentScaleAspectEnum.Keep;
-
         // Accedemos al Autoload para ver si ya se mostró antes
         var GameData = GetNode<GameData>("/root/GameData");
 
@@ -30,7 +31,16 @@ public partial class DialogueUI : CanvasLayer
         {
             TriggerDialogue(defaultDialogueLines);
             // Marcamos como visto para que no se repita
-            GameData.AldeaVisitada = true; 
+            if (CurrentScene == "res://scenes/level/aldea/aldea.tscn")
+            {
+                TriggerDialogue(defaultDialogueLines);
+                GameData.AldeaVisitada = true; 
+            }
+            else
+            {
+                return;
+            }
+
         }
         else
         {
