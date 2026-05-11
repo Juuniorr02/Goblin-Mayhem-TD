@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cor65fcesxg0a" path="res://scenes/ui/menus/menu_pausa.tscn" id="7_icjwj"]
 [ext_resource type="Resource" uid="uid://dawwh4paoh1f2" path="res://scripts/character/enemy/infoEnemy/goblinTronco.tres" id="7_j2psb"]
 [ext_resource type="Resource" uid="uid://cigq0efht168k" path="res://scripts/character/enemy/infoEnemy/goblinVolador.tres" id="7_w4dmu"]
-[ext_resource type="PackedScene" uid="uid://b4kgd56vbuq80" path="res://scenes/tower/Ship/ship.tscn" id="8_0uf55"]
+[ext_resource type="PackedScene" uid="uid://b4kgd56vbuq80" path="res://scenes/tower/ship/ship.tscn" id="8_0uf55"]
 [ext_resource type="PackedScene" uid="uid://fwle2vth706y" path="res://scenes/tower/Construir/Martillo.tscn" id="8_2iprc"]
 [ext_resource type="Script" uid="uid://dlfq6grfckhot" path="res://scripts/character/tower/funcionamiento/TowerBuilder.cs" id="8_gxakk"]
 [ext_resource type="PackedScene" uid="uid://dd15bvxn3ddsy" path="res://scenes/tower/Tuna/tuna_hatchery.tscn" id="9_coh8c"]
@@ -143,4 +143,4 @@ WinningWave = 10
 [node name="OptionsPausa" parent="." instance=ExtResource("17_muthk")]
 
 [node name="DialogueUi" parent="." instance=ExtResource("27_w4dmu")]
-defaultDialogueLines = PackedStringArray("Señor, estamos rodeados de enemigos.", "Vienen por todas partes, hay que defender este castillo o si no...", "¡Los goblins tendran control total del oceano!", "No podemos permitirlo, sera el fin del mundo.", "Y estamos tan cerca de recuperar nuestro castillo.", "Señor se avecinan 10 rondas de Duendes, y en este sitio hay pocos recursos.", "No se si podremos con todo señor.")
+defaultDialogueLines = PackedStringArray("Señor, estamos rodeados de enemigos.", "Vienen por todas partes, hay que defender este castillo o si no...", "¡Los goblins tendran control total del oceano!", "No podemos permitirlo, sera el fin del mundo.", "Y estamos tan cerca de recuperar nuestro castillo.", "Señor se avecinan 10 rondas de goblins, y en este sitio hay pocos recursos.", "No se si podremos con todo señor.")

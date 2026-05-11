@@ -316,7 +316,7 @@ visible = false
 script = ExtResource("8_7frjm")
 
 [node name="DialogueUi" parent="." instance=ExtResource("9_qrsno")]
-defaultDialogueLines = PackedStringArray("Señor, nunca me habría imaginado que todo esto acabaria asi...", "Como ibamos a saber que el Rey era un ¡Duende!", "No podemos dejar el castillo en manos de esos j##.. duendes...", "Debemos recuperarlo, pero antes, te explicaré el mapa.", "En el mapa hay torres, cada torre te lleva a un nivel distinto.", "Supongo que te habras fijado en las banderas, cada una representa un estado del nivel.", "El candado representa que esta bloqueado, la interrogacion que es accesible y el tick que lo has completado.", "Cuando completes un nivel desbloquearas el siguiente.", "En la esquina inferior derecha hay un boton, te lleva a tu aldea, pero ahora esta bloqueado.", "Primero deberas pasarte el tutorial, suerte señor.")
+defaultDialogueLines = PackedStringArray("Señor, nunca me habría imaginado que todo esto acabaria asi...", "Como ibamos a saber que el Rey era ¡Un goblin!", "No podemos dejar el castillo en manos de esos j##.. goblins...", "Debemos recuperarlo, pero antes, te explicaré el mapa.", "En el mapa hay torres, cada torre te lleva a un nivel distinto.", "Supongo que te habras fijado en las banderas, cada una representa un estado del nivel.", "El candado representa que esta bloqueado, la interrogacion que es accesible y el tick que lo has completado.", "Cuando completes un nivel desbloquearas el siguiente.", "En la esquina inferior derecha hay un boton, te lleva a tu aldea, pero ahora esta bloqueado.", "Primero deberas pasarte el tutorial, suerte señor.")
 
 [node name="Botones" type="CanvasLayer" parent="."]
 layer = 10

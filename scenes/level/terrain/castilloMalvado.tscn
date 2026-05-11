@@ -1,6 +1,6 @@
 [gd_scene load_steps=44 format=3 uid="uid://cpauy6cybdjfh"]
 
-[ext_resource type="PackedScene" uid="uid://c40xf8w0irkep" path="res://assets/level/Map/final.tmx" id="1_gdtbm"]
+[ext_resource type="PackedScene" uid="uid://c40xf8w0irkep" path="res://assets/level/Map/Final.tmx" id="1_gdtbm"]
 [ext_resource type="Script" uid="uid://cubvhlo0alqh1" path="res://scripts/level/terrain/Pathfinding.cs" id="2_gdtbm"]
 [ext_resource type="Script" uid="uid://ddtj2hn2hhtfd" path="res://scripts/character/enemy/EnemySpawner.cs" id="3_38357"]
 [ext_resource type="Resource" uid="uid://b2o41jjpwfncg" path="res://scripts/character/enemy/infoEnemy/goblinCorriente.tres" id="4_38357"]
@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://doxdk8ijaiqly" path="res://scenes/tower/Flamethrower/flamethrower.tscn" id="15_rxh3h"]
 [ext_resource type="PackedScene" uid="uid://bm2tdm7lsq5q3" path="res://scenes/tower/Mortero/mortero.tscn" id="16_2fapj"]
 [ext_resource type="PackedScene" uid="uid://bv6xb2o3otqu3" path="res://scenes/tower/Grifo/GrffinTower.tscn" id="17_0y1fo"]
-[ext_resource type="PackedScene" uid="uid://b4kgd56vbuq80" path="res://scenes/tower/Ship/ship.tscn" id="18_1l2xg"]
+[ext_resource type="PackedScene" uid="uid://b4kgd56vbuq80" path="res://scenes/tower/ship/ship.tscn" id="18_1l2xg"]
 [ext_resource type="PackedScene" uid="uid://cuq0at3ylsro3" path="res://scenes/tower/MageTower/mage_tower.tscn" id="19_4i8lh"]
 [ext_resource type="PackedScene" uid="uid://ci612q8twcycd" path="res://scenes/ui/ui/iu.tscn" id="20_y8n7e"]
 [ext_resource type="Script" uid="uid://ccef7herjptu0" path="res://scripts/character/camera/CameraRig.cs" id="21_amxe5"]
@@ -210,4 +210,4 @@ WinningWave = 12
 [node name="menu_derrota" parent="." instance=ExtResource("25_td7d0")]
 
 [node name="DialogueUi" parent="." instance=ExtResource("26_38357")]
-defaultDialogueLines = PackedStringArray("¡Señor hemos recuperado el castillo!", "Pero esos malditos Duendes no se rinden, vienen con todo lo que tienen...", "Hay que defender el castillo.", "Señor, he encontrado suministros en la bodega...", "Tendremos mas recursos para defender.", "¡Suerte con la defensa!")
+defaultDialogueLines = PackedStringArray("¡Señor hemos recuperado el castillo!", "Pero esos malditos goblins no se rinden, vienen con todo lo que tienen...", "Hay que defender el castillo.", "Señor, he encontrado suministros en la bodega...", "Tendremos mas recursos para defender.", "¡Suerte con la defensa!")
