@@ -54,21 +54,25 @@ public partial class menu_barrio : CanvasLayer
 		{
 			labelNombre.Text = "  Barrio Nivel 1  ";
 			labelInfo.Text = "  Vida Maxima: 100  " + "\n  Coste mejora: 500 de oro  ";
+			btnMejorar.Disabled = false;
 		}
 		else if (Recursos.Instance.ProdVida == 25)
 		{
 			labelNombre.Text = "  Barrio Nivel 2  ";
 			labelInfo.Text = "  Vida Maxima: 125  " + "\n  Coste mejora: 600 de oro, 50 de madera  ";
+			btnMejorar.Disabled = false;
 		}
 		else if (Recursos.Instance.ProdVida == 50)
 		{
 			labelNombre.Text = "  Barrio Nivel 3  ";
 			labelInfo.Text = "  Vida Maxima: 150  " + "\n  Coste mejora: 800 de oro, 100 de madera, 50 de piedra  ";
+			btnMejorar.Disabled = false;
 		}
 		else if (Recursos.Instance.ProdVida == 75)
 		{
 			labelNombre.Text = "  Barrio Nivel 4  ";
 			labelInfo.Text = "  Vida Maxima: 175  " + "\n  Coste mejora: 1000 de oro, 150 de madera, 100 de piedra, 25 de hierro  ";
+			btnMejorar.Disabled = false;
 		}
 		else if (Recursos.Instance.ProdVida == 100)
 		{
@@ -95,7 +99,7 @@ public partial class menu_barrio : CanvasLayer
 	{
 		int amountGold, amountWood, amountStone, amountIron;
 
-		if(labelNombre.Text == "Barrio Nivel 1")
+		if(labelNombre.Text == "  Barrio Nivel 1  ")
 		{
 			amountGold = 500; amountWood = 0; amountStone = 0; amountIron = 0;
 			if(Recursos.Instance.TotalGold >= amountGold && Recursos.Instance.TotalWood >= amountWood && Recursos.Instance.TotalStone >= amountStone && Recursos.Instance.TotalIron >= amountIron)
@@ -104,7 +108,7 @@ public partial class menu_barrio : CanvasLayer
 				Recursos.Instance.TotalWood -= amountWood;
 				Recursos.Instance.TotalStone -= amountStone;
 				Recursos.Instance.TotalIron -= amountIron;
-				labelNombre.Text = "Barrio Nivel 2";
+				labelNombre.Text = "  Barrio Nivel 2  ";
 				Vida = 25;
 				Recursos.Instance.ProdVida = Vida;
 				Recursos.Instance.SaveData();
@@ -118,7 +122,7 @@ public partial class menu_barrio : CanvasLayer
 			}
 
 		}
-		else if(labelNombre.Text == "Barrio Nivel 2")
+		else if(labelNombre.Text == "  Barrio Nivel 2  ")
 		{
 			amountGold = 600; amountWood = 50; amountStone = 0; amountIron = 0;
 			if(Recursos.Instance.TotalGold >= amountGold && Recursos.Instance.TotalWood >= amountWood && Recursos.Instance.TotalStone >= amountStone && Recursos.Instance.TotalIron >= amountIron)
@@ -127,7 +131,7 @@ public partial class menu_barrio : CanvasLayer
 				Recursos.Instance.TotalWood -= amountWood;
 				Recursos.Instance.TotalStone -= amountStone;
 				Recursos.Instance.TotalIron -= amountIron;
-				labelNombre.Text = "Barrio Nivel 3";
+				labelNombre.Text = "  Barrio Nivel 3  ";
 				Vida = 50;
 				Recursos.Instance.ProdVida = Vida;
 				Recursos.Instance.SaveData();
@@ -139,7 +143,7 @@ public partial class menu_barrio : CanvasLayer
 				labelInfo.Text = "  No tienes suficientes recursos.  ";
 			}
 		}
-		else if(labelNombre.Text == "Barrio Nivel 3")
+		else if(labelNombre.Text == "  Barrio Nivel 3  ")
 		{
 			amountGold = 800; amountWood = 100; amountStone = 50; amountIron = 0;
 
@@ -149,7 +153,7 @@ public partial class menu_barrio : CanvasLayer
 				Recursos.Instance.TotalWood -= amountWood;
 				Recursos.Instance.TotalStone -= amountStone;
 				Recursos.Instance.TotalIron -= amountIron;
-				labelNombre.Text = "Barrio Nivel 4";
+				labelNombre.Text = "  Barrio Nivel 4  ";
 				Vida = 75;
 				Recursos.Instance.ProdVida = Vida;
 				Recursos.Instance.SaveData();
@@ -161,7 +165,7 @@ public partial class menu_barrio : CanvasLayer
 				labelInfo.Text = "  No tienes suficientes recursos.  ";
 			}
 		}
-		else if(labelNombre.Text == "Barrio Nivel 4")
+		else if(labelNombre.Text == "  Barrio Nivel 4  ")
 		{
 			amountGold = 1000; amountWood = 150; amountStone = 100; amountIron = 25;
 			if(Recursos.Instance.TotalGold >= amountGold && Recursos.Instance.TotalWood >= amountWood && Recursos.Instance.TotalStone >= amountStone && Recursos.Instance.TotalIron >= amountIron)
@@ -170,7 +174,7 @@ public partial class menu_barrio : CanvasLayer
 				Recursos.Instance.TotalWood -= amountWood;
 				Recursos.Instance.TotalStone -= amountStone;
 				Recursos.Instance.TotalIron -= amountIron;
-				labelNombre.Text = "Barrio Nivel 5";
+				labelNombre.Text = "  Barrio Nivel 5  ";
 				Vida = 100;
 				Recursos.Instance.ProdVida = Vida;
 				Recursos.Instance.SaveData();

@@ -54,21 +54,25 @@ public partial class menu_aserradero : CanvasLayer
 		{
 			labelNombre.Text = "  Aserradero Nivel 1  ";
 			labelInfo.Text = "  Producción: 50 de madera por ronda  " + "\n  Coste mejora: 500 de oro  ";
+			btnMejorar.Disabled = false;
 		}
 		else if (Recursos.Instance.ProdWood == 100)
 		{
 			labelNombre.Text = "  Aserradero Nivel 2  ";
 			labelInfo.Text = "  Producción: 100 de madera por ronda  " + "\n  Coste mejora: 650 de oro, 60 de madera  ";
+			btnMejorar.Disabled = false;
 		}
 		else if (Recursos.Instance.ProdWood == 150)
 		{
 			labelNombre.Text = "  Aserradero Nivel 3  ";
 			labelInfo.Text = "  Producción: 150 de madera por ronda  " + "\n  Coste mejora: 750 de oro, 120 de madera, 40 de piedra  ";
+			btnMejorar.Disabled = false;
 		}
 		else if (Recursos.Instance.ProdWood == 200)
 		{
 			labelNombre.Text = "  Aserradero Nivel 4  ";
 			labelInfo.Text = "  Producción: 200 de madera por ronda  " + "\n  Coste mejora: 1000 de oro, 220 de madera, 120 de piedra, 40 de hierro  ";
+			btnMejorar.Disabled = false;
 		}
 		else if (Recursos.Instance.ProdWood == 300)
 		{
@@ -76,7 +80,7 @@ public partial class menu_aserradero : CanvasLayer
 			labelInfo.Text = "  Producción: 300 de madera por ronda  ";
 			btnMejorar.Disabled = true;
 		}
-		
+
         isPaused = true;
         GetTree().Paused = true;
         Visible = true;
@@ -95,7 +99,7 @@ public partial class menu_aserradero : CanvasLayer
 	{
 		int amountGold, amountWood, amountStone, amountIron;
 
-		if(labelNombre.Text == "Aserradero Nivel 1")
+		if(labelNombre.Text == "  Aserradero Nivel 1  ")
 		{
 			amountGold = 500; amountWood = 0; amountStone = 0; amountIron = 0;
 			if(Recursos.Instance.TotalGold >= amountGold && Recursos.Instance.TotalWood >= amountWood && Recursos.Instance.TotalStone >= amountStone && Recursos.Instance.TotalIron >= amountIron)
@@ -104,7 +108,7 @@ public partial class menu_aserradero : CanvasLayer
 				Recursos.Instance.TotalWood -= amountWood;
 				Recursos.Instance.TotalStone -= amountStone;
 				Recursos.Instance.TotalIron -= amountIron;
-				labelNombre.Text = "Aserradero Nivel 2";
+				labelNombre.Text = "  Aserradero Nivel 2  ";
 				Madera = 100;
 				Recursos.Instance.ProdWood = Madera;
 				Recursos.Instance.SaveData();
@@ -118,7 +122,7 @@ public partial class menu_aserradero : CanvasLayer
 			}
 
 		}
-		else if(labelNombre.Text == "Aserradero Nivel 2")
+		else if(labelNombre.Text == "  Aserradero Nivel 2  ")
 		{
 			amountGold = 650; amountWood = 60; amountStone = 0; amountIron = 0;
 			if(Recursos.Instance.TotalGold >= amountGold && Recursos.Instance.TotalWood >= amountWood && Recursos.Instance.TotalStone >= amountStone && Recursos.Instance.TotalIron >= amountIron)
@@ -127,7 +131,7 @@ public partial class menu_aserradero : CanvasLayer
 				Recursos.Instance.TotalWood -= amountWood;
 				Recursos.Instance.TotalStone -= amountStone;
 				Recursos.Instance.TotalIron -= amountIron;
-				labelNombre.Text = "Aserradero Nivel 3";
+				labelNombre.Text = "  Aserradero Nivel 3  ";
 				Madera = 150;
 				Recursos.Instance.ProdWood = Madera;
 				Recursos.Instance.SaveData();
@@ -139,7 +143,7 @@ public partial class menu_aserradero : CanvasLayer
 				labelInfo.Text = "  No tienes suficientes recursos.  ";
 			}
 		}
-		else if(labelNombre.Text == "Aserradero Nivel 3")
+		else if(labelNombre.Text == "  Aserradero Nivel 3  ")
 		{
 			amountGold = 750; amountWood = 120; amountStone = 40; amountIron = 0;
 			if(Recursos.Instance.TotalGold >= amountGold && Recursos.Instance.TotalWood >= amountWood && Recursos.Instance.TotalStone >= amountStone && Recursos.Instance.TotalIron >= amountIron)
@@ -148,7 +152,7 @@ public partial class menu_aserradero : CanvasLayer
 				Recursos.Instance.TotalWood -= amountWood;
 				Recursos.Instance.TotalStone -= amountStone;
 				Recursos.Instance.TotalIron -= amountIron;
-				labelNombre.Text = "Aserradero Nivel 4";
+				labelNombre.Text = "  Aserradero Nivel 4  ";
 				Madera = 200;
 				Recursos.Instance.ProdWood = Madera;
 				Recursos.Instance.SaveData();
@@ -160,7 +164,7 @@ public partial class menu_aserradero : CanvasLayer
 				labelInfo.Text = "  No tienes suficientes recursos.  ";
 			}
 		}
-		else if(labelNombre.Text == "Aserradero Nivel 4")
+		else if(labelNombre.Text == "  Aserradero Nivel 4  ")
 		{
 			amountGold = 1000; amountWood = 220; amountStone = 120; amountIron = 40;
 			if(Recursos.Instance.TotalGold >= amountGold && Recursos.Instance.TotalWood >= amountWood && Recursos.Instance.TotalStone >= amountStone && Recursos.Instance.TotalIron >= amountIron)
@@ -169,7 +173,7 @@ public partial class menu_aserradero : CanvasLayer
 				Recursos.Instance.TotalWood -= amountWood;
 				Recursos.Instance.TotalStone -= amountStone;
 				Recursos.Instance.TotalIron -= amountIron;
-				labelNombre.Text = "Aserradero Nivel 5";
+				labelNombre.Text = "  Aserradero Nivel 5  ";
 				Madera = 300;
 				Recursos.Instance.ProdWood = Madera;
 				Recursos.Instance.SaveData();

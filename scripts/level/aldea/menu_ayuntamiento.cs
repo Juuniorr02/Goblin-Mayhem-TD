@@ -56,20 +56,24 @@ public partial class menu_ayuntamiento : CanvasLayer
 		{
 			labelNombre.Text = "  Ayuntamiento Nivel 1  ";
 			labelInfo.Text = "  Producción: 100 de oro por ronda  " + "\n  Coste mejora: 400 de oro  ";
+			btnMejorar.Disabled = false;
 		}
 		else if (Recursos.Instance.ProdGold == 200)
 		{
 			labelNombre.Text = "  Ayuntamiento Nivel 2  ";
 			labelInfo.Text = "  Producción: 200 de oro por ronda  " + "\n  Coste mejora: 500 de oro, 50 de madera  ";
+			btnMejorar.Disabled = false;
 		}
 		else if (Recursos.Instance.ProdGold == 300)
 		{
 			labelInfo.Text = "  Producción: 300 de oro por ronda  " + "\n  Coste mejora: 700 de oro, 100 de madera, 25 de piedra  ";
+			btnMejorar.Disabled = false;
 		}
 		else if (Recursos.Instance.ProdGold == 400)
 		{
 			labelNombre.Text = "  Ayuntamiento Nivel 4  ";
 			labelInfo.Text = "  Producción: 400 de oro por ronda  " + "\n  Coste mejora: 1000 de oro, 200 de madera, 100 de piedra, 25 de hierro  ";
+			btnMejorar.Disabled = false;
 		}
 		else if (Recursos.Instance.ProdGold == 500)
 		{
@@ -97,7 +101,7 @@ public partial class menu_ayuntamiento : CanvasLayer
 	{
 		int amountGold, amountWood, amountStone, amountIron;
 
-		if(labelNombre.Text == "Ayuntamiento Nivel 1")
+		if(labelNombre.Text == "  Ayuntamiento Nivel 1  ")
 		{
 			amountGold = 400; amountWood = 0; amountStone = 0; amountIron = 0;
 			if(Recursos.Instance.TotalGold >= amountGold && Recursos.Instance.TotalWood >= amountWood && Recursos.Instance.TotalStone >= amountStone && Recursos.Instance.TotalIron >= amountIron)
@@ -106,7 +110,7 @@ public partial class menu_ayuntamiento : CanvasLayer
 				Recursos.Instance.TotalWood -= amountWood;
 				Recursos.Instance.TotalStone -= amountStone;
 				Recursos.Instance.TotalIron -= amountIron;
-				labelNombre.Text = "Ayuntamiento Nivel 2";
+				labelNombre.Text = "  Ayuntamiento Nivel 2  ";
 				Oro = 200;
 				Recursos.Instance.ProdGold = Oro;
 				Recursos.Instance.SaveData();
@@ -120,7 +124,7 @@ public partial class menu_ayuntamiento : CanvasLayer
 			}
 
 		}
-		else if(labelNombre.Text == "Ayuntamiento Nivel 2")
+		else if(labelNombre.Text == "  Ayuntamiento Nivel 2  ")
 		{
 			amountGold = 500; amountWood = 50; amountStone = 0; amountIron = 0;
 			if(Recursos.Instance.TotalGold >= amountGold && Recursos.Instance.TotalWood >= amountWood && Recursos.Instance.TotalStone >= amountStone && Recursos.Instance.TotalIron >= amountIron)
@@ -129,7 +133,7 @@ public partial class menu_ayuntamiento : CanvasLayer
 				Recursos.Instance.TotalWood -= amountWood;
 				Recursos.Instance.TotalStone -= amountStone;
 				Recursos.Instance.TotalIron -= amountIron;
-				labelNombre.Text = "Ayuntamiento Nivel 3";
+				labelNombre.Text = "  Ayuntamiento Nivel 3  ";
 				Oro = 300;
 				Recursos.Instance.ProdGold = Oro;
 				Recursos.Instance.SaveData();
@@ -141,7 +145,7 @@ public partial class menu_ayuntamiento : CanvasLayer
 				labelInfo.Text = "  No tienes suficientes recursos.  ";
 			}
 		}
-		else if(labelNombre.Text == "Ayuntamiento Nivel 3")
+		else if(labelNombre.Text == "  Ayuntamiento Nivel 3  ")
 		{
 			amountGold = 700; amountWood = 100; amountStone = 25; amountIron = 0;
 			if(Recursos.Instance.TotalGold >= amountGold && Recursos.Instance.TotalWood >= amountWood && Recursos.Instance.TotalStone >= amountStone && Recursos.Instance.TotalIron >= amountIron)
@@ -150,7 +154,7 @@ public partial class menu_ayuntamiento : CanvasLayer
 				Recursos.Instance.TotalWood -= amountWood;
 				Recursos.Instance.TotalStone -= amountStone;
 				Recursos.Instance.TotalIron -= amountIron;
-				labelNombre.Text = "Ayuntamiento Nivel 4";
+				labelNombre.Text = "  Ayuntamiento Nivel 4  ";
 				Oro = 400;
 				Recursos.Instance.ProdGold = Oro;
 				Recursos.Instance.SaveData();
@@ -162,7 +166,7 @@ public partial class menu_ayuntamiento : CanvasLayer
 				labelInfo.Text = "  No tienes suficientes recursos.  ";
 			}
 		}
-		else if(labelNombre.Text == "Ayuntamiento Nivel 4")
+		else if(labelNombre.Text == "  Ayuntamiento Nivel 4  ")
 		{
 			amountGold = 1000; amountWood = 200; amountStone = 100; amountIron = 25;
 			if(Recursos.Instance.TotalGold >= amountGold && Recursos.Instance.TotalWood >= amountWood && Recursos.Instance.TotalStone >= amountStone && Recursos.Instance.TotalIron >= amountIron)
@@ -171,7 +175,7 @@ public partial class menu_ayuntamiento : CanvasLayer
 				Recursos.Instance.TotalWood -= amountWood;
 				Recursos.Instance.TotalStone -= amountStone;
 				Recursos.Instance.TotalIron -= amountIron;
-				labelNombre.Text = "Ayuntamiento Nivel 5";
+				labelNombre.Text = "  Ayuntamiento Nivel 5  ";
 				Oro = 500;
 				Recursos.Instance.ProdGold = Oro;
 				Recursos.Instance.SaveData();

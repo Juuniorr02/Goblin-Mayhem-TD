@@ -54,26 +54,31 @@ public partial class menu_mina : CanvasLayer
 		{
 			labelNombre.Text = "  Mina Nivel 0  ";
 			labelInfo.Text = "  Producción: 0 de hierro por ronda  " + "\n  Coste desbloqueo: 200 de oro  ";
+			btnMejorar.Disabled = false;
 		}
 		else if (Recursos.Instance.ProdIron == 25)
 		{
 			labelNombre.Text = "  Mina Nivel 1  ";
 			labelInfo.Text = "  Producción: 25 de hierro por ronda  " + "\n  Coste mejora: 400 de oro  ";
+			btnMejorar.Disabled = false;
 		}
 		else if (Recursos.Instance.ProdIron == 50)
 		{
 			labelNombre.Text = "  Mina Nivel 2  ";
 			labelInfo.Text = "  Producción: 50 de hierro por ronda  " + "\n  Coste mejora: 700 de oro, 100 de madera  ";
+			btnMejorar.Disabled = false;
 		}
 		else if (Recursos.Instance.ProdIron == 75)
 		{
 			labelNombre.Text = "  Mina Nivel 3  ";
 			labelInfo.Text = "  Producción: 75 de hierro por ronda  " + "\n  Coste mejora: 900 de oro, 180 de madera, 70 de piedra  ";
+			btnMejorar.Disabled = false;
 		}
 		else if (Recursos.Instance.ProdIron == 100)
 		{
 			labelNombre.Text = "  Mina Nivel 4  ";
 			labelInfo.Text = "  Producción: 100 de hierro por ronda  " + "\n  Coste mejora: 1200 de oro, 250 de madera, 140 de piedra, 70 de hierro  ";
+			btnMejorar.Disabled = false;
 		}
 		else if (Recursos.Instance.ProdIron == 150)
 		{
@@ -81,7 +86,7 @@ public partial class menu_mina : CanvasLayer
 			labelInfo.Text = "  Producción: 150 de hierro por ronda  ";
 			btnMejorar.Disabled = true;
 		}
-		
+
         isPaused = true;
         GetTree().Paused = true;
         Visible = true;
@@ -100,7 +105,7 @@ public partial class menu_mina : CanvasLayer
 	{
 		int amountGold, amountWood, amountStone, amountIron;
 
-		if(labelNombre.Text == "Mina Nivel 0")
+		if(labelNombre.Text == "  Mina Nivel 0  ")
 		{
 			amountGold = 200; amountWood = 0; amountStone = 0; amountIron = 0;
 			if(Recursos.Instance.TotalGold >= amountGold && Recursos.Instance.TotalWood >= amountWood && Recursos.Instance.TotalStone >= amountStone && Recursos.Instance.TotalIron >= amountIron)
@@ -109,7 +114,7 @@ public partial class menu_mina : CanvasLayer
 				Recursos.Instance.TotalWood -= amountWood;
 				Recursos.Instance.TotalStone -= amountStone;
 				Recursos.Instance.TotalIron -= amountIron;
-				labelNombre.Text = "Mina Nivel 1";
+				labelNombre.Text = "  Mina Nivel 1  ";
 				Hierro = 25;
 				Recursos.Instance.ProdIron = Hierro;
 				Recursos.Instance.SaveData();
@@ -123,7 +128,7 @@ public partial class menu_mina : CanvasLayer
 			}
 
 		}
-		if(labelNombre.Text == "Mina Nivel 1")
+		else if(labelNombre.Text == "  Mina Nivel 1  ")
 		{
 			amountGold = 400; amountWood = 0; amountStone = 0; amountIron = 0;
 			if(Recursos.Instance.TotalGold >= amountGold && Recursos.Instance.TotalWood >= amountWood && Recursos.Instance.TotalStone >= amountStone && Recursos.Instance.TotalIron >= amountIron)
@@ -132,7 +137,7 @@ public partial class menu_mina : CanvasLayer
 				Recursos.Instance.TotalWood -= amountWood;
 				Recursos.Instance.TotalStone -= amountStone;
 				Recursos.Instance.TotalIron -= amountIron;
-				labelNombre.Text = "Mina Nivel 2";
+				labelNombre.Text = "  Mina Nivel 2  ";
 				Hierro = 50;
 				Recursos.Instance.ProdIron = Hierro;
 				Recursos.Instance.SaveData();
@@ -146,7 +151,7 @@ public partial class menu_mina : CanvasLayer
 			}
 
 		}
-		else if(labelNombre.Text == "Mina Nivel 2")
+		else if(labelNombre.Text == "  Mina Nivel 2  ")
 		{
 			amountGold = 700; amountWood = 100; amountStone = 0; amountIron = 0;
 			if(Recursos.Instance.TotalGold >= amountGold && Recursos.Instance.TotalWood >= amountWood && Recursos.Instance.TotalStone >= amountStone && Recursos.Instance.TotalIron >= amountIron)
@@ -155,7 +160,7 @@ public partial class menu_mina : CanvasLayer
 				Recursos.Instance.TotalWood -= amountWood;
 				Recursos.Instance.TotalStone -= amountStone;
 				Recursos.Instance.TotalIron -= amountIron;
-				labelNombre.Text = "Mina Nivel 3";
+				labelNombre.Text = "  Mina Nivel 3  ";
 				Hierro = 75;
 				Recursos.Instance.ProdIron = Hierro;
 				Recursos.Instance.SaveData();
@@ -167,7 +172,7 @@ public partial class menu_mina : CanvasLayer
 				labelInfo.Text = "  No tienes suficientes recursos.  ";
 			}
 		}
-		else if(labelNombre.Text == "Mina Nivel 3")
+		else if(labelNombre.Text == "  Mina Nivel 3  ")
 		{
 			amountGold = 900; amountWood = 180; amountStone = 70; amountIron = 0;
 			if(Recursos.Instance.TotalGold >= amountGold && Recursos.Instance.TotalWood >= amountWood && Recursos.Instance.TotalStone >= amountStone && Recursos.Instance.TotalIron >= amountIron)
@@ -176,7 +181,7 @@ public partial class menu_mina : CanvasLayer
 				Recursos.Instance.TotalWood -= amountWood;
 				Recursos.Instance.TotalStone -= amountStone;
 				Recursos.Instance.TotalIron -= amountIron;
-				labelNombre.Text = "Mina Nivel 4";
+				labelNombre.Text = "  Mina Nivel 4  ";
 				Hierro = 100;
 				Recursos.Instance.ProdIron = Hierro;
 				Recursos.Instance.SaveData();
@@ -188,7 +193,7 @@ public partial class menu_mina : CanvasLayer
 				labelInfo.Text = "  No tienes suficientes recursos.  ";
 			}
 		}
-		else if(labelNombre.Text == "Mina Nivel 4")
+		else if(labelNombre.Text == "  Mina Nivel 4  ")
 		{
 			amountGold = 1200; amountWood = 250; amountStone = 140; amountIron = 70;
 			if(Recursos.Instance.TotalGold >= amountGold && Recursos.Instance.TotalWood >= amountWood && Recursos.Instance.TotalStone >= amountStone && Recursos.Instance.TotalIron >= amountIron)
@@ -197,7 +202,7 @@ public partial class menu_mina : CanvasLayer
 				Recursos.Instance.TotalWood -= amountWood;
 				Recursos.Instance.TotalStone -= amountStone;
 				Recursos.Instance.TotalIron -= amountIron;
-				labelNombre.Text = "Mina Nivel 5";
+				labelNombre.Text = "  Mina Nivel 5  ";
 				Hierro = 150;
 				Recursos.Instance.ProdIron = Hierro;
 				Recursos.Instance.SaveData();

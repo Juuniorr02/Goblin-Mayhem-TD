@@ -86,6 +86,9 @@ public partial class menu_pausa_aldea : CanvasLayer
 
 	private void Salir()
     {
+        var save = GetNode<SaveSystem>("/root/SaveSystem");
+        Recursos.Instance.SaveData();
+    	save.SaveGame();
         QuitarPausa();
         Input.MouseMode = Input.MouseModeEnum.Visible;
         GetTree().ChangeSceneToFile("res://scenes/ui/menus/Menu.tscn");

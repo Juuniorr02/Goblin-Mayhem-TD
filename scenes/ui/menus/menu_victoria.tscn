@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c6o5datpm682p"]
+[gd_scene load_steps=3 format=3 uid="uid://c6o5datpm682p"]
 
-[ext_resource type="Script" uid="uid://ck7o6ah3nsvvh" path="res://scripts/ui/MenuVictoria.cs" id="1_di162"]
+[ext_resource type="Script" uid="uid://ck7o6ah3nsvvh" path="res://scripts/ui/menus/MenuVictoria.cs" id="1_di162"]
+[ext_resource type="Texture2D" uid="uid://dw58srk3amai3" path="res://assets/ui/icon/IconoVictoria-Sheet.png" id="2_6cidr"]
 
 [node name="menu_victoria" type="CanvasLayer"]
 script = ExtResource("1_di162")
@@ -16,13 +17,12 @@ grow_vertical = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
 layout_mode = 2
 
-[node name="imagen" type="VBoxContainer" parent="PanelContainer/VBoxContainer"]
+[node name="victoria" type="TextureRect" parent="PanelContainer/VBoxContainer"]
+texture_filter = 1
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 6
-
-[node name="victoria" type="TextureRect" parent="PanelContainer/VBoxContainer/imagen"]
-layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
+texture = ExtResource("2_6cidr")
 
 [node name="botones" type="VBoxContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
