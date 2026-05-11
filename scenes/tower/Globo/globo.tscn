@@ -87,7 +87,7 @@ DriftSpeed = 0.2
 MyAnimation = NodePath("AnimatedSprite2D")
 BulletScene = ExtResource("2_2jfil")
 Damage = 20.0
-FireRate = 3.0
+FireRate = 0.35
 CanTargetWater = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

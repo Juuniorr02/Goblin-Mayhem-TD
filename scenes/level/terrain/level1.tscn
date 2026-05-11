@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://fwle2vth706y" path="res://scenes/tower/Construir/Martillo.tscn" id="8_pjnpp"]
 [ext_resource type="Resource" uid="uid://lbiebqt20kjf" path="res://scripts/character/enemy/infoEnemy/pepin.tres" id="8_xjvah"]
 [ext_resource type="PackedScene" uid="uid://i7fnxkfidwjh" path="res://scenes/tower/ArcherTower/archerTower.tscn" id="9_sorvc"]
-[ext_resource type="Resource" uid="uid://d2510p56t5xsd" path="res://scripts/character/enemy/infoEnemy/bebeWyern.tres" id="10_cu56y"]
+[ext_resource type="Resource" uid="uid://b4hbuhbttqy8d" path="res://scripts/character/enemy/infoEnemy/bebeWyern.tres" id="10_cu56y"]
 [ext_resource type="PackedScene" uid="uid://ckc1i5qv6sle8" path="res://scenes/tower/Ballista/ballista.tscn" id="10_k421d"]
 [ext_resource type="PackedScene" uid="uid://ce0pn5jdtd7uu" path="res://scenes/tower/Globo/globo.tscn" id="11_m3lfk"]
 [ext_resource type="Resource" uid="uid://bdha8t6bcfd4l" path="res://scripts/character/enemy/infoEnemy/emperador.tres" id="12_66yle"]
@@ -31,13 +31,6 @@
 [ext_resource type="PackedScene" uid="uid://di2gid6004846" path="res://scenes/ui/menus/menu_derrota_tutorial.tscn" id="24_xjvah"]
 [ext_resource type="PackedScene" uid="uid://c6o5datpm682p" path="res://scenes/ui/menus/menu_victoria.tscn" id="30_k421d"]
 [ext_resource type="PackedScene" uid="uid://cgidgps04y2lg" path="res://scenes/ui/ui/uiMalo.tscn" id="31_m3lfk"]
-
-[sub_resource type="Resource" id="Resource_k421d"]
-script = ExtResource("5_xjvah")
-EnemyType = ExtResource("8_xjvah")
-Count = 1
-Path = 1
-metadata/_custom_type_script = "uid://dxi6h4dntdvec"
 
 [sub_resource type="Resource" id="Resource_tqsr0"]
 script = ExtResource("5_xjvah")
