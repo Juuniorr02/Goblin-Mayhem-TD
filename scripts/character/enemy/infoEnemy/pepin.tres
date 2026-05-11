@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_l66tv")
+EnemyName = "Pepin"
 DamageToBase = 9999999999999
 Health = 9999999999999
 IsFlying = true

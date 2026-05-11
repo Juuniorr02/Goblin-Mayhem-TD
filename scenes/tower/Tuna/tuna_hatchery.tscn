@@ -9,6 +9,7 @@
 [node name="TunaHatchery" type="Node2D"]
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_iltbc")
+MaxTunas = 5
 RespawnCooldown = 5.0
 BulletScene = ExtResource("2_38rkd")
 CanTargetWater = true

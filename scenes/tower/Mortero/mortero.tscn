@@ -75,8 +75,8 @@ scale = Vector2(1.5, 1.5)
 script = ExtResource("1_nvavh")
 MyAnimation = NodePath("AnimatedSprite2D")
 BulletScene = ExtResource("2_kjqeh")
-Damage = 20.0
-FireRate = 0.5
+Damage = 25.0
+FireRate = 2.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

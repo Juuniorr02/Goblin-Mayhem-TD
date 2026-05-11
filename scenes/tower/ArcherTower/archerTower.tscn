@@ -57,8 +57,10 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_kwryj"]
 
 [node name="archer" type="Node2D" node_paths=PackedStringArray("MyAnimation")]
+position = Vector2(0, -25)
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_kwryj")
+GravityCompensation = 0.15
 MyAnimation = NodePath("AnimatedSprite2D")
 BulletScene = ExtResource("2_kwryj")
 Damage = 15.0
