@@ -7,7 +7,7 @@
 script = ExtResource("1_tvg0r")
 EnemyName = "Emperador"
 Speed = 50.0
-DamageToBase = 50
-Health = 800
+DamageToBase = 60
+Health = 1000
 EnemyScene = ExtResource("1_8uptn")
 metadata/_custom_type_script = "uid://dtfsd6sb6u7oe"
