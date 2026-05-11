@@ -1,11 +1,10 @@
-[gd_scene load_steps=45 format=3 uid="uid://cpauy6cybdjfh"]
+[gd_scene load_steps=43 format=3 uid="uid://cpauy6cybdjfh"]
 
 [ext_resource type="PackedScene" uid="uid://c40xf8w0irkep" path="res://assets/level/Map/final.tmx" id="1_gdtbm"]
 [ext_resource type="Script" uid="uid://cubvhlo0alqh1" path="res://scripts/level/terrain/Pathfinding.cs" id="2_gdtbm"]
 [ext_resource type="Script" uid="uid://ddtj2hn2hhtfd" path="res://scripts/character/enemy/EnemySpawner.cs" id="3_38357"]
 [ext_resource type="Resource" uid="uid://b2o41jjpwfncg" path="res://scripts/character/enemy/infoEnemy/goblinCorriente.tres" id="4_38357"]
 [ext_resource type="Script" uid="uid://dxi6h4dntdvec" path="res://scripts/character/enemy/EnemyGroup.cs" id="5_td7d0"]
-[ext_resource type="Resource" uid="uid://dawwh4paoh1f2" path="res://scripts/character/enemy/infoEnemy/goblinTronco.tres" id="6_wfif0"]
 [ext_resource type="Script" uid="uid://b7rcgtrq61w48" path="res://scripts/character/enemy/WaveData.cs" id="7_bppdq"]
 [ext_resource type="Resource" uid="uid://cigq0efht168k" path="res://scripts/character/enemy/infoEnemy/goblinVolador.tres" id="7_td7d0"]
 [ext_resource type="Script" uid="uid://dlfq6grfckhot" path="res://scripts/character/tower/funcionamiento/TowerBuilder.cs" id="8_plhmu"]
@@ -33,12 +32,6 @@ EnemyType = ExtResource("4_38357")
 Path = 1
 metadata/_custom_type_script = "uid://dxi6h4dntdvec"
 
-[sub_resource type="Resource" id="Resource_eoogh"]
-script = ExtResource("5_td7d0")
-EnemyType = ExtResource("6_wfif0")
-Path = 3
-metadata/_custom_type_script = "uid://dxi6h4dntdvec"
-
 [sub_resource type="Resource" id="Resource_76esb"]
 script = ExtResource("5_td7d0")
 EnemyType = ExtResource("7_td7d0")
@@ -48,84 +41,84 @@ metadata/_custom_type_script = "uid://dxi6h4dntdvec"
 [sub_resource type="Resource" id="Resource_hc0pb"]
 script = ExtResource("7_bppdq")
 WaveName = "Prueba"
-Groups = Array[Object]([SubResource("Resource_w7i6f"), SubResource("Resource_eoogh"), SubResource("Resource_76esb")])
+Groups = Array[Object]([SubResource("Resource_w7i6f"), SubResource("Resource_76esb")])
 SpawnInterval = 0.5
 metadata/_custom_type_script = "uid://b7rcgtrq61w48"
 
 [sub_resource type="Resource" id="Resource_bppdq"]
 script = ExtResource("7_bppdq")
 WaveName = "Prueba"
-Groups = Array[Object]([SubResource("Resource_w7i6f"), SubResource("Resource_eoogh"), SubResource("Resource_76esb")])
+Groups = Array[Object]([SubResource("Resource_w7i6f"), SubResource("Resource_76esb")])
 SpawnInterval = 0.5
 metadata/_custom_type_script = "uid://b7rcgtrq61w48"
 
 [sub_resource type="Resource" id="Resource_plhmu"]
 script = ExtResource("7_bppdq")
 WaveName = "Prueba"
-Groups = Array[Object]([SubResource("Resource_w7i6f"), SubResource("Resource_eoogh"), SubResource("Resource_76esb")])
+Groups = Array[Object]([SubResource("Resource_w7i6f"), SubResource("Resource_76esb")])
 SpawnInterval = 0.5
 metadata/_custom_type_script = "uid://b7rcgtrq61w48"
 
 [sub_resource type="Resource" id="Resource_0jfwx"]
 script = ExtResource("7_bppdq")
 WaveName = "Prueba"
-Groups = Array[Object]([SubResource("Resource_w7i6f"), SubResource("Resource_eoogh"), SubResource("Resource_76esb")])
+Groups = Array[Object]([SubResource("Resource_w7i6f"), SubResource("Resource_76esb")])
 SpawnInterval = 0.5
 metadata/_custom_type_script = "uid://b7rcgtrq61w48"
 
 [sub_resource type="Resource" id="Resource_8jf7b"]
 script = ExtResource("7_bppdq")
 WaveName = "Prueba"
-Groups = Array[Object]([SubResource("Resource_w7i6f"), SubResource("Resource_eoogh"), SubResource("Resource_76esb")])
+Groups = Array[Object]([SubResource("Resource_w7i6f"), SubResource("Resource_76esb")])
 SpawnInterval = 0.5
 metadata/_custom_type_script = "uid://b7rcgtrq61w48"
 
 [sub_resource type="Resource" id="Resource_ujt6g"]
 script = ExtResource("7_bppdq")
 WaveName = "Prueba"
-Groups = Array[Object]([SubResource("Resource_w7i6f"), SubResource("Resource_eoogh"), SubResource("Resource_76esb")])
+Groups = Array[Object]([SubResource("Resource_w7i6f"), SubResource("Resource_76esb")])
 SpawnInterval = 0.5
 metadata/_custom_type_script = "uid://b7rcgtrq61w48"
 
 [sub_resource type="Resource" id="Resource_bpjxi"]
 script = ExtResource("7_bppdq")
 WaveName = "Prueba"
-Groups = Array[Object]([SubResource("Resource_w7i6f"), SubResource("Resource_eoogh"), SubResource("Resource_76esb")])
+Groups = Array[Object]([SubResource("Resource_w7i6f"), SubResource("Resource_76esb")])
 SpawnInterval = 0.5
 metadata/_custom_type_script = "uid://b7rcgtrq61w48"
 
 [sub_resource type="Resource" id="Resource_fwwuw"]
 script = ExtResource("7_bppdq")
 WaveName = "Prueba"
-Groups = Array[Object]([SubResource("Resource_w7i6f"), SubResource("Resource_eoogh"), SubResource("Resource_76esb")])
+Groups = Array[Object]([SubResource("Resource_w7i6f"), SubResource("Resource_76esb")])
 SpawnInterval = 0.5
 metadata/_custom_type_script = "uid://b7rcgtrq61w48"
 
 [sub_resource type="Resource" id="Resource_a06a2"]
 script = ExtResource("7_bppdq")
 WaveName = "Prueba"
-Groups = Array[Object]([SubResource("Resource_w7i6f"), SubResource("Resource_eoogh"), SubResource("Resource_76esb")])
+Groups = Array[Object]([SubResource("Resource_w7i6f"), SubResource("Resource_76esb")])
 SpawnInterval = 0.5
 metadata/_custom_type_script = "uid://b7rcgtrq61w48"
 
 [sub_resource type="Resource" id="Resource_rxh3h"]
 script = ExtResource("7_bppdq")
 WaveName = "Prueba"
-Groups = Array[Object]([SubResource("Resource_w7i6f"), SubResource("Resource_eoogh"), SubResource("Resource_76esb")])
+Groups = Array[Object]([SubResource("Resource_w7i6f"), SubResource("Resource_76esb")])
 SpawnInterval = 0.5
 metadata/_custom_type_script = "uid://b7rcgtrq61w48"
 
 [sub_resource type="Resource" id="Resource_2fapj"]
 script = ExtResource("7_bppdq")
 WaveName = "Prueba"
-Groups = Array[Object]([SubResource("Resource_w7i6f"), SubResource("Resource_eoogh"), SubResource("Resource_76esb")])
+Groups = Array[Object]([SubResource("Resource_w7i6f"), SubResource("Resource_76esb")])
 SpawnInterval = 0.5
 metadata/_custom_type_script = "uid://b7rcgtrq61w48"
 
 [sub_resource type="Resource" id="Resource_0y1fo"]
 script = ExtResource("7_bppdq")
 WaveName = "Prueba"
-Groups = Array[Object]([SubResource("Resource_w7i6f"), SubResource("Resource_eoogh"), SubResource("Resource_76esb")])
+Groups = Array[Object]([SubResource("Resource_w7i6f"), SubResource("Resource_76esb")])
 SpawnInterval = 0.5
 metadata/_custom_type_script = "uid://b7rcgtrq61w48"
 

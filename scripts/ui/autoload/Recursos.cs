@@ -125,7 +125,7 @@ public partial class Recursos : Node
 
     public void EndLevel()
     {
-        BaseVida = 100 + ProdVida;
+        BaseVida += ProdVida;
         TotalGold += Gold;
         TotalWood += Wood;
         TotalStone += Stone;
