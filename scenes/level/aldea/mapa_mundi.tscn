@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://c8gkmpv3cm5lb"]
+[gd_scene load_steps=50 format=3 uid="uid://c8gkmpv3cm5lb"]
 
 [ext_resource type="Script" uid="uid://bj3orin7gqsxi" path="res://scripts/level/aldea/mapa_mundi.cs" id="1_8nlh4"]
 [ext_resource type="PackedScene" uid="uid://d4jqwlcllpu4n" path="res://assets/level/Map/mapa_mundi.tmx" id="1_vwjia"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://21c5lfn8rh7" path="res://scenes/ui/ui/entrar_nivel.tscn" id="6_bt43m"]
 [ext_resource type="Script" uid="uid://dkgmg2yotgnec" path="res://scripts/ui/ui/entrar_nivel.cs" id="8_7frjm"]
 [ext_resource type="Texture2D" uid="uid://ca4ua8p8ha2jo" path="res://assets/ui/button/BanderaBloqueado-Sheet.png" id="9_1g1ri"]
+[ext_resource type="PackedScene" uid="uid://dyk56b112rm25" path="res://scenes/ui/ui/uiTutorial.tscn" id="9_qrsno"]
 [ext_resource type="Texture2D" uid="uid://dxlclgq4m6k76" path="res://assets/ui/button/BanderaCompletado-Sheet.png" id="10_qrsno"]
 [ext_resource type="Texture2D" uid="uid://da61un70k3rhu" path="res://assets/ui/button/BanderaSiguiente-Sheet.png" id="11_gnaj5"]
 
@@ -313,6 +314,9 @@ visible = false
 layer = 12
 visible = false
 script = ExtResource("8_7frjm")
+
+[node name="DialogueUi" parent="." instance=ExtResource("9_qrsno")]
+defaultDialogueLines = PackedStringArray("Señor, nunca me habría imaginado que todo esto acabaria asi...", "Como ibamos a saber que el Rey era un ¡Duende!", "No podemos dejar el castillo en manos de esos j##.. duendes...", "Debemos recuperarlo, pero antes, te explicaré el mapa.", "En el mapa hay torres, cada torre te lleva a un nivel distinto.", "Supongo que te habras fijado en las banderas, cada una representa un estado del nivel.", "El candado representa que esta bloqueado, la interrogacion que es accesible y el tick que lo has completado.", "Cuando completes un nivel desbloquearas el siguiente.", "En la esquina inferior derecha hay un boton, te lleva a tu aldea, pero ahora esta bloqueado.", "Primero deberas pasarte el tutorial, suerte señor.")
 
 [node name="Botones" type="CanvasLayer" parent="."]
 layer = 10
