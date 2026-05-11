@@ -153,7 +153,7 @@ public partial class entrar_nivel : CanvasLayer
 			if(GameData.Level5 == true)
 			{
 				btnEntrar.Disabled = false;
-				Recursos.Instance.StartLevel();
+				Recursos.Instance.LastLevel();
 				Wave.Instance.ResetWaves();
 				GetTree().ChangeSceneToFile("res://scenes/level/terrain/castilloMalvado.tscn");
 			}

@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://bei48ihjw2hqc"]
+[gd_scene load_steps=40 format=3 uid="uid://bei48ihjw2hqc"]
 
 [ext_resource type="PackedScene" uid="uid://ucghgvf60jf8" path="res://assets/level/Map/pantano1.tmx" id="1_mawj5"]
 [ext_resource type="Script" uid="uid://cubvhlo0alqh1" path="res://scripts/level/terrain/Pathfinding.cs" id="2_hl87u"]
@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://bv6xb2o3otqu3" path="res://scenes/tower/Grifo/GrffinTower.tscn" id="14_8lpxf"]
 [ext_resource type="PackedScene" uid="uid://c6o5datpm682p" path="res://scenes/ui/menus/menu_victoria.tscn" id="14_pm7bs"]
 [ext_resource type="PackedScene" uid="uid://c387degtgk6i6" path="res://scenes/ui/menus/menu_derrota.tscn" id="15_amlx2"]
+[ext_resource type="PackedScene" uid="uid://dyk56b112rm25" path="res://scenes/ui/ui/uiTutorial.tscn" id="26_abte5"]
 
 [sub_resource type="Resource" id="Resource_w7i6f"]
 script = ExtResource("5_tykt1")
@@ -182,3 +183,6 @@ metadata/_edit_use_anchors_ = true
 WinningWave = 7
 
 [node name="menu_derrota" parent="." instance=ExtResource("15_amlx2")]
+
+[node name="DialogueUi" parent="." instance=ExtResource("26_abte5")]
+defaultDialogueLines = PackedStringArray("¡Uff! Señor la armadura se hunde en el lodo, el pantano es mas grande de lo que pensaba.", "Parece ser que lo Duendes han creado una base al sur del pantano y se disponen a atacar a esta pobre aldea.", "Vamos a ayudarles, asi tendremos un sitio donde descansar.", "Me informan de 7 rondas de Duendes, hay que atacar con todo.", "Una ultima cosa señor, este pantano esta repleto de recursos, podremos defendernos con mas facilidad.")
