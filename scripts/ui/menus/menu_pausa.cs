@@ -120,6 +120,7 @@ public partial class menu_pausa : CanvasLayer
 	{
 		QuitarPausa();
     	GD.Print("Cargar partida");
+        BuildTime.CanBuild = true;
 
     	var save = GetNode<SaveSystem>("/root/SaveSystem");
     	await save.LoadGame();
@@ -128,6 +129,7 @@ public partial class menu_pausa : CanvasLayer
     private void OnReiniciar()
 	{
 		QuitarPausa();
+        BuildTime.CanBuild = true;
         Input.MouseMode = Input.MouseModeEnum.Visible;
         Recursos.Instance.RepairBase();
         Wave.Instance.ResetWaves();
