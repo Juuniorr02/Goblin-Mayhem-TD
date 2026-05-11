@@ -183,7 +183,7 @@ public partial class TowerBuilder : Node2D
         {
             TileData data = layer.GetCellTileData(tilePos);
             if (data == null) continue;
-            string prop = currentTowerName switch { "Ship" => "can_build_boat", "Atun" => "can_build_atun", _ => "can_build" };
+            string prop = currentTowerName switch { "Ship" => "can_build_boat","Bloon" => "can_build_boat", "Atun" => "can_build_atun", _ => "can_build" };
             Variant buildData = data.GetCustomData(prop);
             if (buildData.VariantType != Variant.Type.Nil && buildData.AsBool()) return true;
         }
