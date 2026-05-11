@@ -150,6 +150,7 @@ public partial class menu_pausa : CanvasLayer
 
     private void OnSalir()
     {
+        BuildTime.CanBuild = true;
         QuitarPausa();
     }
 }
