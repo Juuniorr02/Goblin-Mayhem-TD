@@ -97,6 +97,7 @@ public partial class MenuController : Node
     {
         Recursos.Instance.NewGame();
         GameData.Instance.Reset();
+        BuildTime.CanBuild = true;
 
         LoadingScreen.NextScenePath = "res://scenes/level/terrain/level1.tscn";
 
