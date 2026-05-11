@@ -50,31 +50,38 @@ public partial class menu_cantera : CanvasLayer
 
 	public void Abrir()
 	{
-		if (labelNombre.Text == "Cantera Nivel 0")
+		if (Recursos.Instance.ProdStone == 0)
 		{
+			labelNombre.Text = "  Cantera Nivel 0  ";
 			labelInfo.Text = "  Producción: 0 de piedra por ronda  " + "\n  Coste mejora: 100 de oro  ";
 		}
-		else if (labelNombre.Text == "Cantera Nivel 1")
+		else if (Recursos.Instance.ProdStone == 25)
 		{
+			labelNombre.Text = "  Cantera Nivel 1  ";
 			labelInfo.Text = "  Producción: 25 de piedra por ronda  " + "\n  Coste mejora: 300 de oro  ";
 		}
-		else if (labelNombre.Text == "Cantera Nivel 2")
+		else if (Recursos.Instance.ProdStone == 50)
 		{
+			labelNombre.Text = "  Cantera Nivel 2  ";
 			labelInfo.Text = "  Producción: 50 de piedra por ronda  " + "\n  Coste mejora: 600 de oro, 75 de madera  ";
 		}
-		else if (labelNombre.Text == "Cantera Nivel 3")
+		else if (Recursos.Instance.ProdStone == 100)
 		{
+			labelNombre.Text = "  Cantera Nivel 3  ";
 			labelInfo.Text = "  Producción: 100 de piedra por ronda  " + "\n  Coste mejora: 750 de oro, 150 de madera, 50 de piedra  ";
 		}
-		else if (labelNombre.Text == "Cantera Nivel 4")
+		else if (Recursos.Instance.ProdStone == 150)
 		{
+			labelNombre.Text = "  Cantera Nivel 4  ";
 			labelInfo.Text = "  Producción: 150 de piedra por ronda  " + "\n  Coste mejora: 1000 de oro, 230 de madera, 125 de piedra, 50 de hierro  ";
 		}
-		else if (labelNombre.Text == "Cantera Nivel 5")
+		else if (Recursos.Instance.ProdStone == 200)
 		{
+			labelNombre.Text = "  Cantera Nivel 5  ";
 			labelInfo.Text = "  Producción: 200 de piedra por ronda  ";
 			btnMejorar.Disabled = true;
 		}
+
         isPaused = true;
         GetTree().Paused = true;
         Visible = true;

@@ -50,27 +50,33 @@ public partial class menu_barrio : CanvasLayer
 
 	public void Abrir()
 	{
-		if (labelNombre.Text == "Barrio Nivel 1")
+		if (Recursos.Instance.ProdVida == 0)
 		{
+			labelNombre.Text = "  Barrio Nivel 1  ";
 			labelInfo.Text = "  Vida Maxima: 100  " + "\n  Coste mejora: 500 de oro  ";
 		}
-		else if (labelNombre.Text == "Barrio Nivel 2")
+		else if (Recursos.Instance.ProdVida == 25)
 		{
+			labelNombre.Text = "  Barrio Nivel 2  ";
 			labelInfo.Text = "  Vida Maxima: 125  " + "\n  Coste mejora: 600 de oro, 50 de madera  ";
 		}
-		else if (labelNombre.Text == "Barrio Nivel 3")
+		else if (Recursos.Instance.ProdVida == 50)
 		{
+			labelNombre.Text = "  Barrio Nivel 3  ";
 			labelInfo.Text = "  Vida Maxima: 150  " + "\n  Coste mejora: 800 de oro, 100 de madera, 50 de piedra  ";
 		}
-		else if (labelNombre.Text == "Barrio Nivel 4")
+		else if (Recursos.Instance.ProdVida == 75)
 		{
+			labelNombre.Text = "  Barrio Nivel 4  ";
 			labelInfo.Text = "  Vida Maxima: 175  " + "\n  Coste mejora: 1000 de oro, 150 de madera, 100 de piedra, 25 de hierro  ";
 		}
-		else if (labelNombre.Text == "Barrio Nivel 5")
+		else if (Recursos.Instance.ProdVida == 100)
 		{
+			labelNombre.Text = "  Barrio Nivel 5  ";
 			labelInfo.Text = "  Vida Maxima: 200  ";
 			btnMejorar.Disabled = true;
 		}
+
         isPaused = true;
         GetTree().Paused = true;
         Visible = true;

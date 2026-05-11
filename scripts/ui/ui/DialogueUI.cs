@@ -49,7 +49,7 @@ public partial class DialogueUI : CanvasLayer
             if (CurrentScene == "res://scenes/level/aldea/mapa_mundi.tscn")
             {
                 TriggerDialogue(defaultDialogueLines);
-                GameData.MapaMundiVisitado = true; 
+                GameData.MapaMundiVisitado = true;
             }
             else
             {

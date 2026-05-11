@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://cfbm5welkb4dq"]
 
 [ext_resource type="Script" uid="uid://dlkmwoujs2ffa" path="res://scripts/level/aldea/Aldea.cs" id="1_xy8tv"]
-[ext_resource type="PackedScene" uid="uid://c5a1dw858ej85" path="res://assets/level/Map/Aldea.tmx" id="2_r5q8b"]
+[ext_resource type="PackedScene" uid="uid://c5a1dw858ej85" path="res://assets/level/Map/aldea.tmx" id="2_r5q8b"]
 [ext_resource type="PackedScene" uid="uid://cga8wa1itf7t7" path="res://scenes/level/aldea/uialdea.tscn" id="3_bq6bm"]
 [ext_resource type="Script" uid="uid://0yfmp0uplcf0" path="res://scripts/level/aldea/Uialdea.cs" id="4_ib1id"]
 [ext_resource type="Script" uid="uid://ccef7herjptu0" path="res://scripts/character/camera/CameraRig.cs" id="4_yay4l"]
@@ -37,7 +37,7 @@ MinZoom = 0.17
 MaxZoom = 0.17
 
 [node name="menu_pausa_aldea" parent="." instance=ExtResource("6_ib1id")]
-layer = 7
+layer = 10
 visible = false
 
 [node name="OptionsPausaAldea" parent="." instance=ExtResource("7_o7wln")]
@@ -45,7 +45,7 @@ layer = 8
 visible = false
 
 [node name="Botones" type="CanvasLayer" parent="."]
-layer = 10
+layer = 8
 follow_viewport_enabled = true
 
 [node name="BotonAyuntamiento" type="Button" parent="Botones"]

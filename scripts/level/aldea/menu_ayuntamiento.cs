@@ -52,27 +52,32 @@ public partial class menu_ayuntamiento : CanvasLayer
 
 	public void Abrir()
 	{
-		if (labelNombre.Text == "Ayuntamiento Nivel 1")
+		if (Recursos.Instance.ProdGold == 100)
 		{
+			labelNombre.Text = "  Ayuntamiento Nivel 1  ";
 			labelInfo.Text = "  Producción: 100 de oro por ronda  " + "\n  Coste mejora: 400 de oro  ";
 		}
-		else if (labelNombre.Text == "Ayuntamiento Nivel 2")
+		else if (Recursos.Instance.ProdGold == 200)
 		{
+			labelNombre.Text = "  Ayuntamiento Nivel 2  ";
 			labelInfo.Text = "  Producción: 200 de oro por ronda  " + "\n  Coste mejora: 500 de oro, 50 de madera  ";
 		}
-		else if (labelNombre.Text == "Ayuntamiento Nivel 3")
+		else if (Recursos.Instance.ProdGold == 300)
 		{
 			labelInfo.Text = "  Producción: 300 de oro por ronda  " + "\n  Coste mejora: 700 de oro, 100 de madera, 25 de piedra  ";
 		}
-		else if (labelNombre.Text == "Ayuntamiento Nivel 4")
+		else if (Recursos.Instance.ProdGold == 400)
 		{
+			labelNombre.Text = "  Ayuntamiento Nivel 4  ";
 			labelInfo.Text = "  Producción: 400 de oro por ronda  " + "\n  Coste mejora: 1000 de oro, 200 de madera, 100 de piedra, 25 de hierro  ";
 		}
-		else if (labelNombre.Text == "Ayuntamiento Nivel 5")
+		else if (Recursos.Instance.ProdGold == 500)
 		{
+			labelNombre.Text = "  Ayuntamiento Nivel 5  ";
 			labelInfo.Text = "  Producción: 500 de oro por ronda  ";
 			btnMejorar.Disabled = true;
 		}
+
         isPaused = true;
         GetTree().Paused = true;
         Visible = true;

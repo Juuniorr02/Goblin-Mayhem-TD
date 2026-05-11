@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dgc77kp8vuy4p"]
 
-[ext_resource type="Script" uid="uid://68388b2ga21x" path="res://scripts/ui/OptionsPausa.cs" id="1_lfuli"]
+[ext_resource type="Script" uid="uid://68388b2ga21x" path="res://scripts/ui/menus/OptionsPausa.cs" id="1_lfuli"]
 
 [node name="OptionsPausa" type="CanvasLayer"]
 script = ExtResource("1_lfuli")
@@ -228,78 +228,6 @@ size_flags_stretch_ratio = 0.4
 value = 100.0
 
 [node name="Espacio2" type="MarginContainer" parent="CenterContainer/PanelContainer/MarginContainer/PanelContainer/VBoxContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
-
-[node name="Sensibilidad" type="MarginContainer" parent="CenterContainer/PanelContainer/MarginContainer/PanelContainer/VBoxContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="Sensibilidad" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/PanelContainer/VBoxContainer/VBoxContainer/Sensibilidad"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/PanelContainer/VBoxContainer/VBoxContainer/Sensibilidad/Sensibilidad"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.6
-text = "Camara"
-
-[node name="Sensibilidad" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/PanelContainer/VBoxContainer/VBoxContainer/Sensibilidad/Sensibilidad"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Sensibilidad" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/PanelContainer/VBoxContainer/VBoxContainer/Sensibilidad/Sensibilidad/Sensibilidad"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.2
-text = "Sensibilidad"
-
-[node name="SensibilidadOption" type="SpinBox" parent="CenterContainer/PanelContainer/MarginContainer/PanelContainer/VBoxContainer/VBoxContainer/Sensibilidad/Sensibilidad/Sensibilidad"]
-layout_mode = 2
-size_flags_horizontal = 2
-size_flags_stretch_ratio = 0.4
-min_value = 1.0
-max_value = 10.0
-step = 0.1
-value = 5.0
-
-[node name="InvertirY" type="MarginContainer" parent="CenterContainer/PanelContainer/MarginContainer/PanelContainer/VBoxContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="InvertirY" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/PanelContainer/VBoxContainer/VBoxContainer/InvertirY"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/PanelContainer/VBoxContainer/VBoxContainer/InvertirY/InvertirY"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.6
-
-[node name="InvertirY" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/PanelContainer/VBoxContainer/VBoxContainer/InvertirY/InvertirY"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="InvertirY" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/PanelContainer/VBoxContainer/VBoxContainer/InvertirY/InvertirY/InvertirY"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.2
-text = "Invertir Y"
-
-[node name="InventirYOption" type="CheckBox" parent="CenterContainer/PanelContainer/MarginContainer/PanelContainer/VBoxContainer/VBoxContainer/InvertirY/InvertirY/InvertirY"]
-layout_mode = 2
-size_flags_horizontal = 2
-size_flags_stretch_ratio = 0.4
-
-[node name="Espacio3" type="MarginContainer" parent="CenterContainer/PanelContainer/MarginContainer/PanelContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5

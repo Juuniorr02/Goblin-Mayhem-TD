@@ -90,6 +90,7 @@ public partial class mapa_mundi : Node2D
 
 	public void OnTutorial()
 	{
+		GameData.MapaMundiVisitado = true;
 		if (menuAbierto) return;
 		nombreNivel = "Tutorial";
         entrar_nivel?.Abrir();

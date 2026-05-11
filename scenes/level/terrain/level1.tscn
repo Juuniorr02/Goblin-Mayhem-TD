@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://bvj23ok4pqai6"]
+[gd_scene load_steps=59 format=3 uid="uid://bvj23ok4pqai6"]
 
 [ext_resource type="PackedScene" uid="uid://bxah54x2mw4ix" path="res://assets/level/Map/level1.tmx" id="1_obe7s"]
 [ext_resource type="Script" uid="uid://cubvhlo0alqh1" path="res://scripts/level/terrain/Pathfinding.cs" id="2_d0a6p"]
@@ -32,13 +32,6 @@
 [ext_resource type="PackedScene" uid="uid://c6o5datpm682p" path="res://scenes/ui/menus/menu_victoria.tscn" id="30_k421d"]
 [ext_resource type="PackedScene" path="res://scenes/ui/ui/uiMalo.tscn" id="31_m3lfk"]
 
-[sub_resource type="Resource" id="Resource_k421d"]
-script = ExtResource("5_xjvah")
-EnemyType = ExtResource("8_xjvah")
-Count = 1
-Path = 1
-metadata/_custom_type_script = "uid://dxi6h4dntdvec"
-
 [sub_resource type="Resource" id="Resource_tqsr0"]
 script = ExtResource("5_xjvah")
 EnemyType = ExtResource("4_h1gti")
@@ -61,7 +54,7 @@ metadata/_custom_type_script = "uid://dxi6h4dntdvec"
 [sub_resource type="Resource" id="Resource_brejp"]
 script = ExtResource("6_ev6gv")
 WaveName = "1"
-Groups = Array[Object]([SubResource("Resource_k421d"), SubResource("Resource_tqsr0"), SubResource("Resource_enutg"), SubResource("Resource_ev6gv")])
+Groups = Array[Object]([SubResource("Resource_tqsr0"), SubResource("Resource_enutg"), SubResource("Resource_ev6gv")])
 metadata/_custom_type_script = "uid://b7rcgtrq61w48"
 
 [sub_resource type="Resource" id="Resource_j2s0a"]
@@ -292,4 +285,3 @@ WinningWave = 5
 
 [node name="DialogueUi" parent="." instance=ExtResource("31_m3lfk")]
 defaultDialogueLines = PackedStringArray("¡Ohh nooo! Los Duendes vienen a atacarnos, porfavor...", "Defiende a este pobre Rey normal y corriente de esos feos Duendes.", "No dejes que lleguen o... !Moriremos todoss!")
-deathDialogueLines = PackedStringArray("¡Ja, ja, ja! Como no te diste cuenta que yo... ¡Soy un Duende!", "Tu destino estaba mas que sentenciado, pero me has caido bien.", "Te dejare vivir pero como te entrometas, moriras en la guillotina.")

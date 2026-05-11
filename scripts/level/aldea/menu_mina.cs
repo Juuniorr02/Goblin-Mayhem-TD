@@ -50,31 +50,38 @@ public partial class menu_mina : CanvasLayer
 
 	public void Abrir()
 	{
-		if (labelNombre.Text == "Mina Nivel 0")
+		if (Recursos.Instance.ProdIron == 0)
 		{
+			labelNombre.Text = "  Mina Nivel 0  ";
 			labelInfo.Text = "  Producción: 0 de hierro por ronda  " + "\n  Coste desbloqueo: 200 de oro  ";
 		}
-		else if (labelNombre.Text == "Mina Nivel 1")
+		else if (Recursos.Instance.ProdIron == 25)
 		{
+			labelNombre.Text = "  Mina Nivel 1  ";
 			labelInfo.Text = "  Producción: 25 de hierro por ronda  " + "\n  Coste mejora: 400 de oro  ";
 		}
-		else if (labelNombre.Text == "Mina Nivel 2")
+		else if (Recursos.Instance.ProdIron == 50)
 		{
+			labelNombre.Text = "  Mina Nivel 2  ";
 			labelInfo.Text = "  Producción: 50 de hierro por ronda  " + "\n  Coste mejora: 700 de oro, 100 de madera  ";
 		}
-		else if (labelNombre.Text == "Mina Nivel 3")
+		else if (Recursos.Instance.ProdIron == 75)
 		{
+			labelNombre.Text = "  Mina Nivel 3  ";
 			labelInfo.Text = "  Producción: 75 de hierro por ronda  " + "\n  Coste mejora: 900 de oro, 180 de madera, 70 de piedra  ";
 		}
-		else if (labelNombre.Text == "Mina Nivel 4")
+		else if (Recursos.Instance.ProdIron == 100)
 		{
+			labelNombre.Text = "  Mina Nivel 4  ";
 			labelInfo.Text = "  Producción: 100 de hierro por ronda  " + "\n  Coste mejora: 1200 de oro, 250 de madera, 140 de piedra, 70 de hierro  ";
 		}
-		else if (labelNombre.Text == "Mina Nivel 5")
+		else if (Recursos.Instance.ProdIron == 150)
 		{
+			labelNombre.Text = "Mina Nivel 5";
 			labelInfo.Text = "  Producción: 150 de hierro por ronda  ";
 			btnMejorar.Disabled = true;
 		}
+		
         isPaused = true;
         GetTree().Paused = true;
         Visible = true;
