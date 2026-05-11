@@ -28,10 +28,10 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ekvvp"]
 size = Vector2(11, 23.999996)
 
-[node name="pepin" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "HealthBar") groups=["Acuatico", "Volador", "enemies"]]
+[node name="pepin" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "HealthBar") groups=["enemies"]]
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_fjijl")
-sprite = NodePath("Sprite2D")
+sprite = NodePath("AnimatedSprite2D")
 Data = SubResource("Resource_ekvvp")
 HealthBar = NodePath("TextureProgressBar")
 
@@ -47,7 +47,7 @@ nine_patch_stretch = true
 texture_progress = ExtResource("1_wct5h")
 metadata/_edit_use_anchors_ = true
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_ntm2q")
