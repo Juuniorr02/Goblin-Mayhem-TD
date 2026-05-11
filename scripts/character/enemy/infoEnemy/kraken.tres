@@ -7,7 +7,7 @@
 script = ExtResource("1_rwfju")
 EnemyName = "Kraken"
 Speed = 60.0
-DamageToBase = 40
+DamageToBase = 55
 Health = 600
 IsAquatic = true
 EnemyScene = ExtResource("1_8rrxu")

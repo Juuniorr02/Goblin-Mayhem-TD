@@ -80,6 +80,7 @@ offset_bottom = 124.0
 scale = Vector2(0.16, 0.05)
 nine_patch_stretch = true
 texture_progress = ExtResource("4_4kjq8")
+metadata/_edit_use_anchors_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
