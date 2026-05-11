@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://fwle2vth706y" path="res://scenes/tower/Construir/Martillo.tscn" id="8_pjnpp"]
 [ext_resource type="Resource" uid="uid://lbiebqt20kjf" path="res://scripts/character/enemy/infoEnemy/pepin.tres" id="8_xjvah"]
 [ext_resource type="PackedScene" uid="uid://i7fnxkfidwjh" path="res://scenes/tower/ArcherTower/archerTower.tscn" id="9_sorvc"]
-[ext_resource type="Resource" uid="uid://cwlyclc8f31ft" path="res://scripts/character/enemy/infoEnemy/bebeWyern.tres" id="10_cu56y"]
+[ext_resource type="Resource" uid="uid://d2510p56t5xsd" path="res://scripts/character/enemy/infoEnemy/bebeWyern.tres" id="10_cu56y"]
 [ext_resource type="PackedScene" uid="uid://ckc1i5qv6sle8" path="res://scenes/tower/Ballista/ballista.tscn" id="10_k421d"]
 [ext_resource type="PackedScene" uid="uid://ce0pn5jdtd7uu" path="res://scenes/tower/Globo/globo.tscn" id="11_m3lfk"]
 [ext_resource type="Resource" uid="uid://bdha8t6bcfd4l" path="res://scripts/character/enemy/infoEnemy/emperador.tres" id="12_66yle"]
@@ -23,14 +23,21 @@
 [ext_resource type="PackedScene" uid="uid://bv6xb2o3otqu3" path="res://scenes/tower/Grifo/GrffinTower.tscn" id="15_cu56y"]
 [ext_resource type="PackedScene" uid="uid://cuq0at3ylsro3" path="res://scenes/tower/MageTower/mage_tower.tscn" id="16_rrpdo"]
 [ext_resource type="PackedScene" uid="uid://ci612q8twcycd" path="res://scenes/ui/ui/iu.tscn" id="17_66yle"]
-[ext_resource type="PackedScene" uid="uid://b4kgd56vbuq80" path="res://scenes/tower/Ship/ship.tscn" id="17_d0a6p"]
+[ext_resource type="PackedScene" uid="uid://b4kgd56vbuq80" path="res://scenes/tower/ship/ship.tscn" id="17_d0a6p"]
 [ext_resource type="Script" uid="uid://ccef7herjptu0" path="res://scripts/character/camera/CameraRig.cs" id="18_0t75c"]
 [ext_resource type="PackedScene" uid="uid://dd15bvxn3ddsy" path="res://scenes/tower/Tuna/tuna_hatchery.tscn" id="18_nvdl1"]
 [ext_resource type="PackedScene" uid="uid://dgc77kp8vuy4p" path="res://scenes/ui/menus/options_pausa.tscn" id="21_uk6l5"]
 [ext_resource type="PackedScene" uid="uid://0hu00p8f0uvx" path="res://scenes/ui/menus/menu_pausa_level_1.tscn" id="24_8dopk"]
 [ext_resource type="PackedScene" uid="uid://di2gid6004846" path="res://scenes/ui/menus/menu_derrota_tutorial.tscn" id="24_xjvah"]
 [ext_resource type="PackedScene" uid="uid://c6o5datpm682p" path="res://scenes/ui/menus/menu_victoria.tscn" id="30_k421d"]
-[ext_resource type="PackedScene" path="res://scenes/ui/ui/uiMalo.tscn" id="31_m3lfk"]
+[ext_resource type="PackedScene" uid="uid://cgidgps04y2lg" path="res://scenes/ui/ui/uiMalo.tscn" id="31_m3lfk"]
+
+[sub_resource type="Resource" id="Resource_k421d"]
+script = ExtResource("5_xjvah")
+EnemyType = ExtResource("8_xjvah")
+Count = 1
+Path = 1
+metadata/_custom_type_script = "uid://dxi6h4dntdvec"
 
 [sub_resource type="Resource" id="Resource_tqsr0"]
 script = ExtResource("5_xjvah")
@@ -284,4 +291,4 @@ layer = 5
 WinningWave = 5
 
 [node name="DialogueUi" parent="." instance=ExtResource("31_m3lfk")]
-defaultDialogueLines = PackedStringArray("¡Ohh nooo! Los Duendes vienen a atacarnos, porfavor...", "Defiende a este pobre Rey normal y corriente de esos feos Duendes.", "No dejes que lleguen o... !Moriremos todoss!")
+defaultDialogueLines = PackedStringArray("¡Ohh nooo! Los goblins vienen a atacarnos, porfavor...", "Defiende a este pobre Rey normal y corriente de esos feos goblins.", "No dejes que lleguen o... !Moriremos todoss!")

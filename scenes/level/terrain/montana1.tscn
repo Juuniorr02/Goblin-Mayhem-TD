@@ -242,4 +242,4 @@ WinningWave = 5
 [node name="menu_derrota" parent="." instance=ExtResource("16_tthrg")]
 
 [node name="DialogueUi" parent="." instance=ExtResource("25_qrxqc")]
-defaultDialogueLines = PackedStringArray("Señor, el camino hacia el castillo esta plagado de Duendes.", "Sera un largo camino pero lo conseguiremos.", "Señor, me han informado que los Duendes no solo quieren el castillo, ¡Tambien estan asediando otras aldeas!", "Hay que detenerlos... Es la unica forma de avanzar.", "Me informan de 5 oleadas de Duendes, suerte señor.")
+defaultDialogueLines = PackedStringArray("Señor, el camino hacia el castillo esta plagado de goblins.", "Sera un largo camino pero lo conseguiremos.", "Señor, me han informado que los goblins no solo quieren el castillo, ¡Tambien estan asediando otras aldeas!", "Hay que detenerlos... Es la unica forma de avanzar.", "Me informan de 5 oleadas de goblins, suerte señor.")
