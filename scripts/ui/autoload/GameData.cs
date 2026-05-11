@@ -11,6 +11,7 @@ public partial class GameData : Node
     public static bool Level6 = false;
 
     public static bool AldeaVisitada = false;
+    public static bool MapaMundiVisitado = false;
 
 
     public static GameData Instance;
@@ -30,5 +31,6 @@ public partial class GameData : Node
         Level6 = false;
 
         AldeaVisitada = false;
+        MapaMundiVisitado = false;
     }
 }

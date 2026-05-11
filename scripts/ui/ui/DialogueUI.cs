@@ -42,6 +42,21 @@ public partial class DialogueUI : CanvasLayer
             }
 
         }
+        else if (!GameData.MapaMundiVisitado && defaultDialogueLines != null && defaultDialogueLines.Length > 0)
+        {
+            TriggerDialogue(defaultDialogueLines);
+            // Marcamos como visto para que no se repita
+            if (CurrentScene == "res://scenes/level/aldea/mapa_mundi.tscn")
+            {
+                TriggerDialogue(defaultDialogueLines);
+                GameData.MapaMundiVisitado = true; 
+            }
+            else
+            {
+                return;
+            }
+
+        }
         else
         {
             Visible = false;

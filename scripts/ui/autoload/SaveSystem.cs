@@ -33,6 +33,7 @@ public partial class SaveSystem : Node
         data["level4"] = GameData.Level4;
         data["level5"] = GameData.Level5;
         data["aldeaVisitada"] = GameData.AldeaVisitada;
+        data["mapaMundiVisitado"] = GameData.MapaMundiVisitado;
 
         var json = Json.Stringify(data);
 
@@ -112,8 +113,12 @@ public partial class SaveSystem : Node
 
         if (data.ContainsKey("level5"))
             GameData.Level5 = (bool)data["level5"];
+
         if(data.ContainsKey("aldeaVisitada"))
             GameData.AldeaVisitada = (bool)data["aldeaVisitada"];
+            
+        if(data.ContainsKey("mapaMundiVisitado"))
+            GameData.MapaMundiVisitado = (bool)data["mapaMundiVisitado"];
 
         GD.Print("✅ partida cargada");
     }

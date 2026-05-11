@@ -144,8 +144,17 @@ public partial class Iu : Control
             }
             else if (contador == 0 && Wave.Instance.CurrentWave == 0)
             {
-                Recursos.Instance.StartLevel();
-                contador++;
+                if(CurrentScene == "res://scenes/level/terrain/castilloMalvado.tscn")
+                {
+                    Recursos.Instance.LastLevel();
+                    contador++;
+                }
+                
+                else
+                {
+                    Recursos.Instance.StartLevel();
+                    contador++;
+                }
             }
         }
     }
