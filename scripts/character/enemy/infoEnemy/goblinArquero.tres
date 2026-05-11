@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=3 format=3 uid="uid://dmgbpwj54a070"]
+
+[ext_resource type="PackedScene" uid="uid://ipi2g73m20c8" path="res://scenes/character/enemy/GoblinArquero.tscn" id="1_28boj"]
+[ext_resource type="Script" uid="uid://dtfsd6sb6u7oe" path="res://scripts/character/enemy/EnemyData.cs" id="1_tdmo8"]
+
+[resource]
+script = ExtResource("1_tdmo8")
+EnemyName = "Goblin Arquero"
+Speed = 95.0
+DamageToBase = 3
+Health = 45
+EnemyScene = ExtResource("1_28boj")
+metadata/_custom_type_script = "uid://dtfsd6sb6u7oe"
