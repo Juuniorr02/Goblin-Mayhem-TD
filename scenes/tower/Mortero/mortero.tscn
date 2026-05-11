@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://bm2tdm7lsq5q3"]
 
-[ext_resource type="Script" uid="uid://ce7sms75wfqap" path="res://scripts/character/tower/mortar/MorteroTower.cs" id="1_nvavh"]
+[ext_resource type="Script" uid="uid://ce7sms75wfqap" path="res://scripts/character/tower/Mortar/MorteroTower.cs" id="1_nvavh"]
 [ext_resource type="PackedScene" uid="uid://c1no67p7guund" path="res://scenes/tower/Mortero/mortero_shot.tscn" id="2_kjqeh"]
 [ext_resource type="Texture2D" uid="uid://d22qkhcwmb1x6" path="res://assets/character/tower/Mortero/Mortero-Sheet.png" id="3_kjqeh"]
 
@@ -70,9 +70,10 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kjqeh"]
 
-[node name="Mortero" type="Node2D"]
+[node name="Mortero" type="Node2D" node_paths=PackedStringArray("MyAnimation")]
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_nvavh")
+MyAnimation = NodePath("AnimatedSprite2D")
 BulletScene = ExtResource("2_kjqeh")
 Damage = 20.0
 FireRate = 0.5
