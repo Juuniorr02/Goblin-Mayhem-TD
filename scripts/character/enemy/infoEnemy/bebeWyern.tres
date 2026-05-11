@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="EnemyData" load_steps=3 format=3 uid="uid://cwlyclc8f31ft"]
+[gd_resource type="Resource" script_class="EnemyData" load_steps=3 format=3 uid="uid://b4hbuhbttqy8d"]
 
-[ext_resource type="Script" uid="uid://dtfsd6sb6u7oe" path="res://scripts/character/enemy/EnemyData.cs" id="1_3gvw5"]
 [ext_resource type="PackedScene" uid="uid://dm5gq3x7pj0uj" path="res://scenes/character/enemy/BebeWyvern.tscn" id="1_ojoqu"]
+[ext_resource type="Script" uid="uid://dtfsd6sb6u7oe" path="res://scripts/character/enemy/EnemyData.cs" id="2_3orun"]
 
 [resource]
-script = ExtResource("1_3gvw5")
+script = ExtResource("2_3orun")
 EnemyName = "Bebe Wyvern"
 DamageToBase = 10
 Health = 200
