@@ -77,6 +77,15 @@ public partial class Recursos : Node
         Iron = 10000;
     }
 
+    public void LastLevel()
+    {
+        Vida = BaseVida + ProdVida;
+        Gold = BaseGold + ProdGold + 500;
+        Wood = BaseWood + ProdWood + 400;
+        Stone = BaseStone + ProdStone + 300;
+        Iron = BaseIron + ProdIron + 200;
+    }
+
     public void MuchoDinero()
     {
         Gold = 1000000;
@@ -121,6 +130,14 @@ public partial class Recursos : Node
         Wood += ProdWood;
         Stone += ProdStone;
         Iron += ProdIron;
+    }
+
+    public void AddProductionIslas()
+    {
+        Gold += (int)(ProdGold * 0.75f);
+        Wood += (int)(ProdWood * 0.75f);
+        Stone += (int)(ProdStone * 0.75f);
+        Iron += (int)(ProdIron * 0.75f);
     }
 
     public void EndLevel()

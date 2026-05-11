@@ -3,6 +3,7 @@ using System;
 
 public partial class Iu : Control
 {
+    private string CurrentScene => GetTree().CurrentScene.SceneFilePath;
     private TextureButton waveButton;
     private Label waveLabel;
     private Label goldLabel, healthLabel, ironLabel, woodLabel, stoneLabel;
@@ -239,8 +240,22 @@ public partial class Iu : Control
 
             spawner?.StartWave(Wave.Instance.CurrentWave - 1);
 
-            Recursos.Instance.AddProduction();
-            constructionwave++;
+            if(CurrentScene == "res://scenes/level/terrain/pantano1.tscn")
+            {
+                Recursos.Instance.AddProduction();
+                Recursos.Instance.AddProduction();
+                constructionwave++;
+            }
+            else if(CurrentScene == "res://scenes/level/terrain/islas1.tscn")
+            {
+                Recursos.Instance.AddProductionIslas();
+                constructionwave++;
+            }
+            else
+            {
+                Recursos.Instance.AddProduction();
+                constructionwave++;
+            }
         }
         else
         {
