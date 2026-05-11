@@ -176,17 +176,41 @@ public partial class TowerBuilder : Node2D
         return layer.LocalToMap(localPos);
     }
 
-    private bool CanBuildOnTile(Vector2I tilePos)
+private bool CanBuildOnTile(Vector2I tilePos)
+{
+    if (occupiedTiles.ContainsKey(tilePos)) return false;
+
+    foreach (TileMapLayer layer in allLayers)
     {
-        if (occupiedTiles.ContainsKey(tilePos)) return false;
-        foreach (TileMapLayer layer in allLayers)
+        TileData data = layer.GetCellTileData(tilePos);
+        if (data == null) continue;
+
+        // Caso especial para Bloon: revisa ambas propiedades
+        if (currentTowerName == "Bloon")
         {
-            TileData data = layer.GetCellTileData(tilePos);
-            if (data == null) continue;
-            string prop = currentTowerName switch { "Ship" => "can_build_boat","Bloon" => "can_build_boat", "Atun" => "can_build_atun", _ => "can_build" };
+            var canBuild = data.GetCustomData("can_build");
+            var canBuildBoat = data.GetCustomData("can_build_boat");
+            
+            if ((canBuild.VariantType != Variant.Type.Nil && canBuild.AsBool()) ||
+                (canBuildBoat.VariantType != Variant.Type.Nil && canBuildBoat.AsBool()))
+            {
+                return true;
+            }
+        }
+        else 
+        {
+            // Lógica normal para las demás torres
+            string prop = currentTowerName switch 
+            { 
+                "Ship" => "can_build_boat", 
+                "Atun" => "can_build_atun", 
+                _ => "can_build" 
+            };
+
             Variant buildData = data.GetCustomData(prop);
             if (buildData.VariantType != Variant.Type.Nil && buildData.AsBool()) return true;
         }
-        return false;
     }
+    return false;
+}
 }

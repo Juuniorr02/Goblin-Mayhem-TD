@@ -7,8 +7,8 @@
 script = ExtResource("1_ktm8o")
 EnemyName = "Wyvern"
 Speed = 110.0
-DamageToBase = 30
-Health = 550
+DamageToBase = 50
+Health = 800
 IsFlying = true
 EnemyScene = ExtResource("1_1ijng")
 metadata/_custom_type_script = "uid://dtfsd6sb6u7oe"

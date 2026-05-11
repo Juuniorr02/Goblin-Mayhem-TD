@@ -76,7 +76,7 @@ script = ExtResource("1_nvavh")
 MyAnimation = NodePath("AnimatedSprite2D")
 BulletScene = ExtResource("2_kjqeh")
 Damage = 25.0
-FireRate = 2.0
+FireRate = 0.35
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

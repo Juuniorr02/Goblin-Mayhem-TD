@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=3 format=3 uid="uid://cj6cdhd2ebxn3"]
+
+[ext_resource type="Script" uid="uid://dtfsd6sb6u7oe" path="res://scripts/character/enemy/EnemyData.cs" id="1_7xdbq"]
+[ext_resource type="PackedScene" uid="uid://s835v24kkpwu" path="res://scenes/character/enemy/BarcoEnemigo.tscn" id="1_4038x"]
+
+[resource]
+script = ExtResource("1_7xdbq")
+EnemyName = "Barco Enemigo"
+Speed = 75.0
+DamageToBase = 10
+Health = 250
+IsAquatic = true
+EnemyScene = ExtResource("1_4038x")
+metadata/_custom_type_script = "uid://dtfsd6sb6u7oe"
