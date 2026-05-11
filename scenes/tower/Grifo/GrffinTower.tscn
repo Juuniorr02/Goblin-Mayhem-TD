@@ -9,6 +9,8 @@
 [node name="GriffinTower" type="Node2D"]
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_2xxnb")
+MaxGriffins = 3
+AttackDistance = 100.0
 BulletScene = ExtResource("2_jrnjw")
 CanTargetAir = true
 

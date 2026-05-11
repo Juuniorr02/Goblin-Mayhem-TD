@@ -82,7 +82,7 @@ Spread = 0.01
 MyAnimation = NodePath("AnimatedSprite2D")
 BulletScene = ExtResource("2_mnmbe")
 Damage = 0.5
-FireRate = 10.0
+FireRate = 15.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

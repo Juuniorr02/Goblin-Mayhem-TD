@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://63n8ujelr0ty"]
+[gd_scene load_steps=49 format=3 uid="uid://63n8ujelr0ty"]
 
 [ext_resource type="PackedScene" uid="uid://box8tpwtebkqj" path="res://assets/level/Map/montana1.tmx" id="1_5fc2a"]
 [ext_resource type="Script" uid="uid://cubvhlo0alqh1" path="res://scripts/level/terrain/Pathfinding.cs" id="2_abfbc"]
@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://ce0pn5jdtd7uu" path="res://scenes/tower/Globo/globo.tscn" id="15_8k8u7"]
 [ext_resource type="PackedScene" uid="uid://c387degtgk6i6" path="res://scenes/ui/menus/menu_derrota.tscn" id="16_tthrg"]
 [ext_resource type="PackedScene" uid="uid://bv6xb2o3otqu3" path="res://scenes/tower/Grifo/GrffinTower.tscn" id="17_g8uhd"]
+[ext_resource type="PackedScene" uid="uid://dyk56b112rm25" path="res://scenes/ui/ui/uiTutorial.tscn" id="25_qrxqc"]
 
 [sub_resource type="Resource" id="Resource_qrxqc"]
 script = ExtResource("5_hfw40")
@@ -239,3 +240,6 @@ menuVictoria = NodePath("../menu_victoria")
 WinningWave = 5
 
 [node name="menu_derrota" parent="." instance=ExtResource("16_tthrg")]
+
+[node name="DialogueUi" parent="." instance=ExtResource("25_qrxqc")]
+defaultDialogueLines = PackedStringArray("Señor, el camino hacia el castillo esta plagado de Duendes.", "Sera un largo camino pero lo conseguiremos.", "Señor, me han informado que los Duendes no solo quieren el castillo, ¡Tambien estan asediando otras aldeas!", "Hay que detenerlos... Es la unica forma de avanzar.", "Me informan de 5 oleadas de Duendes, suerte señor.")
