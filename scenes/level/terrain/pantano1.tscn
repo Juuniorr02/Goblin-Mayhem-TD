@@ -20,7 +20,7 @@
 [ext_resource type="Script" uid="uid://ccef7herjptu0" path="res://scripts/character/camera/CameraRig.cs" id="11_rt8em"]
 [ext_resource type="PackedScene" uid="uid://cuq0at3ylsro3" path="res://scenes/tower/MageTower/mage_tower.tscn" id="12_uileq"]
 [ext_resource type="PackedScene" uid="uid://cor65fcesxg0a" path="res://scenes/ui/menus/menu_pausa.tscn" id="12_y753q"]
-[ext_resource type="PackedScene" uid="uid://b4kgd56vbuq80" path="res://scenes/tower/ship/ship.tscn" id="13_coopg"]
+[ext_resource type="PackedScene" uid="uid://b4kgd56vbuq80" path="res://scenes/tower/Ship/ship.tscn" id="13_coopg"]
 [ext_resource type="PackedScene" uid="uid://dgc77kp8vuy4p" path="res://scenes/ui/menus/options_pausa.tscn" id="13_s654b"]
 [ext_resource type="PackedScene" uid="uid://bv6xb2o3otqu3" path="res://scenes/tower/Grifo/GrffinTower.tscn" id="14_8lpxf"]
 [ext_resource type="PackedScene" uid="uid://c6o5datpm682p" path="res://scenes/ui/menus/menu_victoria.tscn" id="14_pm7bs"]
@@ -180,7 +180,7 @@ metadata/_edit_use_anchors_ = true
 [node name="OptionsPausa" parent="." instance=ExtResource("13_s654b")]
 
 [node name="menu_victoria" parent="." instance=ExtResource("14_pm7bs")]
-WinningWave = 7
+WinningWave = 8
 
 [node name="menu_derrota" parent="." instance=ExtResource("15_amlx2")]
 

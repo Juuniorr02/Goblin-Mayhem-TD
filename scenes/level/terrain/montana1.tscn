@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://63n8ujelr0ty"]
+[gd_scene load_steps=52 format=3 uid="uid://63n8ujelr0ty"]
 
 [ext_resource type="PackedScene" uid="uid://box8tpwtebkqj" path="res://assets/level/Map/montana1.tmx" id="1_5fc2a"]
 [ext_resource type="Script" uid="uid://cubvhlo0alqh1" path="res://scripts/level/terrain/Pathfinding.cs" id="2_abfbc"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://ieo0rfx4mn8y" path="res://scenes/tower/Cannon/Cannon.tscn" id="8_8nqb7"]
 [ext_resource type="PackedScene" uid="uid://cor65fcesxg0a" path="res://scenes/ui/menus/menu_pausa.tscn" id="8_h3ie6"]
 [ext_resource type="PackedScene" uid="uid://fwle2vth706y" path="res://scenes/tower/Construir/Martillo.tscn" id="8_h687j"]
+[ext_resource type="Resource" uid="uid://bdha8t6bcfd4l" path="res://scripts/character/enemy/infoEnemy/emperador.tres" id="9_01ffh"]
 [ext_resource type="PackedScene" uid="uid://i7fnxkfidwjh" path="res://scenes/tower/ArcherTower/archerTower.tscn" id="9_iwtdf"]
 [ext_resource type="PackedScene" uid="uid://bm2tdm7lsq5q3" path="res://scenes/tower/Mortero/mortero.tscn" id="10_a1srb"]
 [ext_resource type="PackedScene" uid="uid://doxdk8ijaiqly" path="res://scenes/tower/Flamethrower/flamethrower.tscn" id="11_2mh14"]
@@ -154,6 +155,18 @@ WaveName = "Oleada 5 - x30 Goblin Volador, x3 Golem"
 Groups = Array[Object]([SubResource("Resource_rml55"), SubResource("Resource_eflra")])
 metadata/_custom_type_script = "uid://b7rcgtrq61w48"
 
+[sub_resource type="Resource" id="Resource_2m30w"]
+script = ExtResource("5_hfw40")
+EnemyType = ExtResource("9_01ffh")
+Count = 2
+Path = 1
+metadata/_custom_type_script = "uid://dxi6h4dntdvec"
+
+[sub_resource type="Resource" id="Resource_5qnps"]
+script = ExtResource("4_3pfqo")
+Groups = Array[Object]([SubResource("Resource_2m30w")])
+metadata/_custom_type_script = "uid://b7rcgtrq61w48"
+
 [sub_resource type="Curve2D" id="Curve2D_5fc2a"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 6162, 6225, 0, 0, 0, 0, 7180, 5746, 0, 0, 0, 0, 5889, 5145, 0, 0, 0, 0, 7651, 4321, 0, 0, 0, 0, 6941, 3983, 0, 0, 0, 0, 7653, 3655, 0, 0, 0, 0, 7051, 3377, 0, 0, 0, 0, 7653, 3102, 0, 0, 0, 0, 5898, 2279, 0, 0, 0, 0, 7205, 1675, 0, 0, 0, 0, 7023, 1601)
@@ -184,7 +197,7 @@ script = ExtResource("3_wwvym")
 CaminoA = NodePath("CaminoA")
 CaminoB = NodePath("CaminoB")
 CaminoVolador = NodePath("CaminoVolador")
-Waves = Array[Object]([SubResource("Resource_85ag8"), SubResource("Resource_d3igb"), SubResource("Resource_g0l8x"), SubResource("Resource_30500"), SubResource("Resource_3of4s")])
+Waves = Array[Object]([SubResource("Resource_85ag8"), SubResource("Resource_d3igb"), SubResource("Resource_g0l8x"), SubResource("Resource_30500"), SubResource("Resource_3of4s"), SubResource("Resource_5qnps")])
 
 [node name="CaminoA" type="Path2D" parent="EnemySpawner"]
 z_index = 1
@@ -237,7 +250,7 @@ menuVictoria = NodePath("../menu_victoria")
 [node name="OptionsPausa" parent="." instance=ExtResource("14_mlipa")]
 
 [node name="menu_victoria" parent="." instance=ExtResource("15_0l7l4")]
-WinningWave = 5
+WinningWave = 6
 
 [node name="menu_derrota" parent="." instance=ExtResource("16_tthrg")]
 
