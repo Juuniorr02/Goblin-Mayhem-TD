@@ -61,7 +61,7 @@ public partial class MenuVictoria : CanvasLayer
 
             if (victoryTimer >= 5f)
             {
-                if (Wave.Instance.CurrentWave == WinningWave && NoEnemiesAlive() && Recursos.Instance.Vida >= 1)
+                if (Wave.Instance.CurrentWave >= WinningWave && NoEnemiesAlive() && Recursos.Instance.Vida >= 1)
                 {
                     HandleVictory();
                 }
@@ -73,7 +73,7 @@ public partial class MenuVictoria : CanvasLayer
             return;
         }
 
-        if (Wave.Instance.CurrentWave == WinningWave && NoEnemiesAlive() && Recursos.Instance.Vida >= 1)
+        if (Wave.Instance.CurrentWave >= WinningWave && NoEnemiesAlive() && Recursos.Instance.Vida >= 1)
         {
             checkingVictory = true;
             victoryTimer = 0f;
