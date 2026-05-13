@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://b8xa50ck8j5yv"]
+[gd_scene load_steps=2 format=3 uid="uid://b8xa50ck8j5yv"]
+
+[ext_resource type="Script" uid="uid://clelxk74mv7o1" path="res://scripts/ui/menus/Creditos.cs" id="1_rsilq"]
 
 [node name="Creditos" type="Control"]
 layout_mode = 3
@@ -7,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_rsilq")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -48,6 +51,7 @@ size_flags_vertical = 6
 size_flags_stretch_ratio = 0.8
 
 [node name="fin" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer/botones"]
+unique_name_in_owner = true
 z_index = 10
 texture_filter = 1
 layout_mode = 2

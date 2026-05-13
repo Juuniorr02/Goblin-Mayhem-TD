@@ -119,9 +119,6 @@ public partial class Iu : Control
         UpdateWaveButtonState();
     }
 
-    // =========================
-    // UI UPDATE
-    // =========================
     private void UpdateIU()
     {
         if (Recursos.Instance != null)
@@ -159,17 +156,11 @@ public partial class Iu : Control
         }
     }
 
-    // =========================
-    // ENEMIGOS
-    // =========================
     private bool NoEnemiesAlive()
     {
         return GetTree().GetNodesInGroup("enemies").Count == 0;
     }
 
-    // =========================
-    // COOLDOWN LOGIC
-    // =========================
     private void UpdateWaveCooldown(float delta)
     {
         // si hay enemigos → reset total
@@ -181,7 +172,6 @@ public partial class Iu : Control
             return;
         }
 
-        // cooldown después de pulsar
         if (waitingAfterPress)
         {
             waveCooldown += delta;
@@ -197,7 +187,6 @@ public partial class Iu : Control
             return;
         }
 
-        // espera inicial cuando ya no hay enemigos
         if (!waitingCooldown)
         {
             waitingCooldown = true;
@@ -225,15 +214,11 @@ public partial class Iu : Control
         waveButton.Disabled = !canPress;
     }
 
-    // =========================
-    // WAVE BUTTON
-    // =========================
     private void OnWaveButtonPressed()
     {
         if (waveButton.Disabled)
             return;
 
-        // 🔥 activa cooldown después de pulsar
         waitingAfterPress = true;
         waveCooldown = 0f;
 
@@ -275,9 +260,6 @@ public partial class Iu : Control
         }
     }
 
-    // =========================
-    // TOWER UI
-    // =========================
     private void ShowTowerInfo(TowerData data)
     {
         if (data == null)
@@ -300,9 +282,6 @@ public partial class Iu : Control
         ShowTowerInfo(data);
     }
 
-    // =========================
-    // HELPERS
-    // =========================
     private void ConfigurarTextureBoton(TextureButton b)
     {
         if (b != null)
