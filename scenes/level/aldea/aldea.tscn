@@ -63,9 +63,9 @@ flat = true
 [node name="menu_ayuntamiento" parent="Botones/BotonAyuntamiento" instance=ExtResource("9_vy6mu")]
 layer = 6
 visible = false
-offset = Vector2(7000, 2250)
+offset = Vector2(6750, 2250)
 scale = Vector2(4, 4)
-transform = Transform2D(4, 0, 0, 4, 7000, 2250)
+transform = Transform2D(4, 0, 0, 4, 6750, 2250)
 follow_viewport_enabled = true
 
 [node name="BotonCantera" type="Button" parent="Botones"]
@@ -80,9 +80,9 @@ flat = true
 [node name="menu_cantera" parent="Botones/BotonCantera" instance=ExtResource("11_fx5rj")]
 layer = 6
 visible = false
-offset = Vector2(7000, 2250)
+offset = Vector2(6750, 2250)
 scale = Vector2(4, 4)
-transform = Transform2D(4, 0, 0, 4, 7000, 2250)
+transform = Transform2D(4, 0, 0, 4, 6750, 2250)
 follow_viewport_enabled = true
 
 [node name="BotonMina" type="Button" parent="Botones"]
@@ -97,9 +97,9 @@ metadata/_edit_use_anchors_ = true
 
 [node name="menu_mina" parent="Botones/BotonMina" instance=ExtResource("13_tilys")]
 visible = false
-offset = Vector2(7000, 2250)
+offset = Vector2(6750, 2250)
 scale = Vector2(4, 4)
-transform = Transform2D(4, 0, 0, 4, 7000, 2250)
+transform = Transform2D(4, 0, 0, 4, 6750, 2250)
 follow_viewport_enabled = true
 
 [node name="BotonAserradero" type="Button" parent="Botones"]
@@ -114,9 +114,9 @@ metadata/_edit_use_anchors_ = true
 
 [node name="menu_aserradero" parent="Botones/BotonAserradero" instance=ExtResource("8_8mv7s")]
 visible = false
-offset = Vector2(7000, 2250)
+offset = Vector2(6750, 2250)
 scale = Vector2(4, 4)
-transform = Transform2D(4, 0, 0, 4, 7000, 2250)
+transform = Transform2D(4, 0, 0, 4, 6750, 2250)
 follow_viewport_enabled = true
 
 [node name="BotonBarrio" type="Button" parent="Botones"]
@@ -131,9 +131,9 @@ flat = true
 
 [node name="menu_barrio" parent="Botones/BotonBarrio" instance=ExtResource("10_0jmeu")]
 visible = false
-offset = Vector2(7000, 2250)
+offset = Vector2(6750, 2250)
 scale = Vector2(4, 4)
-transform = Transform2D(4, 0, 0, 4, 7000, 2250)
+transform = Transform2D(4, 0, 0, 4, 6750, 2250)
 follow_viewport_enabled = true
 
 [node name="BotonHerreria" type="Button" parent="Botones"]
