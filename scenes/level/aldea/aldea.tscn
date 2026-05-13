@@ -147,9 +147,9 @@ flat = true
 
 [node name="menu_herreria" parent="Botones/BotonHerreria" instance=ExtResource("12_splcq")]
 visible = false
-offset = Vector2(7000, 2250)
+offset = Vector2(6750, 2250)
 scale = Vector2(4, 4)
-transform = Transform2D(4, 0, 0, 4, 7000, 2250)
+transform = Transform2D(4, 0, 0, 4, 6750, 2250)
 follow_viewport_enabled = true
 
 [node name="BotonMapa" type="Button" parent="Botones"]
