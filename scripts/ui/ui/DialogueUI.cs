@@ -57,9 +57,20 @@ public partial class DialogueUI : CanvasLayer
             }
 
         }
-        else
+        
+        else if (GameData.MapaMundiVisitado == true && CurrentScene == "res://scenes/level/aldea/mapa_mundi.tscn")
         {
             Visible = false;
+        }
+
+        else if (GameData.AldeaVisitada == true && CurrentScene == "res://scenes/level/aldea/aldea.tscn")
+        {
+            Visible = false;
+        }
+
+        else
+        {
+            TriggerDialogue(defaultDialogueLines);
         }
     }
 

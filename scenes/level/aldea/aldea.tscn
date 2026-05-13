@@ -37,7 +37,7 @@ MinZoom = 0.17
 MaxZoom = 0.17
 
 [node name="menu_pausa_aldea" parent="." instance=ExtResource("6_ib1id")]
-layer = 10
+layer = 20
 visible = false
 
 [node name="OptionsPausaAldea" parent="." instance=ExtResource("7_o7wln")]

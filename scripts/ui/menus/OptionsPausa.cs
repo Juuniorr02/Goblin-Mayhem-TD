@@ -335,8 +335,8 @@ public partial class OptionsPausa : CanvasLayer
     // Función auxiliar para convertir de 0..1 a decibelios
     private float Linear2Db(float linear)
     {
-        if (linear <= 0) return -80;
-        return 20f * (Mathf.Log(linear) / Mathf.Log(10f));
+        linear = Mathf.Clamp(linear, 0.0001f, 1f);
+        return Mathf.LinearToDb(linear);
     }
     
 	public void MostrarOpciones(menu_pausa menu)

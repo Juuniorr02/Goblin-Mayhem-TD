@@ -49,16 +49,12 @@ public partial class menu_herreria : CanvasLayer
 
 	public void Abrir()
 	{
-        isPaused = true;
-        GetTree().Paused = true;
         Visible = true;
         Input.MouseMode = Input.MouseModeEnum.Visible;
 	}
 
 	public void OnVolver()
 	{
-		isPaused = false;
-        GetTree().Paused = false;
 		aldea.MenuCerrado();
         Visible = false;
 	}

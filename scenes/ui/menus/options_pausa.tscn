@@ -161,7 +161,9 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 size_flags_stretch_ratio = 0.4
-value = 100.0
+max_value = 1.0
+step = 0.01
+value = 0.5
 
 [node name="SFX" type="MarginContainer" parent="CenterContainer/PanelContainer/MarginContainer/PanelContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -193,7 +195,9 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 size_flags_stretch_ratio = 0.4
-value = 100.0
+max_value = 1.0
+step = 0.01
+value = 0.5
 
 [node name="Musica" type="MarginContainer" parent="CenterContainer/PanelContainer/MarginContainer/PanelContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -225,7 +229,9 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 size_flags_stretch_ratio = 0.4
-value = 100.0
+max_value = 1.0
+step = 0.01
+value = 0.5
 
 [node name="Espacio2" type="MarginContainer" parent="CenterContainer/PanelContainer/MarginContainer/PanelContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2

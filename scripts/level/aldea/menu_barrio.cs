@@ -80,17 +80,12 @@ public partial class menu_barrio : CanvasLayer
 			labelInfo.Text = "  Vida Maxima: 200  ";
 			btnMejorar.Disabled = true;
 		}
-
-        isPaused = true;
-        GetTree().Paused = true;
         Visible = true;
         Input.MouseMode = Input.MouseModeEnum.Visible;
 	}
 
 	public void OnVolver()
 	{
-		isPaused = false;
-        GetTree().Paused = false;
 		aldea.MenuCerrado();
         Visible = false;
 	}

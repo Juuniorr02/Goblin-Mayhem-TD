@@ -78,16 +78,11 @@ public partial class entrar_nivel : CanvasLayer
 		{
 			Nombre.Text = "Castillo Malvado";
 		}
-
-		isPaused = true;
-        GetTree().Paused = true;
         Visible = true;
         Input.MouseMode = Input.MouseModeEnum.Visible;
 	}
 	private void OnEntrar()
 	{
-		isPaused = false;
-        GetTree().Paused = false;
 		mapa_mundi.CerrarMenu();
         Visible = false;
 		if(mapa_mundi.nombreNivel == "Tutorial")

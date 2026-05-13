@@ -80,17 +80,12 @@ public partial class menu_aserradero : CanvasLayer
 			labelInfo.Text = "  Producción: 300 de madera por ronda  ";
 			btnMejorar.Disabled = true;
 		}
-
-        isPaused = true;
-        GetTree().Paused = true;
         Visible = true;
         Input.MouseMode = Input.MouseModeEnum.Visible;
 	}
 
 	public void OnVolver()
 	{
-		isPaused = false;
-        GetTree().Paused = false;
 		aldea.MenuCerrado();
         Visible = false;
 	}

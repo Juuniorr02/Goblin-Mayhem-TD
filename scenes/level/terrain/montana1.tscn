@@ -1,6 +1,7 @@
-[gd_scene load_steps=52 format=3 uid="uid://63n8ujelr0ty"]
+[gd_scene load_steps=53 format=3 uid="uid://63n8ujelr0ty"]
 
 [ext_resource type="PackedScene" uid="uid://box8tpwtebkqj" path="res://assets/level/Map/montana1.tmx" id="1_5fc2a"]
+[ext_resource type="Script" uid="uid://c4e4ntyylckuu" path="res://scripts/level/terrain/Montana1.cs" id="1_85ag8"]
 [ext_resource type="Script" uid="uid://cubvhlo0alqh1" path="res://scripts/level/terrain/Pathfinding.cs" id="2_abfbc"]
 [ext_resource type="Script" uid="uid://ddtj2hn2hhtfd" path="res://scripts/character/enemy/EnemySpawner.cs" id="3_wwvym"]
 [ext_resource type="Script" uid="uid://b7rcgtrq61w48" path="res://scripts/character/enemy/WaveData.cs" id="4_3pfqo"]
@@ -158,7 +159,7 @@ metadata/_custom_type_script = "uid://b7rcgtrq61w48"
 [sub_resource type="Resource" id="Resource_2m30w"]
 script = ExtResource("5_hfw40")
 EnemyType = ExtResource("9_01ffh")
-Count = 2
+Count = 1
 Path = 1
 metadata/_custom_type_script = "uid://dxi6h4dntdvec"
 
@@ -186,6 +187,7 @@ _data = {
 point_count = 8
 
 [node name="montana1" type="Node2D"]
+script = ExtResource("1_85ag8")
 
 [node name="montana1" parent="." instance=ExtResource("1_5fc2a")]
 
@@ -246,6 +248,7 @@ spawner = NodePath("../EnemySpawner")
 menuVictoria = NodePath("../menu_victoria")
 
 [node name="menu_pausa" parent="." instance=ExtResource("8_h3ie6")]
+layer = 18
 
 [node name="OptionsPausa" parent="." instance=ExtResource("14_mlipa")]
 

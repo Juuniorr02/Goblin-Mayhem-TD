@@ -86,17 +86,12 @@ public partial class menu_mina : CanvasLayer
 			labelInfo.Text = "  Producción: 150 de hierro por ronda  ";
 			btnMejorar.Disabled = true;
 		}
-
-        isPaused = true;
-        GetTree().Paused = true;
         Visible = true;
         Input.MouseMode = Input.MouseModeEnum.Visible;
 	}
 
 	public void OnVolver()
 	{
-		isPaused = false;
-        GetTree().Paused = false;
 		aldea.MenuCerrado();
         Visible = false;
 	}

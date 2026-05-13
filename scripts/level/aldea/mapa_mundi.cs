@@ -31,6 +31,9 @@ public partial class mapa_mundi : Node2D
 	public override void _Ready()
 	{
 		ProcessMode = ProcessModeEnum.Always;
+		MusicManager music = GetNode<MusicManager>("/root/MusicManager");
+
+        music.PlayMusic("res://assets/music/aldea.wav");
 
 		SaveSystem.Instance.SaveGame();
 

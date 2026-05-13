@@ -15,6 +15,10 @@ public partial class MenuController : Node
     {
         Node menuRoot = GetParent();
 
+        MusicManager music = GetNode<MusicManager>("/root/MusicManager");
+
+        music.PlayMusic("res://assets/music/menu.wav");
+
         // ⭐ GameSettings
         var settings = GetTree().Root.GetNode<GameSettings>("GameSettings");
         settings.LoadConfig();

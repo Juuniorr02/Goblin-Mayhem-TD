@@ -24,6 +24,10 @@ public partial class Aldea : Node2D
         ProcessMode = ProcessModeEnum.Always;
         SaveSystem.Instance.SaveGame();
 
+        MusicManager music = GetNode<MusicManager>("/root/MusicManager");
+
+        music.PlayMusic("res://assets/music/aldea.wav");
+
         menu_ayuntamiento = GetNodeOrNull<menu_ayuntamiento>("Botones/BotonAyuntamiento/menu_ayuntamiento");
         menu_cantera = GetNodeOrNull<menu_cantera>("Botones/BotonCantera/menu_cantera");
         menu_aserradero = GetNodeOrNull<menu_aserradero>("Botones/BotonAserradero/menu_aserradero");

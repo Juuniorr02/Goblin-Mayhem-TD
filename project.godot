@@ -23,6 +23,7 @@ Wave="*res://scripts/ui/autoload/Wave.cs"
 Recursos="*res://scripts/ui/autoload/Recursos.cs"
 BuildTime="*res://scripts/ui/autoload/BuildTime.cs"
 DevConsole="*res://scenes/ui/ui/DevConsole.tscn"
+MusicManager="*res://scripts/ui/autoload/MusicManager.cs"
 
 [display]
 

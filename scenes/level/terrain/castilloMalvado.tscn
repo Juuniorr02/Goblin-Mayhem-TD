@@ -1,5 +1,6 @@
-[gd_scene load_steps=97 format=3 uid="uid://cpauy6cybdjfh"]
+[gd_scene load_steps=98 format=3 uid="uid://cpauy6cybdjfh"]
 
+[ext_resource type="Script" uid="uid://dfhjptjr7wk7p" path="res://scripts/level/terrain/CastilloMalvado.cs" id="1_8jf7b"]
 [ext_resource type="PackedScene" uid="uid://c40xf8w0irkep" path="res://assets/level/Map/final.tmx" id="1_gdtbm"]
 [ext_resource type="Script" uid="uid://cubvhlo0alqh1" path="res://scripts/level/terrain/Pathfinding.cs" id="2_gdtbm"]
 [ext_resource type="Script" uid="uid://ddtj2hn2hhtfd" path="res://scripts/character/enemy/EnemySpawner.cs" id="3_38357"]
@@ -463,6 +464,7 @@ _data = {
 point_count = 9
 
 [node name="castilloMalvado" type="Node2D"]
+script = ExtResource("1_8jf7b")
 
 [node name="Final" parent="." instance=ExtResource("1_gdtbm")]
 
@@ -527,6 +529,7 @@ MaxZoom = 2.0
 WinningWave = 12
 
 [node name="menu_pausa" parent="." instance=ExtResource("24_wfif0")]
+layer = 18
 
 [node name="menu_derrota" parent="." instance=ExtResource("25_td7d0")]
 

@@ -81,9 +81,6 @@ public partial class menu_ayuntamiento : CanvasLayer
 			labelInfo.Text = "  Producción: 500 de oro por ronda  ";
 			btnMejorar.Disabled = true;
 		}
-
-        isPaused = true;
-        GetTree().Paused = true;
         Visible = true;
         Input.MouseMode = Input.MouseModeEnum.Visible;
 		
@@ -91,8 +88,6 @@ public partial class menu_ayuntamiento : CanvasLayer
 
 	public void OnVolver()
 	{
-		isPaused = false;
-        GetTree().Paused = false;
 		aldea.MenuCerrado();
         Visible = false;
 	}

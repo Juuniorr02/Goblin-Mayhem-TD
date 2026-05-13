@@ -86,17 +86,12 @@ public partial class menu_cantera : CanvasLayer
 			labelInfo.Text = "  Producción: 200 de piedra por ronda  ";
 			btnMejorar.Disabled = true;
 		}
-
-        isPaused = true;
-        GetTree().Paused = true;
         Visible = true;
         Input.MouseMode = Input.MouseModeEnum.Visible;
 	}
 
 	public void OnVolver()
 	{
-		isPaused = false;
-        GetTree().Paused = false;
 		aldea.MenuCerrado();
         Visible = false;
 	}
