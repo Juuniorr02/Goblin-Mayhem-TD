@@ -35,7 +35,6 @@ public partial class Recursos : Node
 
     private class SaveDataStruct
     {
-        public int BaseVida { get; set; }
         public int TotalGold { get; set; }
         public int TotalWood { get; set; }
         public int TotalStone { get; set; }
@@ -109,7 +108,7 @@ public partial class Recursos : Node
 
     public void NewGame()
     {
-        Vida = 100;
+        BaseVida = 100;
         TotalGold = 0;
         TotalWood = 0;
         TotalStone = 0;
@@ -142,7 +141,6 @@ public partial class Recursos : Node
 
     public void EndLevel()
     {
-        BaseVida += ProdVida;
         TotalGold += Gold;
         TotalWood += Wood;
         TotalStone += Stone;
