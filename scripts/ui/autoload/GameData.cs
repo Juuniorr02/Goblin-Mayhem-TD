@@ -12,6 +12,7 @@ public partial class GameData : Node
 
     public static bool AldeaVisitada = false;
     public static bool MapaMundiVisitado = false;
+    public static bool MenuAbierto = false;
 
 
     public static GameData Instance;

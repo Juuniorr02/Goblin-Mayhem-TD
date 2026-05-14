@@ -30,7 +30,7 @@ public partial class Creditos : Control
 	private void Onfin()
 	{
 		GetTree().Paused = false;
-		GetTree().ChangeSceneToFile("res://scenes/ui/menus/Menu.tscn");
+		GetTree().ChangeSceneToFile("res://scenes/level/aldea/mapa_mundi.tscn");
 	}
 
 }

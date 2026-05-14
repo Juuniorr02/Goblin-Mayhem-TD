@@ -412,4 +412,4 @@ WinningWave = 8
 [node name="menu_derrota" parent="." instance=ExtResource("15_amlx2")]
 
 [node name="DialogueUi" parent="." instance=ExtResource("26_abte5")]
-defaultDialogueLines = PackedStringArray("¡Uff! Señor la armadura se hunde en el lodo, el pantano es mas grande de lo que pensaba.", "Parece ser que lo goblins han creado una base al sur del pantano y se disponen a atacar a esta pobre aldea.", "Vamos a ayudarles, asi tendremos un sitio donde descansar.", "Me informan de 7 rondas de goblins, hay que atacar con todo.", "Una ultima cosa señor, este pantano esta repleto de recursos, podremos defendernos con mas facilidad.")
+defaultDialogueLines = PackedStringArray("¡Uff! Señor la armadura se hunde en el lodo, el pantano es mas grande de lo que pensaba.", "Parece ser que lo goblins han creado una base al sur del pantano y se disponen a atacar a esta pobre aldea.", "Vamos a ayudarles, asi tendremos un sitio donde descansar.", "Me informan de 8 rondas de goblins, hay que atacar con todo.", "Una ultima cosa señor, este pantano esta repleto de recursos, podremos defendernos con mas facilidad.")

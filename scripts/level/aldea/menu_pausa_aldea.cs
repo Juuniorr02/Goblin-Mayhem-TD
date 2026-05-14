@@ -55,24 +55,21 @@ public partial class menu_pausa_aldea : CanvasLayer
         b.MouseFilter = Control.MouseFilterEnum.Stop;
     }
 
-    public override void _Input(InputEvent e)
+    public override void _UnhandledInput(InputEvent @event)
     {
-        if (e.IsActionPressed("pausa"))
+        if (GameData.MenuAbierto)
+            return;
+
+        if (@event is InputEventKey keyEvent && keyEvent.Pressed)
         {
-            float currentTime = Time.GetTicksMsec() / 2000.0f;
-
-            if (lastPressTime > 0 && currentTime - lastPressTime <= doublePressThreshold)
+            if (keyEvent.Keycode == Key.Escape)
             {
-                if (isPaused) QuitarPausa();
-                else Pausar();
-
-                lastPressTime = -1f;
+                if (isPaused)
+                    QuitarPausa();
+                else
+                    Pausar();
             }
-
-            else
-            {
-            lastPressTime = currentTime;
-            }
+            
         }
     }
 

@@ -326,6 +326,7 @@ public partial class OptionsPausaAldea : CanvasLayer
 
     private void OnBack()
 	{
+        GameData.MenuAbierto = false;
     	Visible = false;
 
     	if (pausaMenu != null)
@@ -342,6 +343,7 @@ public partial class OptionsPausaAldea : CanvasLayer
 	public void MostrarOpciones(menu_pausa_aldea menu)
 	{
     	pausaMenu = menu;
+        GameData.MenuAbierto = true;
 
     	Visible = true;
     	ProcessMode = ProcessModeEnum.Always;
