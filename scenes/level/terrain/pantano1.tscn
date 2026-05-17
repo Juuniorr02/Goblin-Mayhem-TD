@@ -20,7 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://doxdk8ijaiqly" path="res://scenes/tower/Flamethrower/flamethrower.tscn" id="10_v1fir"]
 [ext_resource type="PackedScene" uid="uid://ci612q8twcycd" path="res://scenes/ui/ui/iu.tscn" id="10_v8yas"]
 [ext_resource type="PackedScene" uid="uid://bm2tdm7lsq5q3" path="res://scenes/tower/Mortero/mortero.tscn" id="11_ao28s"]
-[ext_resource type="Resource" uid="uid://cwlyclc8f31ft" path="res://scripts/character/enemy/infoEnemy/bebeWyern.tres" id="11_ne336"]
+[ext_resource type="Resource" uid="uid://b4hbuhbttqy8d" path="res://scripts/character/enemy/infoEnemy/bebeWyern.tres" id="11_ne336"]
 [ext_resource type="Script" uid="uid://ccef7herjptu0" path="res://scripts/character/camera/CameraRig.cs" id="11_rt8em"]
 [ext_resource type="PackedScene" uid="uid://cuq0at3ylsro3" path="res://scenes/tower/MageTower/mage_tower.tscn" id="12_uileq"]
 [ext_resource type="PackedScene" uid="uid://cor65fcesxg0a" path="res://scenes/ui/menus/menu_pausa.tscn" id="12_y753q"]

@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://fwle2vth706y" path="res://scenes/tower/Construir/Martillo.tscn" id="9_0jfwx"]
 [ext_resource type="Resource" uid="uid://dmgbpwj54a070" path="res://scripts/character/enemy/infoEnemy/goblinArquero.tres" id="9_8jf7b"]
 [ext_resource type="PackedScene" uid="uid://i7fnxkfidwjh" path="res://scenes/tower/ArcherTower/archerTower.tscn" id="10_8jf7b"]
-[ext_resource type="Resource" uid="uid://cwlyclc8f31ft" path="res://scripts/character/enemy/infoEnemy/bebeWyern.tres" id="10_ujt6g"]
+[ext_resource type="Resource" uid="uid://b4hbuhbttqy8d" path="res://scripts/character/enemy/infoEnemy/bebeWyern.tres" id="10_ujt6g"]
 [ext_resource type="PackedScene" uid="uid://dd15bvxn3ddsy" path="res://scenes/tower/Tuna/tuna_hatchery.tscn" id="11_ujt6g"]
 [ext_resource type="Resource" uid="uid://cebfhs3cyuxe4" path="res://scripts/character/enemy/infoEnemy/wyvern.tres" id="12_0jfwx"]
 [ext_resource type="PackedScene" uid="uid://ckc1i5qv6sle8" path="res://scenes/tower/Ballista/ballista.tscn" id="12_bpjxi"]
