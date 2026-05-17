@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://4266tkarwvws"]
+[gd_scene format=3 uid="uid://4266tkarwvws"]
 
 [ext_resource type="Script" uid="uid://c0hpawahnc2o3" path="res://scripts/level/terrain/Tutorial.cs" id="1_0fk4k"]
 [ext_resource type="PackedScene" uid="uid://cwqgddsegt212" path="res://assets/level/Map/tutorial.tmx" id="1_uh7en"]
@@ -19,7 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://doxdk8ijaiqly" path="res://scenes/tower/Flamethrower/flamethrower.tscn" id="14_ud0qv"]
 [ext_resource type="PackedScene" uid="uid://bm2tdm7lsq5q3" path="res://scenes/tower/Mortero/mortero.tscn" id="15_esmyn"]
 [ext_resource type="PackedScene" uid="uid://bv6xb2o3otqu3" path="res://scenes/tower/Grifo/GrffinTower.tscn" id="16_npwsl"]
-[ext_resource type="PackedScene" uid="uid://b4kgd56vbuq80" path="res://scenes/tower/Ship/ship.tscn" id="17_3d6ql"]
+[ext_resource type="PackedScene" uid="uid://b4kgd56vbuq80" path="res://scenes/tower/ship/ship.tscn" id="17_3d6ql"]
 [ext_resource type="PackedScene" uid="uid://cuq0at3ylsro3" path="res://scenes/tower/MageTower/mage_tower.tscn" id="18_lkiel"]
 [ext_resource type="PackedScene" uid="uid://ci612q8twcycd" path="res://scenes/ui/ui/iu.tscn" id="19_tfgrl"]
 [ext_resource type="Script" uid="uid://ccef7herjptu0" path="res://scripts/character/camera/CameraRig.cs" id="20_vak7w"]
@@ -113,33 +113,33 @@ _data = {
 }
 point_count = 2
 
-[node name="Tutorial" type="Node2D"]
+[node name="Tutorial" type="Node2D" unique_id=251039561]
 script = ExtResource("1_0fk4k")
 
-[node name="tutorial" parent="." instance=ExtResource("1_uh7en")]
+[node name="tutorial" parent="." unique_id=1680713416 instance=ExtResource("1_uh7en")]
 
-[node name="Pathfinding" type="Node" parent="."]
+[node name="Pathfinding" type="Node" parent="." unique_id=1894077699]
 script = ExtResource("2_i5iu6")
 
-[node name="EnemySpawner" type="Node" parent="." node_paths=PackedStringArray("CaminoA", "CaminoAcuatico", "CaminoVolador")]
+[node name="EnemySpawner" type="Node" parent="." unique_id=1809668271 node_paths=PackedStringArray("CaminoA", "CaminoAcuatico", "CaminoVolador")]
 script = ExtResource("3_i0obx")
 CaminoA = NodePath("CaminoA")
 CaminoAcuatico = NodePath("CaminoAcuatico")
 CaminoVolador = NodePath("CaminoVolador")
 Waves = Array[Object]([SubResource("Resource_brejp"), SubResource("Resource_ghg0r"), SubResource("Resource_s5e3p"), SubResource("Resource_ws8vo")])
 
-[node name="CaminoA" type="Path2D" parent="EnemySpawner"]
+[node name="CaminoA" type="Path2D" parent="EnemySpawner" unique_id=997644743]
 curve = SubResource("Curve2D_gc8j5")
 
-[node name="CaminoAcuatico" type="Path2D" parent="EnemySpawner"]
+[node name="CaminoAcuatico" type="Path2D" parent="EnemySpawner" unique_id=176033632]
 curve = SubResource("Curve2D_k4gji")
 
-[node name="CaminoVolador" type="Path2D" parent="EnemySpawner"]
+[node name="CaminoVolador" type="Path2D" parent="EnemySpawner" unique_id=1301884617]
 curve = SubResource("Curve2D_mbj1p")
 
-[node name="EnemiesContainer" type="Node2D" parent="."]
+[node name="EnemiesContainer" type="Node2D" parent="." unique_id=1133114949]
 
-[node name="Towers" type="Node2D" parent="." node_paths=PackedStringArray("TowersParent", "EnemiesContainer")]
+[node name="Towers" type="Node2D" parent="." unique_id=983104689 node_paths=PackedStringArray("TowersParent", "EnemiesContainer")]
 script = ExtResource("7_ghg0r")
 TowersParent = NodePath(".")
 GhostTowerScene = ExtResource("8_ae2rp")
@@ -157,7 +157,7 @@ TowersScenes = Dictionary[String, PackedScene]({
 "Wizard": ExtResource("18_lkiel")
 })
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1871558610]
 position = Vector2(7043, 2874)
 zoom = Vector2(0.23, 0.23)
 limit_left = -3000
@@ -169,20 +169,20 @@ MoveSpeed = 1400.0
 MinZoom = 0.23
 MaxZoom = 2.0
 
-[node name="IU" parent="." node_paths=PackedStringArray("spawner", "menuVictoria") instance=ExtResource("19_tfgrl")]
+[node name="IU" parent="." unique_id=2146397824 node_paths=PackedStringArray("spawner", "menuVictoria") instance=ExtResource("19_tfgrl")]
 spawner = NodePath("../EnemySpawner")
 menuVictoria = NodePath("../menu_victoria")
 metadata/_edit_use_anchors_ = true
 
-[node name="menu_pausa" parent="." instance=ExtResource("22_7ujbw")]
+[node name="menu_pausa" parent="." unique_id=182285151 instance=ExtResource("22_7ujbw")]
 layer = 20
 
-[node name="OptionsPausa" parent="." instance=ExtResource("23_jasqh")]
+[node name="OptionsPausa" parent="." unique_id=801156360 instance=ExtResource("23_jasqh")]
 
-[node name="menu_victoria" parent="." instance=ExtResource("25_4v7t1")]
+[node name="menu_victoria" parent="." unique_id=925978657 instance=ExtResource("25_4v7t1")]
 WinningWave = 4
 
-[node name="menu_derrota" parent="." instance=ExtResource("26_rb3r2")]
+[node name="menu_derrota" parent="." unique_id=491873875 instance=ExtResource("26_rb3r2")]
 
-[node name="DialogueUi" parent="." instance=ExtResource("27_rb3r2")]
-defaultDialogueLines = PackedStringArray("Señor, te explicaré los controles básicos.", "Puedes mover la camara con WASD, y con el ratón, clicar botones o seleccionar torres en la barra inferior, por ejemplo.", "Selecciona una torre y colócala cerca del camino.", "En la esquina inferior derecha puedes encontrar el botón de borrar torres, por si cometieras un error.", "Aunque recuerda: el botón de borrar siempre devuelve 100 de oro y 50 de madera, así que no te confíes.", "Arriba a la izquierda puedes encontrar la vida del castillo y los recursos: oro, madera, piedra y metal.", "Cada una de las torres tiene su propio coste.", "Y cada una tiene un tipo de terreno concreto en el que se puede construir.", "Arriba a la derecha, encontrarás un indicador de oleadas.", "Esta te indica en qué oleada estás. Y además podrás ver un símbolo de un mazo cuando estés en fase de construcción.", "La fase de construcción es el único momento en el que puedes construir. ¡Recuérdalo!", "La oleada en sí empieza cuando vuelves a clicar al indicador de oleadas.", "Entonces desaparecerá el mazo y empezarán a llegar enemigos.", "¡Evita a toda costa que los enemigos lleguen a la aldea! La supervivencia de tu pueblo depende de ti.", "Si deseas que repita la lección, reinicia pulsando \"Esc\" 2 veces.", "Un último recordatorio Señor; los enemigos siempre buscan formas de llegar a la aldea.", "No siempre llegarán por caminos. ¡Sobre todo los voladores!", "Los centinelas han podido ver que se aproximan 4 oleadas: terrestres, voladores, acuáticos...", "Y una última oleada con todo lo que tienen. ¡Suerte!", "¡Los goblins se acercan! ¡Rápido, debemos proteger la aldea!")
+[node name="DialogueUi" parent="." unique_id=1390058733 instance=ExtResource("27_rb3r2")]
+defaultDialogueLines = PackedStringArray("Señor, te explicaré los controles básicos.", "Puedes mover la camara con WASD, y con el ratón, clicar botones o seleccionar torres en la barra inferior, por ejemplo.", "Selecciona una torre y colócala cerca del camino.", "En la esquina inferior derecha puedes encontrar el botón de borrar torres, por si cometieras un error.", "Aunque recuerda: el botón de borrar siempre devuelve 100 de oro y 50 de madera, así que no te confíes.", "Arriba a la izquierda puedes encontrar la vida del castillo y los recursos: oro, madera, piedra y metal.", "Cada una de las torres tiene su propio coste.", "Y cada una tiene un tipo de terreno concreto en el que se puede construir.", "Arriba a la derecha, encontrarás un indicador de oleadas.", "Esta te indica en qué oleada estás. Y además podrás ver un símbolo de un mazo cuando estés en fase de construcción.", "La fase de construcción es el único momento en el que puedes construir. ¡Recuérdalo!", "La oleada en sí empieza cuando vuelves a clicar al indicador de oleadas.", "Entonces desaparecerá el mazo y empezarán a llegar enemigos.", "¡Evita a toda costa que los enemigos lleguen a la aldea! La supervivencia de tu pueblo depende de ti.", "Si deseas que repita la lección, reinicia pulsando \"Esc\" 1 vez.", "Un último recordatorio Señor; los enemigos siempre buscan formas de llegar a la aldea.", "No siempre llegarán por caminos. ¡Sobre todo los voladores!", "Los centinelas han podido ver que se aproximan 4 oleadas: terrestres, voladores, acuáticos...", "Y una última oleada con todo lo que tienen. ¡Suerte!", "¡Los goblins se acercan! ¡Rápido, debemos proteger la aldea!")

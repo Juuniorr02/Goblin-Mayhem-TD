@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dm5gq3x7pj0uj"]
+[gd_scene format=3 uid="uid://dm5gq3x7pj0uj"]
 
 [ext_resource type="Script" uid="uid://djm0046nxvish" path="res://scripts/character/enemy/Enemy.cs" id="1_o34ak"]
 [ext_resource type="Script" uid="uid://dtfsd6sb6u7oe" path="res://scripts/character/enemy/EnemyData.cs" id="2_40m0v"]
@@ -69,14 +69,14 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="BebeWyvern" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "HealthBar") groups=["Volador", "enemies"]]
+[node name="BebeWyvern" type="CharacterBody2D" unique_id=692266236 node_paths=PackedStringArray("sprite", "HealthBar") groups=["Volador", "enemies"]]
 scale = Vector2(1.8, 1.8)
 script = ExtResource("1_o34ak")
 sprite = NodePath("AnimatedSprite2D")
 Data = SubResource("Resource_bgsfn")
 HealthBar = NodePath("TextureProgressBar")
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=1949622051]
 top_level = true
 z_index = 10
 offset_left = -15.000002
@@ -88,11 +88,11 @@ nine_patch_stretch = true
 texture_progress = ExtResource("3_1el42")
 metadata/_edit_use_anchors_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1479271556]
 position = Vector2(4, 2)
 shape = SubResource("RectangleShape2D_pap0l")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=400951927]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_sqxm4")
 autoplay = "default"
