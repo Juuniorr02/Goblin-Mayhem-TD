@@ -70,10 +70,10 @@ public partial class Recursos : Node
     public void FirstLevel()
     {
         Vida = 100;
-        Gold = 10000;
-        Wood = 10000;
-        Stone = 10000;
-        Iron = 10000;
+        Gold = 500;
+        Wood = 250;
+        Stone = 200;
+        Iron = 150;
     }
 
     public void LastLevel()
