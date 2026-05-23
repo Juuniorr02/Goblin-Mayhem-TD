@@ -1,13 +1,20 @@
-[gd_scene load_steps=14 format=3 uid="uid://dbeqdm5gepyap"]
+[gd_scene load_steps=16 format=3 uid="uid://dbeqdm5gepyap"]
 
 [ext_resource type="Script" uid="uid://djm0046nxvish" path="res://scripts/character/enemy/Enemy.cs" id="2_4gyqm"]
 [ext_resource type="Script" uid="uid://dtfsd6sb6u7oe" path="res://scripts/character/enemy/EnemyData.cs" id="2_735o0"]
 [ext_resource type="Texture2D" uid="uid://bbvi61e0beacf" path="res://assets/character/enemy/Golem/Golem.png" id="2_lk0iw"]
 [ext_resource type="Texture2D" uid="uid://cmwjmb8slpq0e" path="res://assets/character/enemy/BlancoVida.png" id="4_4kjq8"]
+[ext_resource type="Shader" uid="uid://byatklslfe8am" path="res://assets/shaders/deformacion_zenital.gdshader" id="4_i8gft"]
 
 [sub_resource type="Resource" id="Resource_4kjq8"]
 script = ExtResource("2_735o0")
 metadata/_custom_type_script = "uid://dtfsd6sb6u7oe"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x75b6"]
+shader = ExtResource("4_i8gft")
+shader_parameter/angle = 0.0
+shader_parameter/lean_factor = 0.4
+shader_parameter/iso_ratio = 0.5
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_735o0"]
 atlas = ExtResource("2_lk0iw")
@@ -84,13 +91,16 @@ metadata/_edit_use_anchors_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
+material = SubResource("ShaderMaterial_x75b6")
 sprite_frames = SubResource("SpriteFrames_0fbgq")
 animation = &"walk"
 autoplay = "walk"
 frame_progress = 0.4266486
+centered = false
+offset = Vector2(-27.785, -48.07)
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2.0000005)
+position = Vector2(2.525, -13.625)
 scale = Vector2(1.0000002, 1.0000002)
 shape = SubResource("RectangleShape2D_ygshw")

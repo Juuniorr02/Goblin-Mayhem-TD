@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://cd6ykpa5p5qtf"]
+[gd_scene load_steps=18 format=3 uid="uid://cd6ykpa5p5qtf"]
 
 [ext_resource type="Script" uid="uid://djm0046nxvish" path="res://scripts/character/enemy/Enemy.cs" id="1_tepsv"]
 [ext_resource type="Script" uid="uid://dtfsd6sb6u7oe" path="res://scripts/character/enemy/EnemyData.cs" id="2_8jdx8"]
 [ext_resource type="Texture2D" uid="uid://cmwjmb8slpq0e" path="res://assets/character/enemy/BlancoVida.png" id="3_7rbuv"]
 [ext_resource type="Texture2D" uid="uid://c8cyiamkro6op" path="res://assets/character/enemy/GoblinTiburon/GoblinTiburon.png" id="4_6h54m"]
+[ext_resource type="Shader" uid="uid://byatklslfe8am" path="res://assets/shaders/deformacion_zenital.gdshader" id="4_8jdx8"]
 
 [sub_resource type="Resource" id="Resource_m17yy"]
 script = ExtResource("2_8jdx8")
@@ -13,6 +14,12 @@ metadata/_custom_type_script = "uid://dtfsd6sb6u7oe"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ygshw"]
 size = Vector2(44.047607, 28)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7rbuv"]
+shader = ExtResource("4_8jdx8")
+shader_parameter/angle = 0.0
+shader_parameter/lean_factor = 0.4
+shader_parameter/iso_ratio = 0.5
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_reeud"]
 atlas = ExtResource("4_6h54m")
@@ -98,12 +105,15 @@ texture_progress = ExtResource("3_7rbuv")
 metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.47619057, 5.714286)
+position = Vector2(0.476, -13.101)
 scale = Vector2(1.0000005, 1.0000005)
 shape = SubResource("RectangleShape2D_ygshw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
+material = SubResource("ShaderMaterial_7rbuv")
 sprite_frames = SubResource("SpriteFrames_kbph2")
 autoplay = "default"
+centered = false
+offset = Vector2(-49.605, -50.475)
 flip_h = true

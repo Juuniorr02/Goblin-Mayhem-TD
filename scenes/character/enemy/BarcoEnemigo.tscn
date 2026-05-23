@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://s835v24kkpwu"]
+[gd_scene load_steps=17 format=3 uid="uid://4rxllvsc73ti"]
 
 [ext_resource type="Script" uid="uid://djm0046nxvish" path="res://scripts/character/enemy/Enemy.cs" id="1_lkaf6"]
 [ext_resource type="Script" uid="uid://dtfsd6sb6u7oe" path="res://scripts/character/enemy/EnemyData.cs" id="2_a2xvn"]
 [ext_resource type="Texture2D" uid="uid://cmwjmb8slpq0e" path="res://assets/character/enemy/BlancoVida.png" id="3_xjv6s"]
 [ext_resource type="Texture2D" uid="uid://bu7ne3ow1hh6c" path="res://assets/character/enemy/BarcoEnemigo/BarcoEnemigo.png" id="4_7rxuu"]
+[ext_resource type="Shader" uid="uid://byatklslfe8am" path="res://assets/shaders/deformacion_zenital.gdshader" id="4_a2xvn"]
 
 [sub_resource type="Resource" id="Resource_m17yy"]
 script = ExtResource("2_a2xvn")
@@ -12,7 +13,14 @@ IsAquatic = true
 metadata/_custom_type_script = "uid://dtfsd6sb6u7oe"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ygshw"]
-size = Vector2(33.333313, 52.380928)
+size = Vector2(67.61902, 42.380928)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xjv6s"]
+resource_local_to_scene = true
+shader = ExtResource("4_a2xvn")
+shader_parameter/angle = 0.0
+shader_parameter/lean_factor = 0.4
+shader_parameter/iso_ratio = 0.5
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_agm5r"]
 atlas = ExtResource("4_7rxuu")
@@ -91,12 +99,15 @@ texture_progress = ExtResource("3_xjv6s")
 metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.47619057, 5.714286)
-scale = Vector2(1.0000005, 1.0000005)
+position = Vector2(-0.9523805, -20.2381)
+scale = Vector2(1.0000006, 1.0000006)
 shape = SubResource("RectangleShape2D_ygshw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
+material = SubResource("ShaderMaterial_xjv6s")
 sprite_frames = SubResource("SpriteFrames_j3sdk")
 autoplay = "default"
+centered = false
+offset = Vector2(-49.595, -61.04)
 flip_h = true

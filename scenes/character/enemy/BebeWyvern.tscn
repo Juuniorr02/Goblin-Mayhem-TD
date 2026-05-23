@@ -1,8 +1,9 @@
-[gd_scene format=3 uid="uid://dm5gq3x7pj0uj"]
+[gd_scene load_steps=17 format=3 uid="uid://dm5gq3x7pj0uj"]
 
 [ext_resource type="Script" uid="uid://djm0046nxvish" path="res://scripts/character/enemy/Enemy.cs" id="1_o34ak"]
 [ext_resource type="Script" uid="uid://dtfsd6sb6u7oe" path="res://scripts/character/enemy/EnemyData.cs" id="2_40m0v"]
 [ext_resource type="Texture2D" uid="uid://cmwjmb8slpq0e" path="res://assets/character/enemy/BlancoVida.png" id="3_1el42"]
+[ext_resource type="Shader" uid="uid://byatklslfe8am" path="res://assets/shaders/deformacion_zenital.gdshader" id="4_40m0v"]
 [ext_resource type="Texture2D" uid="uid://bhsyhj0p6otg8" path="res://assets/character/enemy/BebeWyvern/BebeWyv.png" id="4_58yiq"]
 
 [sub_resource type="Resource" id="Resource_bgsfn"]
@@ -10,7 +11,13 @@ script = ExtResource("2_40m0v")
 metadata/_custom_type_script = "uid://dtfsd6sb6u7oe"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pap0l"]
-size = Vector2(97, 49)
+size = Vector2(86.21223, 46.306667)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1el42"]
+shader = ExtResource("4_40m0v")
+shader_parameter/angle = 0.0
+shader_parameter/lean_factor = 0.4
+shader_parameter/iso_ratio = 0.5
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_02ncl"]
 atlas = ExtResource("4_58yiq")
@@ -69,14 +76,14 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="BebeWyvern" type="CharacterBody2D" unique_id=692266236 node_paths=PackedStringArray("sprite", "HealthBar") groups=["Volador", "enemies"]]
+[node name="BebeWyvern" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "HealthBar") groups=["Volador", "enemies"]]
 scale = Vector2(1.8, 1.8)
 script = ExtResource("1_o34ak")
 sprite = NodePath("AnimatedSprite2D")
 Data = SubResource("Resource_bgsfn")
 HealthBar = NodePath("TextureProgressBar")
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=1949622051]
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
 top_level = true
 z_index = 10
 offset_left = -15.000002
@@ -88,12 +95,15 @@ nine_patch_stretch = true
 texture_progress = ExtResource("3_1el42")
 metadata/_edit_use_anchors_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1479271556]
-position = Vector2(4, 2)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.6666665, -15)
 shape = SubResource("RectangleShape2D_pap0l")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=400951927]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
+material = SubResource("ShaderMaterial_1el42")
 sprite_frames = SubResource("SpriteFrames_sqxm4")
 autoplay = "default"
 frame_progress = 0.6283636
+centered = false
+offset = Vector2(-46, -46.35)

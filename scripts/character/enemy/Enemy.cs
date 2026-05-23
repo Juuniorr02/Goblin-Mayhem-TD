@@ -15,6 +15,9 @@ public partial class Enemy : CharacterBody2D
     private float Health;
     private float maxHealth;
 
+    
+    private ShaderMaterial shaderMaterial;
+
     public override void _Ready()
     {
         follow = GetParent<PathFollow2D>();
@@ -36,6 +39,12 @@ public partial class Enemy : CharacterBody2D
             HealthBar.TopLevel = true; 
             HealthBar.ZIndex = 100;
         }
+
+        
+        if (sprite != null && sprite.Material is ShaderMaterial mat)
+        {
+            shaderMaterial = mat;
+        }
     }
 
     public override void _Process(double delta)
@@ -52,10 +61,18 @@ public partial class Enemy : CharacterBody2D
 
         Vector2 direccion = GetManualDirection(path, follow.Progress);
         
+        
         if (direccion.X != 0)
         {
             bool mirandoDerecha = direccion.X > 0;
             sprite.FlipH = IsFacingLeftByDefault ? mirandoDerecha : !mirandoDerecha;
+        }
+
+        
+        if (shaderMaterial != null && direccion != Vector2.Zero)
+        {
+            float anguloFinal = Mathf.Abs(direccion.Angle());
+            shaderMaterial.SetShaderParameter("angle", anguloFinal);
         }
 
         QuitarVidaBase();

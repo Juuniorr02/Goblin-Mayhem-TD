@@ -1,13 +1,20 @@
-[gd_scene load_steps=14 format=3 uid="uid://ipi2g73m20c8"]
+[gd_scene load_steps=16 format=3 uid="uid://br8pxufhg5doy"]
 
 [ext_resource type="Script" uid="uid://djm0046nxvish" path="res://scripts/character/enemy/Enemy.cs" id="1_ro6kw"]
 [ext_resource type="Script" uid="uid://dtfsd6sb6u7oe" path="res://scripts/character/enemy/EnemyData.cs" id="2_mh4kp"]
 [ext_resource type="Texture2D" uid="uid://cmwjmb8slpq0e" path="res://assets/character/enemy/BlancoVida.png" id="3_p5n7n"]
+[ext_resource type="Shader" uid="uid://byatklslfe8am" path="res://assets/shaders/deformacion_zenital.gdshader" id="4_jkps8"]
 [ext_resource type="Texture2D" uid="uid://d3oyflutknvkm" path="res://assets/character/enemy/GoblinArquero/WGoblinArquero-Sheet.png" id="4_rh140"]
 
 [sub_resource type="Resource" id="Resource_4kjq8"]
 script = ExtResource("2_mh4kp")
 metadata/_custom_type_script = "uid://dtfsd6sb6u7oe"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p80jw"]
+shader = ExtResource("4_jkps8")
+shader_parameter/angle = 0.0
+shader_parameter/lean_factor = 0.4
+shader_parameter/iso_ratio = 0.5
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tgyjl"]
 atlas = ExtResource("4_rh140")
@@ -84,11 +91,15 @@ metadata/_edit_use_anchors_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
+material = SubResource("ShaderMaterial_p80jw")
 sprite_frames = SubResource("SpriteFrames_t40px")
-frame_progress = 0.14228098
+autoplay = "default"
+frame_progress = 0.3990317
+centered = false
+offset = Vector2(-13.7, -31.02)
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2.0000005)
+position = Vector2(2.135, -13.55)
 scale = Vector2(1.0000002, 1.0000002)
 shape = SubResource("RectangleShape2D_ygshw")
