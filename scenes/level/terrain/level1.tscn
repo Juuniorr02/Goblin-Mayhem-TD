@@ -1,6 +1,6 @@
 [gd_scene load_steps=43 format=3 uid="uid://bvj23ok4pqai6"]
 
-[ext_resource type="Script" path="res://scripts/level/terrain/Level1.cs" id="1_h1gti"]
+[ext_resource type="Script" uid="uid://d8rbyte8qahy" path="res://scripts/level/terrain/Level1.cs" id="1_h1gti"]
 [ext_resource type="PackedScene" uid="uid://bxah54x2mw4ix" path="res://assets/level/Map/level1.tmx" id="1_obe7s"]
 [ext_resource type="Script" uid="uid://cubvhlo0alqh1" path="res://scripts/level/terrain/Pathfinding.cs" id="2_d0a6p"]
 [ext_resource type="Script" uid="uid://ddtj2hn2hhtfd" path="res://scripts/character/enemy/EnemySpawner.cs" id="3_nvdl1"]
@@ -28,7 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://0hu00p8f0uvx" path="res://scenes/ui/menus/menu_pausa_level_1.tscn" id="24_8dopk"]
 [ext_resource type="PackedScene" uid="uid://di2gid6004846" path="res://scenes/ui/menus/menu_derrota_tutorial.tscn" id="24_xjvah"]
 [ext_resource type="PackedScene" uid="uid://c6o5datpm682p" path="res://scenes/ui/menus/menu_victoria.tscn" id="30_k421d"]
-[ext_resource type="PackedScene" path="res://scenes/ui/ui/uiMalo.tscn" id="31_m3lfk"]
+[ext_resource type="PackedScene" uid="uid://cgidgps04y2lg" path="res://scenes/ui/ui/uiMalo.tscn" id="31_m3lfk"]
 
 [sub_resource type="Resource" id="Resource_tqsr0"]
 script = ExtResource("5_xjvah")

@@ -1,8 +1,8 @@
 shader_type canvas_item;
 
-uniform float angle : hint_range(0.0, 6.28318) = 0.0;
-uniform float lean_factor : hint_range(0.0, 2.0) = 0.2;
-uniform float iso_ratio : hint_range(0.0, 1.0) = 0.5;
+uniform float angle : hint_range(0.0, 6.28318) = 0.507;
+uniform float lean_factor : hint_range(0.0, 2.0) = 0.262;
+uniform float iso_ratio : hint_range(0.0, 1.0) = 0.62;
 
 void vertex() {
     float height = -VERTEX.y;

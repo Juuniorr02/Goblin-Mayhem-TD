@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://ci612q8twcycd"]
+[gd_scene load_steps=43 format=3 uid="uid://ci612q8twcycd"]
 
 [ext_resource type="Texture2D" uid="uid://bodlpu3irch0t" path="res://assets/ui/button/IconoOleada-Sheet.png" id="1_g0mth"]
 [ext_resource type="Texture2D" uid="uid://5sui3kk7ym6x" path="res://assets/ui/icon/cañon.png" id="1_t64rc"]
@@ -28,6 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://c4uh2xppu58k3" path="res://assets/ui/icon/Icononido-Sheet.png" id="14_ify78"]
 [ext_resource type="Texture2D" uid="uid://cng1ixd27b0v8" path="res://assets/ui/icon/IconoBarco-Sheet.png" id="15_bjwdg"]
 [ext_resource type="Texture2D" uid="uid://duy2srishpoac" path="res://assets/ui/icon/IconoPiscifactoria-Sheet.png" id="16_n0sti"]
+[ext_resource type="Texture2D" uid="uid://ctr83ttri7xyh" path="res://assets/ui/button/botonvelocidad.png" id="29_opg7r"]
 
 [sub_resource type="Theme" id="Theme_1nckr"]
 
@@ -846,6 +847,19 @@ size_flags_vertical = 4
 theme = SubResource("Theme_pd0vv")
 text = "Borrar"
 
+[node name="VelocityButton" type="TextureButton" parent="IU"]
+unique_name_in_owner = true
+texture_filter = 1
+offset_left = 1080.46
+offset_top = 108.11
+offset_right = 1144.46
+offset_bottom = 172.1101
+scale = Vector2(0.715, 0.715)
+size_flags_horizontal = 8
+size_flags_vertical = 2
+size_flags_stretch_ratio = 3.8
+texture_normal = ExtResource("29_opg7r")
+
 [connection signal="pressed" from="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Archer/Archer/Archer/Archer/Archer/Archer" to="." method="OnArcherPressed"]
 [connection signal="pressed" from="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Cannon/Cannon/Cannon/Cannon/Cannon/Cannon" to="." method="OnCannonPressed"]
 [connection signal="pressed" from="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Flame/Flame/Flame/Flame/Flame/Flame" to="." method="OnFlamePressed"]
@@ -855,3 +869,4 @@ text = "Borrar"
 [connection signal="pressed" from="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Nest/Nest/Nest/Nest/Nest/Nest" to="." method="OnNestPressed"]
 [connection signal="pressed" from="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Ship/Ship/Ship/Ship/Ship/Ship" to="." method="OnShipPressed"]
 [connection signal="pressed" from="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Atun/Atun/Atun/Atun/Atun/Atun" to="." method="OnAtunPressed"]
+[connection signal="pressed" from="IU/VelocityButton" to="." method="OnVelocityButtonPressed"]

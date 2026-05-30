@@ -17,9 +17,9 @@ size = Vector2(43.333313, 51.42855)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kou31"]
 shader = ExtResource("4_5v1cw")
-shader_parameter/angle = 0.0
-shader_parameter/lean_factor = 0.4
-shader_parameter/iso_ratio = 0.5
+shader_parameter/angle = 0.5070000240825
+shader_parameter/lean_factor = 0.262000012445
+shader_parameter/iso_ratio = 0.62000002945
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rtnlo"]
 atlas = ExtResource("4_xnlbp")

@@ -9,6 +9,7 @@ public partial class Iu : Control
     private Label goldLabel, healthLabel, ironLabel, woodLabel, stoneLabel;
     private PanelContainer infoPanel; 
     private TextureRect Martillito;
+    private TextureButton VelocityButton;
 
     public TextureButton Archer, Cannon, Mortar, Flame, Ballista, Wizard, Bloon, Nest, Ship, Atun;
     public Button Borrar;
@@ -39,6 +40,8 @@ public partial class Iu : Control
         waveButton = GetNode<TextureButton>("%WaveButton");
         waveLabel = GetNode<Label>("%WaveLabel");
         Martillito = GetNode<TextureRect>("%Martillito");
+
+        VelocityButton = GetNode<TextureButton>("%VelocityButton");
 
         goldLabel = GetNode<Label>("%GoldLabel");
         healthLabel = GetNode<Label>("%HealthLabel");
@@ -212,6 +215,20 @@ public partial class Iu : Control
             !waitingAfterPress;
 
         waveButton.Disabled = !canPress;
+    }
+    private void OnVelocityButtonPressed()
+    {
+
+        if (Engine.TimeScale == 1f)
+        {
+            Engine.TimeScale = 5f;
+            VelocityButton.TextureNormal = GD.Load<Texture2D>("res://assets/ui/button/botonvelocidadrapido.png");
+        }
+        else
+        {
+            Engine.TimeScale = 1f; 
+            VelocityButton.TextureNormal = GD.Load<Texture2D>("res://assets/ui/button/botonvelocidad.png");
+        }
     }
 
     private void OnWaveButtonPressed()
