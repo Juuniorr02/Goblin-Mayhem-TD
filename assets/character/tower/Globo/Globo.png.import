@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cfusp2kdh8h5g"
-path="res://.godot/imported/Lanzallamas2,5-Sheet.png-66ec61e161fe916d4087279415a3af07.ctex"
+uid="uid://bf5jdgmmmqtw2"
+path="res://.godot/imported/Globo.png-bfa825c9ca830de955ea033745ac9e7d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/character/tower/FlameThrower/Lanzallamas2,5-Sheet.png"
-dest_files=["res://.godot/imported/Lanzallamas2,5-Sheet.png-66ec61e161fe916d4087279415a3af07.ctex"]
+source_file="res://assets/character/tower/Globo/Globo.png"
+dest_files=["res://.godot/imported/Globo.png-bfa825c9ca830de955ea033745ac9e7d.ctex"]
 
 [params]
 

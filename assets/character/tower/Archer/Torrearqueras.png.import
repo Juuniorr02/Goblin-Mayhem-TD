@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bdnlajpbthyfs"
-path="res://.godot/imported/CanonAnim.png-6fa45c150986dbf41f0e9348be2635c9.ctex"
+uid="uid://d2mf7e0ksuqgu"
+path="res://.godot/imported/Torrearqueras.png-b33972a46b0ac83dd664e5e7158c9f87.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/character/tower/Cannon/CanonAnim.png"
-dest_files=["res://.godot/imported/CanonAnim.png-6fa45c150986dbf41f0e9348be2635c9.ctex"]
+source_file="res://assets/character/tower/Archer/Torrearqueras.png"
+dest_files=["res://.godot/imported/Torrearqueras.png-b33972a46b0ac83dd664e5e7158c9f87.ctex"]
 
 [params]
 

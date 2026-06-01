@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://haw611wpfdam"]
+
+[ext_resource type="Shader" uid="uid://byatklslfe8am" path="res://assets/shaders/deformacion_zenital.gdshader" id="1_cg12s"]
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1_cg12s")
+shader_parameter/camera_zoom = 1.0
+shader_parameter/flip_modifier = 1.0
+shader_parameter/base_skew = -0.3849999232874999
+shader_parameter/base_height_scale = 1.03900004609262

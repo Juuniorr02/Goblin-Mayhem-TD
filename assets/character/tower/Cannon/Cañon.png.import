@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cc1ghy4k8ebr3"
-path="res://.godot/imported/Torremago-Sheet.png-1be21ed30c9091c465b4c9009af173a8.ctex"
+uid="uid://bbex3gxa8a7u8"
+path="res://.godot/imported/Cañon.png-f85d1c48be821b8aacc83855acbc9b8a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/character/tower/MageTower/Torremago-Sheet.png"
-dest_files=["res://.godot/imported/Torremago-Sheet.png-1be21ed30c9091c465b4c9009af173a8.ctex"]
+source_file="res://assets/character/tower/Cannon/Cañon.png"
+dest_files=["res://.godot/imported/Cañon.png-f85d1c48be821b8aacc83855acbc9b8a.ctex"]
 
 [params]
 

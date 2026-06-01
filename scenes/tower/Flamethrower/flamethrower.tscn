@@ -1,31 +1,40 @@
-[gd_scene load_steps=11 format=3 uid="uid://doxdk8ijaiqly"]
+[gd_scene load_steps=12 format=3 uid="uid://doxdk8ijaiqly"]
 
 [ext_resource type="Script" uid="uid://crqokv4rwu2dj" path="res://scripts/character/tower/Flamethrower/FlameThrower.cs" id="1_0thnu"]
-[ext_resource type="Texture2D" uid="uid://cfusp2kdh8h5g" path="res://assets/character/tower/FlameThrower/Lanzallamas2,5-Sheet.png" id="2_0thnu"]
 [ext_resource type="PackedScene" uid="uid://bvlxkoud1hcen" path="res://scenes/tower/Flamethrower/Flame.tscn" id="2_mnmbe"]
+[ext_resource type="Texture2D" uid="uid://df4wywr10vjtg" path="res://assets/character/tower/FlameThrower/Lanzallamas.png" id="3_0thnu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mnmbe"]
-atlas = ExtResource("2_0thnu")
-region = Rect2(0, 0, 96, 64)
+atlas = ExtResource("3_0thnu")
+region = Rect2(0, 0, 96, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xotgb"]
-atlas = ExtResource("2_0thnu")
-region = Rect2(96, 0, 96, 64)
+atlas = ExtResource("3_0thnu")
+region = Rect2(96, 0, 96, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2vgo2"]
-atlas = ExtResource("2_0thnu")
-region = Rect2(192, 0, 96, 64)
+atlas = ExtResource("3_0thnu")
+region = Rect2(192, 0, 96, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cyfhq"]
-atlas = ExtResource("2_0thnu")
-region = Rect2(288, 0, 96, 64)
+atlas = ExtResource("3_0thnu")
+region = Rect2(288, 0, 96, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5kuh6"]
-atlas = ExtResource("2_0thnu")
-region = Rect2(384, 0, 96, 64)
+atlas = ExtResource("3_0thnu")
+region = Rect2(384, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7cemk"]
+atlas = ExtResource("3_0thnu")
+region = Rect2(480, 0, 96, 96)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7cemk"]
 animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_mnmbe")
@@ -37,36 +46,13 @@ animations = [{
 "texture": SubResource("AtlasTexture_2vgo2")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xotgb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2vgo2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xotgb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2vgo2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xotgb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2vgo2")
-}],
-"loop": true,
-"name": &"default",
-"speed": 7.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2vgo2")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_cyfhq")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5kuh6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7cemk")
 }],
 "loop": false,
 "name": &"dejarDeDisparar",
@@ -87,9 +73,12 @@ FireRate = 15.0
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_7cemk")
+animation = &"dejarDeDisparar"
+frame = 5
+frame_progress = 1.0
 
 [node name="Muzzle" type="Marker2D" parent="."]
-position = Vector2(1, -2)
+position = Vector2(30, 9.333334)
 
 [node name="ShootTimer" type="Timer" parent="."]
 

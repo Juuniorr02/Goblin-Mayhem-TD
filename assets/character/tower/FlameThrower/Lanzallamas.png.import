@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d253p70qvvh16"
-path="res://.godot/imported/Torrearquero-Sheet.png-f2acbd3f5f6483da4761ff8661050a72.ctex"
+uid="uid://df4wywr10vjtg"
+path="res://.godot/imported/Lanzallamas.png-1e516aeed26853fea3d8c33cf0bb8c87.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/character/tower/Archer/Torrearquero-Sheet.png"
-dest_files=["res://.godot/imported/Torrearquero-Sheet.png-f2acbd3f5f6483da4761ff8661050a72.ctex"]
+source_file="res://assets/character/tower/FlameThrower/Lanzallamas.png"
+dest_files=["res://.godot/imported/Lanzallamas.png-1e516aeed26853fea3d8c33cf0bb8c87.ctex"]
 
 [params]
 

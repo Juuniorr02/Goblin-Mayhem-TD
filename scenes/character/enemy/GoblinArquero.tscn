@@ -1,20 +1,14 @@
-[gd_scene load_steps=16 format=3 uid="uid://br8pxufhg5doy"]
+[gd_scene load_steps=15 format=3 uid="uid://br8pxufhg5doy"]
 
 [ext_resource type="Script" uid="uid://djm0046nxvish" path="res://scripts/character/enemy/Enemy.cs" id="1_ro6kw"]
 [ext_resource type="Script" uid="uid://dtfsd6sb6u7oe" path="res://scripts/character/enemy/EnemyData.cs" id="2_mh4kp"]
 [ext_resource type="Texture2D" uid="uid://cmwjmb8slpq0e" path="res://assets/character/enemy/BlancoVida.png" id="3_p5n7n"]
-[ext_resource type="Shader" uid="uid://byatklslfe8am" path="res://assets/shaders/deformacion_zenital.gdshader" id="4_jkps8"]
+[ext_resource type="Material" uid="uid://haw611wpfdam" path="res://scenes/character/enemy/ZenitalZoom.tres" id="4_jkps8"]
 [ext_resource type="Texture2D" uid="uid://d3oyflutknvkm" path="res://assets/character/enemy/GoblinArquero/WGoblinArquero-Sheet.png" id="4_rh140"]
 
 [sub_resource type="Resource" id="Resource_4kjq8"]
 script = ExtResource("2_mh4kp")
 metadata/_custom_type_script = "uid://dtfsd6sb6u7oe"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_p80jw"]
-shader = ExtResource("4_jkps8")
-shader_parameter/angle = 0.5070000240825
-shader_parameter/lean_factor = 0.262000012445
-shader_parameter/iso_ratio = 0.62000002945
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tgyjl"]
 atlas = ExtResource("4_rh140")
@@ -80,10 +74,10 @@ HealthBar = NodePath("TextureProgressBar")
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]
 top_level = true
 z_index = 10
-offset_left = -15.000002
-offset_top = -60.0
-offset_right = 341.0
-offset_bottom = 124.0
+offset_left = -33.0
+offset_top = -92.0
+offset_right = 323.0
+offset_bottom = 92.0
 scale = Vector2(0.16, 0.05)
 nine_patch_stretch = true
 texture_progress = ExtResource("3_p5n7n")
@@ -91,7 +85,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-material = SubResource("ShaderMaterial_p80jw")
+material = ExtResource("4_jkps8")
 sprite_frames = SubResource("SpriteFrames_t40px")
 autoplay = "default"
 frame_progress = 0.3990317

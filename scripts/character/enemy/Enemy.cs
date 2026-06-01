@@ -15,8 +15,9 @@ public partial class Enemy : CharacterBody2D
     private float Health;
     private float maxHealth;
 
-    
     private ShaderMaterial shaderMaterial;
+    // Guardamos la referencia a la cámara del juego
+    private Camera2D camera;
 
     public override void _Ready()
     {
@@ -40,11 +41,13 @@ public partial class Enemy : CharacterBody2D
             HealthBar.ZIndex = 100;
         }
 
-        
         if (sprite != null && sprite.Material is ShaderMaterial mat)
         {
             shaderMaterial = mat;
         }
+
+        // Buscamos la cámara activa en la escena
+        camera = GetViewport().GetCamera2D();
     }
 
     public override void _Process(double delta)
@@ -61,18 +64,23 @@ public partial class Enemy : CharacterBody2D
 
         Vector2 direccion = GetManualDirection(path, follow.Progress);
         
-        
         if (direccion.X != 0)
         {
             bool mirandoDerecha = direccion.X > 0;
             sprite.FlipH = IsFacingLeftByDefault ? mirandoDerecha : !mirandoDerecha;
         }
 
-        
-        if (shaderMaterial != null && direccion != Vector2.Zero)
+        // ACTUALIZACIÓN DEL SHADER SEGÚN LA CÁMARA
+        if (shaderMaterial != null)
         {
-            float anguloFinal = Mathf.Abs(direccion.Angle());
-            shaderMaterial.SetShaderParameter("angle", anguloFinal);
+            // 1. Pasamos el zoom de la cámara si existe (si no, usamos 1.0 por defecto)
+            float currentZoom = camera != null ? camera.Zoom.X : 1.0f;
+            shaderMaterial.SetShaderParameter("camera_zoom", currentZoom);
+
+            // 2. Corregimos el sentido del Skew según el FlipH del sprite
+            // Si el sprite está invertido, invertimos el signo del parámetro en el shader
+            float flipModifier = sprite.FlipH ? -1.0f : 1.0f;
+            shaderMaterial.SetShaderParameter("flip_modifier", flipModifier);
         }
 
         QuitarVidaBase();

@@ -8,6 +8,9 @@ public partial class CameraRig : Camera2D
 	[Export] public float MinZoom = 0.2f;
 	[Export] public float MaxZoom = 4.0f;
 
+	// Nombre del grupo de Godot donde pondrás tus personajes/torres
+	[Export] public string TargetsGroup = "isometric_objects";
+
 	public override void _Input(InputEvent @event)
 	{
 		if (@event is InputEventMouseButton mouseEvent && mouseEvent.Pressed)
@@ -34,6 +37,9 @@ public partial class CameraRig : Camera2D
 			inputDir = inputDir.Normalized();
 			Position += inputDir * MoveSpeed * (float)delta;
 		}
+
+		// ENVIAR EL ZOOM A LOS SHADERS
+		UpdateShaderParameters();
 	}
 
 	private void UpdateZoom(float direction)
@@ -46,5 +52,20 @@ public partial class CameraRig : Camera2D
 		zoom.Y = Mathf.Clamp(zoom.Y, MinZoom, MaxZoom);
 
 		Zoom = zoom;
+	}
+
+	private void UpdateShaderParameters()
+	{
+		// Obtenemos todos los nodos del grupo
+		var nodes = GetTree().GetNodesInGroup(TargetsGroup);
+		
+		foreach (var node in nodes)
+		{
+			if (node is CanvasItem canvasItem && canvasItem.Material is ShaderMaterial shaderMat)
+			{
+				// Pasamos el zoom actual (usamos Zoom.X ya que X e Y crecen igual)
+				shaderMat.SetShaderParameter("camera_zoom", Zoom.X);
+			}
+		}
 	}
 }

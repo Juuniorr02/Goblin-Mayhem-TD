@@ -1,9 +1,9 @@
-[gd_scene load_steps=21 format=3 uid="uid://cq4w56mk4nxmm"]
+[gd_scene load_steps=20 format=3 uid="uid://cq4w56mk4nxmm"]
 
 [ext_resource type="Script" uid="uid://djm0046nxvish" path="res://scripts/character/enemy/Enemy.cs" id="1_uqbeg"]
 [ext_resource type="Script" uid="uid://dtfsd6sb6u7oe" path="res://scripts/character/enemy/EnemyData.cs" id="2_ypm4a"]
 [ext_resource type="Texture2D" uid="uid://cmwjmb8slpq0e" path="res://assets/character/enemy/BlancoVida.png" id="3_ypm4a"]
-[ext_resource type="Shader" uid="uid://byatklslfe8am" path="res://assets/shaders/deformacion_zenital.gdshader" id="4_m17yy"]
+[ext_resource type="Material" uid="uid://haw611wpfdam" path="res://scenes/character/enemy/ZenitalZoom.tres" id="4_m17yy"]
 [ext_resource type="Texture2D" uid="uid://cuqhawrbgg2x2" path="res://assets/character/enemy/GoblinTronco/GoblinTronco.png" id="4_ypm4a"]
 
 [sub_resource type="Resource" id="Resource_m17yy"]
@@ -14,12 +14,6 @@ metadata/_custom_type_script = "uid://dtfsd6sb6u7oe"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ygshw"]
 size = Vector2(33.333313, 38.57208)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ltgbk"]
-shader = ExtResource("4_m17yy")
-shader_parameter/angle = 0.5070000240825
-shader_parameter/lean_factor = 0.262000012445
-shader_parameter/iso_ratio = 0.62000002945
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m17yy"]
 atlas = ExtResource("4_ypm4a")
@@ -116,10 +110,10 @@ HealthBar = NodePath("TextureProgressBar")
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]
 top_level = true
 z_index = 10
-offset_left = -15.000002
-offset_top = -60.0
-offset_right = 341.0
-offset_bottom = 124.0
+offset_left = -39.0
+offset_top = -111.0
+offset_right = 317.0
+offset_bottom = 73.0
 scale = Vector2(0.16, 0.05)
 nine_patch_stretch = true
 texture_progress = ExtResource("3_ypm4a")
@@ -132,7 +126,7 @@ shape = SubResource("RectangleShape2D_ygshw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-material = SubResource("ShaderMaterial_ltgbk")
+material = ExtResource("4_m17yy")
 sprite_frames = SubResource("SpriteFrames_gklym")
 autoplay = "default"
 frame_progress = 0.18477647

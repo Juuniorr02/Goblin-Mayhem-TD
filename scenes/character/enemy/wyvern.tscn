@@ -1,9 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://t575mxddhn7y"]
+[gd_scene load_steps=16 format=3 uid="uid://t575mxddhn7y"]
 
 [ext_resource type="Script" uid="uid://djm0046nxvish" path="res://scripts/character/enemy/Enemy.cs" id="1_eju4t"]
 [ext_resource type="Script" uid="uid://dtfsd6sb6u7oe" path="res://scripts/character/enemy/EnemyData.cs" id="2_8104f"]
 [ext_resource type="Texture2D" uid="uid://cmwjmb8slpq0e" path="res://assets/character/enemy/BlancoVida.png" id="3_uocp3"]
-[ext_resource type="Shader" uid="uid://byatklslfe8am" path="res://assets/shaders/deformacion_zenital.gdshader" id="4_8104f"]
+[ext_resource type="Material" uid="uid://haw611wpfdam" path="res://scenes/character/enemy/ZenitalZoom.tres" id="4_8104f"]
 [ext_resource type="Texture2D" uid="uid://c18rmy14kikiu" path="res://assets/character/enemy/Wyvern/BossWyv-Sheet.png" id="4_dgo1u"]
 
 [sub_resource type="Resource" id="Resource_bgsfn"]
@@ -12,12 +12,6 @@ metadata/_custom_type_script = "uid://dtfsd6sb6u7oe"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pap0l"]
 size = Vector2(97, 49)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_uocp3"]
-shader = ExtResource("4_8104f")
-shader_parameter/angle = 0.0
-shader_parameter/lean_factor = 0.4
-shader_parameter/iso_ratio = 0.5
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_obqac"]
 atlas = ExtResource("4_dgo1u")
@@ -86,22 +80,22 @@ HealthBar = NodePath("TextureProgressBar")
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]
 top_level = true
 z_index = 10
-offset_left = -15.000002
-offset_top = -60.0
-offset_right = 341.0
-offset_bottom = 124.0
+offset_left = -43.0
+offset_top = -206.99998
+offset_right = 313.0
+offset_bottom = -22.999985
 scale = Vector2(0.16, 0.05)
 nine_patch_stretch = true
 texture_progress = ExtResource("3_uocp3")
 metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(24.89, -33.305)
+position = Vector2(-4, -39)
 shape = SubResource("RectangleShape2D_pap0l")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-material = SubResource("ShaderMaterial_uocp3")
+material = ExtResource("4_8104f")
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_qela4")
 autoplay = "default"

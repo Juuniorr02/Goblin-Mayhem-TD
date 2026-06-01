@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bk7uhd3g002vy"
-path="res://.godot/imported/Globo-Sheet.png-e78730d7819f88af07e34af8607d9043.ctex"
+uid="uid://du87c4rpl2uo6"
+path="res://.godot/imported/Torremago.png-af9fff65cc54134e1215e210fb5b7413.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/character/tower/Globo/Globo-Sheet.png"
-dest_files=["res://.godot/imported/Globo-Sheet.png-e78730d7819f88af07e34af8607d9043.ctex"]
+source_file="res://assets/character/tower/MageTower/Torremago.png"
+dest_files=["res://.godot/imported/Torremago.png-af9fff65cc54134e1215e210fb5b7413.ctex"]
 
 [params]
 

@@ -1,10 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://dk1crbqxqelpx"]
+[gd_scene load_steps=18 format=3 uid="uid://dk1crbqxqelpx"]
 
 [ext_resource type="Script" uid="uid://djm0046nxvish" path="res://scripts/character/enemy/Enemy.cs" id="1_mbc1y"]
 [ext_resource type="Script" uid="uid://dtfsd6sb6u7oe" path="res://scripts/character/enemy/EnemyData.cs" id="2_rtmh2"]
 [ext_resource type="Texture2D" uid="uid://cmwjmb8slpq0e" path="res://assets/character/enemy/BlancoVida.png" id="3_1bc0a"]
 [ext_resource type="Texture2D" uid="uid://la5a0nno1uq2" path="res://assets/character/enemy/Emperador/Emperador.png" id="4_2nfn2"]
-[ext_resource type="Shader" uid="uid://byatklslfe8am" path="res://assets/shaders/deformacion_zenital.gdshader" id="4_rtmh2"]
+[ext_resource type="Material" uid="uid://haw611wpfdam" path="res://scenes/character/enemy/ZenitalZoom.tres" id="4_rtmh2"]
 
 [sub_resource type="Resource" id="Resource_m17yy"]
 script = ExtResource("2_rtmh2")
@@ -14,12 +14,6 @@ metadata/_custom_type_script = "uid://dtfsd6sb6u7oe"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ygshw"]
 size = Vector2(33.333313, 52.380928)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1bc0a"]
-shader = ExtResource("4_rtmh2")
-shader_parameter/angle = 0.5070000240825
-shader_parameter/lean_factor = 0.262000012445
-shader_parameter/iso_ratio = 0.62000002945
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uhhu8"]
 atlas = ExtResource("4_2nfn2")
@@ -102,10 +96,10 @@ HealthBar = NodePath("TextureProgressBar")
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]
 top_level = true
 z_index = 10
-offset_left = -15.000002
-offset_top = -60.0
-offset_right = 341.0
-offset_bottom = 124.0
+offset_left = -45.0
+offset_top = -145.0
+offset_right = 311.0
+offset_bottom = 39.0
 scale = Vector2(0.16, 0.05)
 nine_patch_stretch = true
 texture_progress = ExtResource("3_1bc0a")
@@ -118,7 +112,7 @@ shape = SubResource("RectangleShape2D_ygshw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-material = SubResource("ShaderMaterial_1bc0a")
+material = ExtResource("4_rtmh2")
 sprite_frames = SubResource("SpriteFrames_gylpl")
 autoplay = "default"
 frame_progress = 0.85683864
