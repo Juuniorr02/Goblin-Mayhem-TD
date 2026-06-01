@@ -7,5 +7,7 @@
 script = ExtResource("1_844xq")
 Name = "Criadero de Atunes"
 Cost = "300 de oro, 175 de madera, 125 de piedra, 75 de metal"
+Attack = "Ataca a Terrestre y Acuatico."
+Damage = "Hace 10 de daño cada 1 segundo y reaparecen cada 5 segundos."
 Icon = ExtResource("1_o04st")
 metadata/_custom_type_script = "uid://c7ixjxejko62n"

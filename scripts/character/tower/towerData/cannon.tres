@@ -7,5 +7,7 @@
 script = ExtResource("1_kkbn2")
 Name = "Cañon"
 Cost = "150 de oro, 25 de madera"
+Attack = "Ataca a Terrestres."
+Damage = "Hace 20 de daño cada 1,5 segundos."
 Icon = ExtResource("1_vlmqp")
 metadata/_custom_type_script = "uid://c7ixjxejko62n"

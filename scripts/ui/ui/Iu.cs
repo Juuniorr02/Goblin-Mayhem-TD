@@ -15,7 +15,7 @@ public partial class Iu : Control
     public Button Borrar;
 
     private TextureRect icon;
-    private Label nameLabel, costLabel;
+    private Label nameLabel, costLabel, atackLabel, damageLabel;
 
     [Export] public TowerData CannonData, ArcherData, MortarData, FlameData, BallistaData, WizardData, BloonData, NestData, ShipData, AtunData;
 
@@ -67,6 +67,8 @@ public partial class Iu : Control
         icon = GetNode<TextureRect>("%Icon");
         nameLabel = GetNode<Label>("%Name");
         costLabel = GetNode<Label>("%Cost");
+        atackLabel = GetNode<Label>("%Atack");
+        damageLabel = GetNode<Label>("%Damage");
 
         var towersNode = GetTree().CurrentScene.FindChild("Towers", true, false);
         if (towersNode != null)
@@ -292,6 +294,8 @@ public partial class Iu : Control
         icon.Texture = data.Icon;
         nameLabel.Text = data.Name;
         costLabel.Text = data.Cost.ToString();
+        atackLabel.Text = data.Attack.ToString();
+        damageLabel.Text = data.Damage.ToString();
     }
 
     private void OnTowerPressed(TowerData data)
