@@ -7,7 +7,5 @@
 script = ExtResource("1_q4np3")
 Name = "Torre de Mago"
 Cost = "250 de oro, 150 de madera, 100 de piedra, 50 de metal"
-Attack = "Ataca a Terrestres y Voladores y hace daño en area."
-Damage = "Hace 10 de daño y ataca cada 1 segundo."
 Icon = ExtResource("1_7fcj5")
 metadata/_custom_type_script = "uid://c7ixjxejko62n"

@@ -7,7 +7,5 @@
 script = ExtResource("1_0cojs")
 Name = "Mortero"
 Cost = "200 de oro, 100 de madera, 25 de piedra"
-Attack = "Ataca a Terrestres y hace daño en area."
-Damage = "Hace 25 de daño y ataca cada 0,35 segundos."
 Icon = ExtResource("1_03d44")
 metadata/_custom_type_script = "uid://c7ixjxejko62n"

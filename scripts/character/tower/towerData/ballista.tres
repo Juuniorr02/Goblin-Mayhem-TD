@@ -7,7 +7,5 @@
 script = ExtResource("1_vx23t")
 Name = "Ballesta"
 Cost = "150 de oro, 75 de madera"
-Attack = "Ataca a Voladores y atraviesa a los enemigos."
-Damage = "Hace 15 de daño cada 0,5 segundos."
 Icon = ExtResource("1_3vv1s")
 metadata/_custom_type_script = "uid://c7ixjxejko62n"
