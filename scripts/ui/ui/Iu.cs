@@ -198,6 +198,8 @@ public partial class Iu : Control
             waveCooldown = 0f;
 
             waveAnimation.Play("wave");
+            Engine.TimeScale = 1f;
+            VelocityButton.TextureNormal = GD.Load<Texture2D>("res://assets/ui/button/botonvelocidad.png");
         }
 
         if (waitingCooldown)
