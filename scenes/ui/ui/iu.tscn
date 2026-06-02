@@ -877,6 +877,7 @@ size_flags_vertical = 2
 size_flags_stretch_ratio = 3.8
 texture_normal = ExtResource("29_opg7r")
 
+[connection signal="mouse_entered" from="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Archer/Archer/Archer/Archer/Archer/Archer" to="." method="OnArcherMouseEntered"]
 [connection signal="pressed" from="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Archer/Archer/Archer/Archer/Archer/Archer" to="." method="OnArcherPressed"]
 [connection signal="pressed" from="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Cannon/Cannon/Cannon/Cannon/Cannon/Cannon" to="." method="OnCannonPressed"]
 [connection signal="pressed" from="IU/IU/IU/Bottom/Towers/Towers/Towers/Towers/Towers/Flame/Flame/Flame/Flame/Flame/Flame" to="." method="OnFlamePressed"]

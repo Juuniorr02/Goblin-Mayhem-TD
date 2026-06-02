@@ -7,5 +7,7 @@
 script = ExtResource("1_1iu81")
 Name = "Torre de Arqueras"
 Cost = "100 de oro, 50 de madera"
+Attack = "Ataca a Terrestres, Acuaticos y Voladores."
+Damage = "Hace 15 de daño cada 1,5 segundos."
 Icon = ExtResource("1_e8myy")
 metadata/_custom_type_script = "uid://c7ixjxejko62n"

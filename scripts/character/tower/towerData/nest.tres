@@ -7,5 +7,7 @@
 script = ExtResource("1_ca4hr")
 Name = "Nido de Grifos"
 Cost = "250 de oro, 100 de madera, 50 de piedra, 25 de metal"
+Attack = "Ataca a Terrestres, Acuaticos y Voladores."
+Damage = "Hace 15 de daño y ataca cada 1,2 segundos."
 Icon = ExtResource("1_vg868")
 metadata/_custom_type_script = "uid://c7ixjxejko62n"

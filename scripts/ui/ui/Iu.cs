@@ -70,10 +70,70 @@ public partial class Iu : Control
         atackLabel = GetNode<Label>("%Atack");
         damageLabel = GetNode<Label>("%Damage");
 
-        var towersNode = GetTree().CurrentScene.FindChild("Towers", true, false);
-        if (towersNode != null)
+        if (Archer != null)
         {
-            towersNode.Connect("OnCancelSelection", Callable.From(() =>
+            Archer.MouseEntered += () => OnTowerMouseEntered(ArcherData);
+            Archer.MouseExited += OnTowerMouseExited;
+        }
+
+        if (Cannon != null)
+        {
+            Cannon.MouseEntered += () => OnTowerMouseEntered(CannonData);
+            Cannon.MouseExited += OnTowerMouseExited;
+        }
+
+        if (Mortar != null)
+        {
+            Mortar.MouseEntered += () => OnTowerMouseEntered(MortarData);
+            Mortar.MouseExited += OnTowerMouseExited;
+        }
+
+        if (Flame != null)
+        {
+            Flame.MouseEntered += () => OnTowerMouseEntered(FlameData);
+            Flame.MouseExited += OnTowerMouseExited;
+        }
+
+        if (Ballista != null)
+        {
+            Ballista.MouseEntered += () => OnTowerMouseEntered(BallistaData);
+            Ballista.MouseExited += OnTowerMouseExited;
+        }
+
+        if (Wizard != null)
+        {
+            Wizard.MouseEntered += () => OnTowerMouseEntered(WizardData);
+            Wizard.MouseExited += OnTowerMouseExited;
+        }
+
+        if (Bloon != null)
+        {
+            Bloon.MouseEntered += () => OnTowerMouseEntered(BloonData);
+            Bloon.MouseExited += OnTowerMouseExited;
+        }
+
+        if (Nest != null)
+        {
+            Nest.MouseEntered += () => OnTowerMouseEntered(NestData);
+            Nest.MouseExited += OnTowerMouseExited;
+        }
+
+        if (Ship != null)
+        {
+            Ship.MouseEntered += () => OnTowerMouseEntered(ShipData);
+            Ship.MouseExited += OnTowerMouseExited;
+        }
+
+        if (Atun != null)
+        {
+            Atun.MouseEntered += () => OnTowerMouseEntered(AtunData);
+            Atun.MouseExited += OnTowerMouseExited;
+        }
+
+        var builderNodes = GetTree().CurrentScene.FindChildren("*", "TowerBuilder", true, false);
+        foreach (Node builderNode in builderNodes)
+        {
+            builderNode.Connect("OnCancelSelection", Callable.From(() =>
             {
                 if (infoPanel != null)
                     infoPanel.Visible = false;
@@ -280,6 +340,15 @@ public partial class Iu : Control
             constructionwave--;
         }
     }
+    private void OnTowerMouseEntered(TowerData data)
+    {
+        ShowTowerInfo(data);
+    }
+
+    private void OnTowerMouseExited()
+    {
+        ShowTowerInfo(null);
+    }
 
     private void ShowTowerInfo(TowerData data)
     {
@@ -293,11 +362,16 @@ public partial class Iu : Control
         if (infoPanel != null)
             infoPanel.Visible = true;
 
-        icon.Texture = data.Icon;
-        nameLabel.Text = data.Name;
-        costLabel.Text = data.Cost.ToString();
-        atackLabel.Text = data.Attack.ToString();
-        damageLabel.Text = data.Damage.ToString();
+        if (icon != null)
+            icon.Texture = data.Icon;
+        if (nameLabel != null)
+            nameLabel.Text = data.Name ?? string.Empty;
+        if (costLabel != null)
+            costLabel.Text = data.Cost ?? string.Empty;
+        if (atackLabel != null)
+            atackLabel.Text = data.Attack ?? string.Empty;
+        if (damageLabel != null)
+            damageLabel.Text = data.Damage ?? string.Empty;
     }
 
     private void OnTowerPressed(TowerData data)

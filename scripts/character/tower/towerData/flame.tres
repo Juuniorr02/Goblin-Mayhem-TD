@@ -7,5 +7,7 @@
 script = ExtResource("1_wd547")
 Name = "Lanzallamas"
 Cost = "200 de oro, 100 de madera, 50 de piedra, 25 de metal"
+Attack = "Ataca a Terrestres y los quema."
+Damage = "Hace 5 de daño y ataca cada 0,5 segundos, el fuego aplica 5 de daño cada 0,5 segundos."
 Icon = ExtResource("1_flg7h")
 metadata/_custom_type_script = "uid://c7ixjxejko62n"
